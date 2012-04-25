@@ -12,7 +12,7 @@ import java.lang.*;
 import java.awt.*;
 import java.io.PrintStream;
 
-public class dog_ implements PlugIn {
+public class dilate_diff implements PlugIn {
 
 	ImageCalculator ic;
 	ResultsTable table;
@@ -22,11 +22,15 @@ public class dog_ implements PlugIn {
 
 	public void run(String arg) {
 		ImagePlus imp = WindowManager.getCurrentImage();
-		 if (imp==null){IJ.noImage(); return;}
-		ImagePlus imp1=new Duplicator().run(imp);		
+		if (imp==null){IJ.noImage(); return;}
+		ImagePlus imp1=new Duplicator().run(imp);
 		ImagePlus imp2= new Duplicator().run(imp1);
-		IJ.run(imp1, "Gaussian Blur...", "sigma=20");
-		IJ.run(imp2, "Gaussian Blur...", "sigma=15");
+		IJ.run(imp1, "Make Binary", "");
+		IJ.run(imp2, "Make Binary", "");
+		IJ.run(imp1, "Options...", "iterations=1 count=1 edm=Overwrite do=Nothing");
+		IJ.run(imp1, "Dilate", "");
+		IJ.run(imp2, "Options...", "iterations=2 count=1 edm=Overwrite do=Nothing");
+		IJ.run(imp2, "Dilate", "");
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
 		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
@@ -44,10 +48,10 @@ public class dog_ implements PlugIn {
      			ypoints[i] = yy;
     			imp.setRoi(new PointRoi(xpoints,ypoints,counter));
 		}
-		imp.show();	
+		imp.show();
 		IJ.selectWindow("Results");
  		IJ.run("Clear Results");
-		IJ.run("Measure");
+		IJ.run("Measure");	
 	}
 
 }
