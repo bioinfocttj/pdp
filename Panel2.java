@@ -22,8 +22,9 @@ import javax.swing.JTextField;
 public class Panel2 extends JFrame /*implements ActionListener*/{
 	static JPanel panel2 = new JPanel();
 	
-	static int sigma1 = 0;
-	static int sigma2 = 0; 
+/*	static int sigma1 = 0;
+	static int sigma2 = 0;
+*/ 
 	//static JPanel create();
 	
 	
@@ -35,14 +36,15 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		return jButton;
 	}
 	
-	JScrollPane makeJTextField(String text){
-		JTextField info = new JTextField(text);
-		info.setPreferredSize(new Dimension(100, 200));
+	static JTextField makeJTextField(String text){
+		JTextField textField = new JTextField(text);
+		//textField.addActionListener((ActionListener) textField);
+		//info.setPreferredSize(new Dimension(100, 200));
 		//String temp=description;
 		
-		JScrollPane scrollPane = new JScrollPane(info, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		//JScrollPane scrollPane = new JScrollPane(info, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		//info.setLineWrap(true);
-		return scrollPane;
+		return textField;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -68,7 +70,7 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		else { IJ.showMessage("bwaaaaah!!");}
 	}
 	
-	public void setSigma(int sig1, int sig2) {
+	/*public void setSigma(int sig1, int sig2) {
 		sigma1 =sig1;
 		sigma2 =sig2;
 	}
@@ -78,7 +80,7 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 	}
 	public static int getSigma2 () {
 		return sigma2;
-	}
+	}*/
 	
 
 }

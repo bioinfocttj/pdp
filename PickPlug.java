@@ -36,7 +36,9 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 	PickPlug instance;
 	int sigm1;
 	int sigm2;
-
+	JButton applyButton;
+	JComboBox algoList;
+	
 	public PickPlug(){
 		super("Picking Plugin");
 
@@ -86,7 +88,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 
 		//Create the combo box, default selection is the item at index 4.
 		//Indices start at 0, so 4 specifies the About panel.
-		JComboBox algoList = new JComboBox(algos);
+		algoList = new JComboBox(algos);
 		algoList.setSelectedIndex(1);
 		algoList.addActionListener(this);
 
@@ -116,10 +118,9 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		previewButton = makeButton("Preview");
 		JButton resetButton;
 		resetButton = makeButton("Reset");
-		JButton applyButton;
+		
 		//IJ.run("Undo");
 		applyButton = makeButton("Apply");
-		//applyButton.addActionListener(actionLi);
 		JButton helpInfoButton;
 		helpInfoButton = makeButton("Help & Info");
 		helpInfoButton.addActionListener(new InfoHelpViewerPickPlug());
@@ -164,58 +165,69 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 	
 	/** Listens to the combo box. */
 	public void actionPerformed(ActionEvent e) {
-		//String command = e.getActionCommand();
-		JComboBox cb = (JComboBox)e.getSource();
-		String algo = (String)cb.getSelectedItem();
-		//IJ.showMessage(algo);
-
-		if ( algo.equals("About PickPlug" )){ 
-			//IJ.showMessage(algo);
-			panel2.removeAll();
-			panelPrincipal.remove(panel2);
-			panel2 = About.create();
-			panelPrincipal.add(panel2);
-			validateLayout();
-		}
-		else if ( algo.equals("DoG" )){
-			panel2.removeAll(); 
-			panelPrincipal.remove(panel2);
-			sigm1 = Panel2.getSigma1();
-			sigm2 = Panel2.getSigma2();
-			/* l'idée est de dire de lancer l'algo que si l'utilisateur appuie sur apply
-			 * mais c'est pas top, quand on selectionne l'algo, il faut appuyer sur apply et la on a les paramètres à rentrer
-			 */
-			/*if ( command.compareTo("Apply") == 0 ) {
+		String command = e.getActionCommand();
+		if (command.equals("comboBoxChanged")){
+			JComboBox cb = (JComboBox)e.getSource();
+			String algo = (String)cb.getSelectedItem();
+			
+			if ( algo.equals("About PickPlug" )){ 
+				panel2.removeAll();
+				panelPrincipal.remove(panel2);
+				panel2 = About.create();
+				panelPrincipal.add(panel2);
+				validateLayout();
+			}
+			else if ( algo.equals("DoG" )){
+				panel2.removeAll(); 
+				panelPrincipal.remove(panel2);
 				panel2 = PanelDoG.create();
+	
+				applyButton.addActionListener(this);
+				//sigm1 = Panel2.getSigma1();
+				//String sigm = "" + sigm1;
+				//IJ.showMessage(sigm);
+				//sigm2 = Panel2.getSigma2();
+				/* l'idée est de dire de lancer l'algo que si l'utilisateur appuie sur apply
+				 * mais c'est pas top, quand on selectionne l'algo, il faut appuyer sur apply et la on a les paramètres à rentrer
+				 */
+				/*if ( command.compareTo("Apply") == 0 ) {
+					
+					DoG.pick();
+				}*/
+				panelPrincipal.add(panel2);
+				validateLayout();
+			}
+			else if ( algo.equals("Dilatation Difference" )){
+				panel2.removeAll(); 
+				panelPrincipal.remove(panel2);
+				DilateDiff.pick();
+				panelPrincipal.add(panel2);
+				validateLayout();
+			}
+			else if ( algo.equals("Image Correlation" )){
+				panel2.removeAll(); 
+				panelPrincipal.remove(panel2);
+				ImCorr.pick();
+				panelPrincipal.add(panel2);
+				validateLayout();
+			}
+			else if ( algo.equals("Algo 2" )){
+				//IJ.showMessage(algo);
+				panel2.removeAll(); 
+				panelPrincipal.remove(panel2);
+				//panel2 = Filter1()
+				panel2 = Filter1.create();
+				panelPrincipal.add(panel2);
+				validateLayout();
+			}
+		}
+		else if (command.equals("Apply")){
+			//JComboBox cb = (JComboBox)algoList.getSelectedItem();
+			String algo = (String)algoList.getSelectedItem();
+			if (algo.equals("DoG")){
 				DoG.pick();
-			}*/
-			panelPrincipal.add(panel2);
-			validateLayout();
+			}
 		}
-		else if ( algo.equals("Dilatation Difference" )){
-			panel2.removeAll(); 
-			panelPrincipal.remove(panel2);
-			DilateDiff.pick();
-			panelPrincipal.add(panel2);
-			validateLayout();
-		}
-		else if ( algo.equals("Image Correlation" )){
-			panel2.removeAll(); 
-			panelPrincipal.remove(panel2);
-			ImCorr.pick();
-			panelPrincipal.add(panel2);
-			validateLayout();
-		}
-		else if ( algo.equals("Algo 2" )){
-			//IJ.showMessage(algo);
-			panel2.removeAll(); 
-			panelPrincipal.remove(panel2);
-			//panel2 = Filter1()
-			panel2 = Filter1.create();
-			panelPrincipal.add(panel2);
-			validateLayout();
-		}
-
 		/*
 		else{//a mettre ds une classe (phase de test)
 			panel2.setPreferredSize(new Dimension(500,70));

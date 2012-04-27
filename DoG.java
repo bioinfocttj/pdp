@@ -1,6 +1,5 @@
 
 //add Licence GPL and description of the plugin and his authors
-
 import ij.IJ;
 
 import java.awt.Dimension;
@@ -25,6 +24,7 @@ import ij.plugin.*;
 import ij.plugin.filter.*;
 import ij.plugin.frame.*;
 import java.lang.*;
+import java.util.Hashtable;
 import java.awt.*;
 import java.io.PrintStream;
 
@@ -46,18 +46,21 @@ class DoG extends PickPlug_ /*implements ActionListener*/{
 		int counter=0;
 		int[] xpoints;
 		int[] ypoints;
-
+		Hashtable<String, String> sigma=PanelDoG.getvalue();
+		String sigma1 = (String) sigma.get("sigma1");
+		String sigma2 = (String) sigma.get("sigma2");
 		ImagePlus imp = WindowManager.getCurrentImage();
 		
 		ImagePlus imp1 = new Duplicator().run(imp);
-		ImagePlus imp2= new Duplicator().run(imp1);
-		int s1 = Panel2.getSigma1();
-		int s2 = Panel2.getSigma2();
-		String si1 = "sigma=" + s1;
-		String si2 = "sigma=" + s2;
+		ImagePlus imp2 = new Duplicator().run(imp1);
+		//String s1b = String.valueOf( s1 );
+		String si1 = "sigma=" + sigma1;
+		String si2 = "sigma=" + sigma2;
+		
 		//IJ.run(imp2, "Gaussian Blur...", "sigma=10"); commande originale
 		/* comme les IJ.run n'accepte que des strings et que nous voulons mettre des variables dedans, on recaste 
 		 * pour le moment on n'a pas de tableau car trop compliqué (on a essayé et pas concluant ^^)*/
+		
 		IJ.run(imp1, "Gaussian Blur...", si1); 
 		IJ.run(imp2, "Gaussian Blur...", si2);
 		ic = new ImageCalculator();
@@ -81,7 +84,6 @@ class DoG extends PickPlug_ /*implements ActionListener*/{
 		IJ.selectWindow("Results");
 		IJ.run("Clear Results");
 		IJ.run("Measure");
-		
 
 		// Tests
 		
