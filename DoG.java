@@ -29,20 +29,16 @@ import java.awt.*;
 import java.io.PrintStream;
 
 @SuppressWarnings({ "serial", "unused" })
-class DoG extends Panel2 /*implements ActionListener*/{
+class DoG extends PickPlug_ /*implements ActionListener*/{
 
 	/*Penser a mettre les infos et description d'aide!!!*/
 	//static JPanel panel2Algo1 = new JPanel();
-	
-	private static String description="papayou";
-	
-	static JButton coffeaButton;
 	
 	DoG(){
 		super();
 	}
 	
-	static JPanel create(){
+	static void pick(){
 		
 
 		ImageCalculator ic;
@@ -55,8 +51,15 @@ class DoG extends Panel2 /*implements ActionListener*/{
 		
 		ImagePlus imp1 = new Duplicator().run(imp);
 		ImagePlus imp2= new Duplicator().run(imp1);
-		IJ.run(imp1, "Gaussian Blur...", "sigma=20"); // Après il faudra penser à récupérer les valeurs entrées par l'utilisateur
-		IJ.run(imp2, "Gaussian Blur...", "sigma=15");
+		int s1 = Panel2.getSigma1();
+		int s2 = Panel2.getSigma2();
+		String si1 = "sigma=" + s1;
+		String si2 = "sigma=" + s2;
+		//IJ.run(imp2, "Gaussian Blur...", "sigma=10"); commande originale
+		/* comme les IJ.run n'accepte que des strings et que nous voulons mettre des variables dedans, on recaste 
+		 * pour le moment on n'a pas de tableau car trop compliqué (on a essayé et pas concluant ^^)*/
+		IJ.run(imp1, "Gaussian Blur...", si1); 
+		IJ.run(imp2, "Gaussian Blur...", si2);
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
 		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
@@ -99,7 +102,7 @@ class DoG extends Panel2 /*implements ActionListener*/{
 		//coffeaButton.setMnemonic(KeyEvent.VK_A);
 		coffeaButton.addActionListener(actionL);
 		panel2.add(coffeaButton);*/
-		return panel2;
+		//return panel2;
 	}
 
 

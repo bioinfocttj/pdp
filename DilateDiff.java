@@ -22,13 +22,13 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "serial", "unused" })
 
-class DilateDiff extends Panel2 /*implements ActionListener*/{
+class DilateDiff extends PickPlug_ /*implements ActionListener*/{
 	
 	DilateDiff(){
 		super();
 	}
 	
-	static JPanel create(){
+	static void pick(){
 		
 		ImageCalculator ic;
 		ResultsTable table;
@@ -67,7 +67,7 @@ class DilateDiff extends Panel2 /*implements ActionListener*/{
 		IJ.run("Clear Results");
 		IJ.run("Measure");
 		
-		return panel2;
+		//return panel2;
 	}
 
 	/*static ActionListener actionL = new ActionListener () {

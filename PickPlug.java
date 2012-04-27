@@ -34,11 +34,13 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 	JPanel panel2;
 	JPanel panel3;
 	PickPlug instance;
+	int sigm1;
+	int sigm2;
 
 	public PickPlug(){
 		super("Picking Plugin");
 
-		//IJ.run("Blobs (25K)"); // Ce sera bcp plus rapide ^^
+		IJ.run("Blobs (25K)"); // Ce sera bcp plus rapide ^^
 		
 		initGUI();
 		instance = this;
@@ -117,6 +119,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		JButton applyButton;
 		//IJ.run("Undo");
 		applyButton = makeButton("Apply");
+		//applyButton.addActionListener(actionLi);
 		JButton helpInfoButton;
 		helpInfoButton = makeButton("Help & Info");
 		helpInfoButton.addActionListener(new InfoHelpViewerPickPlug());
@@ -175,24 +178,31 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			validateLayout();
 		}
 		else if ( algo.equals("DoG" )){
-			//IJ.showMessage(algo);
 			panel2.removeAll(); 
 			panelPrincipal.remove(panel2);
-			panel2 = DoG.create();
+			sigm1 = Panel2.getSigma1();
+			sigm2 = Panel2.getSigma2();
+			/* l'idée est de dire de lancer l'algo que si l'utilisateur appuie sur apply
+			 * mais c'est pas top, quand on selectionne l'algo, il faut appuyer sur apply et la on a les paramètres à rentrer
+			 */
+			/*if ( command.compareTo("Apply") == 0 ) {
+				panel2 = PanelDoG.create();
+				DoG.pick();
+			}*/
 			panelPrincipal.add(panel2);
 			validateLayout();
 		}
 		else if ( algo.equals("Dilatation Difference" )){
 			panel2.removeAll(); 
 			panelPrincipal.remove(panel2);
-			panel2 = DilateDiff.create();
+			DilateDiff.pick();
 			panelPrincipal.add(panel2);
 			validateLayout();
 		}
 		else if ( algo.equals("Image Correlation" )){
 			panel2.removeAll(); 
 			panelPrincipal.remove(panel2);
-			panel2 = ImCorr.create();
+			ImCorr.pick();
 			panelPrincipal.add(panel2);
 			validateLayout();
 		}
@@ -216,8 +226,24 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			// Add text to panel 2
 			panel2.add(info);
 		}*/
-		//updateLabel(algo);
+		
 	}
+	
+	
+	
+	/*ActionListener actionLi = new ActionListener () {
+		public void actionPerformed(ActionEvent actionE) {
+			JButton button = (JButton) actionE.getSource();
+			String command = actionE.getActionCommand();
+			if ( command.compareTo("Apply") == 0 ) {
+				panel2 = PanelDoG.create();
+				DoG.pick();
+			}
+			else if ( command.compareTo("Median Filter") == 0 ) {
+				IJ.showMessage("This is the median filter button");
+			}
+		}
+	};*/
 	
 
 	// Réclamé par eclipse 

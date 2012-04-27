@@ -19,13 +19,13 @@ import javax.swing.JPanel;
 
 @SuppressWarnings({ "serial", "unused" })
 
-class ImCorr extends Panel2 /*implements ActionListener*/{
+class ImCorr extends PickPlug_ /*implements ActionListener*/{
 	
 	ImCorr(){
 		super();
 	}
 	
-	static JPanel create(){
+	static void pick(){
 		
 		int w=2048; //image width
 		int h=2048; //image heigh
@@ -134,6 +134,6 @@ class ImCorr extends Panel2 /*implements ActionListener*/{
 		IJ.selectWindow("HB070-33-1.jpg");
 		IJ.run("Measure");
 		
-		return panel2;
+		//return panel2;
 	}
 }

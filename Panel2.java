@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 public class Panel2 extends JFrame /*implements ActionListener*/{
 	static JPanel panel2 = new JPanel();
 	
+	static int sigma1 = 0;
+	static int sigma2 = 0; 
 	//static JPanel create();
 	
 	
@@ -65,4 +67,18 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		}
 		else { IJ.showMessage("bwaaaaah!!");}
 	}
+	
+	public void setSigma(int sig1, int sig2) {
+		sigma1 =sig1;
+		sigma2 =sig2;
+	}
+	
+	public static int getSigma1 () {
+		return sigma1;
+	}
+	public static int getSigma2 () {
+		return sigma2;
+	}
+	
+
 }
