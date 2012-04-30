@@ -31,7 +31,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		int h=2048; //image heigh
 		int radiusMin=20; //radius min of the draw circule
 		int radiusMax=60; //radius max of the draw circule
-		int radiusInc=5; //radius incrementation
+		int radiusInc=20; //radius incrementation
 		String name = "";
 		ResultsTable table; //result table
 		int counter =0; //count of the results
@@ -48,25 +48,28 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			ImagePlus imp = IJ.createImage("test2", "8-bit White", 2048, 2048, 1);
 			imp.setRoi(new OvalRoi(1024-radius, 1024-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
-			imp.show();
-			IJ.run(imp, "FD Math...", "image1=HB070-33.jpg operation=Correlate image2=test2 result=Result do");
-			ImagePlus res=WindowManager.getCurrentImage();
-			IJ.run("Enhance Contrast", "saturated=0 normalize");
-			IJ.run("Find Maxima...", "noise=0.5 output=[Point Selection]");
-			IJ.selectWindow("test2");
-			IJ.run("Close", "");
-			IJ.selectWindow("Result");
-			/*if (res==null)
-				{IJ.noImage(); return null;}*/
-			Roi roi = res.getRoi();
-			/*if (roi==null )
-				{IJ.error("Selection required"); return null;}*/
+			//imp.show();
+
+			//IJ.selectWindow("test2");
+			ImagePlus result = FFTMath.doMath(image,imp);
+			//IJ.run(imp, "FD Math...", "image1=HB070-33.jpg operation=Correlate image2=test2 result=Result do");
+			//result.show();
+
+			//ImagePlus res=WindowManager.getCurrentImage();
+			//ImagePlus res=WindowManager.getImage("Result");
+			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
+			IJ.run(result,"Find Maxima...", "noise=0.5 output=[Point Selection]");
+			//IJ.selectWindow("test2");
+			//IJ.run("Close", "test2");
+			//IJ.selectWindow("Result");
+			Roi roi = result.getRoi();
 			int measurements = Analyzer.getMeasurements();
 			Analyzer.setMeasurements(measurements);
 			IJ.run("Measure");
-			IJ.selectWindow("Result");
-			IJ.run("Close", "");
+			result.show();
+
 		}
+		
 		table = Analyzer.getResultsTable();
 		counter=table.getCounter();
 		list=new int [counter];

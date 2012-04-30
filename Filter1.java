@@ -27,7 +27,7 @@ class Filter1 extends Panel2 /*implements ActionListener*/{
 	
 	/*Penser a mettre les infos et description d'aide!!!*/
 	//static JPanel panel2Filter1 = new JPanel();
-		
+
 	static JPanel create(){
 		//panel2.setPreferredSize(new Dimension(400,200));
 		//IJ.showMessage("Hello world");

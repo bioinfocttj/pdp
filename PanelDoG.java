@@ -51,6 +51,7 @@ class PanelDoG extends Panel2 /*implements ActionListener*/{
 		panel2.add(sigma2);
 		return panel2;
 	}
+	
 	public static Hashtable<String, String> getvalue(){
 		String s1 = sigma1.getText();
 		String s2 = sigma2.getText();

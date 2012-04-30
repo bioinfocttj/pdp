@@ -74,8 +74,6 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		panel2 = new JPanel();
 		panel3 = new JPanel();
 
-		// Panel title
-
 		///////////////////// Panel1 : Choice of algorithm 
 
 		//panel1.setPreferredSize(new Dimension(450,70));
@@ -101,9 +99,9 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		panel1.add(algoList, BorderLayout.PAGE_START);
 		panel1.add(choice, BorderLayout.PAGE_END);
 
-		//////////////////////Panel2 : Show text info as default 
+		//////////////////////Panel2 : Changes with the algorithm chosen 
 /*		
-		panel2=About.create();
+		panel2 = About.create();
 		JLabel info = new JLabel();
 		info.setPreferredSize(new Dimension(500, 70));
 		info.setText("Welcome to the Picking Plugin ");
@@ -154,6 +152,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		jButton.addActionListener(this);
 		return jButton;
 	}
+	
 	void validateLayout(){
 		panel1.validate();
 		panel2.validate();
@@ -187,9 +186,6 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 				//String sigm = "" + sigm1;
 				//IJ.showMessage(sigm);
 				//sigm2 = Panel2.getSigma2();
-				/* l'idée est de dire de lancer l'algo que si l'utilisateur appuie sur apply
-				 * mais c'est pas top, quand on selectionne l'algo, il faut appuyer sur apply et la on a les paramètres à rentrer
-				 */
 				/*if ( command.compareTo("Apply") == 0 ) {
 					
 					DoG.pick();
