@@ -40,7 +40,7 @@ class PanelImCorr extends Panel2 {
 
 		if (debugMode.isSelected()) {
 			result.put("debug","true");
-		}
+		}//essai git
 		else {
 
 			result.put("debug","false");
