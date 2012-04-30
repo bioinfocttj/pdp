@@ -62,11 +62,13 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.selectWindow("test2");
 			//IJ.run("Close", "test2");
 			//IJ.selectWindow("Result");
+			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
 			Roi roi = result.getRoi();
 			int measurements = Analyzer.getMeasurements();
 			Analyzer.setMeasurements(measurements);
 			IJ.run("Measure");
 			result.show();
+			//result.close();
 
 		}
 		

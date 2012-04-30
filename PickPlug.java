@@ -217,7 +217,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 				validateLayout();
 			}
 		}
-		else if (command.equals("Apply")){
+		else if (command.equals("Preview")){
 			//JComboBox cb = (JComboBox)algoList.getSelectedItem();
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("DoG")){
