@@ -34,11 +34,16 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		int radiusInc=20; //radius incrementation
 		String name = "";
 		ResultsTable table; //result table
+		ResultsTable finalresults;
 		int counter =0; //count of the results
 		int[] list;
 		int[] pass;
 		int[] xpoints;
 		int[] ypoints;
+		double[] xtab;
+		double[] ytab;
+		double[] Slice;
+		double[][] resultstable;
 		//String imname;
 		
 		//creation of an image which contains a circle with different diameters
@@ -63,9 +68,6 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.run("Close", "test2");
 			//IJ.selectWindow("Result");
 			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
-			Roi roi = result.getRoi();
-			int measurements = Analyzer.getMeasurements();
-			Analyzer.setMeasurements(measurements);
 			IJ.run("Measure");
 			result.show();
 			//result.close();
@@ -120,13 +122,17 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			}
 			iterator --;
 		}
-		IJ.selectWindow("HB070-33-1.jpg");
+		IJ.selectWindow("Stack1.jpg");
 		xpoints = new int[line1];
 		ypoints = new int [line1];
+		xtab= new double[line1];
+		ytab= new double[line1];
 		for (int l=1;l<line1;l++){
 			int line2=list[l];
 			double x=table.getValue("X",line2);
 			double y=table.getValue("Y",line2);
+			xtab[l] = x;
+			ytab[l] = y;
 			ImagePlus imp2 = WindowManager.getCurrentImage();
 			int xx = (int) x;
 			int yy = (int) y;
@@ -136,8 +142,27 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		}
 		IJ.selectWindow("Results");
 		IJ.run("Clear Results");
-		IJ.selectWindow("HB070-33-1.jpg");
+		IJ.selectWindow("Stack1.jpg");
 		IJ.run("Measure");
+		IJ.selectWindow("Results");
+
+		finalresults = Analyzer.getResultsTable();
+
+		counter=finalresults.getCounter();
+
+		Slice = new double[counter];
+
+		for(int i=0;i<counter;i++){
+
+		double temp = finalresults.getValue("Slice", i);
+
+		Slice[i] = temp;
+
+		}
+		resultstable = new double[3][];
+		resultstable[0] = xtab;
+		resultstable[1]= ytab;
+		resultstable[2] = Slice;
 		
 		//return panel2;
 	}

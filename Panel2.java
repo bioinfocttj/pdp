@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -36,6 +37,12 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		return jButton;
 	}
 	
+	static JCheckBox makeJCheckBox(String name){
+		JCheckBox checkBox = new JCheckBox( name); 
+		return checkBox;
+		
+	}
+	
 	static JTextField makeJTextField(String text){
 		JTextField textField = new JTextField(text);
 		//textField.addActionListener((ActionListener) textField);
@@ -51,13 +58,7 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		String command = e.getActionCommand();
 		JComboBox cb = (JComboBox)e.getSource();
 		String algo = (String)cb.getSelectedItem();
-		//IJ.showMessage(algo);
 
-		/*if ( algo.equals( "Threshold" )){ 
-			IJ.showMessage(algo);
-			AbstractButton thresholdButton = null;
-			thresholdButton.setMnemonic(KeyEvent.VK_D);
-		}*/
 		
 		if ( command.compareTo("Threshold") == 0){
 			IJ.showMessage("threshold");
@@ -69,18 +70,6 @@ public class Panel2 extends JFrame /*implements ActionListener*/{
 		}
 		else { IJ.showMessage("bwaaaaah!!");}
 	}
-	
-	/*public void setSigma(int sig1, int sig2) {
-		sigma1 =sig1;
-		sigma2 =sig2;
-	}
-	
-	public static int getSigma1 () {
-		return sigma1;
-	}
-	public static int getSigma2 () {
-		return sigma2;
-	}*/
 	
 
 }
