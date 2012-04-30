@@ -44,6 +44,10 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		double[] ytab;
 		double[] Slice;
 		double[][] resultstable;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 658818d145faf28190002f2624f9848719133abd
 		//String imname;
 		
 		//creation of an image which contains a circle with different diameters
@@ -67,7 +71,14 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.selectWindow("test2");
 			//IJ.run("Close", "test2");
 			//IJ.selectWindow("Result");
+<<<<<<< HEAD
 			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
+=======
+			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
+			Roi roi = result.getRoi();
+			int measurements = Analyzer.getMeasurements();
+			Analyzer.setMeasurements(measurements);
+>>>>>>> 658818d145faf28190002f2624f9848719133abd
 			IJ.run("Measure");
 			result.show();
 			//result.close();
@@ -145,6 +156,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		IJ.selectWindow("Stack1.jpg");
 		IJ.run("Measure");
 		IJ.selectWindow("Results");
+<<<<<<< HEAD
 
 		finalresults = Analyzer.getResultsTable();
 
@@ -159,6 +171,16 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		Slice[i] = temp;
 
 		}
+=======
+		finalresults = Analyzer.getResultsTable();
+		counter=finalresults.getCounter();
+		Slice = new double[counter];
+		for(int i=0;i<counter;i++){
+			double temp = finalresults.getValue("Slice", i);
+			Slice[i] = temp;
+		}
+		
+>>>>>>> 658818d145faf28190002f2624f9848719133abd
 		resultstable = new double[3][];
 		resultstable[0] = xtab;
 		resultstable[1]= ytab;
