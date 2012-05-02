@@ -59,8 +59,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.selectWindow("test2");
 			ImagePlus result = FFTMath.doMath(image,imp);
 			//IJ.run(imp, "FD Math...", "image1=HB070-33.jpg operation=Correlate image2=test2 result=Result do");
-			//result.show();
-
+			result.show();
 			//ImagePlus res=WindowManager.getCurrentImage();
 			//ImagePlus res=WindowManager.getImage("Result");
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
@@ -69,12 +68,12 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.run("Close", "test2");
 			//IJ.selectWindow("Result");
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-			Roi roi = result.getRoi();
-			int measurements = Analyzer.getMeasurements();
-			Analyzer.setMeasurements(measurements);
+			//Roi roi = result.getRoi();
+			//int measurements = Analyzer.getMeasurements();
+			//Analyzer.setMeasurements(measurements);
 			IJ.run("Measure");
-			result.show();
-			//result.close();
+
+			result.close();
 
 		}
 		
