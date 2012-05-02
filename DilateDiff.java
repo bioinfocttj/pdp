@@ -1,26 +1,13 @@
 import ij.*;
 import ij.measure.*;
-import ij.process.*;
 import ij.gui.*;
-import ij.gui.Roi.*;
-import ij.gui.PolygonRoi.*;
-import ij.gui.PointRoi.*;
 import ij.plugin.*;
 import ij.plugin.filter.*;
-import ij.plugin.frame.*;
-import java.lang.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.PrintStream;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
 
 //add Licence GPL and description of the plugin and his authors
 
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial"})
 
 class DilateDiff extends PickPlug_ /*implements ActionListener*/{
 	
@@ -50,7 +37,6 @@ class DilateDiff extends PickPlug_ /*implements ActionListener*/{
 		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
 		table = Analyzer.getResultsTable();
 		counter=table.getCounter();
-		int iterator=counter-1;
 		xpoints = new int[counter];
 		ypoints = new int [counter];
 		for (int i=0;i<counter;i++){

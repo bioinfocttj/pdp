@@ -1,23 +1,13 @@
 import ij.*;
 import ij.measure.*;
-import ij.process.*;
 import ij.gui.*;
-import ij.gui.Roi.*;
-import ij.gui.PolygonRoi.*;
-import ij.gui.PointRoi.*;
-import ij.plugin.*;
 import ij.plugin.filter.*;
-import ij.plugin.frame.*;
-import java.lang.*;
-import java.awt.*;
-import java.io.PrintStream;
 
-import javax.swing.JPanel;
 
 //add Licence GPL and description of the plugin and his authors
 
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial"})
 
 class ImCorr extends PickPlug_ /*implements ActionListener*/{
 	
@@ -25,14 +15,14 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		super();
 	}
 	
-	static void pick(){
+	static double[][] pick(){
 		
 		int w=2048; //image width
 		int h=2048; //image heigh
 		int radiusMin=20; //radius min of the draw circule
 		int radiusMax=60; //radius max of the draw circule
 		int radiusInc=5; //radius incrementation
-		String name = "";
+		//String name = "";
 		ResultsTable table; //result table
 		ResultsTable finalresults; //table with y,y and slice
 		int counter =0; //count of the results
@@ -48,7 +38,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		//creation of an image which contains a circle with different diameters
 		ImagePlus image=WindowManager.getCurrentImage();
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
-			ImagePlus imp = IJ.createImage("test2", "8-bit White", 2048, 2048, 1);
+			ImagePlus imp = IJ.createImage("test2", "8-bit White", w, h, 1);
 			imp.setRoi(new OvalRoi(1024-radius, 1024-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
@@ -151,6 +141,6 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		resultstable[1]= ytab;
 		resultstable[2] = Slice;
 		
-		//return panel2;
+		return resultstable;
 	}
 }

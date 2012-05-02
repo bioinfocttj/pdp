@@ -1,28 +1,19 @@
 import ij.*;
 import ij.process.*;
-import ij.gui.*;
-import ij.io.*;
-import ij.text.*;
 import ij.plugin.Duplicator;
-import ij.plugin.frame.*;
 import ij.ImagePlus;
 
 //Java API classes
-import java.io.*;
-import java.util.*;
-import java.lang.String.*;
 
+import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
 import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
-@SuppressWarnings({ "unused", "serial" })
+
+@SuppressWarnings({"serial" })
 public class PickPlug extends JFrame implements ActionListener, ItemListener{
 
 	ImageProcessor ip;
@@ -205,6 +196,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 				panelPrincipal.remove(panel2);
 				//ImCorr.pick();
 				panel2 = PanelImCorr.create();
+				previewButton.addActionListener(this);
 				panelPrincipal.add(panel2);
 				validateLayout();
 			}
@@ -223,6 +215,10 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("DoG")){
 				DoG.pick();
+			}
+			else if(algo.equals("Image Correlation")){
+				double [][] resultArray=ImCorr.pick();
+				
 			}
 		}
 		/*

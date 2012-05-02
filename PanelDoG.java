@@ -1,24 +1,15 @@
 
 //add Licence GPL and description of the plugin and his authors
-
 import ij.IJ;
-import ij.gui.GenericDialog;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.*;
 import java.util.Hashtable;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
-@SuppressWarnings({ "serial", "unused" })
+
+@SuppressWarnings({ "serial"})
 
 class PanelDoG extends Panel2 /*implements ActionListener*/{
 

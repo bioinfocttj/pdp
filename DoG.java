@@ -2,33 +2,20 @@
 //add Licence GPL and description of the plugin and his authors
 import ij.IJ;
 
-import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.*;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 import ij.*;
 import ij.measure.*;
-import ij.process.*;
 import ij.gui.*;
-import ij.gui.Roi.*;
-import ij.gui.PolygonRoi.*;
-import ij.gui.PointRoi.*;
 import ij.plugin.*;
 import ij.plugin.filter.*;
-import ij.plugin.frame.*;
-import java.lang.*;
-import java.util.Hashtable;
-import java.awt.*;
-import java.io.PrintStream;
 
-@SuppressWarnings({ "serial", "unused" })
+import java.util.Hashtable;
+
+
+@SuppressWarnings({ "serial"})
 class DoG extends PickPlug_ /*implements ActionListener*/{
 
 	/*Penser a mettre les infos et description d'aide!!!*/
