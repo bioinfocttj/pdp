@@ -1,7 +1,6 @@
 import ij.*;
 import ij.gui.Roi;
 import ij.process.*;
-import ij.plugin.Duplicator;
 import ij.ImagePlus;
 
 import java.util.*;
