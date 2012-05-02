@@ -3,6 +3,7 @@ import ij.process.*;
 import ij.gui.*;
 import ij.io.*;
 import ij.text.*;
+import ij.plugin.Duplicator;
 import ij.plugin.frame.*;
 import ij.ImagePlus;
 
@@ -36,13 +37,14 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 	PickPlug instance;
 	int sigm1;
 	int sigm2;
+	JButton previewButton;
 	JButton applyButton;
 	JComboBox algoList;
 	
 	public PickPlug(){
 		super("Picking Plugin");
 
-		IJ.run("Blobs (25K)"); // Ce sera bcp plus rapide ^^
+		//IJ.run("Blobs (25K)"); // Ce sera bcp plus rapide ^^
 		
 		initGUI();
 		instance = this;
@@ -112,7 +114,6 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 
 		//panel3.setPreferredSize(new Dimension(450,70));
 		//panel3.setLocation(10, 170);
-		JButton previewButton;
 		previewButton = makeButton("Preview");
 		JButton resetButton;
 		resetButton = makeButton("Reset");
@@ -168,7 +169,6 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		if (command.equals("comboBoxChanged")){
 			JComboBox cb = (JComboBox)e.getSource();
 			String algo = (String)cb.getSelectedItem();
-			
 			if ( algo.equals("About PickPlug" )){ 
 				panel2.removeAll();
 				panelPrincipal.remove(panel2);
@@ -181,7 +181,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 				panelPrincipal.remove(panel2);
 				panel2 = PanelDoG.create();
 	
-				applyButton.addActionListener(this);
+				previewButton.addActionListener(this);
 				//sigm1 = Panel2.getSigma1();
 				//String sigm = "" + sigm1;
 				//IJ.showMessage(sigm);
@@ -203,7 +203,8 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			else if ( algo.equals("Image Correlation" )){
 				panel2.removeAll(); 
 				panelPrincipal.remove(panel2);
-				ImCorr.pick();
+				//ImCorr.pick();
+				panel2 = PanelImCorr.create();
 				panelPrincipal.add(panel2);
 				validateLayout();
 			}
@@ -239,6 +240,7 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 	
 	
 	
+	
 	/*ActionListener actionLi = new ActionListener () {
 		public void actionPerformed(ActionEvent actionE) {
 			JButton button = (JButton) actionE.getSource();
@@ -252,8 +254,18 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			}
 		}
 	};*/
+	public void stackCreator(){
+		int posx = 1024;
+		int posy = 1024;
+		Hashtable<String, String> value = PanelDoG.getvalue();
+		int width = Integer.parseInt((String) value.get("width"));
+		int x = posx - (width/2);
+		int y = posy - (width/2);
+		imp.setRoi(x, y, width, width);//select a square around the 
+		imp = new Duplicator().run(imp);
+		IJ.run(imp, "Images to Stack", "name=Stack title=[] use");
+	}
 	
-
 	// Réclamé par eclipse 
 	@Override
 	public void itemStateChanged(ItemEvent arg) {		
