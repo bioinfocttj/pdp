@@ -1,26 +1,19 @@
 
 //add Licence GPL and description of the plugin and his authors
 import ij.IJ;
-<<<<<<< HEAD
-=======
 
->>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 import java.awt.event.*;
 import java.util.Hashtable;
 
 import javax.swing.JCheckBox;
-<<<<<<< HEAD
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 @SuppressWarnings({ "serial" })
-=======
-import javax.swing.JPanel;
 
 
-@SuppressWarnings({ "serial"})
->>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 
 class PanelImCorr extends Panel2 {
 
