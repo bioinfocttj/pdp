@@ -7,7 +7,11 @@ import ij.plugin.filter.*;
 //add Licence GPL and description of the plugin and his authors
 
 
+<<<<<<< HEAD
 @SuppressWarnings({ "serial" })
+=======
+@SuppressWarnings({ "serial"})
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 
 class DilateDiff extends PickPlug_ /*implements ActionListener*/{
 	

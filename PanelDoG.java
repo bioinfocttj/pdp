@@ -1,18 +1,28 @@
 
 //add Licence GPL and description of the plugin and his authors
-
 import ij.IJ;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 import java.awt.event.*;
 
 import java.util.Hashtable;
 
+<<<<<<< HEAD
 import javax.swing.JCheckBox;
+=======
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+<<<<<<< HEAD
 @SuppressWarnings({ "serial" })
+=======
+
+@SuppressWarnings({ "serial"})
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 
 class PanelDoG extends Panel2 /*implements ActionListener*/{
 

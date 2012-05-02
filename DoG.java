@@ -4,6 +4,11 @@ import ij.IJ;
 
 import java.awt.event.*;
 
+<<<<<<< HEAD
+=======
+import javax.swing.JButton;
+
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 import ij.*;
 import ij.measure.*;
 import ij.gui.*;
@@ -12,7 +17,12 @@ import ij.plugin.filter.*;
 
 import java.util.Hashtable;
 
+<<<<<<< HEAD
 @SuppressWarnings({ "serial" })
+=======
+
+@SuppressWarnings({ "serial"})
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 class DoG extends PickPlug_ /*implements ActionListener*/{
 
 	/*Penser a mettre les infos et description d'aide!!!*/

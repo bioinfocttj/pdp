@@ -1,16 +1,31 @@
 import ij.*;
 import ij.gui.Roi;
 import ij.process.*;
+<<<<<<< HEAD
 import ij.ImagePlus;
 
 import java.util.*;
+=======
+import ij.plugin.Duplicator;
+import ij.ImagePlus;
 
+//Java API classes
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
+
+import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+<<<<<<< HEAD
 
 @SuppressWarnings({ "serial" })
+=======
+import javax.swing.JButton;
+
+
+@SuppressWarnings({"serial" })
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 public class PickPlug extends JFrame implements ActionListener, ItemListener{
 
 	ImageProcessor ip;
@@ -211,9 +226,15 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			if (algo.equals("DoG")){
 				DoG.pick();
 			}
+<<<<<<< HEAD
 			else if (algo.equals("Image Correlation")){
 				double [][] resultArray = ImCorr.pick();
 				stackCreator(resultArray);
+=======
+			else if(algo.equals("Image Correlation")){
+				double [][] resultArray=ImCorr.pick();
+				
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 			}
 		}
 		/*

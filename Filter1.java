@@ -3,12 +3,20 @@
 
 import ij.IJ;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 import java.awt.event.*;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 @SuppressWarnings({ "serial" })
+=======
+@SuppressWarnings({ "serial"})
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 class Filter1 extends Panel2 /*implements ActionListener*/{
 	
 	static JButton thresholdButton;
@@ -38,7 +46,7 @@ class Filter1 extends Panel2 /*implements ActionListener*/{
 	
 	static ActionListener actionL = new ActionListener () {
 		public void actionPerformed(ActionEvent actionE) {
-			JButton button = (JButton) actionE.getSource();
+			//JButton button = (JButton) actionE.getSource();
 			String command = actionE.getActionCommand();
 			//Object source = e.getSource();
 			if ( command.compareTo("Threshold") == 0 ) {

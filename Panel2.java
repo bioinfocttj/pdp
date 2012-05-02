@@ -12,7 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
+<<<<<<< HEAD
 @SuppressWarnings({ "serial" })
+=======
+@SuppressWarnings({ "serial"})
+>>>>>>> 8b52d93fd741ae1d65673123c7cf2f9c5333c782
 
 public class Panel2 extends JFrame /*implements ActionListener*/{
 	static JPanel panel2 = new JPanel();
