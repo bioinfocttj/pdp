@@ -1,23 +1,12 @@
 import ij.*;
 import ij.measure.*;
-import ij.process.*;
 import ij.gui.*;
-import ij.gui.Roi.*;
-import ij.gui.PolygonRoi.*;
-import ij.gui.PointRoi.*;
-import ij.plugin.*;
 import ij.plugin.filter.*;
-import ij.plugin.frame.*;
-import java.lang.*;
-import java.awt.*;
-import java.io.PrintStream;
-
-import javax.swing.JPanel;
 
 //add Licence GPL and description of the plugin and his authors
 
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 
 class ImCorr extends PickPlug_ /*implements ActionListener*/{
 	
@@ -25,14 +14,14 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		super();
 	}
 	
-	static void pick(){
+	static double[][] pick(){
 		
-		int w=2048; //image width
-		int h=2048; //image heigh
+		//int w=2048; //image width
+		//int h=2048; //image heigh
 		int radiusMin=20; //radius min of the draw circule
 		int radiusMax=60; //radius max of the draw circule
 		int radiusInc=20; //radius incrementation
-		String name = "";
+		//String name = "";
 		ResultsTable table; //result table
 		ResultsTable finalresults;
 		int counter =0; //count of the results
@@ -44,15 +33,12 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		double[] ytab;
 		double[] Slice;
 		double[][] resultstable;
-<<<<<<< HEAD
-=======
-		
->>>>>>> 658818d145faf28190002f2624f9848719133abd
 		//String imname;
 		
 		//creation of an image which contains a circle with different diameters
 		ImagePlus image=WindowManager.getCurrentImage();
 		//imname=image.getTitle();
+		
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
 			ImagePlus imp = IJ.createImage("test2", "8-bit White", 2048, 2048, 1);
 			imp.setRoi(new OvalRoi(1024-radius, 1024-radius, radius*2, radius*2));
@@ -71,14 +57,11 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			//IJ.selectWindow("test2");
 			//IJ.run("Close", "test2");
 			//IJ.selectWindow("Result");
-<<<<<<< HEAD
 			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
-=======
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-			Roi roi = result.getRoi();
+			//Roi roi = result.getRoi();
 			int measurements = Analyzer.getMeasurements();
 			Analyzer.setMeasurements(measurements);
->>>>>>> 658818d145faf28190002f2624f9848719133abd
 			IJ.run("Measure");
 			result.show();
 			//result.close();
@@ -92,6 +75,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		int line1=0;
 		int nb = 0;
 		int iterator = counter-1;
+		
 		for (int j=iterator;j>=0;j--){
 			int yetpass = 0;
 			int maxval=j;
@@ -99,11 +83,13 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			double xj=table.getValue("X",j);
 			double yj=table.getValue("Y",j);
 			double maxj=table.getValue("Max",j);
+			
 			for (int iter=0; iter<nb; iter++){
 				if( j == pass[iter]){
 					yetpass=1;
 				}
 			}
+			
 			if(yetpass == 0){
 				for (int k=iterator;k>=0;k--){
 					double xk=table.getValue("X",k);
@@ -138,6 +124,7 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		ypoints = new int [line1];
 		xtab= new double[line1];
 		ytab= new double[line1];
+		
 		for (int l=1;l<line1;l++){
 			int line2=list[l];
 			double x=table.getValue("X",line2);
@@ -151,41 +138,34 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			ypoints[l] = yy;
 			imp2.setRoi(new PointRoi(xpoints,ypoints,line1));
 		}
+		
 		IJ.selectWindow("Results");
 		IJ.run("Clear Results");
 		IJ.selectWindow("Stack1.jpg");
 		IJ.run("Measure");
 		IJ.selectWindow("Results");
-<<<<<<< HEAD
-
 		finalresults = Analyzer.getResultsTable();
-
 		counter=finalresults.getCounter();
-
 		Slice = new double[counter];
-
+		
 		for(int i=0;i<counter;i++){
-
-		double temp = finalresults.getValue("Slice", i);
-
-		Slice[i] = temp;
-
+			double temp = finalresults.getValue("Slice", i);
+			Slice[i] = temp;
 		}
-=======
+
 		finalresults = Analyzer.getResultsTable();
 		counter=finalresults.getCounter();
 		Slice = new double[counter];
+		
 		for(int i=0;i<counter;i++){
 			double temp = finalresults.getValue("Slice", i);
 			Slice[i] = temp;
 		}
 		
->>>>>>> 658818d145faf28190002f2624f9848719133abd
 		resultstable = new double[3][];
 		resultstable[0] = xtab;
 		resultstable[1]= ytab;
 		resultstable[2] = Slice;
-		
-		//return panel2;
+		return resultstable;
 	}
 }

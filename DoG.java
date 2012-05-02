@@ -2,33 +2,17 @@
 //add Licence GPL and description of the plugin and his authors
 import ij.IJ;
 
-import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.*;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
 import ij.*;
 import ij.measure.*;
-import ij.process.*;
 import ij.gui.*;
-import ij.gui.Roi.*;
-import ij.gui.PolygonRoi.*;
-import ij.gui.PointRoi.*;
 import ij.plugin.*;
 import ij.plugin.filter.*;
-import ij.plugin.frame.*;
-import java.lang.*;
-import java.util.Hashtable;
-import java.awt.*;
-import java.io.PrintStream;
 
-@SuppressWarnings({ "serial", "unused" })
+import java.util.Hashtable;
+
+@SuppressWarnings({ "serial" })
 class DoG extends PickPlug_ /*implements ActionListener*/{
 
 	/*Penser a mettre les infos et description d'aide!!!*/
@@ -49,6 +33,9 @@ class DoG extends PickPlug_ /*implements ActionListener*/{
 		Hashtable<String, String> sigma=PanelDoG.getvalue();
 		String sigma1 = (String) sigma.get("sigma1");
 		String sigma2 = (String) sigma.get("sigma2");
+		String debugMode = (String) sigma.get("debug");
+		boolean debug = (debugMode.equals("true"));
+		if (debug){IJ.showMessage("Wouhou!");}
 		ImagePlus imp = WindowManager.getCurrentImage();
 		
 		ImagePlus imp1 = new Duplicator().run(imp);
@@ -68,7 +55,6 @@ class DoG extends PickPlug_ /*implements ActionListener*/{
 		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
 		table = Analyzer.getResultsTable();
 		counter = table.getCounter();
-		int iterator = counter-1;
 		xpoints = new int[counter];
 		ypoints = new int [counter];
 		for (int i=0; i<counter; i++){
@@ -110,7 +96,7 @@ class DoG extends PickPlug_ /*implements ActionListener*/{
 
 	static ActionListener actionL = new ActionListener () {
 		public void actionPerformed(ActionEvent actionE) {
-			JButton button = (JButton) actionE.getSource();
+			//JButton button = (JButton) actionE.getSource();
 			IJ.showMessage("Do it yourself !");
 		}
 	};

@@ -2,29 +2,24 @@
 //add Licence GPL and description of the plugin and his authors
 
 import ij.IJ;
-import ij.gui.GenericDialog;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.*;
+
 import java.util.Hashtable;
 
-import javax.swing.JFrame;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 
 class PanelDoG extends Panel2 /*implements ActionListener*/{
 
 	private static String consigneS1 = "Sigma 1 : ";
 	private static String consigneS2 = "Sigma 2 : ";
 	private static String consignewidth = "Square width : ";
+	static JCheckBox debugMode;
 	
 	static String title="Enter the values of sigmas";
 	static JTextField sigma1;
@@ -41,6 +36,7 @@ class PanelDoG extends Panel2 /*implements ActionListener*/{
 		sigma1 = makeJTextField("20");
 		sigma2 = makeJTextField("15");
 		squareWidth = makeJTextField("100");
+		debugMode = makeJCheckBox("debug");
 		//panel2.addNumericField("x Radius", sigma1, 0);
 		//panel2.addNumericField("y Radius", sigma2, 0);
 		
@@ -49,6 +45,7 @@ class PanelDoG extends Panel2 /*implements ActionListener*/{
 		//gd.addNumericField("Sigma 1: ", sigma1, 0);
 		//gd.addNumericField("Sigma 2: ", sigma2, 0);
 		//gd.showDialog();
+		panel2.add(debugMode);
 		panel2.add(c1);
 		panel2.add(sigma1);
 		panel2.add(c2);
@@ -63,6 +60,16 @@ class PanelDoG extends Panel2 /*implements ActionListener*/{
 		String s2 = sigma2.getText();
 		String w = squareWidth.getText();
 		Hashtable<String, String> result = new Hashtable<String, String>();
+
+		if (debugMode.isSelected()) {
+			result.put("debug","true");
+			IJ.showMessage("Debug mode on");
+		}
+		else {
+			result.put("debug","false");
+			IJ.showMessage("Debug mode off");
+		}
+		
 		result.put("sigma1",s1);
 		result.put("sigma2",s2);
 		result.put("width", w);

@@ -1,28 +1,17 @@
 import ij.*;
+import ij.gui.Roi;
 import ij.process.*;
-import ij.gui.*;
-import ij.io.*;
-import ij.text.*;
 import ij.plugin.Duplicator;
-import ij.plugin.frame.*;
 import ij.ImagePlus;
 
-//Java API classes
-import java.io.*;
 import java.util.*;
-import java.lang.String.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.*;
 
 import javax.swing.*;
-import javax.swing.event.*;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 
-@SuppressWarnings({ "unused", "serial" })
+@SuppressWarnings({ "serial" })
 public class PickPlug extends JFrame implements ActionListener, ItemListener{
 
 	ImageProcessor ip;
@@ -203,13 +192,12 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			else if ( algo.equals("Image Correlation" )){
 				panel2.removeAll(); 
 				panelPrincipal.remove(panel2);
-				//ImCorr.pick();
 				panel2 = PanelImCorr.create();
+				previewButton.addActionListener(this);
 				panelPrincipal.add(panel2);
 				validateLayout();
 			}
 			else if ( algo.equals("Algo 2" )){
-				//IJ.showMessage(algo);
 				panel2.removeAll(); 
 				panelPrincipal.remove(panel2);
 				//panel2 = Filter1()
@@ -224,6 +212,10 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			if (algo.equals("DoG")){
 				DoG.pick();
 			}
+			else if (algo.equals("Image Correlation")){
+				double [][] resultArray = ImCorr.pick();
+				stackCreator(resultArray);
+			}
 		}
 		/*
 		else{//a mettre ds une classe (phase de test)
@@ -237,10 +229,6 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 		}*/
 		
 	}
-	
-	
-	
-	
 	/*ActionListener actionLi = new ActionListener () {
 		public void actionPerformed(ActionEvent actionE) {
 			JButton button = (JButton) actionE.getSource();
@@ -254,16 +242,27 @@ public class PickPlug extends JFrame implements ActionListener, ItemListener{
 			}
 		}
 	};*/
-	public void stackCreator(){
-		int posx = 1024;
-		int posy = 1024;
-		Hashtable<String, String> value = PanelDoG.getvalue();
-		int width = Integer.parseInt((String) value.get("width"));
-		int x = posx - (width/2);
-		int y = posy - (width/2);
-		imp.setRoi(x, y, width, width);//select a square around the 
-		imp = new Duplicator().run(imp);
-		IJ.run(imp, "Images to Stack", "name=Stack title=[] use");
+	public void stackCreator(double [][] array){
+		for (int i= 0; i<array[0].length;i++){
+			double posx = (double) array[0][i];
+			double posy = (double) array[1][i];
+			//IJ.showMessage((Double.toString(posx)));
+			//double posz = (double) array[2][i];
+			Hashtable<String, String> value = PanelImCorr.getvalue();
+			int width = Integer.parseInt((String) value.get("squareWidth"));
+			int x = (int) (posx - (width/2));
+			int y = (int) (posy - (width/2));
+			//IJ.showMessage((Integer.toString(x)));
+			imp.setRoi(x, y, width, width); //select a square around the particle 
+			
+			//ImagePlus temp = imp.duplicate();
+			//temp.show();
+			//ImagePlus impTemp = new Duplicator().run(imp);
+			Roi impTemp = imp.getRoi();
+			//IJ.run(imp, "Images to Stack", "name=stack title=[] use");
+			
+			//stack.show();
+		}
 	}
 	
 	// Réclamé par eclipse 

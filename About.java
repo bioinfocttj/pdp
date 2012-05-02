@@ -1,20 +1,11 @@
 
 //add Licence GPL and description of the plugin and his authors
 
-import ij.IJ;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Panel;
-import java.awt.event.*;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 class About extends Panel2 /*implements ActionListener*/{
 	
 	/*Penser a mettre les infos et description d'aide!!!*/

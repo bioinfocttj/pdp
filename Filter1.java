@@ -3,17 +3,12 @@
 
 import ij.IJ;
 
-import java.awt.Dimension;
 import java.awt.event.*;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 class Filter1 extends Panel2 /*implements ActionListener*/{
 	
 	static JButton thresholdButton;

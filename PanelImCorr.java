@@ -2,36 +2,34 @@
 //add Licence GPL and description of the plugin and his authors
 
 import ij.IJ;
-import ij.gui.GenericDialog;
-
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.Panel;
 import java.awt.event.*;
 import java.util.Hashtable;
 
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 
 class PanelImCorr extends Panel2 {
 
 	static JCheckBox debugMode;
+	static JTextField squareWidth;
+
+	private static String consignewidth = "Square width : ";
 	
 	PanelImCorr() {
 		super();
 	}
 	
 	static JPanel create(){
+		JLabel c3 = new JLabel(consignewidth);
+		squareWidth = makeJTextField("100");
 		debugMode = makeJCheckBox("debug");
 		panel2.add(debugMode);
+		panel2.add(c3);
+		panel2.add(squareWidth);
 		return panel2;
 	}
 	
@@ -40,11 +38,14 @@ class PanelImCorr extends Panel2 {
 
 		if (debugMode.isSelected()) {
 			result.put("debug","true");
-		}//essai git
-		else {
-
-			result.put("debug","false");
+			IJ.showMessage("on");
 		}
+		else {
+			result.put("debug","false");
+			IJ.showMessage("off");
+		}
+		String w = squareWidth.getText();
+		result.put("squareWidth", w);
 		return result;
 	}
 

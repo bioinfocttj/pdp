@@ -2,23 +2,17 @@
 
 import ij.IJ;
 
-import java.awt.Dimension;
-import java.awt.TextField;
 import java.awt.event.*;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-@SuppressWarnings({ "serial", "unused" })
+@SuppressWarnings({ "serial" })
 
 public class Panel2 extends JFrame /*implements ActionListener*/{
 	static JPanel panel2 = new JPanel();
