@@ -31,10 +31,10 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		int h=2048; //image heigh
 		int radiusMin=20; //radius min of the draw circule
 		int radiusMax=60; //radius max of the draw circule
-		int radiusInc=20; //radius incrementation
+		int radiusInc=5; //radius incrementation
 		String name = "";
 		ResultsTable table; //result table
-		ResultsTable finalresults;
+		ResultsTable finalresults; //table with y,y and slice
 		int counter =0; //count of the results
 		int[] list;
 		int[] pass;
@@ -44,46 +44,20 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 		double[] ytab;
 		double[] Slice;
 		double[][] resultstable;
-
-		//String imname;
 		
 		//creation of an image which contains a circle with different diameters
 		ImagePlus image=WindowManager.getCurrentImage();
-		//imname=image.getTitle();
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
 			ImagePlus imp = IJ.createImage("test2", "8-bit White", 2048, 2048, 1);
 			imp.setRoi(new OvalRoi(1024-radius, 1024-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
-			//imp.show();
-
-			//IJ.selectWindow("test2");
 			ImagePlus result = FFTMath.doMath(image,imp);
-			//IJ.run(imp, "FD Math...", "image1=HB070-33.jpg operation=Correlate image2=test2 result=Result do");
 			result.show();
-			//ImagePlus res=WindowManager.getCurrentImage();
-			//ImagePlus res=WindowManager.getImage("Result");
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
 			IJ.run(result,"Find Maxima...", "noise=0.5 output=[Point Selection]");
-			//IJ.selectWindow("test2");
-			//IJ.run("Close", "test2");
-			//IJ.selectWindow("Result");
-
-			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
-
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-
-			//Roi roi = result.getRoi();
-			//int measurements = Analyzer.getMeasurements();
-			//Analyzer.setMeasurements(measurements);
-
-			Roi roi = result.getRoi();
-			int measurements = Analyzer.getMeasurements();
-			Analyzer.setMeasurements(measurements);
-
 			IJ.run("Measure");
-
 			result.close();
-
 		}
 		
 		table = Analyzer.getResultsTable();
@@ -134,7 +108,9 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			}
 			iterator --;
 		}
+		
 		IJ.selectWindow("Stack1.jpg");
+		ImagePlus imp2 = WindowManager.getCurrentImage();
 		xpoints = new int[line1];
 		ypoints = new int [line1];
 		xtab= new double[line1];
@@ -145,32 +121,21 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 			double y=table.getValue("Y",line2);
 			xtab[l] = x;
 			ytab[l] = y;
-			ImagePlus imp2 = WindowManager.getCurrentImage();
 			int xx = (int) x;
 			int yy = (int) y;
 			xpoints[l] = xx;
 			ypoints[l] = yy;
 			imp2.setRoi(new PointRoi(xpoints,ypoints,line1));
 		}
-		IJ.selectWindow("Results");
 		IJ.run("Clear Results");
-		IJ.selectWindow("Stack1.jpg");
 		IJ.run("Measure");
-		IJ.selectWindow("Results");
-
 
 		finalresults = Analyzer.getResultsTable();
-
 		counter=finalresults.getCounter();
-
 		Slice = new double[counter];
-
 		for(int i=0;i<counter;i++){
-
-		double temp = finalresults.getValue("Slice", i);
-
-		Slice[i] = temp;
-
+			double temp = finalresults.getValue("Slice", i);
+			Slice[i] = temp;
 		}
 
 		finalresults = Analyzer.getResultsTable();
