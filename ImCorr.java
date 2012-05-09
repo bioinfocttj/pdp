@@ -1,71 +1,61 @@
-import ij.*;
-import ij.measure.*;
-import ij.gui.*;
-import ij.plugin.filter.*;
+import java.util.Vector;
+
+import ij.IJ;
+import ij.ImagePlus;
+import ij.WindowManager;
+import ij.gui.OvalRoi;
+import ij.gui.PointRoi;
+import ij.measure.ResultsTable;
+import ij.plugin.filter.Analyzer;
 
 //add Licence GPL and description of the plugin and his authors
 
-@SuppressWarnings({ "serial"})
-
-
-class ImCorr extends PickPlug_ /*implements ActionListener*/{
+abstract class ImCorr implements Picker {
+	
+	static Vector[] resultstable = new Vector[3];
+	static Vector xtab=new Vector();
+	static Vector ytab=new Vector();
+	static Vector Slice=new Vector();
 	
 	ImCorr(){
-		super();
 	}
 	
-	static double[][] pick(){
+	public static void /*double[][]*/ pick(ImagePlus image,int currentslice){
+		//IJ.showMessage("Picker.pick ImCorr");
 		
-		int w=2048; //image width
-		int h=2048; //image heigh
-		int radiusMin=20; //radius min of the draw circule
-		int radiusMax=60; //radius max of the draw circule
+		int w=image.getWidth(); //image width
+		int h=image.getHeight(); //image heigh
+		int radiusMin=40; //radius min of the draw circule
+		int radiusMax=56; //radius max of the draw circule
 		int radiusInc=5; //radius incrementation
-
-		//String name = "";
 		ResultsTable table; //result table
-		ResultsTable finalresults; //table with y,y and slice
-		int counter =0; //count of the results
-		int[] list;
-		int[] pass;
-		int[] xpoints;
-		int[] ypoints;
-		double[] xtab;
-		double[] ytab;
-		double[] Slice;
-		double[][] resultstable;
 		
 		//creation of an image which contains a circle with different diameters
-		ImagePlus image=WindowManager.getCurrentImage();
+		image.setSlice(currentslice);
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
 			ImagePlus imp = IJ.createImage("test2", "8-bit White", w, h, 1);
-			imp.setRoi(new OvalRoi(1024-radius, 1024-radius, radius*2, radius*2));
+			imp.setRoi(new OvalRoi((w/2)-radius, (h/2)-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
+			//IJ.run(result, "Invert LUT", "");
 			result.show();
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
-			IJ.run(result,"Find Maxima...", "noise=0.5 output=[Point Selection]");
-
-			//IJ.selectWindow("test2");
-			//IJ.run("Close", "test2");
-			//IJ.selectWindow("Result");
-			IJ.run("Set Measurements...", "  min centroid stack display redirect=None decimal=3");
+			IJ.run(result,"Find Maxima...", "noise=10 output=[Point Selection]");
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-			//Roi roi = result.getRoi();
-			int measurements = Analyzer.getMeasurements();
-			Analyzer.setMeasurements(measurements);
-
-			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-
 			IJ.run("Measure");
 			result.close();
 		}
 		
 		table = Analyzer.getResultsTable();
-		counter=table.getCounter();
-		list=new int [counter];
-		pass=new int[counter];
-		int line1=0;
+		sort(table,image);
+	}
+	
+	static  void sort(ResultsTable table,ImagePlus image)
+	{	
+		int counter=table.getCounter();
+		int []list=new int [counter];
+		int []pass=new int[counter];
+		int lenlist=0;
 		int nb = 0;
 		int iterator = counter-1;
 		
@@ -102,73 +92,80 @@ class ImCorr extends PickPlug_ /*implements ActionListener*/{
 					else{if (j != k){maxval=j;}}
 					}
 				}
-				for (int q=0;q<line1;q++){
+				for (int q=0;q<lenlist;q++){
 					if (maxval == list[q]){cpt+=1;}
 				}
 				if (cpt==0){
-					list[line1]=maxval;
-					line1++;
+					list[lenlist]=maxval;
+					lenlist++;
 				}
 			}
 			iterator --;
 		}
+		results(list,table,lenlist,image);
+	}
+	
+	static Object results(int []list,ResultsTable table, int lenlist,ImagePlus image)
+	{
 		
-		IJ.selectWindow("Stack1.jpg");
-		ImagePlus imp2 = WindowManager.getCurrentImage();
-		xpoints = new int[line1];
-		ypoints = new int [line1];
-		xtab= new double[line1];
-		ytab= new double[line1];
+		int []xpoints=new int[lenlist];
+		int []ypoints=new int[lenlist];
 		
-		for (int l=1;l<line1;l++){
+		for (int l=0;l<lenlist;l++){
 			int line2=list[l];
 			double x=table.getValue("X",line2);
 			double y=table.getValue("Y",line2);
-			xtab[l] = x;
-			ytab[l] = y;
+			xtab.add(x);
+			ytab.add(y);
 			int xx = (int) x;
 			int yy = (int) y;
 			xpoints[l] = xx;
 			ypoints[l] = yy;
-			imp2.setRoi(new PointRoi(xpoints,ypoints,line1));
+			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
 		}
-
-		
-		IJ.selectWindow("Results");
-
 
 		IJ.run("Clear Results");
 		IJ.run("Measure");
 
-		IJ.selectWindow("Results");
-		finalresults = Analyzer.getResultsTable();
-		counter=finalresults.getCounter();
-		Slice = new double[counter];
-		
-
-		finalresults = Analyzer.getResultsTable();
-		counter=finalresults.getCounter();
-		Slice = new double[counter];
+		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
+		int counter=finalresults.getCounter();
 
 		for(int i=0;i<counter;i++){
 			double temp = finalresults.getValue("Slice", i);
-			Slice[i] = temp;
-		}
-
-		finalresults = Analyzer.getResultsTable();
-		counter=finalresults.getCounter();
-		Slice = new double[counter];
-		
-		for(int i=0;i<counter;i++){
-			double temp = finalresults.getValue("Slice", i);
-			Slice[i] = temp;
+			Slice.add(temp);
 		}
 		
-		resultstable = new double[3][];
-		resultstable[0] = xtab;
+		resultstable[0]= xtab;
 		resultstable[1]= ytab;
 		resultstable[2] = Slice;
-
+		printResultTable(resultstable);
+		IJ.run("Clear Results");
 		return resultstable;
+	}
+
+	static Vector[] sliceSelection(){
+		
+		ImagePlus im=WindowManager.getCurrentImage();
+		int nbslice=im.getStackSize();
+		for (int a=1;a<=nbslice;a++){
+			pick(im, a);
+		}
+		return resultstable;
+		
+	}
+	
+	static void printResultTable(Vector[] resulttable){
+		int zero = resulttable[0].size();
+		int un = resulttable[0].size();
+		int deux = resulttable[0].size();
+		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
+		//IJ.showMessage(longueurs);
+		for (int i=0;i<resulttable[1].size();i++){
+			for (int j=0;j<resulttable.length;j++){
+				System.out.println("lala");
+				System.out.print(resulttable[j]);
+				System.out.println("\n");
+			}
+		}
 	}
 }

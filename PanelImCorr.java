@@ -1,60 +1,72 @@
-
 //add Licence GPL and description of the plugin and his authors
-import ij.IJ;
-
-import java.awt.event.*;
-import java.util.Hashtable;
 
 import javax.swing.JCheckBox;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 @SuppressWarnings({ "serial" })
 
+class PanelImCorr extends PickPanel {
 
-
-class PanelImCorr extends Panel2 {
-
-	static JCheckBox debugMode;
-	static JTextField squareWidth;
-
-	private static String consignewidth = "Square width : ";
+	private static JCheckBox debugMode;
+	private static JCheckBox cropperMode;
+	
+	private static String widthCrop;
+	private static String toleranceNoise;
+	private static String setpointWidth = "Square width : ";
+	private static String setpointNoise = "Noise tolerance : ";
+	
+	private static JTextField cropWidth;
+	private static JTextField noiseTolerance;
+	
+	private static JLabel orderWidth;
+	private static JLabel orderNoise;
 	
 	PanelImCorr() {
 		super();
 	}
 	
 	static JPanel create(){
-		JLabel c3 = new JLabel(consignewidth);
-		squareWidth = makeJTextField("100");
-		debugMode = makeJCheckBox("debug");
+		// Instructions
+		orderWidth = new JLabel(setpointWidth);
+		orderNoise = new JLabel(setpointNoise);
+		// Values as default
+		cropWidth = new JTextField("100");
+		noiseTolerance = new JTextField("003");
+		// Chekbox for the debug mode
+		debugMode = new JCheckBox( "Debug"); 
+		cropperMode = new JCheckBox( "Crop" );
+		// Adding attributes to the panel
+		panel2.add(orderNoise);
+		panel2.add(noiseTolerance);
+		panel2.add(orderWidth);
+		panel2.add(cropWidth);
 		panel2.add(debugMode);
-		panel2.add(c3);
-		panel2.add(squareWidth);
+		panel2.add(cropperMode);
 		return panel2;
 	}
 	
-	public static Hashtable<String, String> getvalue(){
-		Hashtable<String, String> result = new Hashtable<String, String>();
-
+	public static void setAttribute(){
+		// Getting data entered by user
+		widthCrop = cropWidth.getText();
+		toleranceNoise = noiseTolerance.getText();
+		
 		if (debugMode.isSelected()) {
-			result.put("debug","true");
-			IJ.showMessage("on");
+			Attributes.setAttributes("debug","true");
 		}
 		else {
-			result.put("debug","false");
-			IJ.showMessage("off");
+			Attributes.setAttributes("debug","false");
 		}
-		String w = squareWidth.getText();
-		result.put("squareWidth", w);
-		return result;
+		
+		if (cropperMode.isSelected()) {
+			Attributes.setAttributes("crop","true");
+		}
+		else {
+			Attributes.setAttributes("crop","false");
+		}
+		Attributes.setAttributes("cropWidth", widthCrop);
+		Attributes.setAttributes("noiseTolerance", toleranceNoise);
 	}
-
-	public void actionPerformed(ActionEvent event) {
-	}
-	
-	
 }
 

@@ -1,89 +1,95 @@
-
 //add Licence GPL and description of the plugin and his authors
+
 import ij.IJ;
 
-import java.awt.event.*;
-
-import java.util.Hashtable;
-
 import javax.swing.JCheckBox;
-
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 @SuppressWarnings({ "serial"})
 
+class PanelDoG extends PickPanel {
 
-class PanelDoG extends Panel2 /*implements ActionListener*/{
-
-	private static String consigneS1 = "Sigma 1 : ";
-	private static String consigneS2 = "Sigma 2 : ";
-	private static String consignewidth = "Square width : ";
-	static JCheckBox debugMode;
+	private static String setpointS1 = "Sigma 1 : ";
+	private static String setpointS2 = "Sigma 2 : ";
+	private static String setpointWidth = "Square width : ";
+	private static String setpointNoise = "Noise tolerance : ";
+	private static String sig1;
+	private static String sig2;
+	private static String widthSquare;
+	private static String toleranceNoise;
 	
-	static String title="Enter the values of sigmas";
-	static JTextField sigma1;
-	static JTextField sigma2;
-	static JTextField squareWidth;
+	private static JCheckBox debugMode;
+	private static JCheckBox cropperMode;
+	
+	private static JTextField sigma1;
+	private static JTextField sigma2;
+	private static JTextField noiseTolerance;
+	private static JTextField squareWidth;
+	
+	private static JLabel orderS1;
+	private static JLabel orderS2;
+	private static JLabel orderWidth;
+	private static JLabel orderNoise;
+	
 	PanelDoG() {
 		super();
 	}
 	
 	static JPanel create(){
-		JLabel c1 = new JLabel(consigneS1);
-		JLabel c2 = new JLabel(consigneS2);
-		JLabel c3 = new JLabel(consignewidth);
-		sigma1 = makeJTextField("20");
-		sigma2 = makeJTextField("15");
-		squareWidth = makeJTextField("100");
-		debugMode = makeJCheckBox("debug");
-		//panel2.addNumericField("x Radius", sigma1, 0);
-		//panel2.addNumericField("y Radius", sigma2, 0);
-		
-		//GenericDialog gd = new GenericDialog("Enter the values");
-		//gd.addStringField("Title: ", title);
-		//gd.addNumericField("Sigma 1: ", sigma1, 0);
-		//gd.addNumericField("Sigma 2: ", sigma2, 0);
-		//gd.showDialog();
-		panel2.add(debugMode);
-		panel2.add(c1);
+		// Instructions
+		orderS1 = new JLabel(setpointS1);
+		orderS2 = new JLabel(setpointS2);
+		orderWidth = new JLabel(setpointWidth);
+		orderNoise = new JLabel(setpointNoise);
+		// Values as default
+		sigma1 = new JTextField("020");
+		sigma2 = new JTextField("015");
+		squareWidth = new JTextField("100");
+		noiseTolerance = new JTextField("003");
+		// Chekbox for the debug mode
+		debugMode = new JCheckBox( "Debug" );
+		cropperMode = new JCheckBox( "Crop" );
+		// Adding attributes to the panel
+		panel2.add(orderS1);
 		panel2.add(sigma1);
-		panel2.add(c2);
+		panel2.add(orderS2);
 		panel2.add(sigma2);
-		panel2.add(c3);
+		panel2.add(orderNoise);
+		panel2.add(noiseTolerance);
+		panel2.add(orderWidth);
 		panel2.add(squareWidth);
+		panel2.add(debugMode);
+		panel2.add(cropperMode);
 		return panel2;
 	}
 	
-	public static Hashtable<String, String> getvalue(){
-		String s1 = sigma1.getText();
-		String s2 = sigma2.getText();
-		String w = squareWidth.getText();
-		Hashtable<String, String> result = new Hashtable<String, String>();
+	public static void setAttribute(){
+		// Getting data entered by user
+		sig1 = sigma1.getText();
+		sig2 = sigma2.getText();
+		widthSquare = squareWidth.getText();
+		toleranceNoise = noiseTolerance.getText();
 
 		if (debugMode.isSelected()) {
-			result.put("debug","true");
-			IJ.showMessage("Debug mode on");
+			Attributes.setAttributes("debug","true");
 		}
 		else {
-			result.put("debug","false");
-			IJ.showMessage("Debug mode off");
+			Attributes.setAttributes("debug","false");
 		}
 		
-		result.put("sigma1",s1);
-		result.put("sigma2",s2);
-		result.put("width", w);
-		return result;
-	}
+		if (cropperMode.isSelected()) {
+			Attributes.setAttributes("crop","true");
+		}
+		else {
+			Attributes.setAttributes("crop","false");
+		}
 		
-	public void actionPerformed(ActionEvent event) {
-		//String sigma1 = ((JTextComponent)event.getSource()).getText();
-		//IJ.showMessage(sigma1);
+		Attributes.setAttributes("sigma1",sig1);
+		Attributes.setAttributes("sigma2",sig2);
+		Attributes.setAttributes("cropWidth", widthSquare);
+		Attributes.setAttributes("noiseTolerance", toleranceNoise);
 	}
-	
-	
 }
 

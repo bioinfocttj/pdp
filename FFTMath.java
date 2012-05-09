@@ -1,3 +1,5 @@
+//add Licence GPL and description of the plugin and his authors
+// Code récupéré d'imagej mais récupération uniquement de la partie qui nous intéresse
 
 import ij.*;
 import ij.plugin.PlugIn;
@@ -9,33 +11,9 @@ public class FFTMath implements PlugIn {
 	private static String title = "Result";
 
 	public void run(String arg) {
-/*
-		int[] wList = WindowManager.getIDList();
-	String[] titles = new String[wList.length];
-		for (int i=0; i<wList.length; i++) {
-			ImagePlus imp = WindowManager.getImage(wList[i]);
-			if (imp!=null)
-				titles[i] = imp.getTitle();
-			else
-				titles[i] = "";
-		}
-		doMath(imp1, imp2);
-*/
 	}
-/*
-public boolean showDialog() {
-	int[] wList = WindowManager.getIDList();
-	String[] titles = new String[wList.length];
-	for (int i=0; i<wList.length; i++) {
-		ImagePlus imp = WindowManager.getImage(wList[i]);
-		if (imp!=null)
-			titles[i] = imp.getTitle();
-		else
-			titles[i] = "";
-	}
-*/
+
 	public static ImagePlus doMath(ImagePlus imp1, ImagePlus imp2) {
-		//FHT result=null;
 		FHT result, h1, h2=null;
 		ImageProcessor fht1, fht2;
 		fht1  = (ImageProcessor)imp1.getProperty("FHT");
@@ -75,6 +53,5 @@ public boolean showDialog() {
 		IJ.showStatus("Display image");
 		result.resetMinAndMax();
 		return (new ImagePlus(title, result));
-		// return result;
 	}
 }
