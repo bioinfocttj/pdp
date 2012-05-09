@@ -1,7 +1,5 @@
 //add Licence GPL and description of the plugin and his authors
 
-import ij.IJ;
-
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -47,7 +45,7 @@ class PanelDoG extends PickPanel {
 		sigma1 = new JTextField("020");
 		sigma2 = new JTextField("015");
 		squareWidth = new JTextField("100");
-		noiseTolerance = new JTextField("003");
+		noiseTolerance = new JTextField("010");
 		// Chekbox for the debug mode
 		debugMode = new JCheckBox( "Debug" );
 		cropperMode = new JCheckBox( "Crop" );
@@ -65,7 +63,7 @@ class PanelDoG extends PickPanel {
 		return panel2;
 	}
 	
-	public static void setAttribute(){
+	public static void setAttributes(){
 		// Getting data entered by user
 		sig1 = sigma1.getText();
 		sig2 = sigma2.getText();

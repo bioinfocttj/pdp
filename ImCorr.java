@@ -1,3 +1,4 @@
+import java.util.Hashtable;
 import java.util.Vector;
 
 import ij.IJ;
@@ -22,12 +23,18 @@ abstract class ImCorr implements Picker {
 	
 	public static void /*double[][]*/ pick(ImagePlus image,int currentslice){
 		//IJ.showMessage("Picker.pick ImCorr");
+		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
+		String rMin = hashAttributes.get("radiusMin");
+		String rMax = hashAttributes.get("radiusMax");
+		String rInc = hashAttributes.get("radiusInc");
+		String noiseT = hashAttributes.get("noiseTolerance");
+		String noise = "noise=" + noiseT+" output=[Point Selection]";
 		
 		int w=image.getWidth(); //image width
 		int h=image.getHeight(); //image heigh
-		int radiusMin=40; //radius min of the draw circule
-		int radiusMax=56; //radius max of the draw circule
-		int radiusInc=5; //radius incrementation
+		int radiusMin=Integer.parseInt(rMin); //radius min of the draw circule
+		int radiusMax=Integer.parseInt(rMax); //radius max of the draw circule
+		int radiusInc=Integer.parseInt(rInc); //radius incrementation
 		ResultsTable table; //result table
 		
 		//creation of an image which contains a circle with different diameters
@@ -40,7 +47,7 @@ abstract class ImCorr implements Picker {
 			//IJ.run(result, "Invert LUT", "");
 			result.show();
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
-			IJ.run(result,"Find Maxima...", "noise=10 output=[Point Selection]");
+			IJ.run(result,"Find Maxima...", noise);
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
 			IJ.run("Measure");
 			result.close();

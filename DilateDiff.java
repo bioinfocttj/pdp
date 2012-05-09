@@ -1,5 +1,6 @@
 //add Licence GPL and description of the plugin and his authors
 
+import java.util.Hashtable;
 import java.util.Vector;
 
 import ij.IJ;
@@ -30,7 +31,16 @@ abstract class DilateDiff implements Picker{
 		int counter=0;
 		int[] xpoints;
 		int[] ypoints;
-	
+
+		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
+		String iteration1 = hashAttributes.get("iteration1");
+		String iteration2 = hashAttributes.get("iteration2");
+
+		String it1 = "iterations=" + iteration1+" count=1 edm=Overwrite do=Nothing";
+		String it2 = "iterations=" + iteration2+" count=1 edm=Overwrite do=Nothing";
+		String noiseT = hashAttributes.get("noiseTolerance");
+		String noise = "noise=" + noiseT+" output=List";
+		
 		ImagePlus imp = WindowManager.getCurrentImage();
 		ImagePlus imp1=new Duplicator().run(imp);
 		ImagePlus imp2= new Duplicator().run(imp1);
@@ -38,13 +48,13 @@ abstract class DilateDiff implements Picker{
 		imp2.setSlice(currentslice);
 		IJ.run(imp1, "Make Binary", "");
 		IJ.run(imp2, "Make Binary", "");
-		IJ.run(imp1, "Options...", "iterations=1 count=1 edm=Overwrite do=Nothing");
+		IJ.run(imp1, "Options...", it1);
 		IJ.run(imp1, "Dilate", "");
-		IJ.run(imp2, "Options...", "iterations=2 count=1 edm=Overwrite do=Nothing");
+		IJ.run(imp2, "Options...", it2);
 		IJ.run(imp2, "Dilate", "");
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
-		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
+		IJ.run(imp3, "Find Maxima...", noise);
 		table = Analyzer.getResultsTable();
 		counter=table.getCounter();
 		xpoints = new int[counter];
@@ -67,7 +77,6 @@ abstract class DilateDiff implements Picker{
 		IJ.run("Measure");
 		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
 		int count=finalresults.getCounter();
-
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
 			Slice.add(temp);

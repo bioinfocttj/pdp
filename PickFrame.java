@@ -1,11 +1,9 @@
 //add Licence GPL and description of the plugin and his authors
  
 import ij.process.*;
-import ij.ImagePlus;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Hashtable;
 
 import javax.swing.*;
 
@@ -54,7 +52,8 @@ public class PickFrame extends JFrame implements ActionListener {
 		//GridBagConstraints gbc = new GridBagConstraints();
 		//gbc.gridy = 1;
 		setLayout(gridbag);
-		mainPanel = new JPanel();	
+		mainPanel = new JPanel();
+		mainPanel.setPreferredSize(new Dimension(500, 400));
 		paneltitle = new JPanel();
 		panel1 = new JPanel();
 		panel2 = new JPanel();
@@ -134,7 +133,7 @@ public class PickFrame extends JFrame implements ActionListener {
 			if (algo.equals("Difference_of_Gaussian")){
 				//DoG dogPicker = new DoG();
 				Attributes.getInstance();
-				PanelDoG.setAttribute();
+				PanelDoG.setAttributes();
 				DoG.sliceSelection();
 			}
 

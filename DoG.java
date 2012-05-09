@@ -1,6 +1,5 @@
 //add Licence GPL and description of the plugin and his authors
 
-import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -34,6 +33,7 @@ abstract class DoG implements Picker {
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String sigma1 = hashAttributes.get("sigma1");
 		String sigma2 = hashAttributes.get("sigma2");
+		String noiseT = hashAttributes.get("noiseTolerance");
 		
 		imp.setSlice(currentslice);
 		ImagePlus imp1 = new Duplicator().run(imp);
@@ -42,6 +42,7 @@ abstract class DoG implements Picker {
 		
 		String si1 = "sigma=" + sigma1;
 		String si2 = "sigma=" + sigma2;
+		String noise = "noise=" + noiseT+" output=List";
 
 		imp1.setSlice(currentslice);
 		IJ.run(imp1, "Gaussian Blur...", si1);
@@ -50,7 +51,7 @@ abstract class DoG implements Picker {
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
 		imp3.show();
-		IJ.run(imp3, "Find Maxima...", "noise=10 output=List");
+		IJ.run(imp3, "Find Maxima...", noise);
 		table = Analyzer.getResultsTable();
 		counter = table.getCounter();
 		xpoints = new int[counter];
@@ -95,32 +96,27 @@ abstract class DoG implements Picker {
 		Object[] tempX = new String[arrayLength];
 		Object[] tempY = new String[arrayLength];
 		Object[] tempZ = new String[arrayLength];
-		IJ.showMessage("converter x : ok");
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
 		tempZ = Slice.toArray();
-		IJ.showMessage("converter y : ok");
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];
 		for (int i=0; i < arrayLength; i++){
-			IJ.showMessage("converter z : begin");
-			xArray[i] = Double.parseDouble((String)(tempX[i]));
-			IJ.showMessage(Double.toString(xArray[i]));
-			yArray[i] = Double.parseDouble((String)(tempY[i]));
-			IJ.showMessage("converter z2 : ok");
-			zArray[i] = Double.parseDouble((String)(tempZ[i]));
-			IJ.showMessage("converter z3 : ok");
+			String temp = String.valueOf(tempX[i]);
+			xArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempY[i]);
+			yArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempZ[i]);
+			zArray[i] = Double.parseDouble(temp);
 			//xArray[i] = Double.parseDouble(tempX[i]);
 			//yArray[i] = Double.parseDouble(tempY[i]);
 			//zArray[i] = Double.parseDouble(tempZ[i]);
 		}
-		IJ.showMessage("converter z : ok");
 		double[][] coordinates = new double[3][arrayLength];
 		coordinates[0]=xArray;
-		coordinates[0]=yArray;
-		coordinates[0]=zArray;
-		IJ.showMessage("converter final : ok");
+		coordinates[1]=yArray;
+		coordinates[2]=zArray;
 		return coordinates;
 		
 	}
@@ -134,11 +130,10 @@ abstract class DoG implements Picker {
 		//cast the vector in an array so as to send it to the cropper
 		//resultConverter();
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String crop = hashAttributes.get("crop");
-		boolean cropperMode = Boolean.parseBoolean(crop);
+		String cropMode = hashAttributes.get("crop");
+		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		if (cropperMode) {
 			double[][]array= resultConverter();
-			IJ.showMessage("converter : ok");
 			Cropper cropper = new Cropper(im,array);
 			cropper.crop();
 		}
