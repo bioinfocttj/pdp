@@ -72,7 +72,8 @@ abstract class DoG implements Picker {
 		IJ.run(imp2, "Gaussian Blur...", si2);
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
-		imp3.show();
+		//imp3.show();
+		WindowManager.setTempCurrentImage(imp3);
 		IJ.run(imp3, "Find Maxima...", noise);
 		table = Analyzer.getResultsTable();
 		counter = table.getCounter();

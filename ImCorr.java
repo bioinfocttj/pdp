@@ -63,7 +63,8 @@ abstract class ImCorr implements Picker {
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
 			//IJ.run(result, "Invert LUT", "");
-			result.show();
+			//result.show();
+			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
 			IJ.run(result,"Find Maxima...", noise);
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
