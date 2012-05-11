@@ -12,15 +12,20 @@ import javax.swing.*;
 public class PickFrame extends JFrame implements ActionListener {
 
 	ImageProcessor ip;
+	
 	//static ImagePlus imgSource;
 	//ImagePlus imp;
+	
 	int type;
+	
 	JPanel mainPanel;
-	private JPanel paneltitle;
 	JPanel panel1;
+	private JPanel paneltitle;
 	private JPanel panel2;
 	private JPanel panel3;
+	
 	PickFrame instance;
+	
 	JButton helpInfoButton;
 	private JButton previewButton;
 	private JButton applyButton;
@@ -43,21 +48,30 @@ public class PickFrame extends JFrame implements ActionListener {
 			jFrame.pack();
 			jFrame.setLocation(1000, 200);
 			jFrame.setVisible(true);
+			jFrame.setResizable(false);
 		}
 	}
 
 	private void initGUI(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		GridBagLayout gridbag = new GridBagLayout();
-		//GridBagConstraints gbc = new GridBagConstraints();
-		//gbc.gridy = 1;
-		setLayout(gridbag);
+		getContentPane().setLayout(gridbag);
+		
 		mainPanel = new JPanel();
-		mainPanel.setPreferredSize(new Dimension(500, 400));
+		mainPanel.setPreferredSize(new Dimension(450, 600)); // Horizontal, vertical 
 		paneltitle = new JPanel();
 		panel1 = new JPanel();
+		panel1.setLayout(gridbag);
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.NORTH;
+		//panel1.setPreferredSize(new Dimension(450, 150));
 		panel2 = new JPanel();
+		//panel2.setPreferredSize(new Dimension(450, 300));
 		panel3 = new JPanel();
+		panel3.setLayout(gridbag);
+		gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.SOUTH;
+		//panel3.setPreferredSize(new Dimension(450, 150));
 
 		///////////////////// Panel1 : Choice of algorithm 
 
@@ -75,19 +89,24 @@ public class PickFrame extends JFrame implements ActionListener {
 
 		//Set up the contain (contains all algorithms).
 		JLabel choice = new JLabel();
-		panel1.add(algoList, BorderLayout.PAGE_START);
-		panel1.add(choice, BorderLayout.PAGE_END);
+		gridbag.setConstraints(algoList,gbc);
+		panel1.add(algoList/*, BorderLayout.PAGE_START*/);
+		gridbag.setConstraints(choice,gbc);
+		panel1.add(choice/*, BorderLayout.PAGE_END*/);
 		
-		//////////////////////// Panel for Preview & Reset & Apply & Help
+		//////////////////////// Panel3 : Preview & Apply & Help
 
 		previewButton = makeButton("Preview");
 		applyButton = makeButton("Apply");
 		helpInfoButton = makeButton("Help & Info");
-		helpInfoButton.addActionListener(new InfoHelpViewerPickPlug());
+		helpInfoButton.addActionListener(new InfoHelp());
 		
 		//adding to Preview & Reset & Apply & Help box
+		gridbag.setConstraints(previewButton,gbc);
 		panel3.add(previewButton);
+		gridbag.setConstraints(applyButton,gbc);
 		panel3.add(applyButton);
+		gridbag.setConstraints(helpInfoButton,gbc);
 		panel3.add(helpInfoButton);
 
 		///////////////// Principal panel
@@ -95,9 +114,9 @@ public class PickFrame extends JFrame implements ActionListener {
 		mainPanel.setVisible(true);
 		
 		//add(panelPrincipal); 
-		mainPanel.add(panel1);
+		mainPanel.add(panel1/*, BorderLayout.NORTH*/);
 		mainPanel.add(panel2);
-		mainPanel.add(panel3);
+		mainPanel.add(panel3/*, BorderLayout.SOUTH*/);
 		add(mainPanel); 
 		Runnable runner = new GUIShower(this);
 		EventQueue.invokeLater(runner);
@@ -124,6 +143,7 @@ public class PickFrame extends JFrame implements ActionListener {
 			mainPanel.add(panel1);
 			mainPanel.add(panel2);
 			mainPanel.add(panel3);
+			mainPanel.repaint();
 			
 			pack();
 			AlgoFactory.algorithm.getPicker(comboSelection);
@@ -134,7 +154,8 @@ public class PickFrame extends JFrame implements ActionListener {
 				//DoG dogPicker = new DoG();
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
-				DoG.sliceSelection();
+				double[][] coordXYZ = DoG.sliceSelection();
+				ToCSV.generateCsvFile("dog.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Image_Correlation")){
@@ -142,7 +163,8 @@ public class PickFrame extends JFrame implements ActionListener {
 				//ImCorr imCorrPicker = new ImCorr();
 				Attributes.getInstance();
 				PanelImCorr.setAttribute();
-				ImCorr.sliceSelection();
+				double[][] coordXYZ = ImCorr.sliceSelection();
+				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Dilate_Difference")){
@@ -150,7 +172,8 @@ public class PickFrame extends JFrame implements ActionListener {
 				//DilateDiff dilateDiffPicker= new DilateDiff();
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
-				DilateDiff.sliceSelection();
+				double[][] coordXYZ = DilateDiff.sliceSelection();
+				ToCSV.generateCsvFile("dil.csv", coordXYZ);
 			}
 		}
 		

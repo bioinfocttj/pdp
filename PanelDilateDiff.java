@@ -1,5 +1,7 @@
 //add Licence GPL and description of the plugin and his authors
 
+import java.awt.Dimension;
+
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,14 +31,30 @@ public class PanelDilateDiff extends PickPanel {
 	private static JLabel orderIteration2;
 	private static JLabel orderNoise;
 	private static JLabel orderWidth;
+	private static JLabel helpImage;
+	
+	private static JPanel infoPanel;
+	private static JPanel iterationPanel;
+	private static JPanel widthNoisePanel;
+	private static JPanel debugCropPanel;
 	
 	PanelDilateDiff() {
 		super();
 	}
 	static JPanel create(){
+		// Creations of subpanels
+		infoPanel = new JPanel();
+		infoPanel.setPreferredSize(new Dimension(450, 50));
+		iterationPanel = new JPanel();
+		iterationPanel.setPreferredSize(new Dimension(450, 50));
+		widthNoisePanel = new JPanel();
+		widthNoisePanel.setPreferredSize(new Dimension(450, 50));
+		debugCropPanel = new JPanel();
+		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions
+		helpImage = new JLabel(" Alorithm optimized for Blobs ", JLabel.CENTER);
 		orderIteration1 = new JLabel(setpointIteration1);
-		orderIteration2= new JLabel(setpointIteration2);
+		orderIteration2 = new JLabel(setpointIteration2);
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
@@ -47,21 +65,27 @@ public class PanelDilateDiff extends PickPanel {
 		// Chekbox for the debug mode
 		debugMode = new JCheckBox( "Debug" ); 
 		cropperMode = new JCheckBox( "Crop" );
-		panel2.add(orderIteration1);
-		panel2.add(iteration1JTF);
-		panel2.add(orderIteration2);
-		panel2.add(iteration2JTF);
-		panel2.add(orderNoise);
-		panel2.add(noiseToleranceJTF);
-		panel2.add(orderWidth);
-		panel2.add(cropWidthJTF);
-		panel2.add(debugMode);
-		panel2.add(cropperMode);
+		// Adding attributes to the panels
+		infoPanel.add(helpImage);
+		iterationPanel.add(orderIteration1);
+		iterationPanel.add(iteration1JTF);
+		iterationPanel.add(orderIteration2);
+		iterationPanel.add(iteration2JTF);
+		widthNoisePanel.add(orderNoise);
+		widthNoisePanel.add(noiseToleranceJTF);
+		widthNoisePanel.add(orderWidth);
+		widthNoisePanel.add(cropWidthJTF);
+		debugCropPanel.add(debugMode);
+		debugCropPanel.add(cropperMode);
+		panel2.add(infoPanel);
+		panel2.add(iterationPanel);
+		panel2.add(widthNoisePanel);
+		panel2.add(debugCropPanel);
 		return panel2;
 	}
 	public static void setAttributes(){
 		// Getting data entered by user
-		dilateIt1= iteration1JTF.getText();
+		dilateIt1 = iteration1JTF.getText();
 		dilateIt2 = iteration2JTF.getText();
 		toleranceNoise = noiseToleranceJTF.getText();
 		widthCrop = cropWidthJTF.getText();

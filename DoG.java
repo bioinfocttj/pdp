@@ -18,9 +18,31 @@ abstract class DoG implements Picker {
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> Slice=new Vector<Double>();
+	
 	DoG(){
 	}
 	
+	static double[][] sliceSelection(){
+		
+		ImagePlus im=WindowManager.getCurrentImage();
+		int nbslice=im.getStackSize();
+		for (int a=1;a<=nbslice;a++){
+			pick(im,a);
+		}
+		//cast the vector in an array so as to send it to the cropper
+		//resultConverter();
+		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
+		String cropMode = hashAttributes.get("crop");
+		boolean cropperMode = Boolean.parseBoolean(cropMode);
+		double[][]array= resultConverter();
+		if (cropperMode) {
+			Cropper cropper = new Cropper(im,array);
+			cropper.crop();
+		}
+		return array;
+		
+	}
+
 	public static void pick(ImagePlus imp, int currentslice){
 		//IJ.showMessage("Picker.pick DoG");
 		
@@ -79,7 +101,7 @@ abstract class DoG implements Picker {
 		
 		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
 		int count=finalresults.getCounter();
-		System.out.println(count);
+		//System.out.println(count);
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
 			Slice.add(temp);
@@ -89,8 +111,8 @@ abstract class DoG implements Picker {
 		resultstable[2] = Slice;
 		//printResultTable(resultstable);
 		//return resultstable;
-
 	}
+	
 	static double[][] resultConverter(){
 		int arrayLength=xtab.size();
 		Object[] tempX = new String[arrayLength];
@@ -118,30 +140,11 @@ abstract class DoG implements Picker {
 		coordinates[1]=yArray;
 		coordinates[2]=zArray;
 		return coordinates;
-		
-	}
-	static Vector[] sliceSelection(){
-		
-		ImagePlus im=WindowManager.getCurrentImage();
-		int nbslice=im.getStackSize();
-		for (int a=1;a<=nbslice;a++){
-			pick(im,a);
-		}
-		//cast the vector in an array so as to send it to the cropper
-		//resultConverter();
-		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String cropMode = hashAttributes.get("crop");
-		boolean cropperMode = Boolean.parseBoolean(cropMode);
-		if (cropperMode) {
-			double[][]array= resultConverter();
-			Cropper cropper = new Cropper(im,array);
-			cropper.crop();
-		}
-		return resultstable;
-		
 	}
 	
-	static void printResultTable(Vector[] resulttable){
+	
+	
+	/*static void printResultTable(Vector[] resulttable){
 		int zero = resulttable[0].size();
 		int un = resulttable[0].size();
 		int deux = resulttable[0].size();
@@ -154,5 +157,5 @@ abstract class DoG implements Picker {
 				System.out.println("\n");
 			}
 		}
-	}
+	}*/
 }

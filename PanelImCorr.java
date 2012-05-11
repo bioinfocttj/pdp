@@ -1,5 +1,7 @@
 //add Licence GPL and description of the plugin and his authors
 
+import java.awt.Dimension;
+
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,21 +36,37 @@ class PanelImCorr extends PickPanel {
 	private static JLabel orderRadiusInc;
 	private static JLabel orderWidth;
 	private static JLabel orderNoise;
+	private static JLabel helpImage;
+	
+	private static JPanel infoPanel;
+	private static JPanel radiusPanel;
+	private static JPanel widthNoisePanel;
+	private static JPanel debugCropPanel;
 	
 	PanelImCorr() {
 		super();
 	}
 	
 	static JPanel create(){
+		// Creations of subpanels
+		infoPanel = new JPanel();
+		infoPanel.setPreferredSize(new Dimension(450, 50));
+		radiusPanel = new JPanel();
+		radiusPanel.setPreferredSize(new Dimension(450, 50));
+		widthNoisePanel = new JPanel();
+		widthNoisePanel.setPreferredSize(new Dimension(450, 50));
+		debugCropPanel = new JPanel();
+		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions
+		helpImage = new JLabel(" Processed and non processed images have to be opened ", JLabel.CENTER);
 		orderRadiusMin = new JLabel(setpointRMin);
-		orderRadiusMax= new JLabel(setpointRMax);
-		orderRadiusInc= new JLabel(setpointRInc);
+		orderRadiusMax = new JLabel(setpointRMax);
+		orderRadiusInc = new JLabel(setpointRInc);
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
 		radiusMinJTF = new JTextField("020");
-		radiusMaxJTF= new JTextField("060");
+		radiusMaxJTF = new JTextField("060");
 		radiusIncJTF = new JTextField("005");
 		cropWidthJTF = new JTextField("100");
 		noiseToleranceJTF = new JTextField("00.5");
@@ -56,18 +74,23 @@ class PanelImCorr extends PickPanel {
 		debugMode = new JCheckBox( "Debug"); 
 		cropperMode = new JCheckBox( "Crop" );
 		// Adding attributes to the panel
-		panel2.add(orderRadiusMin);
-		panel2.add(radiusMinJTF);
-		panel2.add(orderRadiusMax);
-		panel2.add(radiusMaxJTF);
-		panel2.add(orderRadiusInc);
-		panel2.add(radiusIncJTF);
-		panel2.add(orderNoise);
-		panel2.add(noiseToleranceJTF);
-		panel2.add(orderWidth);
-		panel2.add(cropWidthJTF);
-		panel2.add(debugMode);
-		panel2.add(cropperMode);
+		infoPanel.add(helpImage);
+		radiusPanel.add(orderRadiusMin);
+		radiusPanel.add(radiusMinJTF);
+		radiusPanel.add(orderRadiusMax);
+		radiusPanel.add(radiusMaxJTF);
+		radiusPanel.add(orderRadiusInc);
+		radiusPanel.add(radiusIncJTF);
+		widthNoisePanel.add(orderNoise);
+		widthNoisePanel.add(noiseToleranceJTF);
+		widthNoisePanel.add(orderWidth);
+		widthNoisePanel.add(cropWidthJTF);
+		debugCropPanel.add(debugMode);
+		debugCropPanel.add(cropperMode);
+		panel2.add(infoPanel);
+		panel2.add(radiusPanel);
+		panel2.add(widthNoisePanel);
+		panel2.add(debugCropPanel);
 		return panel2;
 	}
 	

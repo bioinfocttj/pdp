@@ -44,8 +44,6 @@ public class Cropper {
 		coord[1][1] = 73.4;
 
 		crop();
-		
-		//imp=
 	}
 
 	public void crop() {

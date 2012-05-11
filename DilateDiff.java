@@ -15,14 +15,30 @@ import ij.plugin.filter.Analyzer;
 abstract class DilateDiff implements Picker{
 	
 	static Vector[] resultstable = new Vector[3];
-	static Vector xtab=new Vector();
-	static Vector ytab=new Vector();
-	static Vector Slice=new Vector();	
+	static Vector<Double> xtab=new Vector<Double>();
+	static Vector<Double> ytab=new Vector<Double>();
+	static Vector<Double> Slice=new Vector<Double>();	
 
+	DilateDiff(){}
 	
-	DilateDiff(){
+static double[][] sliceSelection(){
+		
+		ImagePlus im=WindowManager.getCurrentImage();
+		int nbslice=im.getStackSize();
+		for (int a=1;a<=nbslice;a++){
+			pick(im, a);
+		}
+		//printResultTable(resultstable);
+		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
+		String cropMode = hashAttributes.get("crop");
+		boolean cropperMode = Boolean.parseBoolean(cropMode);
+		double[][]array= resultConverter();
+		if (cropperMode) {
+			Cropper cropper = new Cropper(im,array);
+			cropper.crop();
+		}
+		return array;
 	}
-	
 	static void pick(ImagePlus image, int currentslice){
 		//IJ.showMessage("Picker.pick Dilatation Difference ");
 		
@@ -84,18 +100,38 @@ abstract class DilateDiff implements Picker{
 		
 	}
 
-	static Vector[] sliceSelection(){
-		
-		ImagePlus im=WindowManager.getCurrentImage();
-		int nbslice=im.getStackSize();
-		for (int a=1;a<=nbslice;a++){
-			pick(im, a);
+	static double[][] resultConverter(){
+		int arrayLength=xtab.size();
+		Object[] tempX = new String[arrayLength];
+		Object[] tempY = new String[arrayLength];
+		Object[] tempZ = new String[arrayLength];
+		tempX = xtab.toArray();
+		tempY = ytab.toArray();
+		tempZ = Slice.toArray();
+		double[] xArray = new double[arrayLength];
+		double[] yArray = new double[arrayLength];
+		double[] zArray = new double[arrayLength];
+		for (int i=0; i < arrayLength; i++){
+			String temp = String.valueOf(tempX[i]);
+			xArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempY[i]);
+			yArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempZ[i]);
+			zArray[i] = Double.parseDouble(temp);
+			//xArray[i] = Double.parseDouble(tempX[i]);
+			//yArray[i] = Double.parseDouble(tempY[i]);
+			//zArray[i] = Double.parseDouble(tempZ[i]);
 		}
-		//printResultTable(resultstable);
-		return resultstable;
+		double[][] coordinates = new double[3][arrayLength];
+		coordinates[0]=xArray;
+		coordinates[1]=yArray;
+		coordinates[2]=zArray;
+		return coordinates;
 	}
 	
-	static void printResultTable(Vector[] resulttable){
+	
+	
+	/*static void printResultTable(Vector[] resulttable){
 		int zero = resulttable[0].size();
 		int un = resulttable[0].size();
 		int deux = resulttable[0].size();
@@ -108,7 +144,7 @@ abstract class DilateDiff implements Picker{
 				System.out.println("\n");
 			}
 		}
-	}
+	}*/
 
 }
 

@@ -1,5 +1,3 @@
-import ij.IJ;
-
 import java.util.Hashtable;
 
 //add Licence GPL and description of the plugin and his authors
@@ -7,6 +5,7 @@ import java.util.Hashtable;
 public final class Attributes {
 	
 	private static Attributes instance = null;
+	
 	private static Hashtable <String, String> attributes = new Hashtable<String, String>();
 	
 	private Attributes() {

@@ -40,8 +40,8 @@ public final class AlgoFactory {
 				case Difference_of_Gaussian : break;
 				case Dilate_Difference :break;
 				case Image_Correlation : break;
-				case About_Pick_EM : IJ.showMessage("about");break;
-				default: IJ.showMessage("default");break;
+				case About_Pick_EM : break;
+				default: break;
 			}
 		}
 
