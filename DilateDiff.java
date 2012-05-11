@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
@@ -24,6 +25,8 @@ abstract class DilateDiff implements Picker{
 static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
+		ImageStack stack = im.getStack();
+		ImagePlus stackName = (ImagePlus) stack.getTitle() ;
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			pick(im, a);
@@ -34,8 +37,10 @@ static double[][] sliceSelection(){
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
 		if (cropperMode) {
-			Cropper cropper = new Cropper(im,array);
-			cropper.crop();
+			for (int a=1;a<=nbslice;a++){
+				Cropper cropper = new Cropper(im, array, a);
+				cropper.crop(a);
+			}
 		}
 		return array;
 	}

@@ -24,7 +24,7 @@ abstract class DoG implements Picker {
 	
 	static double[][] sliceSelection(){
 		
-		ImagePlus im=WindowManager.getCurrentImage();
+		ImagePlus im = WindowManager.getCurrentImage();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			pick(im,a);
@@ -36,8 +36,11 @@ abstract class DoG implements Picker {
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
 		if (cropperMode) {
-			Cropper cropper = new Cropper(im,array);
-			cropper.crop();
+			for (int a=1;a<=nbslice;a++){
+				Cropper cropper = new Cropper(im, array, a);
+				cropper.crop(a);
+			}
+			
 		}
 		return array;
 		
@@ -72,7 +75,8 @@ abstract class DoG implements Picker {
 		IJ.run(imp2, "Gaussian Blur...", si2);
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
-		imp3.show();
+		//imp3.show();
+		WindowManager.setTempCurrentImage(imp3);
 		IJ.run(imp3, "Find Maxima...", noise);
 		table = Analyzer.getResultsTable();
 		counter = table.getCounter();

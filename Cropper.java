@@ -4,6 +4,7 @@ import java.util.Hashtable;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.plugin.Duplicator;
 
 public class Cropper {
@@ -17,14 +18,14 @@ public class Cropper {
 	private static int impWidth;
 	private static int impHeight;
 	
-	public Cropper(ImagePlus imp, double[][] coords){
+	public Cropper(ImagePlus im, double[][] coords, int currentSlice){
 		// coords = tableau de 3 vecteurs de doubles
-		Cropper.imp = imp;
+		Cropper.imp = im;
 		coordinates = coords;
 		IJ.showMessage("cropper avec arguments ");
 		//img = IJ.getImage();
-		impWidth = imp.getWidth();
-		impHeight = imp.getHeight();
+		impWidth = im.getWidth();
+		impHeight = im.getHeight();
 		Hashtable<String, String> hash = Attributes.getAttributes();
 		widthCrop = Integer.parseInt(hash.get("cropWidth"));
 		//crop();
@@ -33,8 +34,8 @@ public class Cropper {
 
 	public Cropper(){
 		// only for debug
-		imp = new ImagePlus("/home/tomo/Bureau/M1_bioinfo/sanofi/blobs.gif");
-		imp.show();
+		//imp = new ImagePlus("/home/tomo/Bureau/M1_bioinfo/sanofi/blobs.gif");
+		//imp.show();
 		//int blobsWidth = blobs.getWidth();
 		//int blobsHeight = blobs.getHeight();
 		double coord[][] = new double[2][2];
@@ -43,11 +44,11 @@ public class Cropper {
 		coord[1][0] = 99.4;
 		coord[1][1] = 73.4;
 
-		crop();
+		//crop();
 	}
 
-	public void crop() {
-		imp.show();
+	public void crop(int currentSlice) {
+		//imp.show();
 		boolean debug = false;
 		//ResultsTable table;
 		//ResultsTable table = Analyzer.getResultsTable();
@@ -65,6 +66,7 @@ public class Cropper {
 
 			int x = (int) (posx - (widthCrop/2));
 			int y = (int) (posy - (widthCrop/2));
+			int z = (int) posz;
 			if ( (posx - (widthCrop/2)) < 0 ) {
 				if (debug){
 				IJ.showMessage("x < 0");
@@ -84,13 +86,16 @@ public class Cropper {
 			}
 			else {
 				//if ((x > 0) || (x < imp.getHeight()) || (y < imp.getWidth()) || (y > 0)){
-				imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-				img2 = new Duplicator().run(imp);
-				img2.show();
+				if (z == currentSlice) {
+					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
+					img2 = IJ.run(imp, "Duplicate...", "title=Stackb-1.tif");
+					//img2 = new Duplicator().run(imp);
+					img2.show();
+				}
 			}
 		}
 		//IJ.showProgress(counter);
 		IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
-		IJ.showMessage("progressbar");
+		//IJ.showMessage("progressbar");
 	}
 }

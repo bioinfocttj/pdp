@@ -33,8 +33,10 @@ abstract class ImCorr implements Picker {
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
 		if (cropperMode) {
-			Cropper cropper = new Cropper(im,array);
-			cropper.crop();
+			for (int a=1;a<=nbslice;a++){
+				Cropper cropper = new Cropper(im, array, a);
+				cropper.crop(a);
+			}
 		}
 		return array;
 	}
@@ -63,7 +65,8 @@ abstract class ImCorr implements Picker {
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
 			//IJ.run(result, "Invert LUT", "");
-			result.show();
+			//result.show();
+			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
 			IJ.run(result,"Find Maxima...", noise);
 			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
