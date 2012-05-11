@@ -38,9 +38,14 @@ abstract class DoG implements Picker {
 		double[][]array= resultConverter();
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
-				Cropper cropper = new Cropper(im, array, a);
+				im.setSlice(a);
+				IJ.run(im, "Duplicate...", stackName);
+				ImagePlus dupli = WindowManager.getCurrentImage();
+				Cropper cropper = new Cropper(dupli, array, a);
 				cropper.crop(a, stackName);
+				dupli.close();
 			}
+			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
 		}
 		return array;
 		

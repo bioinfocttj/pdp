@@ -23,7 +23,6 @@ public class Cropper {
 		// coords = tableau de 3 vecteurs de doubles
 		Cropper.imp = im;
 		coordinates = coords;
-		IJ.showMessage("cropper avec arguments ");
 		//img = IJ.getImage();
 		impWidth = im.getWidth();
 		impHeight = im.getHeight();
@@ -90,15 +89,16 @@ public class Cropper {
 				//if ((x > 0) || (x < imp.getHeight()) || (y < imp.getWidth()) || (y > 0)){
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-					IJ.run(imp, "Duplicate...", stackTitle);
-					//img2 = new Duplicator().run(imp);
-					//img2.show();
+					//IJ.run(imp, "Duplicate...", stackTitle);
+					img2 = new Duplicator().run(imp);
+					img2.show();
 				}
 			}
 		}
 		//IJ.showProgress(counter);
-		String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
-		IJ.run(imp, "Images to Stack", cropTitle);
+		//String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
+		//IJ.run(imp, "Images to Stack", cropTitle);
+		//IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
 		//IJ.showMessage("progressbar");
 	}
 }
