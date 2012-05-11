@@ -24,6 +24,7 @@ abstract class ImCorr implements Picker {
 	static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
+		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			pick(im, a);
@@ -35,7 +36,7 @@ abstract class ImCorr implements Picker {
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
 				Cropper cropper = new Cropper(im, array, a);
-				cropper.crop(a);
+				cropper.crop(a, stackName);
 			}
 		}
 		return array;

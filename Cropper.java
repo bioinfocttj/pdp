@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
+import ij.WindowManager;
 import ij.plugin.Duplicator;
 
 public class Cropper {
@@ -47,8 +48,9 @@ public class Cropper {
 		//crop();
 	}
 
-	public void crop(int currentSlice) {
+	public void crop(int currentSlice, String stackName) {
 		//imp.show();
+		String stackTitle = (String) "title=" + stackName;
 		boolean debug = false;
 		//ResultsTable table;
 		//ResultsTable table = Analyzer.getResultsTable();
@@ -88,14 +90,15 @@ public class Cropper {
 				//if ((x > 0) || (x < imp.getHeight()) || (y < imp.getWidth()) || (y > 0)){
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-					img2 = IJ.run(imp, "Duplicate...", "title=Stackb-1.tif");
+					IJ.run(imp, "Duplicate...", stackTitle);
 					//img2 = new Duplicator().run(imp);
-					img2.show();
+					//img2.show();
 				}
 			}
 		}
 		//IJ.showProgress(counter);
-		IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
+		String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
+		IJ.run(imp, "Images to Stack", cropTitle);
 		//IJ.showMessage("progressbar");
 	}
 }

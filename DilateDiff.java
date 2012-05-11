@@ -25,8 +25,7 @@ abstract class DilateDiff implements Picker{
 static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
-		ImageStack stack = im.getStack();
-		ImagePlus stackName = (ImagePlus) stack.getTitle() ;
+		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			pick(im, a);
@@ -39,7 +38,7 @@ static double[][] sliceSelection(){
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
 				Cropper cropper = new Cropper(im, array, a);
-				cropper.crop(a);
+				cropper.crop(a, stackName);
 			}
 		}
 		return array;
