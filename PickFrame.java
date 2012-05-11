@@ -1,5 +1,6 @@
 //add Licence GPL and description of the plugin and his authors
  
+import ij.IJ;
 import ij.process.*;
 
 import java.awt.*;
@@ -148,10 +149,9 @@ public class PickFrame extends JFrame implements ActionListener {
 			pack();
 			AlgoFactory.algorithm.getPicker(comboSelection);
 		}
-		else if (command.equals("Preview")){
+		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
-				//DoG dogPicker = new DoG();
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
 				double[][] coordXYZ = DoG.sliceSelection();
@@ -159,8 +159,6 @@ public class PickFrame extends JFrame implements ActionListener {
 			}
 
 			else if (algo.equals("Image_Correlation")){
-				/*double [][] resultArray = */
-				//ImCorr imCorrPicker = new ImCorr();
 				Attributes.getInstance();
 				PanelImCorr.setAttribute();
 				double[][] coordXYZ = ImCorr.sliceSelection();
@@ -168,12 +166,32 @@ public class PickFrame extends JFrame implements ActionListener {
 			}
 
 			else if (algo.equals("Dilate_Difference")){
-				/*double [][] resultArray = */
-				//DilateDiff dilateDiffPicker= new DilateDiff();
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
 				double[][] coordXYZ = DilateDiff.sliceSelection();
 				ToCSV.generateCsvFile("dil.csv", coordXYZ);
+			}
+		}
+		
+		else if (command.equals("Preview")){
+			String algo = (String)algoList.getSelectedItem();
+			if (algo.equals("Difference_of_Gaussian")){
+				Attributes.getInstance();
+				PanelDoG.setAttributes();
+				DoG.picking();
+			}
+
+			else if (algo.equals("Image_Correlation")){
+				Attributes.getInstance();
+				PanelImCorr.setAttribute();
+				double[][] coordXYZ = ImCorr.sliceSelection();
+				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
+			}
+
+			else if (algo.equals("Dilate_Difference")){
+				Attributes.getInstance();
+				PanelDilateDiff.setAttributes();
+				DilateDiff.picking();
 			}
 		}
 		

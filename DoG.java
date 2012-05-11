@@ -17,17 +17,31 @@ abstract class DoG implements Picker {
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> Slice=new Vector<Double>();
+	static Vector<Double> slice=new Vector<Double>();
 	
 	DoG(){
+	}
+	
+	static void picking() {
+		ImagePlus im = WindowManager.getCurrentImage();
+		pick(im, 1);
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
+		resultstable[0].removeAllElements();
+		resultstable[1].removeAllElements();
+		resultstable[2].removeAllElements();
+		IJ.run("Clear Results");
 	}
 	
 	static double[][] sliceSelection(){
 		
 		ImagePlus im = WindowManager.getCurrentImage();
+		im.show();
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
+			im.setSlice(a);
 			pick(im,a);
 		}
 		//cast the vector in an array so as to send it to the cropper
@@ -113,11 +127,11 @@ abstract class DoG implements Picker {
 		//System.out.println(count);
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
-			Slice.add(temp);
+			slice.add(temp);
 		}
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
-		resultstable[2] = Slice;
+		resultstable[2] = slice;
 		//printResultTable(resultstable);
 		//return resultstable;
 	}
@@ -129,7 +143,7 @@ abstract class DoG implements Picker {
 		Object[] tempZ = new String[arrayLength];
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
-		tempZ = Slice.toArray();
+		tempZ = slice.toArray();
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];

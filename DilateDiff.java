@@ -17,16 +17,29 @@ abstract class DilateDiff implements Picker{
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> Slice=new Vector<Double>();	
+	static Vector<Double> slice=new Vector<Double>();	
 
 	DilateDiff(){}
 	
-static double[][] sliceSelection(){
+	static void picking() {
+		ImagePlus im = WindowManager.getCurrentImage();
+		pick(im, 1);
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
+		resultstable[0].removeAllElements();
+		resultstable[1].removeAllElements();
+		resultstable[2].removeAllElements();
+		IJ.run("Clear Results");
+	}
+	
+	static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
+			im.setSlice(a);
 			pick(im, a);
 		}
 		//printResultTable(resultstable);
@@ -103,7 +116,7 @@ static double[][] sliceSelection(){
 		int count=finalresults.getCounter();
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
-			Slice.add(temp);
+			slice.add(temp);
 		}
 		
 	}
@@ -115,7 +128,7 @@ static double[][] sliceSelection(){
 		Object[] tempZ = new String[arrayLength];
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
-		tempZ = Slice.toArray();
+		tempZ = slice.toArray();
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];
