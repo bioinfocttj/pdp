@@ -205,15 +205,15 @@ Le programme est divisé en seize classes \textcolor{blue}{distinctes}:
 \begin{itemize}
 \item Une première partie regroupe six classes qui permettent de gérer l'interface graphique
 \item Une seconde partie regroupe les algorithmes de piquage, elle est composée de quatre classes
-\item La classe \textcolor{blue}{AlgoFactory} permet à l'utilisateur de choisir l'algorithme qu'il souhaite utiliser
+\item La classe \textcolor{blue}{AlgoFactory} permet à l'utilisateur de choisir l'algorithme qu'il souhaite utiliser\textcolor{blue}{plutot "sert de pivot au programme en fonction du choix d'algorithme de l'utiisateur (adaptation de l'interface et algorithme de piquage)}
 \item La classe Attributs est un singleton (instanciable qu'une seule et unique fois) et contient tous les paramètres à entrer par l'utilisateur pour faire fonctionner les algorithmes
-\item La classe Cropper est un peu à part. En effet, elle permet, si l'utilisateur en fait la demande, de créer un stack dans lequel chaque image contient une particule piquée.
+\item La classe Cropper est un peu à part.\textcolor{blue}{bizarement dit, je mettrais plutot "la classe cropper est une fonction subsidiaire du piquage permettant de..."} En effet, elle permet, si l'utilisateur en fait la demande, de créer un stack dans lequel chaque image contient une particule piquée.
 \item La classe FFTMath contient la méthode permettant de faire la Corrélation d'images. 
 \item Les classes About et InfoHelpViewerPickPlug contiennent des informations et une aide sur l'utilisation du plugin.
 \end{itemize}
 \subsection{Les classes de l'interfaces}
 La classe Pick\_EM fait le lien entre \imj ~et la classe PickFrame qui est une JFrame, elle permet de créer l'interface graphique.\\
-Vient ensuite la classe PickPanel qui permet de gérer le panneau d'affichage qui change pour chaque algorithme. En découlent PanelDilateDiff, PanelDoG et PanelImCorr pour les algorithmes DilateDifference, DifferenceOfGaussian et ImageCorrelation respectivement.
+Vient ensuite la classe PickPanel qui permet de gérer\textcolor{blue}{d'adapter l'interface en fonction de l'algorithme} le panneau d'affichage qui change pour chaque algorithme. En découlent PanelDilateDiff, PanelDoG et PanelImCorr pour \textcolor{blue}{pour leurs algorithmes respectifs (dilate diff, DOG et image cor...}les algorithmes DilateDifference, DifferenceOfGaussian et ImageCorrelation respectivement.
 \subsection{Les classes des algorithmes}
 La classe Picker est utilisée pour appeler les algorithmes. Les algorithmes étant DialteDiff, DoG et ImCorr.
 \end{document}
