@@ -1,5 +1,22 @@
-//add Licence GPL and description of the plugin and his authors
- 
+/*
+Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/ 
+import ij.IJ;
+import ij.gui.ProgressBar;
 import ij.process.*;
 
 import java.awt.*;
@@ -130,6 +147,7 @@ public class PickFrame extends JFrame implements ActionListener {
 		
 	/*Listens to the combo box. */
 	public void actionPerformed(ActionEvent e) {
+		
 		String command = e.getActionCommand();
 		if (command.equals("comboBoxChanged")){
 			JComboBox cb = (JComboBox)e.getSource();
@@ -148,32 +166,49 @@ public class PickFrame extends JFrame implements ActionListener {
 			pack();
 			AlgoFactory.algorithm.getPicker(comboSelection);
 		}
-		else if (command.equals("Preview")){
+		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
-				//DoG dogPicker = new DoG();
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
+				IJ.showMessage("progressabr");
 				double[][] coordXYZ = DoG.sliceSelection();
 				ToCSV.generateCsvFile("dog.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Image_Correlation")){
-				/*double [][] resultArray = */
-				//ImCorr imCorrPicker = new ImCorr();
 				Attributes.getInstance();
-				PanelImCorr.setAttribute();
+				PanelImCorr.setAttributes();
 				double[][] coordXYZ = ImCorr.sliceSelection();
 				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Dilate_Difference")){
-				/*double [][] resultArray = */
-				//DilateDiff dilateDiffPicker= new DilateDiff();
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
 				double[][] coordXYZ = DilateDiff.sliceSelection();
 				ToCSV.generateCsvFile("dil.csv", coordXYZ);
+			}
+		}
+		
+		else if (command.equals("Preview")){
+			String algo = (String)algoList.getSelectedItem();
+			if (algo.equals("Difference_of_Gaussian")){
+				Attributes.getInstance();
+				PanelDoG.setAttributes();
+				DoG.picking();
+			}
+
+			else if (algo.equals("Image_Correlation")){
+				Attributes.getInstance();
+				PanelImCorr.setAttributes();
+				ImCorr.picking();
+			}
+
+			else if (algo.equals("Dilate_Difference")){
+				Attributes.getInstance();
+				PanelDilateDiff.setAttributes();
+				DilateDiff.picking();
 			}
 		}
 		
