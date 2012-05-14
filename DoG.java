@@ -14,7 +14,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+ */
 import java.awt.Polygon;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -23,6 +23,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.PointRoi;
+import ij.gui.ProgressBar;
 import ij.measure.ResultsTable;
 import ij.plugin.Duplicator;
 import ij.plugin.ImageCalculator;
@@ -32,17 +33,16 @@ import ij.process.ImageProcessor;
 abstract class DoG implements Picker {
 
 	static Vector[] resultstable = new Vector[3];
-	static Vector<Double> xtab=new Vector<Double>();
-	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();
-	
-	DoG(){
-	}
-	
+	static Vector<Double> xtab = new Vector<Double>();
+	static Vector<Double> ytab = new Vector<Double>();
+	static Vector<Double> slice = new Vector<Double>();
+
+	DoG() {}
+
 	static void picking() {
+		IJ.showStatus( "start preview" );
 		ImagePlus im = WindowManager.getCurrentImage();
-		int current=im.getSlice();
-		System.out.println(current);
+		int current = im.getSlice();
 		pick(im, current);
 		xtab.removeAllElements();
 		ytab.removeAllElements();
@@ -52,23 +52,24 @@ abstract class DoG implements Picker {
 		resultstable[2].removeAllElements();
 		IJ.run("Clear Results");
 	}
-	
-	static double[][] sliceSelection(){
-		
+
+	static double[][] sliceSelection() {
+		IJ.showStatus("slice selection");
 		ImagePlus im = WindowManager.getCurrentImage();
 		String stackName = im.getTitle();
-		int nbslice=im.getStackSize();
-		for (int a=1;a<=nbslice;a++){
+		int nbslice = im.getStackSize();
+		for (int a = 1; a <= nbslice; a++) {
 			im.setSlice(a);
-			pick(im,a);
+			pick(im, a);
 		}
-		//cast the vector in an array so as to send it to the cropper
+		// cast the vector in an array so as to send it to the cropper
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
-		double[][]array= resultConverter();
+		double[][] array = resultConverter();
 		if (cropperMode) {
-			for (int a=1;a<=nbslice;a++){
+			IJ.showStatus("cropper start");
+			for (int a = 1; a <= nbslice; a++) {
 				im.setSlice(a);
 				IJ.run(im, "Duplicate...", stackName);
 				ImagePlus dupli = WindowManager.getCurrentImage();
@@ -77,13 +78,15 @@ abstract class DoG implements Picker {
 				dupli.close();
 			}
 			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
+			IJ.showStatus("cropper end");
 		}
+		IJ.showStatus("end picking");
 		return array;
-		
+
 	}
 
-	public static void pick(ImagePlus imp, int currentslice){
-		
+	public static void pick(ImagePlus imp, int currentslice) {
+		IJ.showStatus("start picking");
 		ImageCalculator ic;
 		ResultsTable table = new ResultsTable();
 		int counter;
@@ -91,18 +94,18 @@ abstract class DoG implements Picker {
 		int[] ypoints;
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
-		
+
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String sigma1 = hashAttributes.get("sigma1");
 		String sigma2 = hashAttributes.get("sigma2");
 		String noiseT = hashAttributes.get("noiseTolerance");
 		double tolerance = Double.parseDouble(noiseT);
-		
+
 		imp.setSlice(currentslice);
 		ImagePlus imp1 = new Duplicator().run(imp);
 		imp1.setSlice(currentslice);
 		ImagePlus imp2 = new Duplicator().run(imp1);
-		
+
 		String si1 = "sigma=" + sigma1;
 		String si2 = "sigma=" + sigma2;
 
@@ -113,26 +116,26 @@ abstract class DoG implements Picker {
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
 		WindowManager.setTempCurrentImage(imp3);
-		
 
+		IJ.showProgress(0.5);
 		ImageProcessor ip3 = imp3.getProcessor();
 		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
 		int[] xArray = points.xpoints;
 		int[] yArray = points.ypoints;
-		for (int i=0; i<xArray.length; i++){
+		for (int i = 0; i < xArray.length; i++) {
 			table.incrementCounter();
-			double tempx=(double)xArray[i];
-			double tempy=(double)yArray[i];
-			table.addValue("X",tempx);
-			table.addValue("Y",tempy);
-			table.addValue("Slice",currentslice);
+			double tempx = (double) xArray[i];
+			double tempy = (double) yArray[i];
+			table.addValue("X", tempx);
+			table.addValue("Y", tempy);
+			table.addValue("Slice", currentslice);
 		}
-		counter=table.getCounter();
+		counter = table.getCounter();
 		xpoints = new int[counter];
-		ypoints = new int [counter];
-		for (int i=0; i<counter; i++){
-			double x = table.getValue("X",i);
-			double y = table.getValue("Y",i);
+		ypoints = new int[counter];
+		for (int i = 0; i < counter; i++) {
+			double x = table.getValue("X", i);
+			double y = table.getValue("Y", i);
 			int xx = (int) x;
 			int yy = (int) y;
 			xpoints[i] = xx;
@@ -142,17 +145,19 @@ abstract class DoG implements Picker {
 			imp3.close();
 			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
-		for(int i=0;i<counter;i++){
+		for (int i = 0; i < counter; i++) {
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-		resultstable[0]= xtab;
-		resultstable[1]= ytab;
+		IJ.showStatus("fill table ");
+		resultstable[0] = xtab;
+		resultstable[1] = ytab;
 		resultstable[2] = slice;
+
 	}
-	
-	static double[][] resultConverter(){
-		int arrayLength=xtab.size();
+
+	static double[][] resultConverter() {
+		int arrayLength = xtab.size();
 		Object[] tempX = new String[arrayLength];
 		Object[] tempY = new String[arrayLength];
 		Object[] tempZ = new String[arrayLength];
@@ -162,7 +167,7 @@ abstract class DoG implements Picker {
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];
-		for (int i=0; i < arrayLength; i++){
+		for (int i = 0; i < arrayLength; i++) {
 			String temp = String.valueOf(tempX[i]);
 			xArray[i] = Double.parseDouble(temp);
 			temp = String.valueOf(tempY[i]);
@@ -171,9 +176,10 @@ abstract class DoG implements Picker {
 			zArray[i] = Double.parseDouble(temp);
 		}
 		double[][] coordinates = new double[3][arrayLength];
-		coordinates[0]=xArray;
-		coordinates[1]=yArray;
-		coordinates[2]=zArray;
+		coordinates[0] = xArray;
+		coordinates[1] = yArray;
+		coordinates[2] = zArray;
+		
 		return coordinates;
 	}
 }

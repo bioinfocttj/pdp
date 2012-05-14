@@ -169,11 +169,15 @@ public class PickFrame extends JFrame implements ActionListener {
 		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
+				//IJ.showProgress(0.0);
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
-				IJ.showMessage("progressabr");
+				//IJ.showProgress(0.4);
+				//IJ.showMessage("progressbar");
 				double[][] coordXYZ = DoG.sliceSelection();
+				//IJ.showProgress(0.6);
 				ToCSV.generateCsvFile("dog.csv", coordXYZ);
+				//IJ.showProgress(1.0);
 			}
 
 			else if (algo.equals("Image_Correlation")){
