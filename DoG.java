@@ -1,20 +1,5 @@
-/*
-Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+//add Licence GPL and description of the plugin and his authors
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -32,21 +17,9 @@ abstract class DoG implements Picker {
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();
+	static Vector<Double> Slice=new Vector<Double>();
 	
 	DoG(){
-	}
-	
-	static void picking() {
-		ImagePlus im = WindowManager.getCurrentImage();
-		pick(im, 1);
-		xtab.removeAllElements();
-		ytab.removeAllElements();
-		slice.removeAllElements();
-		resultstable[0].removeAllElements();
-		resultstable[1].removeAllElements();
-		resultstable[2].removeAllElements();
-		IJ.run("Clear Results");
 	}
 	
 	static double[][] sliceSelection(){
@@ -55,7 +28,6 @@ abstract class DoG implements Picker {
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
-			im.setSlice(a);
 			pick(im,a);
 		}
 		//cast the vector in an array so as to send it to the cropper
@@ -66,20 +38,16 @@ abstract class DoG implements Picker {
 		double[][]array= resultConverter();
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
-				im.setSlice(a);
-				IJ.run(im, "Duplicate...", stackName);
-				ImagePlus dupli = WindowManager.getCurrentImage();
-				Cropper cropper = new Cropper(dupli, array, a);
+				Cropper cropper = new Cropper(im, array, a);
 				cropper.crop(a, stackName);
-				dupli.close();
 			}
-			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
 		}
 		return array;
 		
 	}
 
 	public static void pick(ImagePlus imp, int currentslice){
+		//IJ.showMessage("Picker.pick DoG");
 		
 		ImageCalculator ic;
 		ResultsTable table;
@@ -128,7 +96,7 @@ abstract class DoG implements Picker {
 			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
 		
-		//imp.show();
+		imp.show();
 		
 
 		//IJ.run("Clear Results");
@@ -140,11 +108,11 @@ abstract class DoG implements Picker {
 		//System.out.println(count);
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
-			slice.add(temp);
+			Slice.add(temp);
 		}
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
-		resultstable[2] = slice;
+		resultstable[2] = Slice;
 		//printResultTable(resultstable);
 		//return resultstable;
 	}
@@ -156,7 +124,7 @@ abstract class DoG implements Picker {
 		Object[] tempZ = new String[arrayLength];
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
-		tempZ = slice.toArray();
+		tempZ = Slice.toArray();
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];

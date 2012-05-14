@@ -1,31 +1,21 @@
-/*
-Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
 import ij.WindowManager;
-
 import ij.gui.OvalRoi;
 import ij.gui.PointRoi;
+import ij.gui.Roi;
 import ij.measure.ResultsTable;
 import ij.plugin.filter.Analyzer;
+import ij.plugin.filter.MaximumFinder;
+import ij.process.ImageProcessor;
+
+//add Licence GPL and description of the plugin and his authors
 
 abstract class ImCorr implements Picker {
 	
@@ -33,10 +23,10 @@ abstract class ImCorr implements Picker {
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();
+	private static double z;
 	
 	ImCorr(){
 	}
-	
 	static void picking() {
 		ImagePlus im = WindowManager.getCurrentImage();
 		pick(im, 1);
@@ -47,7 +37,7 @@ abstract class ImCorr implements Picker {
 		resultstable[1].removeAllElements();
 		resultstable[2].removeAllElements();
 		IJ.run("Clear Results");
-	}
+		}
 	
 	static double[][] sliceSelection(){
 		
@@ -58,12 +48,11 @@ abstract class ImCorr implements Picker {
 			im.setSlice(a);
 			pick(im, a);
 		}
-		//cast the vector in an array so as to send it to the cropper
-		//resultConverter();
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
+		
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
 				im.setSlice(a);
@@ -79,21 +68,21 @@ abstract class ImCorr implements Picker {
 	}
 
 	public static void pick(ImagePlus image,int currentslice){
-		
+		z = (double) currentslice;
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String rMin = hashAttributes.get("radiusMin");
 		String rMax = hashAttributes.get("radiusMax");
 		String rInc = hashAttributes.get("radiusInc");
 		String noiseT = hashAttributes.get("noiseTolerance");
-		String noise = "noise=" + noiseT+" output=[Point Selection]";
-		
+		double tolerance = Double.parseDouble(noiseT);
 		int w=image.getWidth(); //image width
 		int h=image.getHeight(); //image heigh
 		int radiusMin=Integer.parseInt(rMin); //radius min of the draw circule
 		int radiusMax=Integer.parseInt(rMax); //radius max of the draw circule
 		int radiusInc=Integer.parseInt(rInc); //radius incrementation
-		ResultsTable table; //result table
-		
+		ResultsTable table = new ResultsTable(); //result table
+		boolean excludeOnEdges = false;
+		MaximumFinder mf = new MaximumFinder();
 		//creation of an image which contains a circle with different diameters
 		image.setSlice(currentslice);
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
@@ -101,17 +90,23 @@ abstract class ImCorr implements Picker {
 			imp.setRoi(new OvalRoi((w/2)-radius, (h/2)-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
-			//IJ.run(result, "Invert LUT", "");
-			//result.show();
+			ImageProcessor ip = result.getProcessor();
+			
 			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
-			IJ.run(result,"Find Maxima...", noise);
-			IJ.run("Set Measurements...", "  min centroid stack redirect=None decimal=3");
-			IJ.run("Measure");
-			result.close();
+			Polygon points = mf.getMaxima(ip, tolerance, excludeOnEdges);
+			int[] xArray = points.xpoints;
+			int[] yArray = points.ypoints;
+				for (int i=0; i<xArray.length; i++){
+					table.incrementCounter();
+					double tempx=(double)xArray[i];
+					double tempy=(double)yArray[i];
+					int pxValue= (int) ip.getPixelValue(xArray[i],yArray[i]);
+					table.addValue("X",tempx);
+					table.addValue("Y",tempy);
+					table.addValue("Max",pxValue);
+				}
 		}
-		
-		table = Analyzer.getResultsTable();
 		sort(table,image);
 	}
 	
@@ -182,6 +177,7 @@ abstract class ImCorr implements Picker {
 			double y=table.getValue("Y",line2);
 			xtab.add(x);
 			ytab.add(y);
+			slice.add(z);
 			int xx = (int) x;
 			int yy = (int) y;
 			xpoints[l] = xx;
@@ -189,22 +185,22 @@ abstract class ImCorr implements Picker {
 			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
 		}
 
-		IJ.run("Clear Results");
-		IJ.run("Measure");
+		//IJ.run("Clear Results");
+		//IJ.run("Measure");
 
-		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
-		int counter=finalresults.getCounter();
-
+		//ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
+		//int counter=finalresults.getCounter();
+/*
 		for(int i=0;i<counter;i++){
 			double temp = finalresults.getValue("Slice", i);
-			slice.add(temp);
+			Slice.add(temp);
 		}
-		
+		*/
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
 		resultstable[2] = slice;
 		//printResultTable(resultstable);
-		IJ.run("Clear Results");
+		//IJ.run("Clear Results");
 		return resultstable;
 	}
 
@@ -237,14 +233,14 @@ abstract class ImCorr implements Picker {
 		return coordinates;
 	}
 	
-	// methode pour printer le tableau resultstable
 	
-	/*static void printResultTable(Vector[] resulttable){
-		int zero = resulttable[0].size();
+	
+	static void printResultTable(Vector[] resulttable){
+		/*int zero = resulttable[0].size();
 		int un = resulttable[0].size();
 		int deux = resulttable[0].size();
 		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
-		//IJ.showMessage(longueurs);
+		IJ.showMessage(longueurs);*/
 		for (int i=0;i<resulttable[1].size();i++){
 			for (int j=0;j<resulttable.length;j++){
 				System.out.println("lala");
@@ -252,5 +248,5 @@ abstract class ImCorr implements Picker {
 				System.out.println("\n");
 			}
 		}
-	}*/
+	}
 }

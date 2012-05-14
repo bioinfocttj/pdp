@@ -1,27 +1,11 @@
-/*
-Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+//add Licence GPL and description of the plugin and his authors
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
 import java.util.Hashtable;
 
 import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
-import ij.gui.ProgressBar;
 import ij.plugin.Duplicator;
 
 public class Cropper {
@@ -39,6 +23,7 @@ public class Cropper {
 		// coords = tableau de 3 vecteurs de doubles
 		Cropper.imp = im;
 		coordinates = coords;
+		IJ.showMessage("cropper avec arguments ");
 		//img = IJ.getImage();
 		impWidth = im.getWidth();
 		impHeight = im.getHeight();
@@ -105,17 +90,15 @@ public class Cropper {
 				//if ((x > 0) || (x < imp.getHeight()) || (y < imp.getWidth()) || (y > 0)){
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-					//IJ.run(imp, "Duplicate...", stackTitle);
-					img2 = new Duplicator().run(imp);
-					img2.show();
+					IJ.run(imp, "Duplicate...", stackTitle);
+					//img2 = new Duplicator().run(imp);
+					//img2.show();
 				}
 			}
 		}
-		IJ.showProgress(counter);
-		//String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
-		//IJ.run(imp, "Images to Stack", cropTitle);
-		//IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
+		//IJ.showProgress(counter);
+		String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
+		IJ.run(imp, "Images to Stack", cropTitle);
 		//IJ.showMessage("progressbar");
-		
 	}
 }

@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-%\usepackage{fullpage}
+\usepackage{fullpage}
 \usepackage[french]{babel}
 \usepackage{xcolor}
 \usepackage[pdftex]{graphicx}
@@ -15,7 +15,6 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{rotating}
-\usepackage[top=2cm,bottom=2cm,left=2cm]{geometry}
 
 %%%%%%%%%%%%%%%%%encadrementdes chapitres%%%%%%%%%%%%%%%%%%%%%%%
 \titleformat{\chapter} % commande de sectionnement affectée
@@ -30,20 +29,17 @@
 %\author{Charlotte \textsc{Herice}\\ Typhaine \textsc{Paysan-Lafosse}\\ Thomas \textsc{Faux}\\ Joris \textsx{Sansen}}
 % Commenté car provoque une erreur lors de la compilation
 \begin{document}
-%\maketitle
-\input{./titleRapport.tex}
+\maketitle
 \newcommand{\cme}{cryo-MET}
 \newcommand{\java}{Java~{\tiny \texttrademark}}
 \newcommand{\js}{JavaScript}
 \newcommand{\imj}{ImageJ}
 
-\begin{abstract}
-Ce rapport traite de la création d'un plugin \imj ~en langage \java ~pour le piquage automatique de particules
-sur les images de microscopie électronique. 
-Il aborde notamment la création de l'interface utilisateur, 
-les méthodes de piquages choisies et implémentées ainsi que l'organisation générale du programme.
-\end{abstract}
 
+
+\chapter*{Résumé}
+\addcontentsline{toc}{chapter}{Résumé} 
+Ce rapport traite d'une méthode de piquage automatique de particules sur des images de miscroscopie électronique.
 \tableofcontents
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction} 
@@ -72,16 +68,16 @@ Notre objectif était de créer et d'implémenter une plateforme mettant à disp
 \item des micrographes de protéines membranaires, de forme pyramidale, qu'il fallait aussi sélectionner.\\
 \end{itemize}
 \noindent
-Il était imposé que cette plateforme soit implémentée sous la forme d'un plugin ImageJ~\cite{imagej:url}. Elle propose à l'utilisateur de se servir des algorithmes de picking pré-installés ou d'en ajouter de nouveaux. Ceci a pour but de simplifier et de centraliser l'accès aux outils de sélection que l'on peut implémenter sur ImageJ.\\%
+Il était imposé que cette plateforme soit implémentée sous la forme d'un plugin ImageJ~\cite{imagej:url}. Elle propose à l'utilisateur \textcolor{blue}{de se servir} des algorithmes de picking pré-installés ou d'en ajouter de nouveaux. \textcolor{blue}{Ceci} a pour but de simplifier et de centraliser l'accès aux outils de sélection que l'on peut implémenter sur ImageJ.\\%
 
 \noindent
-Le logiciel ImageJ a été choisi car c'est un logiciel de traitement et d'analyse d'images développé en \java~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} par le Nation Institute of Health (NIH).%
+Le logiciel ImageJ a été \textcolor{blue}{choisi} car c'est un logiciel de traitement et d'analyse d'images développé en \java~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} par le Nation Institute of Health (NIH).%
 
 \noindent
 Ce logiciel est "open-source"~\footnote{son code source est en accès libre et est modifiable(licence GNU-GPL)}, multi-plateforme et bien connu de la communauté scientifique car initialement conçu pour des applications biomédicales. Il s'est peu à peu démocratisé dans d'autres domaines pour sa facilité d'utilisation et les possibilités de développement qu'il offre.%
 
 \noindent
-En effet, il est possible de développer soi-même et assez facilement des plugins, que ce soit en \java\ ou en \js ~\footnote{\js est un langage de programmation de script orienté objet à prototype~\cite{javascript:url}}.
+En effet, il est possible de développer \textcolor{blue}{soi-même} et assez facilement des plugins, que ce soit en \java\ ou en \js ~\footnote{\js est un langage de programmation de script orienté objet à prototype~\cite{javascript:url}}.
 \section{\'Etat de l'existant}
 \subsection{Détection à l'aide de références}
 Cette technique est utilisée pour trouver des particules dans une image en la comparant à un modèle. Celui-ci peut \^etre obtenu soit à partir d'une structure tridimensionnelle connue, soit par sélection d'une particule servant d'exemple dans le micrographe. L'algorithme détermine la meilleure correspondance entre la cible et le modèle pour pouvoir le localiser dans l'image.%
@@ -170,7 +166,7 @@ L'implémentation de la plateforme a été réalisée en \java, nous utilisons l
 
 \subsubsection{Les algorithmes}
 \noindent
-Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java, nous avons fait en sorte que le temps de déroulement de l'algorihtme soit assez rapide  afin de pouvoir gérer de grands jeux de données et qu'aucune image de traitement intermédiaire n'apparaisse à l'utilisateur (à moins qu'il ne le souhaite).\\
+Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java, nous avons fait en sorte que le temps de déroulement de l'algorihtme soit assez rapide  afin de pouvoir gérer de grands jeux de données et \textcolor{blue}{qu'aucune image de traitement intermédiaire n'apparaisse} à l'utilisateur \textcolor{blue}{(à moins qu'il ne le souhaite)}.\\
 
 Dans l'optique de démocratiser l'utilisation de notre interface et afin de permettre l'extension de ce plugin avec d'autres algorithmes, le projet a été placé sous une licence GPL\footnote{General Public License~\cite{GPL:url}}.
 
@@ -179,46 +175,45 @@ Dans l'optique de démocratiser l'utilisation de notre interface et afin de perm
 
 \chapter{Conception}
 \section{Interface graphique}
-Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj. Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique. Celle-ci offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
+Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj. Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique, \textcolor{blue}{qui} offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
 L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de trois boutons:
 \begin{itemize}
 \item \textbf{Preview} qui permet de tester l'algorithme sélectionné sur une seule image du stack
 \item \textbf{Apply} qui permet d'appliquer l'algorithme sur l'ensemble du stack, lorsque l'utilisateur a défini les paramètres qu'il souhaite appliquer
 \item \textbf{Help \& Info} qui est une aide d'utilisation du plugin
 \end{itemize}
-Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert un stack d'image à l'aide d'\imj. 
+Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert un stack d'image à l'aide d'\imj. \textcolor{blue}{et pré-traiter le stack ?}
 
 \subsection{Algorithmes et paramètres d'entrée}
 Lorsque l'utilisateur sélectionne un algorithme dans le menu déroulant, il doit ensuite choisir plusieurs paramètres.
-Certains sont communs à tous. Il s'agit de la \textbf{Noise Tolerance} et de la largeur du carré que l'utilisateur souhaite utiliser pour faire le stack des particules sélectionnées (\textbf{Square width}) s'il décide de se servir de la fonction \texttt{crop} du plugin.
-
+Certains sont communs à tous. Il s'agit de la \textbf{Noise Tolerance} et de la largeur du carré que l'utilisateur souhaite utiliser pour faire le stack des particules sélectionnées (\textbf{Square width}). \textcolor{blue}{(s'il décide de se servir de la fonction "crop" du plugin)}
 \subsubsection{Image Correlation}
 Le principe de cette méthode est de comparer une image contenant un cercle avec l'image sur laquelle on veut sélectionner les particules. On obtient alors une nouvelle image sur laquelle on peut voir des cercles correspondant aux particules de l'image de base qui ont à peu près le même diamètre que le cercle dessiné précédemment. Ici, on fait varier la taille du cercle afin de sélectionner des particules de différentes tailles.\\
 \noindent
-Pour cet algorithme de piquage, l'utilisateur doit entrer le rayon minimal/maximal des particules à sélectionner. Pour un résultat optimal, avant de lancer la sélection des particules avec cet algorithme, l'utilisateur devra traiter l'image pour éliminer un maximum de bruit de fond (utilisation de filtres, modification du contraste/luminosité, sélection des contours, application d'un threshold).
+Pour cet algorithme de piquage, l'utilisateur doit entrer \textcolor{blue}{les rayons} minimal/maximal des particules à sélectionner. Pour un résultat optimal, avant de lancer la sélection des particules avec cet algorithme, l'utilisateur devra traiter l'image pour éliminer un maximum de bruit de fond (utilisation de filtres, modification du contraste/luminosité, sélection des contours, application d'un \textcolor{blue}{threshold}).
 \subsubsection{Difference of Gaussian}
 La différence de Gauss est une technique qui consiste en la soustraction d'une version floutée de l'image d'origine à une autre version moins floutée de cette même image.\\
-Ici, l'utilisateur doit entrer les valeurs de \textbf{sigma1} et \textbf{sigma2} qui vont être  utilisées pour appliquer les filtres gaussiens.
+Ici, l'utilisateur doit entrer les valeurs de \textbf{sigma1} et \textbf{sigma2} qui vont être \textcolor{blue}{utilisées} pour appliquer les filtres gaussiens.
 \subsubsection{Dilate Difference}
 Cette méthode repose sur le même principe que la différence de Gauss à ceci près que l'image d'origine n'est pas floutée mais on lui applique un certain nombre de cycles de dilatation, on obtient alors le contour des particules.\\
-Dans le cas de la sélection de cet algorithme, l'utilisateur devra entrer les  nombres de cycles de dilatation qu'il souhaite appliquer(\textbf{iteration1, iteration2}).
+Dans le cas de la sélection de cet \textcolor{blue}{algorithme}, l'utilisateur devra entrer les \textcolor{blue}{nombres} de cycles de dilatation qu'il souhaite appliquer(\textbf{iteration1, iteration2}).
 \section{Paramètres de sortie}
 Lorsque l'utilisateur a choisi un algorithme et l'a appliqué au stack, le plugin renvoie un fichier \emph{.csv} qui contient les coordonnées (\emph{x} et \emph{y}) des particules  sélectionnées, ainsi que leur position dans le stack (\emph{slice}).\\
-Si l'utilisateur en fait la demande, un stack contenant autant d'images que de particules sélectionnées est créé. 
+Si l'utilisateur en fait la demande, un stack contenant toutes les particules sélectionnées (une par slice) est créé.
 \section{Les classes}
-Le programme est divisé en seize classes distinctes:
+Le programme est divisé en seize classes \textcolor{blue}{distinctes}:
 \begin{itemize}
 \item Une première partie regroupe six classes qui permettent de gérer l'interface graphique
 \item Une seconde partie regroupe les algorithmes de piquage, elle est composée de quatre classes
-\item La classe \texttt{AlgoFactory} sert de pivot au programme en fonction du choix d'algorithme de l'utilisateur (adaptation de l'interface et algorithme de piquage).
-\item La classe \texttt{Attributes} est un singleton (instanciable qu'une seule et unique fois) et contient tous les paramètres à entrer par l'utilisateur pour faire fonctionner les algorithmes
-\item La classe \texttt{Cropper} est une fonction subsidiaire du piquage permettant de créer un stack dans lequel chaque image contient une particule piquée (si l'utilisateur le demande).
-\item La classe \texttt{FFTMath} contient la méthode permettant de faire la Corrélation d'images. 
-\item Les classes \texttt{About} et \texttt{InfoHelp} contiennent des informations et une aide sur l'utilisation du plugin.
+\item La classe \textcolor{blue}{AlgoFactory} permet à l'utilisateur de choisir l'algorithme qu'il souhaite utiliser
+\item La classe Attributs est un singleton (instanciable qu'une seule et unique fois) et contient tous les paramètres à entrer par l'utilisateur pour faire fonctionner les algorithmes
+\item La classe Cropper est un peu à part. En effet, elle permet, si l'utilisateur en fait la demande, de créer un stack dans lequel chaque image contient une particule piquée.
+\item La classe FFTMath contient la méthode permettant de faire la Corrélation d'images. 
+\item Les classes About et InfoHelpViewerPickPlug contiennent des informations et une aide sur l'utilisation du plugin.
 \end{itemize}
 \subsection{Les classes de l'interfaces}
-La classe \texttt{Pick\_EM} fait le lien entre \imj ~et la classe \texttt{PickFrame} qui est une JFrame, elle permet de créer l'interface graphique.\\
-Vient ensuite la classe \texttt{PickPanel} qui permet d'adapter l'interface en fonction de l'algorithme. En découlent \texttt{PanelDilateDiff}, \texttt{PanelDoG} et \texttt{PanelImCorr} pour leurs algorithmes respectifs (Dilate Difference, Difference Of Gaussian et Image Correlation).
+La classe Pick\_EM fait le lien entre \imj ~et la classe PickFrame qui est une JFrame, elle permet de créer l'interface graphique.\\
+Vient ensuite la classe PickPanel qui permet de gérer le panneau d'affichage qui change pour chaque algorithme. En découlent PanelDilateDiff, PanelDoG et PanelImCorr pour les algorithmes DilateDifference, DifferenceOfGaussian et ImageCorrelation respectivement.
 \subsection{Les classes des algorithmes}
-La classe \texttt{Picker} est utilisée pour appeler les algorithmes. Les algorithmes étant \texttt{DialteDiff}, \texttt{DoG} et \texttt{ImCorr}.
+La classe Picker est utilisée pour appeler les algorithmes. Les algorithmes étant DialteDiff, DoG et ImCorr.
 \end{document}

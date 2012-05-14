@@ -1,25 +1,11 @@
-/*
-Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+//add Licence GPL and description of the plugin and his authors
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/
 import java.util.Hashtable;
 import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
+import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
@@ -32,29 +18,16 @@ abstract class DilateDiff implements Picker{
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();	
+	static Vector<Double> Slice=new Vector<Double>();	
 
 	DilateDiff(){}
 	
-	static void picking() {
-		ImagePlus im = WindowManager.getCurrentImage();
-		pick(im, 1);
-		xtab.removeAllElements();
-		ytab.removeAllElements();
-		slice.removeAllElements();
-		resultstable[0].removeAllElements();
-		resultstable[1].removeAllElements();
-		resultstable[2].removeAllElements();
-		IJ.run("Clear Results");
-	}
-	
-	static double[][] sliceSelection(){
+static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
-			im.setSlice(a);
 			pick(im, a);
 		}
 		//printResultTable(resultstable);
@@ -64,14 +37,9 @@ abstract class DilateDiff implements Picker{
 		double[][]array= resultConverter();
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
-				im.setSlice(a);
-				IJ.run(im, "Duplicate...", stackName);
-				ImagePlus dupli = WindowManager.getCurrentImage();
-				Cropper cropper = new Cropper(dupli, array, a);
+				Cropper cropper = new Cropper(im, array, a);
 				cropper.crop(a, stackName);
-				dupli.close();
 			}
-			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
 		}
 		return array;
 	}
@@ -98,12 +66,12 @@ abstract class DilateDiff implements Picker{
 		ImagePlus imp2= new Duplicator().run(imp1);
 		imp1.setSlice(currentslice);
 		imp2.setSlice(currentslice);
-		IJ.run(imp1, "Make Binary", "calculate");
-		IJ.run(imp2, "Make Binary", "calculate");
+		IJ.run(imp1, "Make Binary", "");
+		IJ.run(imp2, "Make Binary", "");
 		IJ.run(imp1, "Options...", it1);
-		IJ.run(imp1, "Dilate", "slice");
+		IJ.run(imp1, "Dilate", "");
 		IJ.run(imp2, "Options...", it2);
-		IJ.run(imp2, "Dilate", "slice");
+		IJ.run(imp2, "Dilate", "");
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
 		IJ.run(imp3, "Find Maxima...", noise);
@@ -131,7 +99,7 @@ abstract class DilateDiff implements Picker{
 		int count=finalresults.getCounter();
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
-			slice.add(temp);
+			Slice.add(temp);
 		}
 		
 	}
@@ -143,7 +111,7 @@ abstract class DilateDiff implements Picker{
 		Object[] tempZ = new String[arrayLength];
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
-		tempZ = slice.toArray();
+		tempZ = Slice.toArray();
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];
