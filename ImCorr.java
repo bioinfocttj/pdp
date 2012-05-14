@@ -1,6 +1,4 @@
 import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -9,9 +7,7 @@ import ij.ImagePlus;
 import ij.WindowManager;
 import ij.gui.OvalRoi;
 import ij.gui.PointRoi;
-import ij.gui.Roi;
 import ij.measure.ResultsTable;
-import ij.plugin.filter.Analyzer;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
@@ -75,14 +71,14 @@ abstract class ImCorr implements Picker {
 		String rInc = hashAttributes.get("radiusInc");
 		String noiseT = hashAttributes.get("noiseTolerance");
 		double tolerance = Double.parseDouble(noiseT);
+		ResultsTable table = new ResultsTable(); //result table
+		MaximumFinder mf = new MaximumFinder();
+		boolean excludeOnEdges = false;
 		int w=image.getWidth(); //image width
 		int h=image.getHeight(); //image heigh
 		int radiusMin=Integer.parseInt(rMin); //radius min of the draw circule
 		int radiusMax=Integer.parseInt(rMax); //radius max of the draw circule
 		int radiusInc=Integer.parseInt(rInc); //radius incrementation
-		ResultsTable table = new ResultsTable(); //result table
-		boolean excludeOnEdges = false;
-		MaximumFinder mf = new MaximumFinder();
 		//creation of an image which contains a circle with different diameters
 		image.setSlice(currentslice);
 		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){

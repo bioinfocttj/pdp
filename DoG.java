@@ -15,6 +15,7 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import java.awt.Polygon;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -26,6 +27,8 @@ import ij.measure.ResultsTable;
 import ij.plugin.Duplicator;
 import ij.plugin.ImageCalculator;
 import ij.plugin.filter.Analyzer;
+import ij.plugin.filter.MaximumFinder;
+import ij.process.ImageProcessor;
 
 abstract class DoG implements Picker {
 
@@ -82,15 +85,18 @@ abstract class DoG implements Picker {
 	public static void pick(ImagePlus imp, int currentslice){
 		
 		ImageCalculator ic;
-		ResultsTable table;
-		int counter=0;
+		ResultsTable table = new ResultsTable();
+		int counter;
 		int[] xpoints;
 		int[] ypoints;
+		MaximumFinder mf = new MaximumFinder();
+		boolean excludeOnEdges = false;
 		
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String sigma1 = hashAttributes.get("sigma1");
 		String sigma2 = hashAttributes.get("sigma2");
 		String noiseT = hashAttributes.get("noiseTolerance");
+		double tolerance = Double.parseDouble(noiseT);
 		
 		imp.setSlice(currentslice);
 		ImagePlus imp1 = new Duplicator().run(imp);
@@ -99,7 +105,6 @@ abstract class DoG implements Picker {
 		
 		String si1 = "sigma=" + sigma1;
 		String si2 = "sigma=" + sigma2;
-		String noise = "noise=" + noiseT+" output=List";
 
 		imp1.setSlice(currentslice);
 		IJ.run(imp1, "Gaussian Blur...", si1);
@@ -107,11 +112,23 @@ abstract class DoG implements Picker {
 		IJ.run(imp2, "Gaussian Blur...", si2);
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
-		//imp3.show();
 		WindowManager.setTempCurrentImage(imp3);
-		IJ.run(imp3, "Find Maxima...", noise);
-		table = Analyzer.getResultsTable();
-		counter = table.getCounter();
+		
+
+		ImageProcessor ip3 = imp3.getProcessor();
+		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
+		int[] xArray = points.xpoints;
+		int[] yArray = points.ypoints;
+		for (int i=0; i<xArray.length; i++){
+			table.incrementCounter();
+			double tempx=(double)xArray[i];
+			double tempy=(double)yArray[i];
+			int pxValue= (int) ip3.getPixelValue(xArray[i],yArray[i]);
+			table.addValue("X",tempx);
+			table.addValue("Y",tempy);
+			table.addValue("Slice",currentslice);
+		}
+		counter=table.getCounter();
 		xpoints = new int[counter];
 		ypoints = new int [counter];
 		for (int i=0; i<counter; i++){
@@ -119,7 +136,6 @@ abstract class DoG implements Picker {
 			double y = table.getValue("Y",i);
 			int xx = (int) x;
 			int yy = (int) y;
-			//IJ.showMessage("x="+x+",y="+y);
 			xpoints[i] = xx;
 			ypoints[i] = yy;
 			xtab.add(x);
@@ -128,18 +144,11 @@ abstract class DoG implements Picker {
 			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
 		
-		//imp.show();
-		
-
-		//IJ.run("Clear Results");
-		IJ.run("Set Measurements...", " centroid stack redirect=None decimal=3");
-		IJ.run("Measure");
-		
-		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
-		int count=finalresults.getCounter();
+		//ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
+		//int count=finalresults.getCounter();
 		//System.out.println(count);
-		for(int i=0;i<count;i++){
-			double temp = finalresults.getValue("Slice", i);
+		for(int i=0;i<counter;i++){
+			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
 		resultstable[0]= xtab;
