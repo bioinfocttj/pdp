@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -17,6 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */ 
 import ij.IJ;
+import ij.gui.ProgressBar;
 import ij.process.*;
 
 import java.awt.*;
@@ -147,6 +147,7 @@ public class PickFrame extends JFrame implements ActionListener {
 		
 	/*Listens to the combo box. */
 	public void actionPerformed(ActionEvent e) {
+		
 		String command = e.getActionCommand();
 		if (command.equals("comboBoxChanged")){
 			JComboBox cb = (JComboBox)e.getSource();
@@ -170,13 +171,14 @@ public class PickFrame extends JFrame implements ActionListener {
 			if (algo.equals("Difference_of_Gaussian")){
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
+				IJ.showMessage("progressabr");
 				double[][] coordXYZ = DoG.sliceSelection();
 				ToCSV.generateCsvFile("dog.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Image_Correlation")){
 				Attributes.getInstance();
-				PanelImCorr.setAttribute();
+				PanelImCorr.setAttributes();
 				double[][] coordXYZ = ImCorr.sliceSelection();
 				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
 			}
@@ -199,9 +201,8 @@ public class PickFrame extends JFrame implements ActionListener {
 
 			else if (algo.equals("Image_Correlation")){
 				Attributes.getInstance();
-				PanelImCorr.setAttribute();
-				double[][] coordXYZ = ImCorr.sliceSelection();
-				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
+				PanelImCorr.setAttributes();
+				ImCorr.picking();
 			}
 
 			else if (algo.equals("Dilate_Difference")){

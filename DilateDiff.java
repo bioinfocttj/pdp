@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -99,12 +98,12 @@ abstract class DilateDiff implements Picker{
 		ImagePlus imp2= new Duplicator().run(imp1);
 		imp1.setSlice(currentslice);
 		imp2.setSlice(currentslice);
-		IJ.run(imp1, "Make Binary", "");
-		IJ.run(imp2, "Make Binary", "");
+		IJ.run(imp1, "Make Binary", "calculate");
+		IJ.run(imp2, "Make Binary", "calculate");
 		IJ.run(imp1, "Options...", it1);
-		IJ.run(imp1, "Dilate", "");
+		IJ.run(imp1, "Dilate", "slice");
 		IJ.run(imp2, "Options...", it2);
-		IJ.run(imp2, "Dilate", "");
+		IJ.run(imp2, "Dilate", "slice");
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
 		IJ.run(imp3, "Find Maxima...", noise);

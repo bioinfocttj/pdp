@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -70,7 +69,7 @@ class PanelDoG extends PickPanel {
 		debugCropPanel = new JPanel();
 		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions 
-		helpImage = new JLabel(" You need to open a DM3-Image or a stack ", JLabel.CENTER);
+		helpImage = new JLabel(" You need to open a DM3-Image or a stack.", JLabel.CENTER);
 		orderS1 = new JLabel(setpointS1);
 		orderS2 = new JLabel(setpointS2);
 		orderWidth = new JLabel(setpointWidth);

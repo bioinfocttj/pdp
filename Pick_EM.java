@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 

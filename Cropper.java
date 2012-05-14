@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -22,6 +21,7 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
+import ij.gui.ProgressBar;
 import ij.plugin.Duplicator;
 
 public class Cropper {
@@ -111,10 +111,11 @@ public class Cropper {
 				}
 			}
 		}
-		//IJ.showProgress(counter);
+		IJ.showProgress(counter);
 		//String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
 		//IJ.run(imp, "Images to Stack", cropTitle);
 		//IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
 		//IJ.showMessage("progressbar");
+		
 	}
 }

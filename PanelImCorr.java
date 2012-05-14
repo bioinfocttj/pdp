@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -110,7 +109,7 @@ class PanelImCorr extends PickPanel {
 		return panel2;
 	}
 	
-	public static void setAttribute(){
+	public static void setAttributes(){
 		// Getting data entered by user
 		widthCrop = cropWidthJTF.getText();
 		toleranceNoise = noiseToleranceJTF.getText();

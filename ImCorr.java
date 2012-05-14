@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -33,9 +32,21 @@ abstract class ImCorr implements Picker {
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> Slice=new Vector<Double>();
+	static Vector<Double> slice=new Vector<Double>();
 	
 	ImCorr(){
+	}
+	
+	static void picking() {
+		ImagePlus im = WindowManager.getCurrentImage();
+		pick(im, 1);
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
+		resultstable[0].removeAllElements();
+		resultstable[1].removeAllElements();
+		resultstable[2].removeAllElements();
+		IJ.run("Clear Results");
 	}
 	
 	static double[][] sliceSelection(){
@@ -44,23 +55,31 @@ abstract class ImCorr implements Picker {
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
+			im.setSlice(a);
 			pick(im, a);
 		}
+		//cast the vector in an array so as to send it to the cropper
+		//resultConverter();
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
 		if (cropperMode) {
 			for (int a=1;a<=nbslice;a++){
-				Cropper cropper = new Cropper(im, array, a);
+				im.setSlice(a);
+				IJ.run(im, "Duplicate...", stackName);
+				ImagePlus dupli = WindowManager.getCurrentImage();
+				Cropper cropper = new Cropper(dupli, array, a);
 				cropper.crop(a, stackName);
+				dupli.close();
 			}
+			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
 		}
 		return array;
 	}
 
-	public static void /*double[][]*/ pick(ImagePlus image,int currentslice){
-		//IJ.showMessage("Picker.pick ImCorr");
+	public static void pick(ImagePlus image,int currentslice){
+		
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String rMin = hashAttributes.get("radiusMin");
 		String rMax = hashAttributes.get("radiusMax");
@@ -178,12 +197,12 @@ abstract class ImCorr implements Picker {
 
 		for(int i=0;i<counter;i++){
 			double temp = finalresults.getValue("Slice", i);
-			Slice.add(temp);
+			slice.add(temp);
 		}
 		
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
-		resultstable[2] = Slice;
+		resultstable[2] = slice;
 		//printResultTable(resultstable);
 		IJ.run("Clear Results");
 		return resultstable;
@@ -196,7 +215,7 @@ abstract class ImCorr implements Picker {
 		Object[] tempZ = new String[arrayLength];
 		tempX = xtab.toArray();
 		tempY = ytab.toArray();
-		tempZ = Slice.toArray();
+		tempZ = slice.toArray();
 		double[] xArray = new double[arrayLength];
 		double[] yArray = new double[arrayLength];
 		double[] zArray = new double[arrayLength];
@@ -218,7 +237,7 @@ abstract class ImCorr implements Picker {
 		return coordinates;
 	}
 	
-	
+	// methode pour printer le tableau resultstable
 	
 	/*static void printResultTable(Vector[] resulttable){
 		int zero = resulttable[0].size();

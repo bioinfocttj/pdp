@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -53,7 +52,6 @@ abstract class DoG implements Picker {
 	static double[][] sliceSelection(){
 		
 		ImagePlus im = WindowManager.getCurrentImage();
-		im.show();
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
@@ -82,7 +80,6 @@ abstract class DoG implements Picker {
 	}
 
 	public static void pick(ImagePlus imp, int currentslice){
-		//IJ.showMessage("Picker.pick DoG");
 		
 		ImageCalculator ic;
 		ResultsTable table;
@@ -131,7 +128,7 @@ abstract class DoG implements Picker {
 			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
 		
-		imp.show();
+		//imp.show();
 		
 
 		//IJ.run("Clear Results");
