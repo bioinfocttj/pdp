@@ -29,7 +29,6 @@ import ij.plugin.filter.Analyzer;
 
 abstract class DilateDiff implements Picker{
 	
-	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();	
@@ -42,10 +41,6 @@ abstract class DilateDiff implements Picker{
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		resultstable[0].removeAllElements();
-		resultstable[1].removeAllElements();
-		resultstable[2].removeAllElements();
-		IJ.run("Clear Results");
 	}
 	
 	static double[][] sliceSelection(){
@@ -57,7 +52,6 @@ abstract class DilateDiff implements Picker{
 			im.setSlice(a);
 			pick(im, a);
 		}
-		//printResultTable(resultstable);
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
@@ -127,7 +121,7 @@ abstract class DilateDiff implements Picker{
 		IJ.selectWindow("Results");
 		IJ.run("Clear Results");
 		IJ.run("Measure");
-		ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
+		ResultsTable finalresults = Analyzer.getResultsTable();//table with x,y and slice
 		int count=finalresults.getCounter();
 		for(int i=0;i<count;i++){
 			double temp = finalresults.getValue("Slice", i);
@@ -165,18 +159,16 @@ abstract class DilateDiff implements Picker{
 		return coordinates;
 	}
 	
-	
-	
-	/*static void printResultTable(Vector[] resulttable){
-		int zero = resulttable[0].size();
-		int un = resulttable[0].size();
-		int deux = resulttable[0].size();
+	/*static void printResultTable(double[][] resultstable){
+		int zero = resultstable[0].length;
+		int un = resultstable[1].length;
+		int deux = resultstable[2].length;
 		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
 		IJ.showMessage(longueurs);
-		for (int i=0;i<resulttable[1].size();i++){
-			for (int j=0;j<resulttable.length;j++){
+		for (int i=0;i<resultstable.length;i++){
+			for (int j=1;j<resultstable.length;j++){
 				System.out.println("lala");
-				System.out.print(resulttable[j]);
+				System.out.print(resultstable[j]);
 				System.out.println("\n");
 			}
 		}
