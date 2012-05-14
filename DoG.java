@@ -26,7 +26,6 @@ import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
 import ij.plugin.Duplicator;
 import ij.plugin.ImageCalculator;
-import ij.plugin.filter.Analyzer;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
@@ -62,7 +61,6 @@ abstract class DoG implements Picker {
 			pick(im,a);
 		}
 		//cast the vector in an array so as to send it to the cropper
-		//resultConverter();
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
@@ -123,7 +121,6 @@ abstract class DoG implements Picker {
 			table.incrementCounter();
 			double tempx=(double)xArray[i];
 			double tempy=(double)yArray[i];
-			int pxValue= (int) ip3.getPixelValue(xArray[i],yArray[i]);
 			table.addValue("X",tempx);
 			table.addValue("Y",tempy);
 			table.addValue("Slice",currentslice);
@@ -143,10 +140,6 @@ abstract class DoG implements Picker {
 			imp3.close();
 			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
-		
-		//ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
-		//int count=finalresults.getCounter();
-		//System.out.println(count);
 		for(int i=0;i<counter;i++){
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
@@ -154,8 +147,6 @@ abstract class DoG implements Picker {
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
 		resultstable[2] = slice;
-		//printResultTable(resultstable);
-		//return resultstable;
 	}
 	
 	static double[][] resultConverter(){
@@ -176,9 +167,6 @@ abstract class DoG implements Picker {
 			yArray[i] = Double.parseDouble(temp);
 			temp = String.valueOf(tempZ[i]);
 			zArray[i] = Double.parseDouble(temp);
-			//xArray[i] = Double.parseDouble(tempX[i]);
-			//yArray[i] = Double.parseDouble(tempY[i]);
-			//zArray[i] = Double.parseDouble(tempZ[i]);
 		}
 		double[][] coordinates = new double[3][arrayLength];
 		coordinates[0]=xArray;
@@ -186,21 +174,4 @@ abstract class DoG implements Picker {
 		coordinates[2]=zArray;
 		return coordinates;
 	}
-	
-	
-	
-	/*static void printResultTable(Vector[] resulttable){
-		int zero = resulttable[0].size();
-		int un = resulttable[0].size();
-		int deux = resulttable[0].size();
-		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
-		IJ.showMessage(longueurs);
-		for (int i=0;i<resulttable[1].size();i++){
-			for (int j=0;j<resulttable.length;j++){
-				System.out.println("lala");
-				System.out.print(resulttable[j]);
-				System.out.println("\n");
-			}
-		}
-	}*/
 }

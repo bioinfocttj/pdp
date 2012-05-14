@@ -15,6 +15,7 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import java.awt.Polygon;
 import java.util.Hashtable;
 import java.util.Vector;
 
@@ -25,7 +26,8 @@ import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
 import ij.plugin.Duplicator;
 import ij.plugin.ImageCalculator;
-import ij.plugin.filter.Analyzer;
+import ij.plugin.filter.MaximumFinder;
+import ij.process.ImageProcessor;
 
 abstract class DilateDiff implements Picker{
 	
@@ -70,13 +72,14 @@ abstract class DilateDiff implements Picker{
 		return array;
 	}
 	static void pick(ImagePlus image, int currentslice){
-		//IJ.showMessage("Picker.pick Dilatation Difference ");
 		
 		ImageCalculator ic;
-		ResultsTable table;
 		int counter=0;
 		int[] xpoints;
 		int[] ypoints;
+		ResultsTable table = new ResultsTable(); //result table
+		MaximumFinder mf = new MaximumFinder();
+		boolean excludeOnEdges = false;
 
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String iteration1 = hashAttributes.get("iteration1");
@@ -85,7 +88,7 @@ abstract class DilateDiff implements Picker{
 		String it1 = "iterations=" + iteration1+" count=1 edm=Overwrite do=Nothing";
 		String it2 = "iterations=" + iteration2+" count=1 edm=Overwrite do=Nothing";
 		String noiseT = hashAttributes.get("noiseTolerance");
-		String noise = "noise=" + noiseT+" output=List";
+		double tolerance = Double.parseDouble(noiseT);
 		
 		ImagePlus imp = WindowManager.getCurrentImage();
 		ImagePlus imp1=new Duplicator().run(imp);
@@ -100,8 +103,19 @@ abstract class DilateDiff implements Picker{
 		IJ.run(imp2, "Dilate", "slice");
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
-		IJ.run(imp3, "Find Maxima...", noise);
-		table = Analyzer.getResultsTable();
+		ImageProcessor ip3 = imp3.getProcessor();
+		ip3.invert();
+		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
+		int[] xArray = points.xpoints;
+		int[] yArray = points.ypoints;
+		for (int i=0; i<xArray.length; i++){
+			table.incrementCounter();
+			double tempx=(double)xArray[i];
+			double tempy=(double)yArray[i];
+			table.addValue("X",tempx);
+			table.addValue("Y",tempy);
+			table.addValue("Slice",currentslice);
+		}
 		counter=table.getCounter();
 		xpoints = new int[counter];
 		ypoints = new int [counter];
@@ -117,14 +131,8 @@ abstract class DilateDiff implements Picker{
 			ytab.add(y);
 			imp.setRoi(new PointRoi(xpoints,ypoints,counter));
 		}
-		imp.show();
-		IJ.selectWindow("Results");
-		IJ.run("Clear Results");
-		IJ.run("Measure");
-		ResultsTable finalresults = Analyzer.getResultsTable();//table with x,y and slice
-		int count=finalresults.getCounter();
-		for(int i=0;i<count;i++){
-			double temp = finalresults.getValue("Slice", i);
+		for(int i=0;i<counter;i++){
+			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
 		
@@ -148,9 +156,6 @@ abstract class DilateDiff implements Picker{
 			yArray[i] = Double.parseDouble(temp);
 			temp = String.valueOf(tempZ[i]);
 			zArray[i] = Double.parseDouble(temp);
-			//xArray[i] = Double.parseDouble(tempX[i]);
-			//yArray[i] = Double.parseDouble(tempY[i]);
-			//zArray[i] = Double.parseDouble(tempZ[i]);
 		}
 		double[][] coordinates = new double[3][arrayLength];
 		coordinates[0]=xArray;
@@ -158,21 +163,5 @@ abstract class DilateDiff implements Picker{
 		coordinates[2]=zArray;
 		return coordinates;
 	}
-	
-	/*static void printResultTable(double[][] resultstable){
-		int zero = resultstable[0].length;
-		int un = resultstable[1].length;
-		int deux = resultstable[2].length;
-		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
-		IJ.showMessage(longueurs);
-		for (int i=0;i<resultstable.length;i++){
-			for (int j=1;j<resultstable.length;j++){
-				System.out.println("lala");
-				System.out.print(resultstable[j]);
-				System.out.println("\n");
-			}
-		}
-	}*/
-
 }
 
