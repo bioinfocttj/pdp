@@ -41,7 +41,9 @@ abstract class DoG implements Picker {
 	
 	static void picking() {
 		ImagePlus im = WindowManager.getCurrentImage();
-		pick(im, 1);
+		int current=im.getSlice();
+		System.out.println(current);
+		pick(im, current);
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
