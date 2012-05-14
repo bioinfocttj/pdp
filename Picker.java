@@ -1,3 +1,5 @@
+
+
 /*
 Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
 
@@ -16,6 +18,5 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */ 
 public interface Picker {
-	abstract void pick();
-
+	
 }
