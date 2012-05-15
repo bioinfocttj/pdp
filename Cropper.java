@@ -39,18 +39,25 @@ public class Cropper {
 	private static int impWidth;
 	private static int impHeight;
 	
-	public Cropper(ImagePlus im, double[][] coords, int currentSlice){
-		// coords = tableau de 3 vecteurs de doubles
-		Cropper.imp = im;
+	public Cropper(ImagePlus im, double[][] coords){
 		coordinates = coords;
-		//img = IJ.getImage();
 		impWidth = im.getWidth();
 		impHeight = im.getHeight();
 		Hashtable<String, String> hash = Attributes.getAttributes();
 		widthCrop = Integer.parseInt(hash.get("cropWidth"));
 		ims = new ImageStack(widthCrop,widthCrop);
-		//crop();
-		
+		String stackName = im.getTitle();
+		int nbslice=im.getStackSize();
+		ImagePlus dupli;
+		for (int a=1;a<=nbslice;a++){
+			im.setSlice(a);
+			IJ.run(im, "Duplicate...", stackName);
+			dupli = WindowManager.getCurrentImage();
+			imp = dupli;
+			crop(a,stackName);
+			imp.close();
+		}
+		showCrop();
 	}
 
 	public Cropper(){
@@ -69,20 +76,16 @@ public class Cropper {
 	}
 
 	public void crop(int currentSlice, String stackName) {
-		//imp.show();
 		String stackTitle = (String) "title=" + stackName;
 		boolean debug = false;
 		//ResultsTable table;
 		//ResultsTable table = Analyzer.getResultsTable();
 		int counter = coordinates[0].length;
 		for (int i= 0; i<counter ;i++){
-		
 			// Getting X values
 			double posx = (double) coordinates[0][i];
-			
 			// Getting Y values
 			double posy = (double) coordinates[1][i];
-			
 			// Getting Z (slices) values
 			double posz = (double) coordinates[2][i];
 
@@ -110,37 +113,21 @@ public class Cropper {
 				//if ((x > 0) || (x < imp.getHeight()) || (y < imp.getWidth()) || (y > 0)){
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-					//IJ.run(imp, "Duplicate...", stackTitle);
 					Roi currentRoi = imp.getRoi();
-					img2 = imp.duplicate();
+					img2 = new Duplicator().run(imp);
 					Calibration cal = img2.getCalibration();
 					cal.xOrigin -= currentRoi.getBounds().x;
 					cal.yOrigin -= currentRoi.getBounds().y;
-					
-					//img2 = new Duplicator().run(imp);
-					//IJ.showMessage("pif");
-					//img2.show();
-					//IJ.showMessage("paf");
 					ImageProcessor imp2=img2.getProcessor();
 					ims.addSlice(imp2);
-					
-					//img2.show();
 				}
 			}
-		if (ims.getSize()!=0){
-			imgR = new ImagePlus("Results", ims);
+			if (ims.getSize()!=0){
+				imgR = new ImagePlus("Results", ims);
+			}
 		}
-		}
-		//IJ.showProgress(counter);
-		//String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
-		//IJ.run(imp, "Images to Stack", cropTitle);
-		//IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
-		//IJ.showMessage("progressbar");
-		
 	}
-
 	public void showCrop() {
 		imgR.show();
-		
 	}
 }

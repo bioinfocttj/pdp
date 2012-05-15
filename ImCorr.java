@@ -41,7 +41,6 @@ abstract class ImCorr implements Picker {
 	static double[][] sliceSelection(){
 		
 		ImagePlus im=WindowManager.getCurrentImage();
-		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			im.setSlice(a);
@@ -51,18 +50,8 @@ abstract class ImCorr implements Picker {
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
-		
 		if (cropperMode) {
-			for (int a=1;a<=nbslice;a++){
-				im.setSlice(a);
-				IJ.run(im, "Duplicate...", stackName);
-				ImagePlus dupli = WindowManager.getCurrentImage();
-				cropper = new Cropper(dupli, array, a);
-				cropper.crop(a, stackName);
-				dupli.close();
-			}
-			//IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
-			cropper.showCrop();
+			cropper = new Cropper(im, array);
 		}
 		return array;
 	}
