@@ -112,7 +112,7 @@ public class PickFrame extends JFrame implements ActionListener {
 
 		previewButton = makeButton("Preview");
 		applyButton = makeButton("Apply");
-		saveButton = makeButton("Save Results");
+		saveButton = makeButton("Show Results");
 		helpInfoButton = makeButton("Help & Info");
 		helpInfoButton.addActionListener(new InfoHelp());
 		
@@ -208,20 +208,18 @@ public class PickFrame extends JFrame implements ActionListener {
 				DilateDiff.picking();
 			}
 		}
-		else if (command.equals("Save Results")){
+		else if (command.equals("Show Results")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
-				System.out.println(coordXYZ[0].length);
-				IJ.showMessage("sauvegarde dog");
-				ToCSV.generateCsvFile("dog.csv", coordXYZ);
+				ToCSV.generateCsvFile(coordXYZ);
 			}
 
 			else if (algo.equals("Image_Correlation")){
-				//ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
+				ToCSV.generateCsvFile(coordXYZ);
 			}
 
 			else if (algo.equals("Dilate_Difference")){
-				//ToCSV.generateCsvFile("dil.csv", coordXYZ);
+				ToCSV.generateCsvFile(coordXYZ);
 			}
 		}
 		
