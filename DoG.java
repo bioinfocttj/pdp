@@ -36,7 +36,7 @@ abstract class DoG implements Picker {
 	static Vector<Double> xtab = new Vector<Double>();
 	static Vector<Double> ytab = new Vector<Double>();
 	static Vector<Double> slice = new Vector<Double>();
-
+	private static Cropper cropper;
 	DoG() {}
 
 	static void picking() {
@@ -73,11 +73,12 @@ abstract class DoG implements Picker {
 				im.setSlice(a);
 				IJ.run(im, "Duplicate...", stackName);
 				ImagePlus dupli = WindowManager.getCurrentImage();
-				Cropper cropper = new Cropper(dupli, array, a);
+				cropper = new Cropper(dupli, array, a);
 				cropper.crop(a, stackName);
 				dupli.close();
 			}
-			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
+			//IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
+			cropper.showCrop();
 			IJ.showStatus("cropper end");
 		}
 		IJ.showStatus("end picking");

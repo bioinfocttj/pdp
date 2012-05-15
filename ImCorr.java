@@ -20,6 +20,7 @@ abstract class ImCorr implements Picker {
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();
 	private static double z;
+	private static Cropper cropper;
 	
 	ImCorr(){
 	}
@@ -56,11 +57,12 @@ abstract class ImCorr implements Picker {
 				im.setSlice(a);
 				IJ.run(im, "Duplicate...", stackName);
 				ImagePlus dupli = WindowManager.getCurrentImage();
-				Cropper cropper = new Cropper(dupli, array, a);
+				cropper = new Cropper(dupli, array, a);
 				cropper.crop(a, stackName);
 				dupli.close();
 			}
-			IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
+			//IJ.run(im, "Images to Stack", "name=stack title=[DUP] use");
+			cropper.showCrop();
 		}
 		return array;
 	}

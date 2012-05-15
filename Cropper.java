@@ -22,13 +22,17 @@ import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
 import ij.gui.ProgressBar;
+import ij.gui.Roi;
+import ij.measure.Calibration;
 import ij.plugin.Duplicator;
+import ij.process.ImageProcessor;
 
 public class Cropper {
 	
 	private static ImagePlus imp;
 	private static ImagePlus img2;
-	
+	private static ImageStack ims;
+	private static ImagePlus imgR;
 	private static double[][] coordinates;
 	
 	private static int widthCrop;
@@ -44,6 +48,7 @@ public class Cropper {
 		impHeight = im.getHeight();
 		Hashtable<String, String> hash = Attributes.getAttributes();
 		widthCrop = Integer.parseInt(hash.get("cropWidth"));
+		ims = new ImageStack(widthCrop,widthCrop);
 		//crop();
 		
 	}
@@ -106,16 +111,36 @@ public class Cropper {
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
 					//IJ.run(imp, "Duplicate...", stackTitle);
-					img2 = new Duplicator().run(imp);
-					img2.show();
+					Roi currentRoi = imp.getRoi();
+					img2 = imp.duplicate();
+					Calibration cal = img2.getCalibration();
+					cal.xOrigin -= currentRoi.getBounds().x;
+					cal.yOrigin -= currentRoi.getBounds().y;
+					
+					//img2 = new Duplicator().run(imp);
+					//IJ.showMessage("pif");
+					//img2.show();
+					//IJ.showMessage("paf");
+					ImageProcessor imp2=img2.getProcessor();
+					ims.addSlice(imp2);
+					
+					//img2.show();
 				}
 			}
+		if (ims.getSize()!=0){
+			imgR = new ImagePlus("Results", ims);
+		}
 		}
 		//IJ.showProgress(counter);
 		//String cropTitle = (String) "name=stack title=[" + stackName + "] use"  ;
 		//IJ.run(imp, "Images to Stack", cropTitle);
 		//IJ.run(imp, "Images to Stack", "name=stack title=[DUP] use");
 		//IJ.showMessage("progressbar");
+		
+	}
+
+	public void showCrop() {
+		imgR.show();
 		
 	}
 }
