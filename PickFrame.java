@@ -64,46 +64,11 @@ public class PickFrame extends JFrame implements ActionListener {
 		public GUIShower(JFrame jFrame) {
 			this.jFrame = jFrame;
 		}
-		public void run(String args) {
-			String st = Macro.getOptions();
-			IJ.showMessage(st);
-			//st = "display_mode=5 axes=0 markers=0 z-aspect=4 lut=0 scale=0.75 dist=-300 depth=6 thresh=80 angle_x=115 angle_z=41";
-			// read macro parameters
-			if (st != null) {
-				StringTokenizer ex1; // Declare StringTokenizer Objects
-				ex1 = new StringTokenizer(st); //Split on Space (default)
-				
-				while (ex1.hasMoreTokens()) {
-					String str = ex1.nextToken();
-					IJ.showMessage(str);
-					/*
-					for (int j = 0; j<params.length; j++) {
-						String pattern = params[j];
-						if (str.lastIndexOf(pattern) > -1) { 
-							int pos = str.lastIndexOf(pattern) + pattern.length();
-							paramVals[j] = Float.parseFloat(str.substring(pos));
-							//IJ.log("" + params[j] + ": " + paramVals[j]); 
-						}
-					}
-					*/
-				}
-			}
-			/*else{
-				jFrame.pack();
-				jFrame.setLocation(1000, 200);
-				jFrame.setVisible(true);
-				jFrame.setResizable(false);
-			}*/
-		}
-		@Override
 		public void run() {
-			String st = Macro.getOptions();
-			IJ.showMessage("option");
 			jFrame.pack();
 			jFrame.setLocation(1000, 200);
 			jFrame.setVisible(true);
 			jFrame.setResizable(false);
-			// TODO Auto-generated method stub
 			
 		}
 	}

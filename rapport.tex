@@ -38,6 +38,7 @@
 \newcommand{\imj}{ImageJ}
 
 \begin{abstract}
+
 Ce rapport traite de la création d'un plugin \imj ~en langage \java ~pour le piquage automatique de particules
 sur les images de microscopie électronique. 
 Il aborde notamment la création de l'interface utilisateur, 
@@ -45,7 +46,9 @@ les méthodes de piquages choisies et implémentées ainsi que l'organisation g�
 \end{abstract}
 
 \tableofcontents
+
 \chapter*{Introduction}
+
 \addcontentsline{toc}{chapter}{Introduction} 
 Notre projet s'est déroulé au sein du laboratoire de Chimie et Biologie des Membranes et Nanoobjets de bordeaux (CBMN~\cite{cbmn:url}).
 Il s'agit d'un laboratoire de recherche public composé de douze équipes de recherche dont l'équipe \emph{Architecture des Complexes Membranaires et processus cellulaires} (ACMPC). %
@@ -65,6 +68,7 @@ Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord 
 \chapter{Analyse}
 
 \section{Contexte}
+
 \noindent
 Notre objectif était de créer et d'implémenter une plateforme mettant à disposition plusieurs méthodes de piquage automatisées des particules sur les micrographes. Les échantillons qui nous ont servi de tests étaient de deux types :%
 \begin{itemize}
@@ -87,7 +91,9 @@ En effet, il est possible de développer soi-même et assez facilement des plugi
 Cette technique est utilisée pour trouver des particules dans une image en la comparant à un modèle. Celui-ci peut \^etre obtenu soit à partir d'une structure tridimensionnelle connue, soit par sélection d'une particule servant d'exemple dans le micrographe. L'algorithme détermine la meilleure correspondance entre la cible et le modèle pour pouvoir le localiser dans l'image.%
 
 \subsection{Piquage de particules sans références}
+
 \subsubsection{Détection des bords et transformée de Hough}
+
 %$\textcolor{red}{(ref:Automatic Particle Detection Through Efficient Hough Transforms 
 %by Yuanxin Zhu, Bridget Carragher, Fabrice Mouche, and Clinton S.Potter
 %IEEE TRANSACTIONS ON MEDICAL IMAGING,VOL.22,N0.9,September 2003)}$\\
