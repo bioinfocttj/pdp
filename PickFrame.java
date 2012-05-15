@@ -46,6 +46,8 @@ public class PickFrame extends JFrame implements ActionListener {
 	private JButton saveButton;
 	JComboBox algoList;
 	
+	double[][] coordXYZ;
+	
 	public PickFrame(){
 		super("Picking Plugin");
 		initGUI();
@@ -170,22 +172,19 @@ public class PickFrame extends JFrame implements ActionListener {
 			if (algo.equals("Difference_of_Gaussian")){
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
-				double[][] coordXYZ = DoG.sliceSelection();
-				ToCSV.generateCsvFile("dog.csv", coordXYZ);
+				coordXYZ = DoG.sliceSelection();
 			}
 
 			else if (algo.equals("Image_Correlation")){
 				Attributes.getInstance();
 				PanelImCorr.setAttributes();
-				double[][] coordXYZ = ImCorr.sliceSelection();
-				ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
+				coordXYZ = ImCorr.sliceSelection();
 			}
 
 			else if (algo.equals("Dilate_Difference")){
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
-				double[][] coordXYZ = DilateDiff.sliceSelection();
-				ToCSV.generateCsvFile("dil.csv", coordXYZ);
+				coordXYZ = DilateDiff.sliceSelection();
 			}
 		}
 		
@@ -212,8 +211,9 @@ public class PickFrame extends JFrame implements ActionListener {
 		else if (command.equals("Save Results")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
+				System.out.println(coordXYZ[0].length);
 				IJ.showMessage("sauvegarde dog");
-				//ToCSV.generateCsvFile("dog.csv", coordXYZ);
+				ToCSV.generateCsvFile("dog.csv", coordXYZ);
 			}
 
 			else if (algo.equals("Image_Correlation")){

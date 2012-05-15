@@ -14,15 +14,9 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 import ij.measure.ResultsTable;
-
-import java.io.FileWriter;
-import java.io.IOException;
  
 public class ToCSV {
 	
-	private static double[][] coordinates;
-		
-
 	static void generateCsvFile(String sFileName, double[][] coords){
 		//try {
 			
@@ -64,21 +58,23 @@ public class ToCSV {
 			writer.close();*/
 			
 			ResultsTable result = new ResultsTable(); //result table
-			for (int i=0; i<coords.length; i++){
+			int counter = coords[0].length;
+			for (int i=0; i<counter; i++){
 				// Getting X values
-				double posx = (double) coords[0][i];
+				double posx = coords[0][i];
 				
 				// Getting Y values
-				double posy = (double) coords[1][i];
+				double posy = coords[1][i];
 				
 				// Getting Z (slices) values
-				double posz = (double) coords[2][i];
+				double posz = coords[2][i];
 				
 				result.incrementCounter();
 				result.addValue("X",posx);
 				result.addValue("Y",posy);
-				result.addValue("Max",posz);
+				result.addValue("Slice",posz);
 			}
+			result.show("result");
 		//}
 		
 		/*catch(IOException e) {
