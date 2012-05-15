@@ -48,6 +48,7 @@ public class PickFrame extends JFrame implements ActionListener {
 	JButton helpInfoButton;
 	private JButton previewButton;
 	private JButton applyButton;
+	private JButton saveButton;
 	JComboBox algoList;
 	
 	public PickFrame(){
@@ -153,14 +154,18 @@ public class PickFrame extends JFrame implements ActionListener {
 
 		previewButton = makeButton("Preview");
 		applyButton = makeButton("Apply");
+		saveButton = makeButton("Save Results");
 		helpInfoButton = makeButton("Help & Info");
 		helpInfoButton.addActionListener(new InfoHelp());
+		
 		
 		//adding to Preview & Reset & Apply & Help box
 		gridbag.setConstraints(previewButton,gbc);
 		panel3.add(previewButton);
 		gridbag.setConstraints(applyButton,gbc);
 		panel3.add(applyButton);
+		gridbag.setConstraints(saveButton,gbc);
+		panel3.add(saveButton);
 		gridbag.setConstraints(helpInfoButton,gbc);
 		panel3.add(helpInfoButton);
 
@@ -251,6 +256,21 @@ public class PickFrame extends JFrame implements ActionListener {
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
 				DilateDiff.picking();
+			}
+		}
+		else if (command.equals("Save Results")){
+			String algo = (String)algoList.getSelectedItem();
+			if (algo.equals("Difference_of_Gaussian")){
+				IJ.showMessage("sauvegarde dog");
+				//ToCSV.generateCsvFile("dog.csv", coordXYZ);
+			}
+
+			else if (algo.equals("Image_Correlation")){
+				//ToCSV.generateCsvFile("imcorr.csv", coordXYZ);
+			}
+
+			else if (algo.equals("Dilate_Difference")){
+				//ToCSV.generateCsvFile("dil.csv", coordXYZ);
 			}
 		}
 		

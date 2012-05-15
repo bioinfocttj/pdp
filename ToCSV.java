@@ -15,6 +15,8 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import ij.measure.ResultsTable;
+
 import java.io.FileWriter;
 import java.io.IOException;
  
@@ -24,9 +26,9 @@ public class ToCSV {
 		
 
 	static void generateCsvFile(String sFileName, double[][] coords){
-		try {
+		//try {
 			
-			FileWriter writer = new FileWriter(sFileName);
+			/*FileWriter writer = new FileWriter(sFileName);
 			// print in the previous directory
  
 			writer.append("X");
@@ -61,11 +63,28 @@ public class ToCSV {
 			//generate whatever data you want
 			
 			writer.flush();
-			writer.close();
-		}
+			writer.close();*/
+			
+			ResultsTable result = new ResultsTable(); //result table
+			for (int i=0; i<coords.length; i++){
+				// Getting X values
+				double posx = (double) coords[0][i];
+				
+				// Getting Y values
+				double posy = (double) coords[1][i];
+				
+				// Getting Z (slices) values
+				double posz = (double) coords[2][i];
+				
+				result.incrementCounter();
+				result.addValue("X",posx);
+				result.addValue("Y",posy);
+				result.addValue("Max",posz);
+			}
+		//}
 		
-		catch(IOException e) {
+		/*catch(IOException e) {
 			e.printStackTrace();
-		} 
+		} */
 	}
 }
