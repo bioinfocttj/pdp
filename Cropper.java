@@ -88,7 +88,7 @@ public class Cropper {
 			int x = (int) (posx - (widthCrop/2));
 			int y = (int) (posy - (widthCrop/2));
 			int z = (int) posz;
-			if ( (posx - (widthCrop/2)) < 0 ) {
+			if ( x < 0 ) {
 				if (debug){
 				IJ.showMessage("x < 0");
 				}
@@ -101,20 +101,22 @@ public class Cropper {
 				if (debug){
 				IJ.showMessage("y > impWidth");}
 			}
-			else if ( (posy - (widthCrop/2)) < 0 ) {
+			else if ( y < 0 ) {
 				if (debug){
 				IJ.showMessage("y < 0");}
 			}
 			else {
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
-					Roi currentRoi = imp.getRoi();
 					img2 = new Duplicator().run(imp);
-					Calibration cal = img2.getCalibration();
-					cal.xOrigin -= currentRoi.getBounds().x;
-					cal.yOrigin -= currentRoi.getBounds().y;
 					ImageProcessor imp2=img2.getProcessor();
-					ims.addSlice(imp2);
+					String temp = Integer.toString(imp2.getHeight());
+					IJ.showMessage("widthcrop");
+					IJ.showMessage(Integer.toString(widthCrop));
+					IJ.showMessage("IP height");
+					IJ.showMessage(temp);
+					ImageProcessor impTemp = imp2.resize(widthCrop,widthCrop);
+					ims.addSlice(impTemp);
 				}
 			}
 			if (ims.getSize()!=0){

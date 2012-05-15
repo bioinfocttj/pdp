@@ -20,13 +20,13 @@ import ij.Macro;
 import ij.plugin.frame.PlugInFrame;
 /**
  * 
- * @author FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+ *@author FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
  *@version 1.0
  * 
  */
 @SuppressWarnings("serial")
 
-public class Pick_EM extends PlugInFrame {
+public final class Pick_EM extends PlugInFrame {
 	
 	private String[] params = {
 			"algo",
@@ -65,18 +65,16 @@ public class Pick_EM extends PlugInFrame {
 	
 					Hashtable<String, String> hash = Attributes.getAttributes();
 					String algo = hash.get("algo");
+					Attributes.getInstance();
 					if (algo.equals("Difference_of_Gaussian")){
-						Attributes.getInstance();
-						DoG.picking();
+						DoG.sliceSelection();
 					}
 	
 					else if (algo.equals("Image_Correlation")){
-						Attributes.getInstance();
-						ImCorr.picking();
+						ImCorr.sliceSelection();
 					}
 	
 					else if (algo.equals("Dilate_Difference")){
-						Attributes.getInstance();
 						DilateDiff.sliceSelection();
 					}
 				}
