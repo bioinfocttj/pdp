@@ -81,6 +81,7 @@ abstract class DilateDiff implements Picker{
 		String it1 = "iterations=" + iteration1+" count=1 edm=Overwrite do=Nothing";
 		String it2 = "iterations=" + iteration2+" count=1 edm=Overwrite do=Nothing";
 		String noiseT = hashAttributes.get("noiseTolerance");
+		IJ.showMessage(noiseT);
 		double tolerance = Double.parseDouble(noiseT);
 		
 		ImagePlus imp = WindowManager.getCurrentImage();

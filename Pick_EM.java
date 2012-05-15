@@ -12,6 +12,7 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+import java.util.Hashtable;
 import java.util.StringTokenizer;
 
 import ij.IJ;
@@ -27,19 +28,19 @@ import ij.plugin.frame.PlugInFrame;
 
 public class Pick_EM extends PlugInFrame {
 	
-	private String[] params   = {
-			"algo=",
-			"sig1=",
-			"sig2=",
-			"dil1=",
-			"dil2=",
-			"minrad=",
-			"maxrad=",
-			"radinc=",
-			"noise=",
-			"sqwidth=",
-			"debug=",
-			"crop="
+	private String[] params = {
+			"algo",
+			"sigma1",
+			"sigma2",
+			"iteration1",
+			"iteration2",
+			"radiusMin",
+			"radiusMax",
+			"radiusInc",
+			"noiseTolerance",
+			"cropWidth",
+			"debug",
+			"crop"
 	};
 		
 		public void run(String args) {
@@ -53,13 +54,33 @@ public class Pick_EM extends PlugInFrame {
 					for (int j = 0; j<params.length; j++) {
 						String pattern = params[j];
 						if (str.lastIndexOf(pattern) > -1) { 
-							int pos = str.lastIndexOf(pattern) + pattern.length();
+							int pos = str.lastIndexOf(pattern) + pattern.length()+1;
 							 String param = str.substring(pos);
-							// IJ.showMessage(param);
 							 Attributes.setAttributes(params[j],param);
+							 IJ.showMessage("cle");
+							 IJ.showMessage(params[j]);
+							 IJ.showMessage(param);
 						}
 					}
 				}
+				
+
+				Hashtable<String, String> hash = Attributes.getAttributes();
+				String algo = hash.get("algo");
+				/*if (algo.equals("Difference_of_Gaussian")){
+					Attributes.getInstance();
+					DoG.picking();
+				}
+
+				else if (algo.equals("Image_Correlation")){
+					Attributes.getInstance();
+					ImCorr.picking();
+				}
+
+				else if (algo.equals("Dilate_Difference")){
+					Attributes.getInstance();
+					DilateDiff.sliceSelection();
+				}*/
 			}
 			else{
 				new PickFrame();
