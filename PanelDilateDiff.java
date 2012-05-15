@@ -116,9 +116,9 @@ public class PanelDilateDiff extends PickPanel {
 		else {
 			Attributes.setAttributes("crop","false");
 		}
-		Attributes.setAttributes("iteration1", dilateIt1);
-		Attributes.setAttributes("iteration2", dilateIt2);
-		Attributes.setAttributes("cropWidth", widthCrop);
-		Attributes.setAttributes("noiseTolerance", toleranceNoise);
+		Attributes.setAttributes("iter1", dilateIt1);
+		Attributes.setAttributes("iter2", dilateIt2);
+		Attributes.setAttributes("squareWidth", widthCrop);
+		Attributes.setAttributes("noise", toleranceNoise);
 	}
 }

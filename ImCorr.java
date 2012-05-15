@@ -101,10 +101,10 @@ abstract class ImCorr implements Picker {
 		
 		z = (double) currentslice;
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String rMin = hashAttributes.get("radiusMin");
-		String rMax = hashAttributes.get("radiusMax");
-		String rInc = hashAttributes.get("radiusInc");
-		String noiseT = hashAttributes.get("noiseTolerance");
+		String rMin = hashAttributes.get("rMin");
+		String rMax = hashAttributes.get("rMax");
+		String rInc = hashAttributes.get("rInc");
+		String noiseT = hashAttributes.get("noise");
 		double tolerance = Double.parseDouble(noiseT);
 		ResultsTable table = new ResultsTable(); //result table
 		MaximumFinder mf = new MaximumFinder();

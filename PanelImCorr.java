@@ -128,11 +128,11 @@ class PanelImCorr extends PickPanel {
 		else {
 			Attributes.setAttributes("crop","false");
 		}
-		Attributes.setAttributes("radiusMin", minRadius);
-		Attributes.setAttributes("radiusMax", maxRadius);
-		Attributes.setAttributes("radiusInc", incRadius);
-		Attributes.setAttributes("cropWidth", widthCrop);
-		Attributes.setAttributes("noiseTolerance", toleranceNoise);
+		Attributes.setAttributes("rMin", minRadius);
+		Attributes.setAttributes("rMax", maxRadius);
+		Attributes.setAttributes("rInc", incRadius);
+		Attributes.setAttributes("squareWidth", widthCrop);
+		Attributes.setAttributes("noise", toleranceNoise);
 	}
 }
 

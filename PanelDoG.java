@@ -120,10 +120,10 @@ class PanelDoG extends PickPanel {
 			Attributes.setAttributes("crop","false");
 		}
 		
-		Attributes.setAttributes("sigma1",sig1);
-		Attributes.setAttributes("sigma2",sig2);
-		Attributes.setAttributes("cropWidth", widthSquare);
-		Attributes.setAttributes("noiseTolerance", toleranceNoise);
+		Attributes.setAttributes("sig1",sig1);
+		Attributes.setAttributes("sig2",sig2);
+		Attributes.setAttributes("squareWidth", widthSquare);
+		Attributes.setAttributes("noise", toleranceNoise);
 	}
 }
 

@@ -75,13 +75,12 @@ abstract class DilateDiff implements Picker{
 		boolean excludeOnEdges = false;
 
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String iteration1 = hashAttributes.get("iteration1");
-		String iteration2 = hashAttributes.get("iteration2");
+		String iteration1 = hashAttributes.get("iter1");
+		String iteration2 = hashAttributes.get("iter2");
 
 		String it1 = "iterations=" + iteration1+" count=1 edm=Overwrite do=Nothing";
 		String it2 = "iterations=" + iteration2+" count=1 edm=Overwrite do=Nothing";
-		String noiseT = hashAttributes.get("noiseTolerance");
-		IJ.showMessage(noiseT);
+		String noiseT = hashAttributes.get("noise");
 		double tolerance = Double.parseDouble(noiseT);
 		
 		ImagePlus imp = WindowManager.getCurrentImage();

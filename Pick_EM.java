@@ -30,59 +30,58 @@ public class Pick_EM extends PlugInFrame {
 	
 	private String[] params = {
 			"algo",
-			"sigma1",
-			"sigma2",
-			"iteration1",
-			"iteration2",
-			"radiusMin",
-			"radiusMax",
-			"radiusInc",
-			"noiseTolerance",
-			"cropWidth",
+			"sig1",
+			"sig2",
+			"iter1",
+			"iter2",
+			"rMin",
+			"rMax",
+			"rInc",
+			"noise",
+			"squareWidth",
 			"debug",
 			"crop"
 	};
 		
 		public void run(String args) {
-			//IJ.showMessage(args);
-			if (args != null) {
-				StringTokenizer ex1; // Declare StringTokenizer Objects
-				ex1 = new StringTokenizer(args); //Split on Space (default)
-				while (ex1.hasMoreTokens()) {
-					String str = ex1.nextToken();
-					Attributes.getInstance();
-					for (int j = 0; j<params.length; j++) {
-						String pattern = params[j];
-						if (str.lastIndexOf(pattern) > -1) { 
-							int pos = str.lastIndexOf(pattern) + pattern.length()+1;
-							 String param = str.substring(pos);
-							 Attributes.setAttributes(params[j],param);
-							 IJ.showMessage("cle");
-							 IJ.showMessage(params[j]);
-							 IJ.showMessage(param);
+			try {
+				if (args != null) {
+					
+					StringTokenizer ex1; // Declare StringTokenizer Objects
+					ex1 = new StringTokenizer(args); //Split on Space (default)
+					while (ex1.hasMoreTokens()) {
+						String str = ex1.nextToken();
+						Attributes.getInstance();
+						for (int j = 0; j<params.length; j++) {
+							String pattern = params[j];
+							if (str.lastIndexOf(pattern) > -1) { 
+								int pos = str.lastIndexOf(pattern) + pattern.length()+1;
+								 String param = str.substring(pos);
+								 Attributes.setAttributes(params[j],param);
+							}
 						}
 					}
+					
+	
+					Hashtable<String, String> hash = Attributes.getAttributes();
+					String algo = hash.get("algo");
+					if (algo.equals("Difference_of_Gaussian")){
+						Attributes.getInstance();
+						DoG.picking();
+					}
+	
+					else if (algo.equals("Image_Correlation")){
+						Attributes.getInstance();
+						ImCorr.picking();
+					}
+	
+					else if (algo.equals("Dilate_Difference")){
+						Attributes.getInstance();
+						DilateDiff.sliceSelection();
+					}
 				}
-				
-
-				Hashtable<String, String> hash = Attributes.getAttributes();
-				String algo = hash.get("algo");
-				/*if (algo.equals("Difference_of_Gaussian")){
-					Attributes.getInstance();
-					DoG.picking();
-				}
-
-				else if (algo.equals("Image_Correlation")){
-					Attributes.getInstance();
-					ImCorr.picking();
-				}
-
-				else if (algo.equals("Dilate_Difference")){
-					Attributes.getInstance();
-					DilateDiff.sliceSelection();
-				}*/
 			}
-			else{
+			catch (NullPointerException e1) {
 				new PickFrame();
 			}
 		}

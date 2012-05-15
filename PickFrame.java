@@ -209,18 +209,7 @@ public class PickFrame extends JFrame implements ActionListener {
 			}
 		}
 		else if (command.equals("Show Results")){
-			String algo = (String)algoList.getSelectedItem();
-			if (algo.equals("Difference_of_Gaussian")){
 				ToCSV.generateCsvFile(coordXYZ);
-			}
-
-			else if (algo.equals("Image_Correlation")){
-				ToCSV.generateCsvFile(coordXYZ);
-			}
-
-			else if (algo.equals("Dilate_Difference")){
-				ToCSV.generateCsvFile(coordXYZ);
-			}
 		}
 		
 	}

@@ -41,7 +41,7 @@ public class Cropper {
 		impWidth = im.getWidth();
 		impHeight = im.getHeight();
 		Hashtable<String, String> hash = Attributes.getAttributes();
-		widthCrop = Integer.parseInt(hash.get("cropWidth"));
+		widthCrop = Integer.parseInt(hash.get("squareWidth"));
 		ims = new ImageStack(widthCrop,widthCrop);
 		String stackName = im.getTitle();
 		int nbslice=im.getStackSize();

@@ -89,9 +89,9 @@ abstract class DoG implements Picker {
 		boolean excludeOnEdges = false;
 
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String sigma1 = hashAttributes.get("sigma1");
-		String sigma2 = hashAttributes.get("sigma2");
-		String noiseT = hashAttributes.get("noiseTolerance");
+		String sigma1 = hashAttributes.get("sig1");
+		String sigma2 = hashAttributes.get("sig2");
+		String noiseT = hashAttributes.get("noise");
 		double tolerance = Double.parseDouble(noiseT);
 
 		imp.setSlice(currentslice);
@@ -110,7 +110,7 @@ abstract class DoG implements Picker {
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
 		WindowManager.setTempCurrentImage(imp3);
 
-		IJ.showProgress(0.5);
+		
 		ImageProcessor ip3 = imp3.getProcessor();
 		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
 		int[] xArray = points.xpoints;
