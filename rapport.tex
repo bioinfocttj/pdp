@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{report}
+\documentclass[12pt,a4paper]{report}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
@@ -38,18 +38,14 @@
 \newcommand{\imj}{ImageJ}
 
 \begin{abstract}
-
-Ce rapport traite de la création d'un plugin \imj ~en langage \java ~pour le piquage automatique de particules
-sur les images de microscopie électronique. 
-Il aborde notamment la création de l'interface utilisateur, 
-les méthodes de piquages choisies et implémentées ainsi que l'organisation générale du programme.
+Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images de \cme. Cet utilitaire se présnete sous la forme d'un plugin \imj, écrit en  langage \java.
+Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées ainsi que l'organisation générale du programme. 
 \end{abstract}
 
 \tableofcontents
-
 \chapter*{Introduction}
 
-\addcontentsline{toc}{chapter}{Introduction} 
+\addcontentsline{toc}{chapter}{Introduction}
 Notre projet s'est déroulé au sein du laboratoire de Chimie et Biologie des Membranes et Nanoobjets de bordeaux (CBMN~\cite{cbmn:url}).
 Il s'agit d'un laboratoire de recherche public composé de douze équipes de recherche dont l'équipe \emph{Architecture des Complexes Membranaires et processus cellulaires} (ACMPC). %
 Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture de complexes membranaires sur des structures de type protéine-liposome. C'est dans ce cadre d'étude que les chercheurs travaillent avec un \emph{cryo-microscope électronique à transmission} (\cme) afin d'obtenir des micrographes des structures protéiques puis de les analyser. Par ailleurs, cette équipe diversifie ses activités en faisant de l'imagerie avec des virus fournis par une entreprise pharmaceutique.
@@ -86,15 +82,18 @@ Ce logiciel est "open-source"~\footnote{son code source est en accès libre et e
 
 \noindent
 En effet, il est possible de développer soi-même et assez facilement des plugins, que ce soit en \java\ ou en \js ~\footnote{\js est un langage de programmation de script orienté objet à prototype~\cite{javascript:url}}.
+
 \section{\'Etat de l'existant}
+
 \subsection{Détection à l'aide de références}
+
 Cette technique est utilisée pour trouver des particules dans une image en la comparant à un modèle. Celui-ci peut \^etre obtenu soit à partir d'une structure tridimensionnelle connue, soit par sélection d'une particule servant d'exemple dans le micrographe. L'algorithme détermine la meilleure correspondance entre la cible et le modèle pour pouvoir le localiser dans l'image.%
 
 \subsection{Piquage de particules sans références}
 
 \subsubsection{Détection des bords et transformée de Hough}
 
-%$\textcolor{red}{(ref:Automatic Particle Detection Through Efficient Hough Transforms 
+%$\textcolor{red}{(ref:Automatic Particle Detection Through Efficient Hough Transforms
 %by Yuanxin Zhu, Bridget Carragher, Fabrice Mouche, and Clinton S.Potter
 %IEEE TRANSACTIONS ON MEDICAL IMAGING,VOL.22,N0.9,September 2003)}$\\
 
@@ -114,11 +113,12 @@ La détection de formes s’apparentant à des cercles ou des axes circulaires s
 Pour chaque pixel allumé, la fonction trace un cercle de rayon donné. Si la forme a le même rayon que le cercle tracé, tous les cercles se recoupent au centre de la forme, on constate ainsi une amplification de la valeur du pixel central.
 
 \paragraph*{}
-D'autre part, pour détecter des particules de formes irrégulières, l'approche décrite précédemment peut également \^etre utilisée mais la transformée de Hough devra alors \^etre remplacée par la transformée de Hough Généralisée~\cite{GHT:url}. 
+D'autre part, pour détecter des particules de formes irrégulières, l'approche décrite précédemment peut également \^etre utilisée mais la transformée de Hough devra alors \^etre remplacée par la transformée de Hough Généralisée~\cite{GHT:url}.
 Cette nouvelle méthode repose sur la modification de la transformée de Hough en utilisant le principe de l'identification à partir d'un modèle de référence.
 %$\textcolor{red}{(ref:http://en.wikipedia.org/wiki/Generalised_Hough_transform)}$\\
 
 \subsubsection{DoGLFC et classement par affinité}
+
 %$\textcolor{red}{(ref: Reference-free particle selection enhanced with semi-supervised machine learning for cryo-electron microscopy
 %by Robert Langlois, Jesper Pallesen, Joachim Frank
 %Journal of Structural Biology 175, (2011)353-361)}$
@@ -156,27 +156,35 @@ Un perceptron est une sorte de réseau neuronal artificiel. Dans son état le pl
 Ce programme a la particularité d'être capable d'apprendre des concepts, ce qui signifie qu'il peut apprendre afin de répondre par vrai ou faux à des données qui lui sont soumises, gr\^ace à la présentation répétée de plusieurs exemples d'étude.
 Il a déjà été testé sur des images binaires pour la détection de formes ou de contours mais pas sur des images en niveaux de gris ou sur des problèmes de reconnaissance de modèles visant à sélectionner des particules. Le réseau neuronal n'a pas non plus été exploité comme un outils de sélection automatique de particules mais plusieurs recherches ont conclu qu'il pourrait \^etre utilisé pour l'élimination de faux-positifs.~\cite{Perceptron:article}.%
 
-
 \section{Analyse des besoins}
+
 \noindent
 Ils sont de deux types: fonctionnels et non fonctionnels, et diffèrent entre l'interface utilisateur et les algorithmes de piquage.
+
 \subsection{Besoins fonctionnels}
+
 \subsubsection{Interface}
+
 \noindent
-Au lancement, les images sont préalablement chargées sur \imj , l'utilisateur a le choix entre plusieurs algorithmes de picking. %L'interface propose un mode de prévisualisation afin de vérifier le piquage sur une image avant de l'appliquer au stack entier. 
+Au lancement, les images sont préalablement chargées sur \imj , l'utilisateur a le choix entre plusieurs algorithmes de picking. %L'interface propose un mode de prévisualisation afin de vérifier le piquage sur une image avant de l'appliquer au stack entier.
 Nous avons essayé de faire en sorte que l'affichage soit clair et succinct, constitué d'un menu déroulant, d'une liste de boutons et d'une interface propre à chaque algorithme.\\
 Enfin, il est également possible d'implanter simplement de nouveaux algorithmes dans l'interface. % Simplement, ou pas ^^
 
 \subsubsection{Les algorithmes}
+
 Ils réalisent un piquage automatique des particules depuis les micrographes issus de \cme. Le format de sortie est un fichier au format \emph{.csv} contenant un jeu de coordonnées \emph{x, y} associé à la position de l'image dans le stack, ainsi qu'un mini-stack contenant les particules sélectionnées par l'algorithme si l'utilisateur le désire.
+
 \subsection{Besoins non fonctionnels}
+
 \subsubsection{Interface}
+
 \noindent
 L'implémentation de la plateforme a été réalisée en \java, nous utilisons les API\footnote{Application Programming Interface} graphiques de la bibliothèque \emph{swing}. De plus, nous avons essayé de faire en sorte que le programme soit le plus simple d'utilisation possible afin de le rendre accessible à tous. C'est pourquoi nous avons tenté de faire un code clair, explicite et commenté afin de permettre aisément l'implémentation de nouveaux algorithmes.
 
 \subsubsection{Les algorithmes}
+
 \noindent
-Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java, nous avons fait en sorte que le temps de déroulement de l'algorihtme soit assez rapide  afin de pouvoir gérer de grands jeux de données et qu'aucune image de traitement intermédiaire n'apparaisse à l'utilisateur (à moins qu'il ne le souhaite).\\
+Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java, nous avons fait en sorte que le temps de déroulement de l'algorihtme soit assez rapide afin de pouvoir gérer de grands jeux de données et qu'aucune image de traitement intermédiaire n'apparaisse à l'utilisateur (à moins qu'il ne le souhaite).\\
 
 Dans l'optique de démocratiser l'utilisation de notre interface et afin de permettre l'extension de ce plugin avec d'autres algorithmes, le projet a été placé sous une licence GPL\footnote{General Public License~\cite{GPL:url}}.
 
@@ -184,57 +192,91 @@ Dans l'optique de démocratiser l'utilisation de notre interface et afin de perm
 %Le projet devra être terminé vers mi-mai. %prière de nous mettre une bonne note !
 
 \chapter{Conception}
+
 \section{Interface graphique}
+
 Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj. Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique. Celle-ci offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
-L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de trois boutons:
+Nous avons donc créé une série d'outils graphiques (boutons, listes, labels) pour l'interaction avec l'utilisateur. Dans une fen\^etre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
+L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de quatre boutons. \\
+
+\subsection{Les panels}
+
+Notre interface est composée de quatre panels différents :
 \begin{itemize}
-\item \textbf{Preview} qui permet de tester l'algorithme sélectionné sur une seule image du stack
-\item \textbf{Apply} qui permet d'appliquer l'algorithme sur l'ensemble du stack, lorsque l'utilisateur a défini les paramètres qu'il souhaite appliquer
-\item \textbf{Help \& Info} qui est une aide d'utilisation du plugin
+
+\item Le panel en haut de la fenêtre (\textbf{panel1}) contient la combobox pour le choix de l'algorihthme. 
+\item Le panel du milieu (\textbf{panel2}) est vide au lancement du plugin et son contenu s'affiche en fonction de l'algorithme de piquage choisi. Il contient 4 sous-panels :
+\begin{itemize}
+\item Le premier sous-panel (\textbf{infoPanel}) contient une zone de texte visant à guider l'utilisateur sur la manière de lancer la procédure de piquage choisie. 
+\item Le deuxième sous-panel se situe au milieu de panel2 et porte un nom différent suivant l'algorithme choisi : il va se nommer \textbf{iterationPanel} pour Dilate Difference, \textbf{sigmaPanel} pour Difference of Gaussian et \textbf{radiusPanel} pour Image Correlation. Ces sous-panels contiennent deux ou trois TextFields (zones de texte à une seule ligne) pour que l'utilisateur puisse entrer les valeurs des paramètres nécessaires au bon fonctionnement des algorithmes. 
+\item Le troisième sous-panel (\textbf{widthNoisePanel}) quand à lui contient deux TextFields pour les paramètres \textbf{Square width} et \textbf{Noise Tolerance} sur lequels nous reviendrons par la suite. 
+\item Le dernier sous-panel (\textbf{debugCropPanel}) contient deux checkboxs pour les modes de debug et crop (voir plus loin dans le rapport). 
 \end{itemize}
-Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert un stack d'image à l'aide d'\imj. 
+\item Le panel en bas de la fenêtre (\textbf{panel3}) contient quatre boutons qui permettent à l'utilisateur de faire fonctionner le plugin. 
+\item Le panel principal (\textbf{mainPanel}) contient tous les panels cités précédemments. Sa taille détermine celle de la fenêtre du plugin. 
+\end{itemize}
+
+\subsection{Les boutons}
+
+Les boutons doivent répondre aux clics de la souris et lancer une série d'actions correspondantes en fonction de l'algorithme de piquage choisi par l'utilisateur :
+
+\begin{itemize}
+\item Le bouton \textbf{Preview} permet de tester l'algorithme sélectionné sur une seule image du stack.
+\item Le bouton \textbf{Apply} permet d'appliquer l'algorithme sur l'ensemble du stack, lorsque l'utilisateur a défini les paramètres qu'il souhaite appliquer.
+\item Le bouton \textbf{Help \& Info} est une aide d'utilisation du plugin.
+\item Le bouton \textbf{Save Results} permet de sauvegarder le tableau de coordonnées des particules sélectionnées.% avec l'aide d'\imj.  
+\end{itemize}
+Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert un stack d'image à l'aide d'\imj.
 
 \subsection{Algorithmes et paramètres d'entrée}
+
 Lorsque l'utilisateur sélectionne un algorithme dans le menu déroulant, il doit ensuite choisir plusieurs paramètres.
 Certains sont communs à tous. Il s'agit de la \textbf{Noise Tolerance} et de la largeur du carré que l'utilisateur souhaite utiliser pour faire le stack des particules sélectionnées (\textbf{Square width}) s'il décide de se servir de la fonction \texttt{crop} du plugin.
 
 \subsubsection{Image Correlation}
+
 Le principe de cette méthode est de comparer une image contenant un cercle avec l'image sur laquelle on veut sélectionner les particules. On obtient alors une nouvelle image sur laquelle on peut voir des cercles correspondant aux particules de l'image de base qui ont à peu près le même diamètre que le cercle dessiné précédemment. Ici, on fait varier la taille du cercle afin de sélectionner des particules de différentes tailles.\\
 \noindent
 Pour cet algorithme de piquage, l'utilisateur doit entrer le rayon minimal/maximal (\textbf{radius min, radius max}) des particules à sélectionner, ainsi que la valeur de l'incrémentation (\textbf{radius inc}). Pour un résultat optimal, avant de lancer la sélection des particules avec cet algorithme, l'utilisateur devra traiter l'image pour éliminer un maximum de bruit de fond (utilisation de filtres, modification du contraste/luminosité, sélection des contours, application d'un threshold).
 
 \subsubsection{Difference of Gaussian}
+
 La différence de Gauss est une technique qui consiste en la soustraction d'une version floutée de l'image d'origine à une autre version moins floutée de cette même image.\\
-Ici, l'utilisateur doit entrer les valeurs de \textbf{sigma1} et \textbf{sigma2} qui vont être  utilisées pour appliquer les filtres gaussiens.
+Ici, l'utilisateur doit entrer les valeurs de \textbf{sigma1} et \textbf{sigma2} qui vont être utilisées pour appliquer les filtres gaussiens.
 
 \subsubsection{Dilate Difference}
+
 Cette méthode repose sur le même principe que la différence de Gauss à ceci près que l'image d'origine n'est pas floutée mais on lui applique un certain nombre de cycles de dilatation, on obtient alors des particules grossies.\\
-Dans le cas de la sélection de cet algorithme, l'utilisateur devra entrer les  nombres de cycles de dilatation qu'il souhaite appliquer(\textbf{iteration1, iteration2}).
+Dans le cas de la sélection de cet algorithme, l'utilisateur devra entrer les nombres de cycles de dilatation qu'il souhaite appliquer(\textbf{iteration1, iteration2}).
 
 \section{Paramètres de sortie}
-Lorsque l'utilisateur a choisi un algorithme et l'a appliqué au stack, le plugin renvoie un fichier \emph{.csv} qui contient les coordonnées (\emph{x} et \emph{y}) des particules  sélectionnées, ainsi que leur position dans le stack (\emph{slice}).\\
-Si l'utilisateur en fait la demande, un stack contenant autant d'images que de particules sélectionnées est créé. 
+
+Lorsque l'utilisateur a choisi un algorithme et l'a appliqué au stack, le plugin renvoie un fichier \emph{.csv} qui contient les coordonnées (\emph{x} et \emph{y}) des particules sélectionnées, ainsi que leur position dans le stack (\emph{slice}).\\
+Si l'utilisateur en fait la demande, un stack contenant autant d'images que de particules sélectionnées est créé.
 
 \section{Les classes}
-Le programme est divisé en seize classes distinctes: 
+
+Le programme est divisé en seize classes distinctes:
 \begin{list}{•}
-\item Une première partie regroupe six classes qui permettent de gérer l'interface graphique. 
-\item 
+\item Une première partie regroupe six classes qui permettent de gérer l'interface graphique.
+\item
 \item Une seconde partie regroupe les algorithmes de piquage, elle est composée de quatre classes.
 \item La classe \texttt{AlgoFactory} sert de pivot au programme en fonction du choix d'algorithme de l'utilisateur (adaptation de l'interface et algorithme de piquage).
 \item La classe \texttt{Attributes} est un singleton (instanciable qu'une seule et unique fois) et contient tous les paramètres à entrer par l'utilisateur pour faire fonctionner les algorithmes.
 \item La classe \texttt{Cropper} est une fonction subsidiaire du piquage permettant de créer un stack dans lequel chaque image contient une particule piquée (si l'utilisateur le demande).
-\item La classe \texttt{FFTMath} contient la méthode permettant de faire la Corrélation d'images. 
+\item La classe \texttt{FFTMath} contient la méthode permettant de faire la Corrélation d'images.
 \item Les classes \texttt{About} et \texttt{InfoHelp} contiennent des informations et une aide sur l'utilisation du plugin.
 \end{list}
 
 \subsection{Les classes de l'interfaces}
+
 La classe \texttt{Pick\_EM} fait le lien entre \imj ~et la classe \texttt{PickFrame} qui est une JFrame, elle permet de créer l'interface graphique.\\
 Vient ensuite la classe \texttt{PickPanel} qui permet d'adapter l'interface en fonction de l'algorithme. En découlent \texttt{PanelDilateDiff}, \texttt{PanelDoG} et \texttt{PanelImCorr} pour leurs algorithmes respectifs (Dilate Difference, Difference Of Gaussian et Image Correlation).
 
 \subsection{Les classes des algorithmes}
+
 La classe \texttt{Picker} est utilisée pour appeler les algorithmes. Les algorithmes étant \texttt{DialteDiff}, \texttt{DoG} et \texttt{ImCorr}.
-Pour faire fonctionner ces algorithmes, la classe \texttt{Attributes} renvoie les valeurs des paramètres entrés par l'utilisateur. 
+Pour faire fonctionner ces algorithmes, la classe \texttt{Attributes} renvoie les valeurs des paramètres entrés par l'utilisateur.
 
 \chapter{Réalisation}
 
