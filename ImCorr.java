@@ -24,10 +24,12 @@ import ij.WindowManager;
 import ij.gui.OvalRoi;
 import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
+import ij.plugin.Duplicator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class ImCorr implements Picker {
+	private static ImagePlus imgBlocked;
 	private static ImagePlus im;
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
@@ -39,7 +41,17 @@ abstract class ImCorr implements Picker {
 	ImCorr(){
 	}
 	static void picking() {
-		im = WindowManager.getCurrentImage();
+		imgBlocked = WindowManager.getCurrentImage();
+		//im=imgBlocked;
+		im = new Duplicator().run(imgBlocked);
+		//WindowManager.setTempCurrentImage(im);
+		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
+		ImageProcessor ip = im.getProcessor();
+		ip.findEdges();
+		ip.invert();
+//		IJ.run(im, "Find Edges", "");
+//		IJ.run(im, "Invert", "");
+
 		int current=im.getSlice();
 		System.out.println(current);
 		pick(im, current);
@@ -53,9 +65,17 @@ abstract class ImCorr implements Picker {
 		}
 	
 	static double[][] sliceSelection(){
-		
-		im=WindowManager.getCurrentImage();
-		
+		imgBlocked = WindowManager.getCurrentImage();
+		//im=imgBlocked;
+		im = new Duplicator().run(imgBlocked);
+		//WindowManager.setTempCurrentImage(im);
+		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
+		ImageProcessor ip = im.getProcessor();
+		ip.findEdges();
+		ip.invert();
+//		IJ.run(im, "Find Edges", "");
+//		IJ.run(im, "Invert", "");
+
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			im.setSlice(a);
@@ -66,12 +86,13 @@ abstract class ImCorr implements Picker {
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array= resultConverter();
 		if (cropperMode) {
-			cropper = new Cropper(im, array);
+			cropper = new Cropper(imgBlocked, array);
 		}
 		return array;
 	}
 
 	public static void pick(ImagePlus image,int currentslice){
+		
 		z = (double) currentslice;
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String rMin = hashAttributes.get("radiusMin");
@@ -112,7 +133,7 @@ abstract class ImCorr implements Picker {
 			}
 			result.close();
 		}
-		sort(table,im);
+		sort(table,imgBlocked);
 	}
 	
 	static  void sort(ResultsTable table,ImagePlus image)
