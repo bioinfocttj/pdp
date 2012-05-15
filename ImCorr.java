@@ -1,3 +1,19 @@
+/*
+*Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+*This file is part of Pick_EM program
+*Pick_EM is free software; you can redistribute it and/or modify
+*it under the terms of the GNU General Public License as published by
+*the Free Software Foundation; either version 2 of the License, or
+*(at your option) any later version.
+*This program is distributed in the hope that it will be useful,
+*but WITHOUT ANY WARRANTY; without even the implied warranty of
+*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*GNU General Public License for more details.
+*You should have received a copy of the GNU General Public License along
+*with this program; if not, write to the Free Software Foundation, Inc.,
+*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
 import java.awt.Polygon;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -10,8 +26,6 @@ import ij.gui.PointRoi;
 import ij.measure.ResultsTable;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
-
-//add Licence GPL and description of the plugin and his authors
 
 abstract class ImCorr implements Picker {
 	
@@ -173,23 +187,9 @@ abstract class ImCorr implements Picker {
 			ypoints[l] = yy;
 			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
 		}
-
-		//IJ.run("Clear Results");
-		//IJ.run("Measure");
-
-		//ResultsTable finalresults = Analyzer.getResultsTable();//table with y,y and slice
-		//int counter=finalresults.getCounter();
-/*
-		for(int i=0;i<counter;i++){
-			double temp = finalresults.getValue("Slice", i);
-			Slice.add(temp);
-		}
-		*/
 		resultstable[0]= xtab;
 		resultstable[1]= ytab;
 		resultstable[2] = slice;
-		//printResultTable(resultstable);
-		//IJ.run("Clear Results");
 		return resultstable;
 	}
 
@@ -211,9 +211,6 @@ abstract class ImCorr implements Picker {
 			yArray[i] = Double.parseDouble(temp);
 			temp = String.valueOf(tempZ[i]);
 			zArray[i] = Double.parseDouble(temp);
-			//xArray[i] = Double.parseDouble(tempX[i]);
-			//yArray[i] = Double.parseDouble(tempY[i]);
-			//zArray[i] = Double.parseDouble(tempZ[i]);
 		}
 		double[][] coordinates = new double[3][arrayLength];
 		coordinates[0]=xArray;
@@ -225,11 +222,6 @@ abstract class ImCorr implements Picker {
 	
 	
 	static void printResultTable(Vector[] resulttable){
-		/*int zero = resulttable[0].size();
-		int un = resulttable[0].size();
-		int deux = resulttable[0].size();
-		String longueurs = "0,"+zero+",1,"+un+",2,"+deux;
-		IJ.showMessage(longueurs);*/
 		for (int i=0;i<resulttable[1].size();i++){
 			for (int j=0;j<resulttable.length;j++){
 				System.out.println("lala");

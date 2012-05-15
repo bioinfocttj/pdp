@@ -1,28 +1,23 @@
 /*
-Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along
-with this program; if not, write to the Free Software Foundation, Inc.,
-51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-*/ 
+*Copyright (C) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris
+*This file is part of Pick_EM program
+*Pick_EM is free software; you can redistribute it and/or modify
+*it under the terms of the GNU General Public License as published by
+*the Free Software Foundation; either version 2 of the License, or
+*(at your option) any later version.
+*This program is distributed in the hope that it will be useful,
+*but WITHOUT ANY WARRANTY; without even the implied warranty of
+*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+*GNU General Public License for more details.
+*You should have received a copy of the GNU General Public License along
+*with this program; if not, write to the Free Software Foundation, Inc.,
+*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
 import ij.IJ;
-import ij.Macro;
-import ij.gui.ProgressBar;
 import ij.process.*;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.StringTokenizer;
 
 import javax.swing.*;
 
@@ -85,20 +80,16 @@ public class PickFrame extends JFrame implements ActionListener {
 		panel1.setLayout(gridbag);
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.NORTH;
-		//panel1.setPreferredSize(new Dimension(450, 150));
 		panel2 = new JPanel();
-		//panel2.setPreferredSize(new Dimension(450, 300));
 		panel3 = new JPanel();
 		panel3.setLayout(gridbag);
 		gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.SOUTH;
-		//panel3.setPreferredSize(new Dimension(450, 150));
 
 		///////////////////// Panel1 : Choice of algorithm 
 
 		JLabel titlePanel1= new JLabel(" Choose a picking algorithm ", JLabel.CENTER);
 		panel1.add(titlePanel1);
-		//String DOG = "DoG";
 		// Create combo box
 		String[] algos = { "Difference_of_Gaussian", "Dilate_Difference", "Image_Correlation", "About_Pick_EM"};
 
@@ -111,9 +102,9 @@ public class PickFrame extends JFrame implements ActionListener {
 		//Set up the contain (contains all algorithms).
 		JLabel choice = new JLabel();
 		gridbag.setConstraints(algoList,gbc);
-		panel1.add(algoList/*, BorderLayout.PAGE_START*/);
+		panel1.add(algoList);
 		gridbag.setConstraints(choice,gbc);
-		panel1.add(choice/*, BorderLayout.PAGE_END*/);
+		panel1.add(choice);
 		
 		//////////////////////// Panel3 : Preview & Apply & Help
 
@@ -135,13 +126,13 @@ public class PickFrame extends JFrame implements ActionListener {
 		panel3.add(helpInfoButton);
 
 		///////////////// Principal panel
-		mainPanel.setLayout(new GridLayout(3,0)); //GridLayout(int rows, int cols)
+		mainPanel.setLayout(new GridLayout(3,0)); 
 		mainPanel.setVisible(true);
 		
 		//add(panelPrincipal); 
-		mainPanel.add(panel1/*, BorderLayout.NORTH*/);
+		mainPanel.add(panel1);
 		mainPanel.add(panel2);
-		mainPanel.add(panel3/*, BorderLayout.SOUTH*/);
+		mainPanel.add(panel3);
 		add(mainPanel); 
 		Runnable runner = new GUIShower(this);
 		EventQueue.invokeLater(runner);
@@ -177,15 +168,10 @@ public class PickFrame extends JFrame implements ActionListener {
 		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
-				//IJ.showProgress(0.0);
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
-				//IJ.showProgress(0.4);
-				//IJ.showMessage("progressbar");
 				double[][] coordXYZ = DoG.sliceSelection();
-				//IJ.showProgress(0.6);
 				ToCSV.generateCsvFile("dog.csv", coordXYZ);
-				//IJ.showProgress(1.0);
 			}
 
 			else if (algo.equals("Image_Correlation")){

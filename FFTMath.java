@@ -1,4 +1,3 @@
-//add Licence GPL and description of the plugin and his authors
 // Code récupéré d'imagej mais récupération uniquement de la partie qui nous intéresse
 
 import ij.*;
