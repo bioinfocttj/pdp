@@ -43,7 +43,7 @@ public class Pick_EM extends PlugInFrame {
 	};
 		
 		public void run(String args) {
-			IJ.showMessage(args);
+			//IJ.showMessage(args);
 			if (args != null) {
 				StringTokenizer ex1; // Declare StringTokenizer Objects
 				ex1 = new StringTokenizer(args); //Split on Space (default)
@@ -55,7 +55,7 @@ public class Pick_EM extends PlugInFrame {
 						if (str.lastIndexOf(pattern) > -1) { 
 							int pos = str.lastIndexOf(pattern) + pattern.length();
 							 String param = str.substring(pos);
-							 IJ.showMessage(param);
+							// IJ.showMessage(param);
 							 Attributes.setAttributes(params[j],param);
 						}
 					}

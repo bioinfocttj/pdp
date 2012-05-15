@@ -28,7 +28,7 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class ImCorr implements Picker {
-	
+	private static ImagePlus im;
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
@@ -39,7 +39,7 @@ abstract class ImCorr implements Picker {
 	ImCorr(){
 	}
 	static void picking() {
-		ImagePlus im = WindowManager.getCurrentImage();
+		im = WindowManager.getCurrentImage();
 		int current=im.getSlice();
 		System.out.println(current);
 		pick(im, current);
@@ -54,7 +54,8 @@ abstract class ImCorr implements Picker {
 	
 	static double[][] sliceSelection(){
 		
-		ImagePlus im=WindowManager.getCurrentImage();
+		im=WindowManager.getCurrentImage();
+		
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
 			im.setSlice(a);
@@ -100,17 +101,18 @@ abstract class ImCorr implements Picker {
 			Polygon points = mf.getMaxima(ip, tolerance, excludeOnEdges);
 			int[] xArray = points.xpoints;
 			int[] yArray = points.ypoints;
-				for (int i=0; i<xArray.length; i++){
-					table.incrementCounter();
-					double tempx=(double)xArray[i];
-					double tempy=(double)yArray[i];
-					int pxValue= (int) ip.getPixelValue(xArray[i],yArray[i]);
-					table.addValue("X",tempx);
-					table.addValue("Y",tempy);
-					table.addValue("Max",pxValue);
-				}
+			for (int i=0; i<xArray.length; i++){
+				table.incrementCounter();
+				double tempx=(double)xArray[i];
+				double tempy=(double)yArray[i];
+				int pxValue= (int) ip.getPixelValue(xArray[i],yArray[i]);
+				table.addValue("X",tempx);
+				table.addValue("Y",tempy);
+				table.addValue("Max",pxValue);
+			}
+			result.close();
 		}
-		sort(table,image);
+		sort(table,im);
 	}
 	
 	static  void sort(ResultsTable table,ImagePlus image)
