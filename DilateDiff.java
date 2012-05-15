@@ -32,6 +32,7 @@ abstract class DilateDiff implements Picker{
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();	
+	static double[][]array;
 	private static Cropper cropper;
 	DilateDiff(){}
 	
@@ -46,7 +47,9 @@ abstract class DilateDiff implements Picker{
 	}
 	
 	static double[][] sliceSelection(){
-		
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
 		ImagePlus im=WindowManager.getCurrentImage();
 		int nbslice=im.getStackSize();
 		for (int a=1;a<=nbslice;a++){
@@ -56,14 +59,13 @@ abstract class DilateDiff implements Picker{
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
-		double[][]array= resultConverter();
+		array = resultConverter();
 		if (cropperMode) {
 			cropper = new Cropper(im, array);
 		}
 		return array;
 	}
 	static void pick(ImagePlus image, int currentslice){
-		
 		ImageCalculator ic;
 		int counter=0;
 		int[] xpoints;

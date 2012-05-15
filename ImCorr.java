@@ -65,6 +65,12 @@ abstract class ImCorr implements Picker {
 		}
 	
 	static double[][] sliceSelection(){
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
+		resultstable[0].removeAllElements();
+		resultstable[1].removeAllElements();
+		resultstable[2].removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
 		//im=imgBlocked;
 		im = new Duplicator().run(imgBlocked);

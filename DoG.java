@@ -52,6 +52,9 @@ abstract class DoG implements Picker {
 	}
 
 	static double[][] sliceSelection() {
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
 		IJ.showStatus("slice selection");
 		ImagePlus im = WindowManager.getCurrentImage();
 		String stackName = im.getTitle();
