@@ -13,19 +13,14 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
-import java.util.Hashtable;
-
 import ij.measure.ResultsTable;
  
 public class ToCSV {
-	/*private static int widthCrop;
-	private static int impWidth;
-	private static int impHeight;*/
+	// This class allows to generate a resultstable which can be saved to a csv file using ImageJ
 	
 	static void generateCsvFile(double[][] coords){
-		ResultsTable result = new ResultsTable(); //result table
-		/*Hashtable<String, String> hash = Attributes.getAttributes();
-		widthCrop = Integer.parseInt(hash.get("squareWidth"));*/
+		
+		ResultsTable result = new ResultsTable(); 
 		int counter = coords[0].length;
 		for (int i=0; i<counter; i++){
 			// Getting X values
@@ -37,9 +32,6 @@ public class ToCSV {
 			// Getting Z (slices) values
 			double posz = coords[2][i];
 			
-			/*int x = (int) (posx - (widthCrop/2));
-			int y = (int) (posy - (widthCrop/2));
-			if (((posx + (widthCrop/2)) < impHeight && x>0) && (posy + ((widthCrop/2))< impHeight && y <impWidth))*/
 			result.incrementCounter();
 			result.addValue("X",posx);
 			result.addValue("Y",posy);

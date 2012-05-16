@@ -23,7 +23,5 @@ import javax.swing.JPanel;
 public class PickPanel extends JFrame {
 	static JPanel panel2 = new JPanel();
 	
-	public void actionPerformed(ActionEvent e) {
-	}
-	
+	public void actionPerformed(ActionEvent e) {}
 }
