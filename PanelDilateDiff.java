@@ -75,7 +75,7 @@ public class PanelDilateDiff extends PickPanel {
 		iteration2JTF = new JTextField("2",3);
 		noiseToleranceJTF = new JTextField("3",3);
 		cropWidthJTF = new JTextField("100",4);
-		// Chekbox for the debug mode
+		// Chekbox for the debug mode and the cropper
 		debugMode = new JCheckBox( "Debug" ); 
 		cropperMode = new JCheckBox( "Crop" );
 		// Adding attributes to the panels

@@ -83,7 +83,7 @@ class PanelImCorr extends PickPanel {
 		radiusIncJTF = new JTextField("5",3);
 		cropWidthJTF = new JTextField("100",4);
 		noiseToleranceJTF = new JTextField("0.5",4);
-		// Chekbox for the debug mode
+		// Chekbox for the debug mode and cropper
 		debugMode = new JCheckBox( "Debug"); 
 		cropperMode = new JCheckBox( "Crop" );
 		// Adding attributes to the panel
