@@ -160,10 +160,9 @@ public class PickFrame extends JFrame implements ActionListener {
 			mainPanel.add(panel2);
 			mainPanel.add(panel3);
 			mainPanel.repaint();
-			
 			pack();
-			AlgoFactory.algorithm.getPicker(comboSelection);
 		}
+		
 		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){

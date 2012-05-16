@@ -38,17 +38,6 @@ public final class AlgoFactory {
 
 	public enum algorithm { 
 		Difference_of_Gaussian, Dilate_Difference, Image_Correlation, About_Pick_EM ;
-		
-		static void getPicker(String picker){
-			algorithm pick = algorithm .valueOf(picker);
-			switch (pick) {
-				case Difference_of_Gaussian : break;
-				case Dilate_Difference :break;
-				case Image_Correlation : break;
-				case About_Pick_EM : break;
-				default: break;
-			}
-		}
 
 		static JPanel getPickPanel(String panel){
 			algorithm panelValue = algorithm .valueOf(panel);

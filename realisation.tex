@@ -30,8 +30,24 @@ Par ailleurs, les résultats de la sélection peuvent être affichés sous la fo
 
 \section{Récupération des paramètres}
 
+Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. Le mot-clé  \texttt{synchronized} dans la fonction  \texttt{getInstance()} empêche toute instanciation multiple. 
 
-\section{résultats}
+\section{Algorithmes}
+
+Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lui sont proposés, cela fait appel à la classe AlgoFactory contenant une méthode switch. Celle-ci permet de récupérer le nom de l'algorithme choisi et d'afficher le panel2 correspondant. \\
+Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction getInstance() de la classe Attributes, puis récupérés, pour l'algorithme, par la fonction setAttributes() de la classe PanelDoG (pour suivre notre scénario). L'algorithme est ensuite appelé par la méthode sliceSelection(). 
+
+
+
+
+
+
+
+
+
+
+\section{Applications}
+
 Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante ou la dernière image dans le cas d'un stack.
 L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
 De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenus est créé (éliminant les particules trop près du bord de l'image) et affiché.
@@ -68,7 +84,7 @@ La Différence de dilatation permet d'obtenir les résultats suivant :
 %De plus, seul le singleton peut s'instancier lui même.
 
 %attributes et algoFact
-%Le mot-clé synchronized sur ce bloc empêche toute instanciation multiple même par différents "threads".
+%
 %Il est TRES important.
 
 
