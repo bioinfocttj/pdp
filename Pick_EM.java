@@ -15,6 +15,7 @@
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 
+import ij.IJ;
 import ij.Macro;
 import ij.plugin.frame.PlugInFrame;
 /**
@@ -46,7 +47,7 @@ public final class Pick_EM extends PlugInFrame {
 		public void run(String args) {
 			try {
 				if (args != null) {
-					
+					IJ.showMessage(args);
 					StringTokenizer token1; // Declare StringTokenizer Objects
 					token1 = new StringTokenizer(args); //Split on Space (default)
 					while (token1.hasMoreTokens()) {
