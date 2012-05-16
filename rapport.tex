@@ -15,7 +15,7 @@
 \usepackage{pdfpages}
 \usepackage{url}
 \usepackage{rotating}
-\usepackage[top=2cm,bottom=2cm,left=2.5cm]{geometry}
+\usepackage[top=2cm,bottom=2cm,left=2cm]{geometry}
 
 %%%%%%%%%%%%%%%%%encadrementdes chapitres%%%%%%%%%%%%%%%%%%%%%%%
 \titleformat{\chapter} % commande de sectionnement affectée
@@ -196,7 +196,7 @@ Dans l'optique de démocratiser l'utilisation de notre interface et afin de perm
 \section{Interface graphique}
 
 Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj. Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique. Celle-ci offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
-Nous avons donc créé une série d'outils graphiques (boutons, listes, labels) pour l'interaction avec l'utilisateur. Dans une fen\^etre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
+Nous avons donc créé une série d'outils graphiques (boutons, listes, labels) pour l'interaction avec l'utilisateur. Dans une fenêtre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
 L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de quatre boutons. \\
 
 \subsection{Les panels}
@@ -204,16 +204,16 @@ L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d
 Notre interface est composée de quatre panels différents :
 \begin{itemize}
 
-\item Le panel en haut de la fenêtre (\textbf{panel1}) contient la combobox pour le choix de l'algorihthme. 
+\item Le panel en haut de la fenêtre (\textbf{panel1}) contient la combobox pour le choix de l'algorithme. 
 \item Le panel du milieu (\textbf{panel2}) est vide au lancement du plugin et son contenu s'affiche en fonction de l'algorithme de piquage choisi. Il contient 4 sous-panels :
 \begin{itemize}
 \item Le premier sous-panel (\textbf{infoPanel}) contient une zone de texte visant à guider l'utilisateur sur la manière de lancer la procédure de piquage choisie. 
 \item Le deuxième sous-panel se situe au milieu de panel2 et porte un nom différent suivant l'algorithme choisi : il va se nommer \textbf{iterationPanel} pour Dilate Difference, \textbf{sigmaPanel} pour Difference of Gaussian et \textbf{radiusPanel} pour Image Correlation. Ces sous-panels contiennent deux ou trois TextFields (zones de texte à une seule ligne) pour que l'utilisateur puisse entrer les valeurs des paramètres nécessaires au bon fonctionnement des algorithmes. 
-\item Le troisième sous-panel (\textbf{widthNoisePanel}) quand à lui contient deux TextFields pour les paramètres \textbf{Square width} et \textbf{Noise Tolerance} sur lequels nous reviendrons par la suite. 
+\item Le troisième sous-panel (\textbf{widthNoisePanel}) quand à lui contient deux TextFields pour les paramètres \textbf{Square width} et \textbf{Noise Tolerance} sur lesquels nous reviendrons par la suite. 
 \item Le dernier sous-panel (\textbf{debugCropPanel}) contient deux checkboxs pour les modes de debug et crop (voir plus loin dans le rapport). 
 \end{itemize}
 \item Le panel en bas de la fenêtre (\textbf{panel3}) contient quatre boutons qui permettent à l'utilisateur de faire fonctionner le plugin. 
-\item Le panel principal (\textbf{mainPanel}) contient tous les panels cités précédemments. Sa taille détermine celle de la fenêtre du plugin. 
+\item Le panel principal (\textbf{mainPanel}) contient tous les panels cités précédemment. Sa taille détermine celle de la fenêtre du plugin. 
 \end{itemize}
 
 \subsection{Les boutons}
@@ -251,8 +251,8 @@ Dans le cas de la sélection de cet algorithme, l'utilisateur devra entrer les n
 
 \section{Paramètres de sortie}
 
-Lorsque l'utilisateur a choisi un algorithme et l'a appliqué au stack, le plugin renvoie (si l'utilisateur le désire) un tableau qui contient les coordonnées (\emph{x} et \emph{y}) des particules sélectionnées, ainsi que leur position dans le stack (\emph{slice}). Il pourra ensuite le sauvegarder grâce au menu d'\imj.\\
-De plus, si l'utilisateur en fait la demande, un stack contenant autant d'images que de particules sélectionnées est créé.
+Lorsque l'utilisateur a choisi un algorithme et l'a appliqué au stack, le plugin renvoie un fichier \emph{.csv} qui contient les coordonnées (\emph{x} et \emph{y}) des particules sélectionnées, ainsi que leur position dans le stack (\emph{slice}).\\
+Si l'utilisateur en fait la demande, un stack contenant autant d'images que de particules sélectionnées est créé.
 
 \section{Les classes}
 
