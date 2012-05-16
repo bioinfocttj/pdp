@@ -65,7 +65,17 @@ Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord 
 
 \input{./conception.tex}
 
-\input{./realisation.tex}
+\chapter{Réalisation}
+
+\section{Interface graphique}
+
+algoFactory
+La présence d'un constructeur privé supprime le constructeur public par défaut.
+De plus, seul le singleton peut s'instancier lui même.
+
+attributes et algoFact
+Le mot-clé synchronized sur ce bloc empêche toute instanciation multiple même par différents "threads".
+Il est TRES important.
 
 
 
