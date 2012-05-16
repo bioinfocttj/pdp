@@ -21,34 +21,36 @@ class InfoHelp implements ActionListener{
 	private String description="HELP ABOUT Pick_EM (Electron Microscopy) \n\n"+
 		"This plugin allows to pick particles on cryo-Met images. \n"+
 		"choose a picking alorithm;\n"+
-		"1) Click on the button \"Preview\" to have an idea of your job;\n"+
+		"1) Click on the button \"Preview\" to have an idea of the picking results;\n"+
 		"2) Click on the button \"Apply\" to definitively apply modifications to the image;\n"+
 		"3) Click on the button \"Show Results\" to see the table which contains the coordinates\n"+
 		"    and slices of the selected particles;\n"+
-		"4) Click on the button \"Help & Info\" to have some help and informations;\n"+
-		"\n"+
-		"All algorithms have common parameters like noise tolerance for the precision of the particles \n" +
-		"selection and the square width if you choose to use the crop option. \n"+
-		"The debug mode permits to see all stages of the algorithms' process. \n" +
-		"The crop mode permits to obtain a stack which contains all of the selected particles. \n" +
+		"\n"+/*
+		"A part of parameters are common for each algorithm (noise tolerance, crop width) \n"+
+		"the noise tolerance able to increase the selection precision \n"+
+		""+*/
+		"All algorithms have common parameters like noise tolerance for the precision of \n" +
+		"the particles selection and the square width if you choose to use the crop option. \n"+
+		"The debug mode allows the user to see some information message if they're implemented. \n" +
+		"The crop mode returns a stack with the selected particles. \n" +
 		"\n"+
 		"DoG Algorithm : \n"+
-		" 	This algorithm doesn't need a processed stack or a dm3 image (without equalization or normalization)\n"+
-		"	 to do the particles selection. \n" +
-		" 	Parameters are sigmas values (for the filters).\n" +
+		"   This algorithm needs unprocessed stack/dm3 image to do the particles selection. \n" +
+		"   Equalization or normalisation are not supported by this algorithm. \n"+
+		"   Parameters are sigmas values (for the filters).\n" +
 		"\n"+
 		"Dilate Difference Algorithm : \n"+
-		" 	This algorithm doesn't need a processed stack or image to do the particles selection. \n" +
-		" 	Parameters are dilate iterations (for dilation cycles).\n" +
+		"   This algorithm needs unprocessed stack or image. \n" +
+		"   Parameters are dilate iterations (for dilation cycles).\n" +
 		"\n"+
 		"Image Correlation Algorithm : \n"+
-		" 	This algorithm needs a processed stack or an image to do the particles selection (median filters, \n"+
-		"	 choose radius 2 and apply it twice)) \n" +
-		" 	Parameters are the differents radius of circles and the radius incrementation for the correlation. \n " +
+		"   This algorithm needs a processed stack or image (for our trials we used three median filters (radius 2), \n"+
+		//"	 choose radius 2 and apply it twice)) \n" +
+		"   Parameters are the differents radius of circles and the radius incrementation for the correlation. \n " +
 		"\n"+
 		"ABOUT THE AUTHORS\n"+
-		"This plugin was created by Thomas Faux, Charlotte Héricé, Typhaine Paysan-Lafosse and Joris Sansen \n"+ 
-		"Co-working with Pr. Jean-Christophe Taveau.\n";
+		"   This plugin was created by Thomas Faux, Charlotte Héricé, Typhaine Paysan-Lafosse and Joris Sansen \n"+ 
+		"   Co-working with Pr. Jean-Christophe Taveau.\n";
 
 	public void actionPerformed(ActionEvent e) {
 		StringBuffer sb = new StringBuffer();
