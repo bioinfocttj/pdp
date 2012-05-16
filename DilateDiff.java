@@ -28,12 +28,16 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class DilateDiff implements Picker{
+	// Picking algorithm : dilate difference
 	
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();	
+	static Vector<Double> slice=new Vector<Double>();
+	
 	static double[][]array;
+	
 	private static Cropper cropper;
+	
 	DilateDiff(){}
 	
 	static void picking() {
@@ -50,11 +54,11 @@ abstract class DilateDiff implements Picker{
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		ImagePlus im=WindowManager.getCurrentImage();
-		int nbslice=im.getStackSize();
-		for (int a=1;a<=nbslice;a++){
-			im.setSlice(a);
-			pick(im, a);
+		ImagePlus im = WindowManager.getCurrentImage();
+		int nbslice = im.getStackSize();
+		for (int i=1; i<=nbslice; i++){
+			im.setSlice(i);
+			pick(im, i);
 		}
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
@@ -70,7 +74,7 @@ abstract class DilateDiff implements Picker{
 		int counter=0;
 		int[] xpoints;
 		int[] ypoints;
-		ResultsTable table = new ResultsTable(); //result table
+		ResultsTable table = new ResultsTable(); 
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
 
@@ -103,19 +107,19 @@ abstract class DilateDiff implements Picker{
 		int[] yArray = points.ypoints;
 		for (int i=0; i<xArray.length; i++){
 			table.incrementCounter();
-			double tempx=(double)xArray[i];
-			double tempy=(double)yArray[i];
+			double tempx = (double)xArray[i];
+			double tempy = (double)yArray[i];
 			table.addValue("X",tempx);
 			table.addValue("Y",tempy);
 			table.addValue("Slice",currentslice);
 		}
-		counter=table.getCounter();
+		counter = table.getCounter();
 		xpoints = new int[counter];
 		ypoints = new int [counter];
 		
 		for (int i=0;i<counter;i++){
-			double x=table.getValue("X",i);
-			double y=table.getValue("Y",i);
+			double x = table.getValue("X",i);
+			double y = table.getValue("Y",i);
 			int xx = (int) x;
 			int yy = (int) y;
 			xpoints[i] = xx;
@@ -128,11 +132,10 @@ abstract class DilateDiff implements Picker{
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-		
 	}
 
 	static double[][] resultConverter(){
-		int arrayLength=xtab.size();
+		int arrayLength = xtab.size();
 		Object[] tempX = new String[arrayLength];
 		Object[] tempY = new String[arrayLength];
 		Object[] tempZ = new String[arrayLength];
