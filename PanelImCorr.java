@@ -71,7 +71,7 @@ class PanelImCorr extends PickPanel {
 		debugCropPanel = new JPanel();
 		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions
-		helpImage = new JLabel(" Processed and non processed images have to be opened ", JLabel.CENTER);
+		helpImage = new JLabel(" Need images to the second power ", JLabel.CENTER);
 		orderRadiusMin = new JLabel(setpointRMin);
 		orderRadiusMax = new JLabel(setpointRMax);
 		orderRadiusInc = new JLabel(setpointRInc);
