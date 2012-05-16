@@ -22,15 +22,11 @@ public final class AlgoFactory {
 	private static AlgoFactory instance = null;
 	
 	private AlgoFactory() {
-		// La présence d'un constructeur privé supprime le constructeur public par défaut.
-		// De plus, seul le singleton peut s'instancier lui même.
 		super();
 	}
 
 	public final static AlgoFactory getInstance() {
 		if (AlgoFactory.instance == null) {
-			// Le mot-clé synchronized sur ce bloc empêche toute instanciation multiple même par différents "threads".
-			// Il est TRES important.
 			synchronized(AlgoFactory.class) {
 				if (AlgoFactory.instance == null) {
 					AlgoFactory.instance = new AlgoFactory();
@@ -40,7 +36,9 @@ public final class AlgoFactory {
 		return AlgoFactory.instance;
 	}
 
-	public enum algorithm { Difference_of_Gaussian, Dilate_Difference, Image_Correlation, About_Pick_EM ;
+	public enum algorithm { 
+		Difference_of_Gaussian, Dilate_Difference, Image_Correlation, About_Pick_EM ;
+		
 		static void getPicker(String picker){
 			algorithm pick = algorithm .valueOf(picker);
 			switch (pick) {
@@ -53,8 +51,8 @@ public final class AlgoFactory {
 		}
 
 		static JPanel getPickPanel(String panel){
-			algorithm pan = algorithm .valueOf(panel);
-			switch (pan) {
+			algorithm panelValue = algorithm .valueOf(panel);
+			switch (panelValue) {
 				case Difference_of_Gaussian : return PanelDoG.create(); 
 				case Dilate_Difference : return PanelDilateDiff.create();
 				case Image_Correlation : return PanelImCorr.create();
