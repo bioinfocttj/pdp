@@ -95,8 +95,8 @@ La partie permettant la création du stack d'imagettes à été séparées des m
 \subsection*{patrons de conception}
 Cette séparation GUI/traitement/stack à dû être accompagnée de la création de classes suivant des patrons de conception particulier : la \emph{factory} et le \emph{singleton}.
 \begin{description}
-\item[la classe en \emph{factory}] permet d'effectuer les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récuperer les paramètres utilisateur.
-\item[La classe en \emph{singleton}] permet de conserver les paramètres choisis par l'utilisateur, ainsi même lorsqu'il éxécute plusieurs algorithme, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
+\item[la classe en \emph{factory}] permet d'effectuer les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récuperer les paramètres utilisateur. 
+\item [Le singleton] est un patron de conception (design pattern) dont l'objet est de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). La classe en \emph{singleton} permet de conserver les paramètres choisis par l'utilisateur, ainsi même lorsqu'il éxécute plusieurs algorithme, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
 \end{description}
 %\section{Les classes}
 %
