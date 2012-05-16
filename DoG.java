@@ -28,17 +28,18 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class DoG implements Picker {
-
+	// Picking algorithm : difference of gaussian
+	
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab = new Vector<Double>();
 	static Vector<Double> ytab = new Vector<Double>();
 	static Vector<Double> slice = new Vector<Double>();
+	
 	private static Cropper cropper;
 	
 	DoG() {}
 
 	static void picking() {
-		IJ.showStatus( "start preview" );
 		ImagePlus im = WindowManager.getCurrentImage();
 		int current = im.getSlice();
 		pick(im, current);
@@ -55,31 +56,25 @@ abstract class DoG implements Picker {
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		IJ.showStatus("slice selection");
 		ImagePlus im = WindowManager.getCurrentImage();
-		String stackName = im.getTitle();
 		int nbslice = im.getStackSize();
-		for (int a = 1; a <= nbslice; a++) {
-			im.setSlice(a);
-			pick(im, a);
+		for (int i = 1; i <= nbslice; i++) {
+			im.setSlice(i);
+			pick(im, i);
 		}
-		// cast the vector in an array so as to send it to the cropper
+		// Cast the vector in an array so as to send it to the cropper
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][] array = resultConverter();
 		if (cropperMode) {
-			IJ.showStatus("cropper start");
 			new Cropper(im,array);
-			IJ.showStatus("cropper end");
 		}
-		IJ.showStatus("end picking");
 		return array;
 
 	}
 
 	public static void pick(ImagePlus imp, int currentslice) {
-		IJ.showStatus("start picking");
 		ImageCalculator ic;
 		ResultsTable table = new ResultsTable();
 		int counter;
@@ -142,11 +137,9 @@ abstract class DoG implements Picker {
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-		IJ.showStatus("fill table ");
 		resultstable[0] = xtab;
 		resultstable[1] = ytab;
 		resultstable[2] = slice;
-
 	}
 
 	static double[][] resultConverter() {
@@ -172,7 +165,6 @@ abstract class DoG implements Picker {
 		coordinates[0] = xArray;
 		coordinates[1] = yArray;
 		coordinates[2] = zArray;
-		
 		return coordinates;
 	}
 }
