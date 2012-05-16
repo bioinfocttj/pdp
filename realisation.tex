@@ -30,12 +30,14 @@ Par ailleurs, les résultats de la sélection peuvent être affichés sous la fo
 
 \section{Récupération des paramètres}
 
-Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. Le mot-clé  \texttt{synchronized} dans la fonction  \texttt{getInstance()} empêche toute instanciation multiple. 
+Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. Le mot-clé  \texttt{synchronized} dans la fonction \texttt{getInstance()} empêche toute instanciation multiple. 
 
 \section{Algorithmes}
 
-Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lui sont proposés, cela fait appel à la classe AlgoFactory contenant une méthode switch. Celle-ci permet de récupérer le nom de l'algorithme choisi et d'afficher le panel2 correspondant. \\
-Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction getInstance() de la classe Attributes, puis récupérés, pour l'algorithme, par la fonction setAttributes() de la classe PanelDoG (pour suivre notre scénario). L'algorithme est ensuite appelé par la méthode sliceSelection(). 
+Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lui sont proposés, cela fait appel à la classe \texttt{AlgoFactory} contenant une méthode switch. Celle-ci permet de récupérer le nom de l'algorithme choisi et d'afficher le panel2 correspondant. \\
+Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction \texttt{getInstance()} de la classe \texttt{Attributes}, puis récupérés, pour l'algorithme, par la fonction \texttt{setAttributes()} de la classe \texttt{PanelDoG} (pour suivre notre scénario). L'algorithme est ensuite appelé par la méthode \texttt{sliceSelection()} (Apply) ou par \texttt{picking()} (Preview). \\
+
+La méthode \texttt{picking()} donne l'image courante du stack en paramètre de la méthode \texttt{pick()} alors que \texttt{sliceSelection()} parcourt le stack et appelle \texttt{pick()} autant de fois qu'il y a d'images dans le stack. 
 
 
 
