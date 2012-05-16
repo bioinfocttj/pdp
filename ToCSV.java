@@ -24,13 +24,13 @@ public class ToCSV {
 		int counter = coords[0].length;
 		for (int i=0; i<counter; i++){
 			// Getting X values
-			double posx = coords[0][i];
+			int posx = (int) coords[0][i];
 			
 			// Getting Y values
-			double posy = coords[1][i];
+			int posy = (int) coords[1][i];
 			
 			// Getting Z (slices) values
-			double posz = coords[2][i];
+			int posz = (int) coords[2][i];
 			
 			result.incrementCounter();
 			result.addValue("X",posx);
