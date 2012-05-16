@@ -14,5 +14,5 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 public interface Picker {
-	
+	// This class allows to call the picking algorithms
 }

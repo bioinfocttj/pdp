@@ -15,7 +15,6 @@
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 
-import ij.IJ;
 import ij.Macro;
 import ij.plugin.frame.PlugInFrame;
 /**
@@ -27,6 +26,7 @@ import ij.plugin.frame.PlugInFrame;
 @SuppressWarnings("serial")
 
 public final class Pick_EM extends PlugInFrame {
+	// This class is initiate the plugin
 	
 	private String[] params = {
 			"algo",
@@ -47,10 +47,10 @@ public final class Pick_EM extends PlugInFrame {
 			try {
 				if (args != null) {
 					
-					StringTokenizer ex1; // Declare StringTokenizer Objects
-					ex1 = new StringTokenizer(args); //Split on Space (default)
-					while (ex1.hasMoreTokens()) {
-						String str = ex1.nextToken();
+					StringTokenizer token1; // Declare StringTokenizer Objects
+					token1 = new StringTokenizer(args); //Split on Space (default)
+					while (token1.hasMoreTokens()) {
+						String str = token1.nextToken();
 						Attributes.getInstance();
 						for (int j = 0; j<params.length; j++) {
 							String pattern = params[j];
@@ -62,7 +62,6 @@ public final class Pick_EM extends PlugInFrame {
 						}
 					}
 					
-	
 					Hashtable<String, String> hash = Attributes.getAttributes();
 					String algo = hash.get("algo");
 					Attributes.getInstance();
@@ -88,5 +87,5 @@ public final class Pick_EM extends PlugInFrame {
 		super("Pick Plug");
 		String args = Macro.getOptions();
 		run(args);
-	}//run("Pick EM","algo=dog sigma1=1 sigma2=2 noise=3 debug=true");
+	}
 }
