@@ -19,17 +19,16 @@ import ij.IJ;
 import ij.ImagePlus;
 import ij.ImageStack;
 import ij.WindowManager;
-import ij.gui.Roi;
-import ij.measure.Calibration;
 import ij.plugin.Duplicator;
 import ij.process.ImageProcessor;
 
 public class Cropper {
+	// This class is used to make a stack with the selected particles 
 	
 	private static ImagePlus imp;
 	private static ImagePlus img2;
 	private static ImageStack ims;
-	private static ImagePlus imgR;
+	private static ImagePlus imp2;
 	private static double[][] coordinates;
 	
 	private static int widthCrop;
@@ -44,21 +43,21 @@ public class Cropper {
 		widthCrop = Integer.parseInt(hash.get("squareWidth"));
 		ims = new ImageStack(widthCrop,widthCrop);
 		String stackName = im.getTitle();
-		int nbslice=im.getStackSize();
+		int nbslice = im.getStackSize();
 		ImagePlus dupli;
-		for (int a=1;a<=nbslice;a++){
-			im.setSlice(a);
+		for (int i=1; i<=nbslice; i++){
+			im.setSlice(i);
 			IJ.run(im, "Duplicate...", stackName);
 			dupli = WindowManager.getCurrentImage();
 			imp = dupli;
-			crop(a,stackName);
+			crop(i);
 			imp.close();
 		}
 		showCrop();
 	}
 
 	public Cropper(){
-		//only for debug
+		// This is only for tests and debug
 		ImagePlus blobs = new ImagePlus("/home/tomo/Bureau/M1_bioinfo/sanofi/blobs.gif");
 		imp=blobs;
 		imp.show();
@@ -69,12 +68,11 @@ public class Cropper {
 		coord[0][1] = 162.4;
 		coord[1][0] = 99.4;
 		coord[1][1] = 73.4;
-		crop(1,"stack");
+		crop(1);
 		showCrop();
 	}
 
-	public void crop(int currentSlice, String stackName) {
-		String stackTitle = (String) "title=" + stackName;
+	public void crop(int currentSlice) {
 		boolean debug = false;
 		int counter = coordinates[0].length;
 		for (int i= 0; i<counter ;i++){
@@ -88,6 +86,7 @@ public class Cropper {
 			int x = (int) (posx - (widthCrop/2));
 			int y = (int) (posy - (widthCrop/2));
 			int z = (int) posz;
+			// For not having particles on edges  
 			if ( x < 0 ) {
 				if (debug){
 				IJ.showMessage("x < 0");
@@ -109,22 +108,17 @@ public class Cropper {
 				if (z == currentSlice) {
 					imp.setRoi(x, y, widthCrop, widthCrop); //select a square around the particle 
 					img2 = new Duplicator().run(imp);
-					ImageProcessor imp2=img2.getProcessor();
-					String temp = Integer.toString(imp2.getHeight());
-					IJ.showMessage("widthcrop");
-					IJ.showMessage(Integer.toString(widthCrop));
-					IJ.showMessage("IP height");
-					IJ.showMessage(temp);
-					ImageProcessor impTemp = imp2.resize(widthCrop,widthCrop);
+					ImageProcessor ip2 = img2.getProcessor();
+					ImageProcessor impTemp = ip2.resize(widthCrop,widthCrop);
 					ims.addSlice(impTemp);
 				}
 			}
 			if (ims.getSize()!=0){
-				imgR = new ImagePlus("Results", ims);
+				imp2 = new ImagePlus("Results", ims);
 			}
 		}
 	}
 	public void showCrop() {
-		imgR.show();
+		imp2.show();
 	}
 }

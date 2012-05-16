@@ -17,6 +17,7 @@ import ij.plugin.frame.PlugInFrame;
 
 @SuppressWarnings("serial")
 public class Crop_Test extends PlugInFrame{
+	// This class is used to call the Cropper class 
 	
 	public Crop_Test() {
 			super("Crop test");
