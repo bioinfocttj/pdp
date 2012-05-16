@@ -29,31 +29,31 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class ImCorr implements Picker {
+	// Picking algorithm : image correlation
+	
 	private static ImagePlus imgBlocked;
 	private static ImagePlus im;
+	
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();
+	
 	private static double z;
+	
 	private static Cropper cropper;
 	
-	ImCorr(){
-	}
+	ImCorr(){}
+	
 	static void picking() {
 		imgBlocked = WindowManager.getCurrentImage();
-		//im=imgBlocked;
 		im = new Duplicator().run(imgBlocked);
-		//WindowManager.setTempCurrentImage(im);
 		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
 		ImageProcessor ip = im.getProcessor();
 		ip.findEdges();
 		ip.invert();
-//		IJ.run(im, "Find Edges", "");
-//		IJ.run(im, "Invert", "");
 
 		int current=im.getSlice();
-		System.out.println(current);
 		pick(im, current);
 		xtab.removeAllElements();
 		ytab.removeAllElements();
@@ -72,25 +72,22 @@ abstract class ImCorr implements Picker {
 		resultstable[1].removeAllElements();
 		resultstable[2].removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
-		//im=imgBlocked;
 		im = new Duplicator().run(imgBlocked);
-		//WindowManager.setTempCurrentImage(im);
 		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
 		ImageProcessor ip = im.getProcessor();
 		ip.findEdges();
 		ip.invert();
-//		IJ.run(im, "Find Edges", "");
-//		IJ.run(im, "Invert", "");
 
-		int nbslice=im.getStackSize();
-		for (int a=1;a<=nbslice;a++){
-			im.setSlice(a);
-			pick(im, a);
+		int nbslice = im.getStackSize();
+		for (int i=1;i<=nbslice;i++){
+			im.setSlice(i);
+			pick(im, i);
 		}
+		
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String cropMode = hashAttributes.get("crop");
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
-		double[][]array= resultConverter();
+		double[][]array = resultConverter();
 		if (cropperMode) {
 			cropper = new Cropper(imgBlocked, array);
 		}
@@ -106,18 +103,18 @@ abstract class ImCorr implements Picker {
 		String rInc = hashAttributes.get("rInc");
 		String noiseT = hashAttributes.get("noise");
 		double tolerance = Double.parseDouble(noiseT);
-		ResultsTable table = new ResultsTable(); //result table
+		ResultsTable table = new ResultsTable(); 
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
-		int w=image.getWidth(); //image width
-		int h=image.getHeight(); //image heigh
-		int radiusMin=Integer.parseInt(rMin); //radius min of the draw circule
-		int radiusMax=Integer.parseInt(rMax); //radius max of the draw circule
-		int radiusInc=Integer.parseInt(rInc); //radius incrementation
-		//creation of an image which contains a circle with different diameters
+		int w = image.getWidth(); //image width
+		int h = image.getHeight(); //image heigh
+		int radiusMin = Integer.parseInt(rMin); //radius min of the draw circule
+		int radiusMax = Integer.parseInt(rMax); //radius max of the draw circule
+		int radiusInc = Integer.parseInt(rInc); //radius incrementation
+		// Creation of an image which contains a circle with different diameters
 		image.setSlice(currentslice);
-		for (int radius=radiusMin;radius<=radiusMax;radius=radius+radiusInc){
-			ImagePlus imp = IJ.createImage("test2", "8-bit White", w, h, 1);
+		for (int radius=radiusMin; radius<=radiusMax; radius=radius+radiusInc){
+			ImagePlus imp = IJ.createImage("circle", "8-bit White", w, h, 1);
 			imp.setRoi(new OvalRoi((w/2)-radius, (h/2)-radius, radius*2, radius*2));
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
@@ -144,51 +141,51 @@ abstract class ImCorr implements Picker {
 	
 	static  void sort(ResultsTable table,ImagePlus image)
 	{	
-		int counter=table.getCounter();
-		int []list=new int [counter];
-		int []pass=new int[counter];
-		int lenlist=0;
+		int counter = table.getCounter();
+		int []list = new int [counter];
+		int []check = new int[counter];
+		int lenlist = 0;
 		int nb = 0;
 		int iterator = counter-1;
 		
 		for (int j=iterator;j>=0;j--){
-			int yetpass = 0;
-			int maxval=j;
-			int cpt=0;
-			double xj=table.getValue("X",j);
-			double yj=table.getValue("Y",j);
-			double maxj=table.getValue("Max",j);
+			int yetcheck = 0;
+			int maxval = j;
+			int cpt = 0;
+			double xj = table.getValue("X",j);
+			double yj = table.getValue("Y",j);
+			double maxj = table.getValue("Max",j);
 			
 			for (int iter=0; iter<nb; iter++){
-				if( j == pass[iter]){
-					yetpass=1;
+				if( j == check[iter]){
+					yetcheck = 1;
 				}
 			}
 			
-			if(yetpass == 0){
+			if(yetcheck == 0){
 				for (int k=iterator;k>=0;k--){
-					double xk=table.getValue("X",k);
-					double yk=table.getValue("Y",k);
-					double maxk=table.getValue("Max",k);
+					double xk = table.getValue("X",k);
+					double yk = table.getValue("Y",k);
+					double maxk = table.getValue("Max",k);
 						if ((xk<=xj+40 && xk>=xj-40) && (yk<=yj+40 && yk>=yj-40) ){
-						int cont=0;
+						int cont = 0;
 						for (int p=0;p<nb;p++){
-							if (pass[p]==k){cont+=1;}
+							if (check[p] == k){cont += 1;}
 						}
-						if (cont==0){
-							pass[nb]=k;
+						if (cont == 0){
+							check[nb] = k;
 							nb ++;
 						}
-					if (maxj<maxk){maxval=k;}
-					else if(maxj>maxk){maxval=j;}
-					else{if (j != k){maxval=j;}}
+					if (maxj < maxk){maxval = k;}
+					else if(maxj > maxk){maxval = j;}
+					else{if (j != k){maxval = j;}}
 					}
 				}
-				for (int q=0;q<lenlist;q++){
+				for (int q = 0; q<lenlist; q++){
 					if (maxval == list[q]){cpt+=1;}
 				}
-				if (cpt==0){
-					list[lenlist]=maxval;
+				if (cpt == 0){
+					list[lenlist] = maxval;
 					lenlist++;
 				}
 			}
@@ -200,13 +197,13 @@ abstract class ImCorr implements Picker {
 	static Object results(int []list,ResultsTable table, int lenlist,ImagePlus image)
 	{
 		
-		int []xpoints=new int[lenlist];
-		int []ypoints=new int[lenlist];
+		int []xpoints = new int[lenlist];
+		int []ypoints = new int[lenlist];
 		
-		for (int l=0;l<lenlist;l++){
-			int line2=list[l];
-			double x=table.getValue("X",line2);
-			double y=table.getValue("Y",line2);
+		for (int l=0; l<lenlist; l++){
+			int line2 = list[l];
+			double x = table.getValue("X",line2);
+			double y = table.getValue("Y",line2);
 			xtab.add(x);
 			ytab.add(y);
 			slice.add(z);
@@ -216,14 +213,14 @@ abstract class ImCorr implements Picker {
 			ypoints[l] = yy;
 			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
 		}
-		resultstable[0]= xtab;
-		resultstable[1]= ytab;
+		resultstable[0] = xtab;
+		resultstable[1] = ytab;
 		resultstable[2] = slice;
 		return resultstable;
 	}
 
 	static double[][] resultConverter(){
-		int arrayLength=xtab.size();
+		int arrayLength = xtab.size();
 		Object[] tempX = new String[arrayLength];
 		Object[] tempY = new String[arrayLength];
 		Object[] tempZ = new String[arrayLength];
@@ -242,21 +239,9 @@ abstract class ImCorr implements Picker {
 			zArray[i] = Double.parseDouble(temp);
 		}
 		double[][] coordinates = new double[3][arrayLength];
-		coordinates[0]=xArray;
-		coordinates[1]=yArray;
-		coordinates[2]=zArray;
+		coordinates[0] = xArray;
+		coordinates[1] = yArray;
+		coordinates[2] = zArray;
 		return coordinates;
-	}
-	
-	
-	
-	static void printResultTable(Vector[] resulttable){
-		for (int i=0;i<resulttable[1].size();i++){
-			for (int j=0;j<resulttable.length;j++){
-				System.out.println("lala");
-				System.out.print(resulttable[j]);
-				System.out.println("\n");
-			}
-		}
 	}
 }

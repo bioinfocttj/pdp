@@ -1,22 +1,21 @@
-// Code récupéré d'imagej mais récupération uniquement de la partie qui nous intéresse
+// This class is from the FFTMath method on ImageJ 
 
 import ij.*;
 import ij.plugin.PlugIn;
 import ij.process.*;
 
-/** The class implements the Process/FFT/Math command. */
+// The class implements the Process/FFT/Math command. 
 public class FFTMath implements PlugIn {
 
 	private static String title = "Result";
 
-	public void run(String arg) {
-	}
+	public void run(String arg) {}
 
 	public static ImagePlus doMath(ImagePlus imp1, ImagePlus imp2) {
-		FHT result, h1, h2=null;
+		FHT result, h1, h2 = null;
 		ImageProcessor fht1, fht2;
-		fht1  = (ImageProcessor)imp1.getProperty("FHT");
-		if (fht1!=null)
+		fht1 = (ImageProcessor)imp1.getProperty("FHT");
+		if (fht1 != null)
 			h1 = new FHT(fht1);
 		else {
 			IJ.showStatus("Converting to float");
