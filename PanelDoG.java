@@ -73,10 +73,10 @@ class PanelDoG extends PickPanel {
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
-		sigma1JTF = new JTextField("020");
-		sigma2JTF = new JTextField("015");
-		cropWidthJTF = new JTextField("100");
-		noiseToleranceJTF = new JTextField("010");
+		sigma1JTF = new JTextField("20",3);
+		sigma2JTF = new JTextField("15",3);
+		cropWidthJTF = new JTextField("100",4);
+		noiseToleranceJTF = new JTextField("10",3);
 		// Chekbox for the debug mode
 		debugMode = new JCheckBox( "Debug" );
 		cropperMode = new JCheckBox( "Crop" );

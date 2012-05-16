@@ -71,10 +71,10 @@ public class PanelDilateDiff extends PickPanel {
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
-		iteration1JTF = new JTextField("001");
-		iteration2JTF = new JTextField("002");
-		noiseToleranceJTF = new JTextField("003");
-		cropWidthJTF = new JTextField("100");
+		iteration1JTF = new JTextField("1",3);
+		iteration2JTF = new JTextField("2",3);
+		noiseToleranceJTF = new JTextField("3",3);
+		cropWidthJTF = new JTextField("100",4);
 		// Chekbox for the debug mode
 		debugMode = new JCheckBox( "Debug" ); 
 		cropperMode = new JCheckBox( "Crop" );

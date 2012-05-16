@@ -78,11 +78,11 @@ class PanelImCorr extends PickPanel {
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
-		radiusMinJTF = new JTextField("020");
-		radiusMaxJTF = new JTextField("060");
-		radiusIncJTF = new JTextField("005");
-		cropWidthJTF = new JTextField("100");
-		noiseToleranceJTF = new JTextField("00.5");
+		radiusMinJTF = new JTextField("20",3);
+		radiusMaxJTF = new JTextField("60",3);
+		radiusIncJTF = new JTextField("5",3);
+		cropWidthJTF = new JTextField("100",4);
+		noiseToleranceJTF = new JTextField("0.5",4);
 		// Chekbox for the debug mode
 		debugMode = new JCheckBox( "Debug"); 
 		cropperMode = new JCheckBox( "Crop" );
