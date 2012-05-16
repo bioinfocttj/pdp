@@ -30,7 +30,8 @@ class About extends PickPanel {
 		"CONTACT INFO\n"+
 		"  For further information contact us:\n"+
 		"  Master BioInoformatique, Université Bordeaux 1 Talence, \n" +
-		"  mail : prenom.nom@etu.u-bordeaux1.fr \n";
+		"  mails : thomas.faux@etu.u-bordeaux1.fr, charlotte.herice@etu.u-bordeaux1.fr, \n" + 
+		"          typhaine.paysan-lafosse@etu.u-bordeaux1.fr, joris.sansen@etu.u-bordeaux1.fr";
 
 	static JTextArea info = new JTextArea(description);
 	
