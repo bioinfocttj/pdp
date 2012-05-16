@@ -24,11 +24,9 @@ import javax.swing.*;
 @SuppressWarnings({ "serial"})
 
 public class PickFrame extends JFrame implements ActionListener {
-
-	ImageProcessor ip;
+	// This class is for the plugin interface 
 	
-	//static ImagePlus imgSource;
-	//ImagePlus imp;
+	ImageProcessor ip;
 	
 	int type;
 	
@@ -61,12 +59,12 @@ public class PickFrame extends JFrame implements ActionListener {
 		public GUIShower(JFrame jFrame) {
 			this.jFrame = jFrame;
 		}
+		
 		public void run() {
 			jFrame.pack();
 			jFrame.setLocation(1000, 200);
 			jFrame.setVisible(true);
 			jFrame.setResizable(false);
-			
 		}
 	}
 
@@ -90,7 +88,7 @@ public class PickFrame extends JFrame implements ActionListener {
 
 		///////////////////// Panel1 : Choice of algorithm 
 
-		JLabel titlePanel1= new JLabel(" Choose a picking algorithm ", JLabel.CENTER);
+		JLabel titlePanel1 = new JLabel(" Choose a picking algorithm ", JLabel.CENTER);
 		panel1.add(titlePanel1);
 		// Create combo box
 		String[] algos = { "Difference_of_Gaussian", "Dilate_Difference", "Image_Correlation", "About_Pick_EM"};
@@ -108,14 +106,13 @@ public class PickFrame extends JFrame implements ActionListener {
 		gridbag.setConstraints(choice,gbc);
 		panel1.add(choice);
 		
-		//////////////////////// Panel3 : Preview & Apply & Help
+		//////////////////////// Panel3 : Preview & Apply & Save & Help
 
 		previewButton = makeButton("Preview");
 		applyButton = makeButton("Apply");
 		saveButton = makeButton("Show Results");
 		helpInfoButton = makeButton("Help & Info");
 		helpInfoButton.addActionListener(new InfoHelp());
-		
 		
 		//adding to Preview & Reset & Apply & Help box
 		gridbag.setConstraints(previewButton,gbc);
@@ -127,11 +124,11 @@ public class PickFrame extends JFrame implements ActionListener {
 		gridbag.setConstraints(helpInfoButton,gbc);
 		panel3.add(helpInfoButton);
 
-		///////////////// Principal panel
+		///////////////// Main panel
+		
 		mainPanel.setLayout(new GridLayout(3,0)); 
 		mainPanel.setVisible(true);
 		
-		//add(panelPrincipal); 
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
 		mainPanel.add(panel3);
@@ -146,7 +143,7 @@ public class PickFrame extends JFrame implements ActionListener {
 		return jButton;
 	}
 		
-	/*Listens to the combo box. */
+	// Listens to the combo box
 	public void actionPerformed(ActionEvent e) {
 		
 		String command = e.getActionCommand();
@@ -154,7 +151,7 @@ public class PickFrame extends JFrame implements ActionListener {
 			JComboBox cb = (JComboBox)e.getSource();
 			String comboSelection = (String) cb.getSelectedItem();
 			panel2.removeAll();
-			//on retire tout pour les rajouter dans le bon ordre, seule solution trouvee pr le mmt pr maintenir le panel 2 au milieu
+			// Allows the panel2's update
 			mainPanel.remove(panel1);
 			mainPanel.remove(panel2);
 			mainPanel.remove(panel3);
@@ -170,47 +167,58 @@ public class PickFrame extends JFrame implements ActionListener {
 		if (command.equals("Apply")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
+				IJ.showStatus("Start of DoG picking");
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
 				coordXYZ = DoG.sliceSelection();
+				IJ.showStatus("End of DoG picking");
 			}
 
 			else if (algo.equals("Image_Correlation")){
+				IJ.showStatus("Start of Image Correlation picking");
 				Attributes.getInstance();
 				PanelImCorr.setAttributes();
 				coordXYZ = ImCorr.sliceSelection();
+				IJ.showStatus("End of Image Correlation picking");
 			}
 
 			else if (algo.equals("Dilate_Difference")){
+				IJ.showStatus("Start of Dilate Difference picking");
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
 				coordXYZ = DilateDiff.sliceSelection();
+				IJ.showStatus("End of Dilate Difference picking");
 			}
 		}
 		
 		else if (command.equals("Preview")){
 			String algo = (String)algoList.getSelectedItem();
 			if (algo.equals("Difference_of_Gaussian")){
+				IJ.showStatus("Start of Preview");
 				Attributes.getInstance();
 				PanelDoG.setAttributes();
 				DoG.picking();
+				IJ.showStatus("End of Preview");
 			}
 
 			else if (algo.equals("Image_Correlation")){
+				IJ.showStatus("Start of Preview");
 				Attributes.getInstance();
 				PanelImCorr.setAttributes();
 				ImCorr.picking();
+				IJ.showStatus("End of Preview");
 			}
 
 			else if (algo.equals("Dilate_Difference")){
+				IJ.showStatus("Start of Preview");
 				Attributes.getInstance();
 				PanelDilateDiff.setAttributes();
 				DilateDiff.picking();
+				IJ.showStatus("End of Preview");
 			}
 		}
 		else if (command.equals("Show Results")){
 				ToCSV.generateCsvFile(coordXYZ);
 		}
-		
 	}
 }
