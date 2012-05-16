@@ -2,44 +2,52 @@
 
 \section{Interface graphique}
 
-Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj. Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique. Celle-ci offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
-Nous avons donc créé une série d'outils graphiques (boutons, listes, labels) pour l'interaction avec l'utilisateur. Dans une fenêtre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
+Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj . L'interface graphique à été réalisée grâce à la bibliothèque  \java ~swing, %Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique.
+celle-ci offre la possibilité de créer des interfaces graphiques identiques quelque soit le système d'exploitation sous-jacent.\\
+La fenêtre servant d'interface est composée de differentes boites (panneaux). Ces boites contiennent différents outils (boutons, listes, zones de saisie et zones de texte) permettant l'interaction entre l'utilisateur et le programme. Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
+%Nous avons donc créé une série d'outils graphiques (boutons, listes, zone de saisie et zone de texte) pour l'interaction avec l'utilisateur. Dans une fenêtre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
 L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de quatre boutons. \\
 
-\subsection{Les panels}
+\subsection{Les panneaux}
 
-Notre interface est composée de quatre panels différents (voir Figure \ref{panels}) :
-\begin{itemize}
-
-\item Le panel en haut de la fenêtre (\textbf{panel1}) contient la combobox pour le choix de l'algorithme. 
-\item Le panel du milieu (\textbf{panel2}) est vide au lancement du plugin et son contenu s'affiche en fonction de l'algorithme de piquage choisi. Il contient 4 sous-panels :
-\begin{itemize}
-\item Le premier sous-panel (\textbf{infoPanel}) contient une zone de texte visant à guider l'utilisateur sur la manière de lancer la procédure de piquage choisie. 
-\item Le deuxième sous-panel se situe au milieu de panel2 et porte un nom différent suivant l'algorithme choisi : il va se nommer \textbf{iterationPanel} pour Dilate Difference, \textbf{sigmaPanel} pour Difference of Gaussian et \textbf{radiusPanel} pour Image Correlation. Ces sous-panels contiennent deux ou trois TextFields (zones de texte à une seule ligne) pour que l'utilisateur puisse entrer les valeurs des paramètres nécessaires au bon fonctionnement des algorithmes. 
-\item Le troisième sous-panel (\textbf{widthNoisePanel}) quand à lui contient deux TextFields pour les paramètres \textbf{Square width} et \textbf{Noise Tolerance} sur lesquels nous reviendrons par la suite. 
-\item Le dernier sous-panel (\textbf{debugCropPanel}) contient deux checkboxs pour les modes de debug et crop (voir plus loin dans le rapport). 
-\end{itemize}
-\item Le panel en bas de la fenêtre (\textbf{panel3}) contient quatre boutons qui permettent à l'utilisateur de faire fonctionner le plugin. 
-\item Le panel principal (\textbf{mainPanel}) contient tous les panels cités précédemment. Sa taille détermine celle de la fenêtre du plugin. 
-\end{itemize}
-
+Notre interface est composée d'une arborescence de panneaux organisée comme suit : \\
+Un panneau principal, permettant d'organiser la fenetre du plugin, composé des trois panneaux subsidiaires suivant :
+%Notre interface est composée de quatre panneaux différents (voir Figure \ref{panneaux}) :
+\begin{description}
+\item [Le premier panneau] contient une liste déroulante permettant le choix de l'algorithme. 
+%\item Le panneau en haut de la fenêtre contient une liste déroulante pour le choix de l'algorithme. 
+\item [le panneau du milieu] est vide au lancement du plugin et s'actualise en fonction de l'algorithme de piquage choisi.\\
+Il affiche une aide rapide sur les condition d'utilisation de l'algorithme de piquage, les zones de saisies utilisateur propre à cet algorithme, les choix génériques : mode de deboggage, mode de découpe des selections et taille de la selection, valeur de filtrage du bruit de fond. Tout cela s'organise à l'aide de sous-panneaux.
+%\item Le panel du milieu est vide au lancement du plugin et son contenu s'actualise en fonction de l'algorithme de piquage choisi. Il contient 4 sous-panneaux :
+%\begin{itemize}
+%\item Le premier sous-panneau contient une zone de texte visant à guider l'utilisateur sur la manière de lancer la procédure de piquage choisie. 
+%\item Le deuxième sous-panneau se situe au milieu et change en fonction de l'algorithme choisi. Il conporte un nom différent suivant l'algorithme choisi : il va se nommer \textbf{iterationPanel} pour Dilate Difference, \textbf{sigmaPanel} pour Difference of Gaussian et \textbf{radiusPanel} pour Image Correlation. Ces sous-panels contiennent deux ou trois TextFields (zones de texte à une seule ligne) pour que l'utilisateur puisse entrer les valeurs des paramètres nécessaires au bon fonctionnement des algorithmes. 
+%\item Le troisième sous-panel (\textbf{widthNoisePanel}) quand à lui contient deux TextFields pour les paramètres \textbf{Square width} et \textbf{Noise Tolerance} sur lesquels nous reviendrons par la suite. 
+%\item Le dernier sous-panel (\textbf{debugCropPanel}) contient deux checkboxs pour les modes de debug et crop (voir plus loin dans le rapport). 
+%\end{itemize}
+\item [le dernier panneau] contient les boutons d'actions : prévisualisation, éxécution, affichage des résultats, informations/aide.
+%\item Le panel en bas de la fenêtre (\textbf{panel3}) contient quatre boutons qui permettent à l'utilisateur de faire fonctionner le plugin. 
+%\item Le panel principal (\textbf{mainPanel}) contient tous les panels cités précédemment. Sa taille détermine celle de la fenêtre du plugin. 
+\end{description}
+Le panneau principal permet notamment d'imposer la taille de l'interface.\\
+La figure suivante (\ref{panneaux}) donne un aperçu plus visuel de l'organisation de ces différents panneaux.
 \begin{figure}[!h] 
 \includegraphics[width=1\textwidth]{plugin3-1.png}
 \caption{Organisation des panels pour l'algorithme Difference of Gaussian}
-\label{panels}
+\label{panneaux}
 \end{figure}
-
+\pagebreak
 \subsection{Les boutons}
 
-Les boutons doivent répondre aux clics de la souris et lancer une série d'actions correspondantes en fonction de l'algorithme de piquage choisi par l'utilisateur :
+Les boutons doivent répondre aux clics de la souris et lancer l'action correspondante en fonction de l'algorithme de piquage choisi par l'utilisateur :
 
-\begin{itemize}
-\item Le bouton \textbf{Preview} permet de tester l'algorithme sélectionné sur une seule image du stack.
-\item Le bouton \textbf{Apply} permet d'appliquer l'algorithme sur l'ensemble du stack, lorsque l'utilisateur a défini les paramètres qu'il souhaite appliquer.
-\item Le bouton \textbf{Help \& Info} est une aide d'utilisation du plugin.
-\item Le bouton \textbf{Save Results} permet de sauvegarder le tableau de coordonnées des particules sélectionnées.% avec l'aide d'\imj.  
-\end{itemize}
-Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert un stack d'image à l'aide d'\imj.
+\begin{description}
+\item [Le bouton de prévisualisation] permet de tester le piquage obtenu par l'algorithme sélectionné sur l'image courante.
+\item [Le bouton d'éxécution] permet d'appliquer l'algorithme sur l'image ou le stack séléctionné, lorsque l'utilisateur est s\^ur des paramètres qu'il souhaite appliquer.
+\item [Le bouton d'information/aide] est une aide d'utilisation du plugin ainsi que des conditions de fonctionnement des algorithmes.
+\item [Le bouton d'affichage des résultats] permet d'afficher et de sauvegarder le tableau des coordonnées des particules sélectionnées.% avec l'aide d'\imj.  
+\end{description}
+Pour que le plugin puisse fonctionner, l'utilisateur devra au préalable avoir ouvert une image ou un stack d'images à l'aide d'\imj.
 
 \subsection{Algorithmes et paramètres d'entrée}
 
