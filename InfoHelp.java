@@ -59,4 +59,3 @@ class InfoHelp implements ActionListener{
 		tw.setVisible(true);
 	}
 }
-

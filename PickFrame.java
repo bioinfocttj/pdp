@@ -30,15 +30,15 @@ public class PickFrame extends JFrame implements ActionListener {
 	
 	int type;
 	
-	JPanel mainPanel;
-	JPanel panel1;
+	private JPanel mainPanel;
+	private JPanel panel1;
 	private JPanel paneltitle;
 	private JPanel panel2;
 	private JPanel panel3;
 	
 	PickFrame instance;
 	
-	JButton helpInfoButton;
+	private JButton helpInfoButton;
 	private JButton previewButton;
 	private JButton applyButton;
 	private JButton saveButton;
