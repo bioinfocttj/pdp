@@ -2,6 +2,14 @@
 
 \section{Contexte}
 
+\subsection{Présentation du CBMN}
+
+Le laboratoire, créé en janvier 2007, est à l'interface entre le Biologie, la Chimie et la Physique. Il a pour tutelle les départements de Chimie et des Sciences de la Vie du Centre National de la Recherche Scientifique (CNRS) et les Unités de Formation et de Recherche (UFR) de Chimie et de Biologie de l'Université Bordeaux I, II et l'ENITAB. \\
+La mission du CBMN est d'apporter une connaissance fondamentale de phénomènes biologiques complexes en les analysant à plusieurs échelles, allant de la molécule à la cellule et à l'organisme. \\
+L'équipe ACMPC s'appuie sur deux méthodes d'imagerie : la cryotomographie  électronique et la microscopie à fluorescence. Comme nous l'avons expliqué précédemment, nous allons travailler sur des images issues de cryomicroscopie.  
+
+\subsection{Objectifs}
+
 \noindent
 Notre objectif était de créer et d'implémenter une plateforme mettant à disposition plusieurs méthodes de piquage automatisées des particules sur les micrographes. Les échantillons qui nous ont servi de tests étaient de deux types :%
 \begin{itemize}
@@ -109,14 +117,16 @@ Enfin, il est également possible d'implanter simplement de nouveaux algorithmes
 
 \subsubsection{Les algorithmes}
 
-Ils réalisent un piquage automatique des particules depuis les micrographes issus de \cme. Le format de sortie est un fichier au format \emph{.csv} contenant un jeu de coordonnées \emph{x, y} associé à la position de l'image dans le stack, ainsi qu'un mini-stack contenant les particules sélectionnées par l'algorithme si l'utilisateur le désire.
+Ils réalisent un piquage automatique des particules depuis les micrographes issus de \cme. Le format de sortie est un tableau de résultats contenant un jeu de coordonnées \emph{x, y} associé à la position de l'image dans le stack, ainsi qu'un mini-stack contenant les particules sélectionnées par l'algorithme si l'utilisateur le désire.
 
 \subsection{Besoins non fonctionnels}
 
 \subsubsection{Interface}
 
 \noindent
-L'implémentation de la plateforme a été réalisée en \java, nous utilisons les API\footnote{Application Programming Interface} graphiques de la bibliothèque \emph{swing}. De plus, nous avons essayé de faire en sorte que le programme soit le plus simple d'utilisation possible afin de le rendre accessible à tous. C'est pourquoi nous avons tenté de faire un code clair, explicite et commenté afin de permettre aisément l'implémentation de nouveaux algorithmes.
+L'implémentation de la plateforme a été réalisée en \java, nous utilisons les API\footnote{Application Programming Interface} graphiques de la bibliothèque \emph{Swing}. 
+Il s'agit d'une interface graphique (GUI)\footnote{Graphic User Interface} faisant partie du paquage Java Foundation Classes (JFC), inclus dans J2SE. Swing constitue une des principales évolutions apportées par Java2 par rapport aux versions antérieures. Elle offre la possibilité de créer des interfaces graphiques identiques quelque soit de système d'exploitation sous-jacent, au prix de performances moindres qu'en utilisant Abstract Window Toolkit (AWT) l'autre bibliothèque principale pour \java. \\
+De plus, nous avons essayé de faire en sorte que le programme soit le plus simple d'utilisation possible afin de le rendre accessible à tous. C'est pourquoi nous avons tenté de faire un code clair, explicite et commenté afin de permettre aisément l'implémentation de nouveaux algorithmes.
 
 \subsubsection{Les algorithmes}
 
@@ -127,3 +137,30 @@ Dans l'optique de démocratiser l'utilisation de notre interface et afin de perm
 
 \noindent
 %Le projet devra être terminé vers mi-mai. %prière de nous mettre une bonne note !
+
+\section{Scénario d'utilisation du plugin}
+
+Nous prenons l'exemple d'une image issue de \cme ~sur laquelle se trouvent des protéines membranaires que nous voulons sélectionner (Figure \ref{prot}).
+
+\begin{figure}[!h] 
+\begin{center}
+\includegraphics[width=0.5\textwidth]{proteines.jpg}
+\caption{Image de protéines membranaires observées au \cme}
+\label{prot}
+\end{center}
+\end{figure}
+
+Nous avons tenté de nous mettre à la place d'un chercheur pour avoir une vision biologique de l'utilisation de notre plugin. Tout au long de ce rapport, vous pourrez donc suivre toutes les procédures qui nous ont permis de réaliser la sélection. 
+
+
+
+
+
+
+
+
+
+
+
+
+
