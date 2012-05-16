@@ -31,7 +31,36 @@ Par ailleurs, les résultats de la sélection peuvent être affichés sous la fo
 \section{Récupération des paramètres}
 
 
+\section{résultats}
+Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante ou la dernière image dans le cas d'un stack.
+L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
+De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenus est créé (éliminant les particules trop près du bord de l'image) et affiché.
+\begin{figure}[ht]
+ \begin{minipage}{.450\linewidth}
+  \includegraphics[width=0.75\textwidth]{cropblob.png}  
+ % \caption{Difference de Gaussienne (blobs)}
+ \end{minipage} \hfill
+\begin{minipage}{.450\linewidth}
+  \includegraphics[width=0.5\textwidth]{cropprotDog.png}   
+  %\caption{Difference de Gaussienne (protéines)}
+ \end{minipage} \hfill
+\caption{Exemple d'image formant le stack de particules (blobs et protéines)}
+\end{figure}
+\subsubsection*{Statistiques}
+La Différence de Gaussienne permet d'obtenir les résultats suivant :
 
+\begin{figure}[ht]
+ \begin{minipage}{.450\linewidth}
+  \includegraphics[width=0.75\textwidth]{blobsDog.png}  
+ % \caption{Difference de Gaussienne (blobs)}
+ \end{minipage} \hfill
+\begin{minipage}{.450\linewidth}
+  \includegraphics[width=1\textwidth]{protDog.png}   
+  %\caption{Difference de Gaussienne (protéines)}
+ \end{minipage} \hfill
+\caption{Difference de Gaussienne (blobs et protéines)}
+\end{figure}
+La Différence de dilatation permet d'obtenir les résultats suivant :
 
 
 %algoFactory

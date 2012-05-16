@@ -79,24 +79,7 @@ On demande à l'utilisateur d'entrer les valeurs d'écart-type qui seront utilis
 Cette méthode repose sur le même principe que la différence de Gaussienne à ceci près que l'image d'origine n'est pas floutée mais on lui applique un certain nombre de cycles de dilatation, on obtient alors des particules de plus grandes tailles. A la soustraction des deux images, seuls les contours des particules apparaitront, nous permettant de récuperer les centres de particules.\\
 L'utilisateur devra entrer les nombres de cycles de dilatation qu'il souhaite appliquer à chaque image.
 
-\subsection{résultats}
-Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante ou la dernière image dans le cas d'un stack.
-L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
-De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenus est créé (éliminant les particules trop près du bord de l'image) et affiché.
 
-\subsubsection*{Statistiques}
-\paragraph*{La Différence de Gaussienne} 
-\begin{figure}[H]
- \begin{minipage}{.25\linewidth}
-  \includegraphics[width=2\textwidth]{blobsDog.png}  
-  \caption{Difference de Gaussienne avec les blobs}
- \end{minipage} \hfill
-\begin{minipage}{.50\linewidth}
-  \includegraphics[width=0.8\textwidth]{protDog.png}   
-  \caption{Difference de Gaussienne avec les protéines}
- \end{minipage} \hfill
-
-\end{figure}
 %\section{Les classes}
 %
 %Le programme est divisé en seize classes distinctes:
