@@ -79,7 +79,25 @@ On demande à l'utilisateur d'entrer les valeurs d'écart-type qui seront utilis
 Cette méthode repose sur le même principe que la différence de Gaussienne à ceci près que l'image d'origine n'est pas floutée mais on lui applique un certain nombre de cycles de dilatation, on obtient alors des particules de plus grandes tailles. A la soustraction des deux images, seuls les contours des particules apparaitront, nous permettant de récuperer les centres de particules.\\
 L'utilisateur devra entrer les nombres de cycles de dilatation qu'il souhaite appliquer à chaque image.
 
+\subsection{le stack d'images résultantes}
+Si l'utilisateur le désire, il peut récuperer un stack contenant les particules piquées. Ce stack est obtenu à partir du tableau des coordonnées que la fonction de creation du stack prend en paramètre d'entrée.
+Les particules trop près du bord sont éliminées, les autres ajoutées dans un stack qui est finalement affiché à l'utilisateur.
 
+\section{organisation orientée objet du programme}
+Afin de clarifier et de simplifier le code, nous avons tenté de separer les grandes fonctions du programme en suivant les principes de la programmation orientée objet.
+
+\subsection*{séparation interface graphique et traitement d'images}
+Sans suivre le patron de conception Modèle-Vue-Controleur (MVC), nous avons créé différentes classes permettant de distinguer la partie GUI de la partie algorithme. Nous obtenons ainsi des classes ne gérant que l'aspect graphique du plugin, et plus particulièrement les panneaux propres aux méthodes de piquage et des classes bien distinctes effectuant les traitements d'images.
+
+\subsection*{séparation traitement d'images et création du stack}
+La partie permettant la création du stack d'imagettes à été séparées des méthodes de piquages afin d'éviter la répétition de ce code dans chaque algorithme. Cela permet aussi d'y faire appel en dehors de nos algorithmes contrairement à une implémentation de cette fonction dans une classe mère.
+
+\subsection*{patrons de conception}
+Cette séparation GUI/traitement/stack à dû être accompagnée de la création de classes suivant des patrons de conception particulier : la \emph{factory} et le \emph{singleton}.
+\begin{description}
+\item[la classe en \emph{factory}] permet d'effectuer les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récuperer les paramètres utilisateur.
+\item[La classe en \emph{singleton}] permet de conserver les paramètres choisis par l'utilisateur, ainsi même lorsqu'il éxécute plusieurs algorithme, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
+\end{description}
 %\section{Les classes}
 %
 %Le programme est divisé en seize classes distinctes:
