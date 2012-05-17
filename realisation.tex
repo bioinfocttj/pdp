@@ -40,7 +40,22 @@ Par ailleurs, les résultats de la sélection peuvent être affichés sous la fo
 
 \section{Récupération des paramètres}
 
-Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. Le mot-clé  \texttt{synchronized} dans la fonction \texttt{getInstance()} empêche toute instanciation multiple. 
+Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. La méthode  \texttt{synchronized()} dans la fonction \texttt{getInstance()} (voir ci-dessous) empêche toute instanciation multiple :
+
+\begin{small}
+\begin{lstlisting}
+public final static Attributes getInstance() {
+  if (Attributes.instance == null) {
+    synchronized(Attributes.class) {
+      if (Attributes.instance == null) {
+        Attributes.instance = new Attributes();
+      }
+    }
+  }
+  return Attributes.instance;
+}
+\end{lstlisting}
+\end{small}	
 
 \section{Algorithmes}
 
@@ -57,7 +72,7 @@ La méthode \texttt{picking()} donne l'image courante du stack en paramètre de 
 
 La méthode \texttt{pick()} quand à elle permet de lancer l'algorithme sur la sélection. Elle prend une ImagePlus et le numéro de l'image dans le stack en paramètres. Cette fonction récupère les paramètres entrés par l'utilisateur (grâce à \texttt{hashAttributes.get()}) et renvoie un tableau de résultats (X, Y, Slice). Voici un extrait du code de l'algorithme Difference of Gaussian :
 
-
+\begin{small}
 \begin{lstlisting}
 Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 String sigma1 = hashAttributes.get("sig1");
@@ -69,14 +84,23 @@ String si1 = "sigma=" + sigma1;
 
 imp1.setSlice(currentslice);
 IJ.run(imp1, "Gaussian Blur...", si1);
-ic = new ImageCalculator();
 \end{lstlisting}
+\end{small}
 
+Ici, nous obtenons le paramètre \textbf{sigma1} grâce à la table de hashage et la clé "\texttt{sig1}". Nous avons besoin de ce dernier pour appliquer le filtre gaussien sur l'image courante, c'est pourquoi nous le castons sous la forme d'un \emph{String}. Notons que la fonction \texttt{IJ.run()} permet de lancer une procédure \imj. \\
+Nous avons choisi d'utiliser des vecteurs pour stocker les coordonnées ainsi que les numéros de slices car il nous est impossible de connaître à l'avance le nombre de particules qui vont être sélectionnées. \\
+Nous avons fait en sorte de vider les tableaux de résultats entre le mode de prévisualisation et d'application, mais aussi entre deux applications ou deux prévisualisations. Ceci évite que les résultats ne s'ajoutent, ce qui fausserait la résultante du piquage. \\
+Il en est de même pour tous les algorithmes. De plus, ceux-ci héritent de l'interface Picker. \\ 
 
+VOIR POUR PICKER (interface ? ) \\
 
+\section{Autres classes}
 
+La classe \texttt{FFTMath} est issue de la classe \texttt{FFTMath} d'\imj, que nous avons modifié afin de pouvoir réaliser la corrélation d'images dans l'algorithme Image Correlation. \\
 
+La classe \texttt{About} permet d'afficher les auteurs du plugin et le moyen de nous contacter si besoin. \\
 
+La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si l'utilisateur  clique sur le bouton "Hepl \& Info". 
 
 
 \section{Applications}
@@ -101,7 +125,7 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
 
 \subsubsection*{Statistiques}
 
-La Différence de Gaussienne permet d'obtenir les résultats suivants :
+La Différence gaussienne permet d'obtenir les résultats suivants :
 
 \begin{figure}[ht]
 \begin{center}
