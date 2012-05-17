@@ -13,8 +13,11 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+
+
 import java.awt.Polygon;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -27,15 +30,15 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class DilateDiff extends Picker{
-	// Picking algorithm : dilate difference
+// Picking algorithm : dilate difference
 	/*
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();
-	*/
-	static double[][]array;
 	
-//	private static Cropper cropper;
+	static double[][]array;
+	*/
+	private static Cropper cropper;
 	
 	DilateDiff(){}
 	
@@ -60,31 +63,32 @@ abstract class DilateDiff extends Picker{
 			pick(im, i);
 		}
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String cropMode = hashAttributes.get("crop");
-		boolean cropperMode = Boolean.parseBoolean(cropMode);
+		cropMode = hashAttributes.get("crop");
+		cropperMode = Boolean.parseBoolean(cropMode);
 		array = resultConverter();
 		if (cropperMode) {
 			cropper = new Cropper(im, array);
 		}
 		return array;
 	}
+	
 	static void pick(ImagePlus image, int currentslice){
 		ImageCalculator ic;
 		int counter=0;
 		int[] xpoints;
 		int[] ypoints;
-		ResultsTable table = new ResultsTable(); 
+		ResultsTable table = new ResultsTable();
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
-
+		
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String iteration1 = hashAttributes.get("iter1");
 		String iteration2 = hashAttributes.get("iter2");
-
+		
 		String it1 = "iterations=" + iteration1+" count=1 edm=Overwrite do=Nothing";
 		String it2 = "iterations=" + iteration2+" count=1 edm=Overwrite do=Nothing";
-		String noiseT = hashAttributes.get("noise");
-		double tolerance = Double.parseDouble(noiseT);
+		noiseT = hashAttributes.get("noise");
+		tolerance = Double.parseDouble(noiseT);
 		
 		ImagePlus imp = WindowManager.getCurrentImage();
 		ImagePlus imp1=new Duplicator().run(imp);
@@ -115,7 +119,7 @@ abstract class DilateDiff extends Picker{
 		counter = table.getCounter();
 		xpoints = new int[counter];
 		ypoints = new int [counter];
-		
+	
 		for (int i=0;i<counter;i++){
 			double x = table.getValue("X",i);
 			double y = table.getValue("Y",i);
@@ -133,4 +137,3 @@ abstract class DilateDiff extends Picker{
 		}
 	}
 }
-

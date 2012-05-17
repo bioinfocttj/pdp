@@ -13,8 +13,11 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+
+
 import java.awt.Polygon;
 import java.util.Hashtable;
+import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -27,17 +30,17 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class DoG extends Picker {
-	// Picking algorithm : difference of gaussian
-	/*
-	static Vector[] resultstable = new Vector[3];
+// Picking algorithm : difference of gaussian
+	
+	//static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab = new Vector<Double>();
 	static Vector<Double> ytab = new Vector<Double>();
 	static Vector<Double> slice = new Vector<Double>();
-	*/
-//	private static Cropper cropper;
+	
+	private static Cropper cropper;
 	
 	DoG() {}
-
+	
 	static void picking() {
 		im = WindowManager.getCurrentImage();
 		int current = im.getSlice();
@@ -45,12 +48,12 @@ abstract class DoG extends Picker {
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-//		resultstable[0].removeAllElements();
-//		resultstable[1].removeAllElements();
-//		resultstable[2].removeAllElements();
-//		IJ.run("Clear Results");
+	//	resultstable[0].removeAllElements();
+	//	resultstable[1].removeAllElements();
+	//	resultstable[2].removeAllElements();
+		IJ.run("Clear Results");
 	}
-
+	
 	static double[][] sliceSelection() {
 		xtab.removeAllElements();
 		ytab.removeAllElements();
@@ -63,16 +66,16 @@ abstract class DoG extends Picker {
 		}
 		// Cast the vector in an array so as to send it to the cropper
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String cropMode = hashAttributes.get("crop");
-		boolean cropperMode = Boolean.parseBoolean(cropMode);
+		cropMode = hashAttributes.get("crop");
+		cropperMode = Boolean.parseBoolean(cropMode);
 		double[][] array = resultConverter();
 		if (cropperMode) {
-			cropper = new Cropper(im,array);
+			new Cropper(im,array);
 		}
 		return array;
-
+	
 	}
-
+	
 	public static void pick(ImagePlus imp, int currentslice) {
 		ImageCalculator ic;
 		ResultsTable table = new ResultsTable();
@@ -81,21 +84,21 @@ abstract class DoG extends Picker {
 		int[] ypoints;
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
-
+	
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String sigma1 = hashAttributes.get("sig1");
 		String sigma2 = hashAttributes.get("sig2");
-		String noiseT = hashAttributes.get("noise");
-		double tolerance = Double.parseDouble(noiseT);
-
+		noiseT = hashAttributes.get("noise");
+		tolerance = Double.parseDouble(noiseT);
+	
 		imp.setSlice(currentslice);
 		ImagePlus imp1 = new Duplicator().run(imp);
 		imp1.setSlice(currentslice);
 		ImagePlus imp2 = new Duplicator().run(imp1);
-
+		
 		String si1 = "sigma=" + sigma1;
 		String si2 = "sigma=" + sigma2;
-
+		
 		imp1.setSlice(currentslice);
 		IJ.run(imp1, "Gaussian Blur...", si1);
 		imp2.setSlice(currentslice);
@@ -103,7 +106,7 @@ abstract class DoG extends Picker {
 		ic = new ImageCalculator();
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
 		WindowManager.setTempCurrentImage(imp3);
-
+		
 		
 		ImageProcessor ip3 = imp3.getProcessor();
 		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
@@ -121,23 +124,23 @@ abstract class DoG extends Picker {
 		xpoints = new int[counter];
 		ypoints = new int[counter];
 		for (int i = 0; i < counter; i++) {
-			double x = table.getValue("X", i);
-			double y = table.getValue("Y", i);
-			int xx = (int) x;
-			int yy = (int) y;
-			xpoints[i] = xx;
-			ypoints[i] = yy;
-			xtab.add(x);
-			ytab.add(y);
-			imp3.close();
-			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
+		double x = table.getValue("X", i);
+		double y = table.getValue("Y", i);
+		int xx = (int) x;
+		int yy = (int) y;
+		xpoints[i] = xx;
+		ypoints[i] = yy;
+		xtab.add(x);
+		ytab.add(y);
+		imp3.close();
+		imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
 		for (int i = 0; i < counter; i++) {
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-//		resultstable[0] = xtab;
-//		resultstable[1] = ytab;
-//		resultstable[2] = slice;
+//	resultstable[0] = xtab;
+//	resultstable[1] = ytab;
+//	resultstable[2] = slice;
 	}
 }

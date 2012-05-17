@@ -16,6 +16,8 @@
 
 import java.awt.Polygon;
 import java.util.Hashtable;
+import java.util.Vector;
+
 import ij.IJ;
 import ij.ImagePlus;
 import ij.WindowManager;
@@ -27,15 +29,19 @@ import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
 abstract class ImCorr extends Picker {
-	// Picking algorithm : image correlation
+// Picking algorithm : image correlation
 	
 	private static ImagePlus imgBlocked;
+	private static ImagePlus im;
+	
+	//static Vector[] resultstable = new Vector[3];
+	static Vector<Double> xtab=new Vector<Double>();
+	static Vector<Double> ytab=new Vector<Double>();
+	static Vector<Double> slice=new Vector<Double>();
 	
 	private static double z;
-
-//	static Vector[] resultstable = new Vector[3];
-
-//	private static Cropper cropper;
+	
+	private static Cropper cropper;
 	
 	ImCorr(){}
 	
@@ -46,59 +52,53 @@ abstract class ImCorr extends Picker {
 		ImageProcessor ip = im.getProcessor();
 		ip.findEdges();
 		ip.invert();
-
+		
 		int current=im.getSlice();
 		pick(im, current);
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-//		resultstable[0].removeAllElements();
-//		resultstable[1].removeAllElements();
-//		resultstable[2].removeAllElements();
-//		IJ.run("Clear Results");
-		}
+	}
 	
 	static double[][] sliceSelection(){
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-//		resultstable[0].removeAllElements();
-//		resultstable[1].removeAllElements();
-	//	resultstable[2].removeAllElements();
+		//resultstable[0].removeAllElements();
+		//resultstable[1].removeAllElements();
+		//resultstable[2].removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
 		im = new Duplicator().run(imgBlocked);
 		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
 		ImageProcessor ip = im.getProcessor();
 		ip.findEdges();
 		ip.invert();
-
+		
 		int nbslice = im.getStackSize();
 		for (int i=1;i<=nbslice;i++){
 			im.setSlice(i);
 			pick(im, i);
 		}
-		
+	
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
-		String cropMode = hashAttributes.get("crop");
-		boolean cropperMode = Boolean.parseBoolean(cropMode);
+		cropMode = hashAttributes.get("crop");
+		cropperMode = Boolean.parseBoolean(cropMode);
 		double[][]array = resultConverter();
 		if (cropperMode) {
-			IJ.showMessage("plouf");
 			cropper = new Cropper(imgBlocked, array);
 		}
 		return array;
 	}
-
+	
 	public static void pick(ImagePlus image,int currentslice){
-		
 		z = (double) currentslice;
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String rMin = hashAttributes.get("rMin");
 		String rMax = hashAttributes.get("rMax");
 		String rInc = hashAttributes.get("rInc");
-		String noiseT = hashAttributes.get("noise");
-		double tolerance = Double.parseDouble(noiseT);
-		ResultsTable table = new ResultsTable(); 
+		noiseT = hashAttributes.get("noise");
+		tolerance = Double.parseDouble(noiseT);
+		ResultsTable table = new ResultsTable();
 		MaximumFinder mf = new MaximumFinder();
 		boolean excludeOnEdges = false;
 		int w = image.getWidth(); //image width
@@ -114,7 +114,7 @@ abstract class ImCorr extends Picker {
 			IJ.run(imp, "Draw", "");
 			ImagePlus result = FFTMath.doMath(image,imp);
 			ImageProcessor ip = result.getProcessor();
-			
+	
 			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
 			Polygon points = mf.getMaxima(ip, tolerance, excludeOnEdges);
@@ -134,15 +134,14 @@ abstract class ImCorr extends Picker {
 		sort(table,imgBlocked);
 	}
 	
-	static  void sort(ResultsTable table,ImagePlus image)
-	{	
+	static void sort(ResultsTable table,ImagePlus image){
 		int counter = table.getCounter();
 		int []list = new int [counter];
 		int []check = new int[counter];
 		int lenlist = 0;
 		int nb = 0;
 		int iterator = counter-1;
-		
+	
 		for (int j=iterator;j>=0;j--){
 			int yetcheck = 0;
 			int maxval = j;
@@ -150,19 +149,19 @@ abstract class ImCorr extends Picker {
 			double xj = table.getValue("X",j);
 			double yj = table.getValue("Y",j);
 			double maxj = table.getValue("Max",j);
-			
+	
 			for (int iter=0; iter<nb; iter++){
 				if( j == check[iter]){
 					yetcheck = 1;
 				}
-			}
-			
+			}	
+	
 			if(yetcheck == 0){
 				for (int k=iterator;k>=0;k--){
 					double xk = table.getValue("X",k);
 					double yk = table.getValue("Y",k);
 					double maxk = table.getValue("Max",k);
-						if ((xk<=xj+40 && xk>=xj-40) && (yk<=yj+40 && yk>=yj-40) ){
+					if ((xk<=xj+40 && xk>=xj-40) && (yk<=yj+40 && yk>=yj-40) ){
 						int cont = 0;
 						for (int p=0;p<nb;p++){
 							if (check[p] == k){cont += 1;}
@@ -171,43 +170,32 @@ abstract class ImCorr extends Picker {
 							check[nb] = k;
 							nb ++;
 						}
-					if (maxj < maxk){maxval = k;}
-					else if(maxj > maxk){maxval = j;}
-					else{if (j != k){maxval = j;}}
+						if (maxj < maxk){maxval = k;}
+						else if(maxj > maxk){
+							maxval = j;
+							}
+						else{
+							if (j != k){
+								maxval = j;
+								}
+							}
+						}
 					}
-				}
-				for (int q = 0; q<lenlist; q++){
-					if (maxval == list[q]){cpt+=1;}
-				}
-				if (cpt == 0){
-					list[lenlist] = maxval;
-					lenlist++;
-				}
+					for (int q = 0; q<lenlist; q++){
+						if (maxval == list[q]){cpt+=1;}
+					}
+					if (cpt == 0){
+						list[lenlist] = maxval;
+						lenlist++;
+					}
 			}
 			iterator --;
 		}
 		results(list,table,lenlist,image);
-		/*int []xpoints = new int[lenlist];
-		int []ypoints = new int[lenlist];
-		
-		for (int l=0; l<lenlist; l++){
-			int line2 = list[l];
-			double x = table.getValue("X",line2);
-			double y = table.getValue("Y",line2);
-			xtab.add(x);
-			ytab.add(y);
-			slice.add(z);
-			int xx = (int) x;
-			int yy = (int) y;
-			xpoints[l] = xx;
-			ypoints[l] = yy;
-			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
-		}*/
 	}
 	
-	static void results(int []list,ResultsTable table, int lenlist,ImagePlus image)
-	{
-		
+	static void results(int []list,ResultsTable table, int lenlist,ImagePlus image){
+	
 		int []xpoints = new int[lenlist];
 		int []ypoints = new int[lenlist];
 		
@@ -224,11 +212,31 @@ abstract class ImCorr extends Picker {
 			ypoints[l] = yy;
 			image.setRoi(new PointRoi(xpoints,ypoints,lenlist));
 		}
-//		resultstable[0] = xtab;
-//		resultstable[1] = ytab;
-//		resultstable[2] = slice;
-	//	return resultstable;
 	}
-
-	
+	/*
+	static double[][] resultConverter(){
+	int arrayLength = xtab.size();
+	Object[] tempX = new String[arrayLength];
+	Object[] tempY = new String[arrayLength];
+	Object[] tempZ = new String[arrayLength];
+	tempX = xtab.toArray();
+	tempY = ytab.toArray();
+	tempZ = slice.toArray();
+	double[] xArray = new double[arrayLength];
+	double[] yArray = new double[arrayLength];
+	double[] zArray = new double[arrayLength];
+	for (int i=0; i < arrayLength; i++){
+	String temp = String.valueOf(tempX[i]);
+	xArray[i] = Double.parseDouble(temp);
+	temp = String.valueOf(tempY[i]);
+	yArray[i] = Double.parseDouble(temp);
+	temp = String.valueOf(tempZ[i]);
+	zArray[i] = Double.parseDouble(temp);
+	}
+	double[][] coordinates = new double[3][arrayLength];
+	coordinates[0] = xArray;
+	coordinates[1] = yArray;
+	coordinates[2] = zArray;
+	return coordinates;
+	}*/
 }
