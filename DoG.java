@@ -15,7 +15,6 @@
 */
 import java.awt.Polygon;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -27,36 +26,36 @@ import ij.plugin.ImageCalculator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
-abstract class DoG implements Picker {
+abstract class DoG extends Picker {
 	// Picking algorithm : difference of gaussian
-	
+	/*
 	static Vector[] resultstable = new Vector[3];
 	static Vector<Double> xtab = new Vector<Double>();
 	static Vector<Double> ytab = new Vector<Double>();
 	static Vector<Double> slice = new Vector<Double>();
-	
-	private static Cropper cropper;
+	*/
+//	private static Cropper cropper;
 	
 	DoG() {}
 
 	static void picking() {
-		ImagePlus im = WindowManager.getCurrentImage();
+		im = WindowManager.getCurrentImage();
 		int current = im.getSlice();
 		pick(im, current);
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		resultstable[0].removeAllElements();
-		resultstable[1].removeAllElements();
-		resultstable[2].removeAllElements();
-		IJ.run("Clear Results");
+//		resultstable[0].removeAllElements();
+//		resultstable[1].removeAllElements();
+//		resultstable[2].removeAllElements();
+//		IJ.run("Clear Results");
 	}
 
 	static double[][] sliceSelection() {
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		ImagePlus im = WindowManager.getCurrentImage();
+		im = WindowManager.getCurrentImage();
 		int nbslice = im.getStackSize();
 		for (int i = 1; i <= nbslice; i++) {
 			im.setSlice(i);
@@ -68,7 +67,7 @@ abstract class DoG implements Picker {
 		boolean cropperMode = Boolean.parseBoolean(cropMode);
 		double[][] array = resultConverter();
 		if (cropperMode) {
-			new Cropper(im,array);
+			cropper = new Cropper(im,array);
 		}
 		return array;
 
@@ -137,34 +136,8 @@ abstract class DoG implements Picker {
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-		resultstable[0] = xtab;
-		resultstable[1] = ytab;
-		resultstable[2] = slice;
-	}
-
-	static double[][] resultConverter() {
-		int arrayLength = xtab.size();
-		Object[] tempX = new String[arrayLength];
-		Object[] tempY = new String[arrayLength];
-		Object[] tempZ = new String[arrayLength];
-		tempX = xtab.toArray();
-		tempY = ytab.toArray();
-		tempZ = slice.toArray();
-		double[] xArray = new double[arrayLength];
-		double[] yArray = new double[arrayLength];
-		double[] zArray = new double[arrayLength];
-		for (int i = 0; i < arrayLength; i++) {
-			String temp = String.valueOf(tempX[i]);
-			xArray[i] = Double.parseDouble(temp);
-			temp = String.valueOf(tempY[i]);
-			yArray[i] = Double.parseDouble(temp);
-			temp = String.valueOf(tempZ[i]);
-			zArray[i] = Double.parseDouble(temp);
-		}
-		double[][] coordinates = new double[3][arrayLength];
-		coordinates[0] = xArray;
-		coordinates[1] = yArray;
-		coordinates[2] = zArray;
-		return coordinates;
+//		resultstable[0] = xtab;
+//		resultstable[1] = ytab;
+//		resultstable[2] = slice;
 	}
 }

@@ -15,7 +15,6 @@
 */
 import java.awt.Polygon;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -27,21 +26,21 @@ import ij.plugin.ImageCalculator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
-abstract class DilateDiff implements Picker{
+abstract class DilateDiff extends Picker{
 	// Picking algorithm : dilate difference
-	
+	/*
 	static Vector<Double> xtab=new Vector<Double>();
 	static Vector<Double> ytab=new Vector<Double>();
 	static Vector<Double> slice=new Vector<Double>();
-	
+	*/
 	static double[][]array;
 	
-	private static Cropper cropper;
+//	private static Cropper cropper;
 	
 	DilateDiff(){}
 	
 	static void picking() {
-		ImagePlus im = WindowManager.getCurrentImage();
+		im = WindowManager.getCurrentImage();
 		int current=im.getSlice();
 		System.out.println(current);
 		pick(im, current);
@@ -54,7 +53,7 @@ abstract class DilateDiff implements Picker{
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		ImagePlus im = WindowManager.getCurrentImage();
+		im = WindowManager.getCurrentImage();
 		int nbslice = im.getStackSize();
 		for (int i=1; i<=nbslice; i++){
 			im.setSlice(i);
@@ -132,32 +131,6 @@ abstract class DilateDiff implements Picker{
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-	}
-
-	static double[][] resultConverter(){
-		int arrayLength = xtab.size();
-		Object[] tempX = new String[arrayLength];
-		Object[] tempY = new String[arrayLength];
-		Object[] tempZ = new String[arrayLength];
-		tempX = xtab.toArray();
-		tempY = ytab.toArray();
-		tempZ = slice.toArray();
-		double[] xArray = new double[arrayLength];
-		double[] yArray = new double[arrayLength];
-		double[] zArray = new double[arrayLength];
-		for (int i=0; i < arrayLength; i++){
-			String temp = String.valueOf(tempX[i]);
-			xArray[i] = Double.parseDouble(temp);
-			temp = String.valueOf(tempY[i]);
-			yArray[i] = Double.parseDouble(temp);
-			temp = String.valueOf(tempZ[i]);
-			zArray[i] = Double.parseDouble(temp);
-		}
-		double[][] coordinates = new double[3][arrayLength];
-		coordinates[0]=xArray;
-		coordinates[1]=yArray;
-		coordinates[2]=zArray;
-		return coordinates;
 	}
 }
 

@@ -66,11 +66,11 @@ public final class AlgoFactory {
 					return DoG.sliceSelection();
 				case Dilate_Difference :
 					IJ.showStatus("Start of Dilate Difference picking");
-					PanelDoG.setAttributes();
+					PanelDilateDiff.setAttributes();
 					return DilateDiff.sliceSelection();
 				case Image_Correlation : 
 					IJ.showStatus("Start of Image Correlation picking");
-					PanelDoG.setAttributes();
+					PanelImCorr.setAttributes();
 					return ImCorr.sliceSelection();
 				case About_Pick_EM : return null;
 				default:IJ.showMessage("unknown picking method, Difference of Gaussian applied instead");
@@ -95,7 +95,7 @@ public final class AlgoFactory {
 					break;
 				case Image_Correlation : 
 					IJ.showStatus("Start of Image Correlation picking");
-					PanelDoG.setAttributes();
+					PanelImCorr.setAttributes();
 					ImCorr.picking();
 					break;
 				case About_Pick_EM : 
