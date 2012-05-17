@@ -1,5 +1,7 @@
 \chapter{Réalisation}
 
+Sous \imj, il existe deux types de plugins : \emph{PlugInFilter} et \emph{PlugInFrame}. Étant donné que nous avions besoin de différents objets graphiques, nous avons choisi d'utiliser \emph{PlugInFrame}. C'est la classe \texttt{Pick\_EM} qui en hérite et permet de lancer notre plugin à son appel par l'intermédiaire de la barre de menus d'\imj.
+
 \section{Interface graphique}
 
 \subsection{Panneaux et boutons}
@@ -30,6 +32,55 @@ La figure suivante (Figure \ref{panneauxDetail}) donne un aperçu plus visuel de
 \end{center}
 \end{figure}
 \pagebreak
+
+La classe \texttt{PickFrame} permet donc de générer l'interface graphique du plugin. De plus, elle permet de réagir lors d'un clic sur un bouton. C'est la méthode \texttt{actionPerformed()} qui vérifie le nom de l'algorithme choisi par l'utilisateur parmi ceux proposés dans la JComboBox et permet d'afficher le panel2 qu'il faut. Ci-après un extrait de la méthode \texttt{actionPerformed()} :
+
+\begin{small}
+\begin{lstlisting}
+public void actionPerformed(ActionEvent e) {
+  String command = e.getActionCommand();
+  String comboSelection = null;
+  if (command.equals("comboBoxChanged")){
+    JComboBox cb = (JComboBox)e.getSource();
+    comboSelection = (String) cb.getSelectedItem();
+    panel2.removeAll();
+    // Allows the panel2's update
+    mainPanel.remove(panel1);
+    mainPanel.remove(panel2);
+    mainPanel.remove(panel3);
+    panel2 = AlgoFactory.algorithm.getPickPanel(comboSelection);
+    mainPanel.add(panel1);
+    mainPanel.add(panel2);
+    mainPanel.add(panel3);
+    mainPanel.repaint();
+    pack();
+  }
+\end{lstlisting}
+\end{small}	
+
+Comme nous avions quelques soucis d'actualisation des panneaux, lors de l'implémentation, nous avons décidé de les supprimer puis de les recréer lors de chaque changement d'algorithme. Le chargement du bon panel2 se fait gr\^ace à \texttt{getPickPanel} de la classe \texttt{AlgoFactory}. \texttt{pack()} permet de recadrer la fenêtre en fonction de son contenu. 
+
+\begin{small}
+\begin{lstlisting}
+if (command.equals("Apply")){
+  comboSelection = (String)algoList.getSelectedItem();
+  Attributes.getInstance();
+  coordXYZ = AlgoFactory.algorithm.getPicker(comboSelection);
+  IJ.showStatus("End of picking");
+}
+else if (command.equals("Preview")){
+  comboSelection = (String)algoList.getSelectedItem();
+  Attributes.getInstance();
+  AlgoFactory.algorithm.getPickerPreview(comboSelection);
+  IJ.showStatus("End of Preview");
+}
+else if (command.equals("Show Results")){
+  ToCSV.generateCsvFile(coordXYZ);
+}
+\end{lstlisting}
+\end{small}	
+
+Grâce à cette série structures conditionnelles, il est possible d'appliquer les méthodes de piquage appropriées en fonction du choix de l'utilisateur. Le lancement de la procédure ne se fait que si ce dernier clique sur les boutons de prévisualisation ou d'application. La tableau de résultats ne sera généré que s'il appuie sur le bouton d'affichage des résultats. 
 
 \subsection{Affichage des résultats}
 
@@ -106,20 +157,19 @@ IJ.run(imp1, "Gaussian Blur...", si1);
 \end{small}
 
 Ici, nous obtenons le paramètre \textbf{sigma1} grâce à la table de hashage et la clé "\texttt{sig1}". Nous avons besoin de ce dernier pour appliquer le filtre gaussien sur l'image courante, c'est pourquoi nous le castons sous la forme d'un \emph{String}. Notons que la fonction \texttt{IJ.run()} permet de lancer une procédure \imj. \\
-Nous avons choisi d'utiliser des vecteurs pour stocker les coordonnées ainsi que les numéros de slices car il nous est impossible de connaître à l'avance le nombre de particules qui vont être sélectionnées. \\
-Nous avons fait en sorte de vider les tableaux de résultats entre le mode de prévisualisation et d'application, mais aussi entre deux applications ou deux prévisualisations. Ceci évite que les résultats ne s'ajoutent, ce qui fausserait la résultante du piquage. \\
-Il en est de même pour tous les algorithmes. De plus, ceux-ci héritent de l'interface Picker. \\ 
 
-VOIR POUR PICKER (interface ? ) \\
+Nous avons choisi d'utiliser des vecteurs pour stocker les coordonnées ainsi que les numéros de slices car il nous est impossible de connaître à l'avance le nombre de particules qui vont être sélectionnées. \\
+Nous avons fait en sorte de vider les tableaux de résultats entre le mode de prévisualisation et d'application, mais aussi entre deux applications ou deux prévisualisations. Ceci évite que les résultats ne s'ajoutent, ce qui fausserait la résultante du piquage. Il en est de même pour tous les algorithmes. \\
+
+De plus, les classes contenant les algorithmes de piquage héritent de la classe \texttt{Picker}. Celle-ci contient la méthode \texttt{resultConverter()} permettant regrouper les différentes coordonnées ainsi que les numéros des slices dans un seul et même tableau. De plus, tous les attributs communs aux algorithmes sont déclarés dans cette classe. \\
 
 \section{Autres classes}
 
-La classe \texttt{FFTMath} est issue de la classe \texttt{FFTMath} d'\imj, que nous avons modifié afin de pouvoir réaliser la corrélation d'images dans l'algorithme Image Correlation. \\
+La classe \texttt{FFTMath} est issue de la classe \texttt{FFTMath} d'\imj, que nous avons modifié afin de pouvoir réaliser la corrélation d'images dans l'algorithme Image Correlation. Nous avons choisi de le modifier afin d'éviter un affichage graphique intempestif, qui avait pour effet de ralentir le déroulement du programme. De plus, cela n'avait pas n'intérêt particulier pour l'utilisateur. \\
 
 La classe \texttt{About} permet d'afficher les auteurs du plugin et le moyen de nous contacter si besoin. \\
 
 La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si l'utilisateur  clique sur le bouton "Hepl \& Info". 
-
 
 \section{Applications}
 
@@ -143,7 +193,9 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
 
 \subsubsection*{Statistiques}
 
-La Différence gaussienne permet d'obtenir les résultats suivants :
+\begin{itemize}{•}
+\item La Différence gaussienne permet d'obtenir les résultats suivants :
+\end{itemize}
 
 \begin{figure}[!ht]
 \begin{center}
@@ -159,14 +211,55 @@ La Différence gaussienne permet d'obtenir les résultats suivants :
 \end{center}
 \end{figure}
 
-La Différence de dilatation permet d'obtenir les résultats suivants :
+Nous constatons que ce piquage est efficace sur notre image de protéines membranaires. Nous l'avons également testé sur une image de blobs, qui est une image de référence pour les essais sur \imj. Cette technique semble tout aussi bien marcher sur les blobs. \\
+
+\begin{itemize}{•}
+\item La Différence de dilatation permet d'obtenir les résultats suivants :
+\end{itemize}
+
+\begin{figure}[!ht]
+\begin{center}
+ \begin{minipage}{.450\linewidth}
+  \includegraphics[width=0.75\textwidth]{blobDilate.png}  
+ % \caption{Difference de Gaussienne (blobs)}
+ \end{minipage} \hfill
+\begin{minipage}{.450\linewidth}
+  \includegraphics[width=1\textwidth]{protDilate.png}   
+  %\caption{Difference de Gaussienne (protéines)}
+ \end{minipage} \hfill
+\caption{Différence de dilatation (blobs et protéines)}
+\end{center}
+\end{figure}
+\pagebreak
+
+\begin{itemize}{•}
+\item Résultats :
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Images} & \textbf{Variables} & \textbf{DoG} & \textbf{Dilate Diff} & \textbf{Image Corr} \\
+\hline
+Blobs & Vrai Positif (VP) & 63 & 61 & null \\
+	& Vrai Négatif (VN) & 3 & 0 & null \\
+	& Faux Positif (FP) & 9 & 2 & null \\
+	& Faux Négatif (FN) & 0 & 1 & null \\
+	& Sensibilité & 1 & 0.98 & null \\
+	& Spécificité & 0.25 & 0 & null \\
+\hline
+Protéines & Vrai Positif (VP) & 167 & infini & null \\
+	& Vrai Négatif (VN) & 8 & infini & null \\
+	& Faux Positif (FP) & 16 & infini & null \\
+	& Faux Négatif (FN) & 8 & infini & null \\
+	& Sensibilité & 0.95 & null & null \\
+	& Spécificité & 0.5 & null & null \\
+	\hline
+\end{tabular}
+\end{center}
 
 
-
-
-
-
-
+%\multicolumn{5}{|c|}{} & lhlk \\
 
 
 
