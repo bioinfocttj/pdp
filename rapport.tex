@@ -34,12 +34,13 @@
 %\maketitle
 \input{./titleRapport.tex}
 \newcommand{\cme}{cryo-MET}
+\newcommand{\me}{MET}
 \newcommand{\java}{Java~{\tiny \texttrademark}}
 \newcommand{\js}{JavaScript}
 \newcommand{\imj}{ImageJ}
 
 \begin{abstract}
-Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
+Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images issues de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
 Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées, ainsi que l'organisation générale du programme. 
 \end{abstract}
 
@@ -49,15 +50,15 @@ Il aborde notamment la création de l'interface utilisateur, les méthodes de pi
 \addcontentsline{toc}{chapter}{Introduction}
 Notre projet s'est déroulé au sein du laboratoire de Chimie et Biologie des Membranes et Nanoobjets de Bordeaux (CBMN~\cite{cbmn:url}).
 Il s'agit d'un laboratoire de recherche public composé de douze équipes de recherche dont l'équipe \emph{Architecture des Complexes Membranaires et processus cellulaires} (ACMPC). %
-Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture de complexes membranaires sur des structures de type protéine-liposome. C'est dans ce cadre d'étude que les chercheurs travaillent avec un \emph{cryo-microscope électronique à transmission} (\cme) afin d'obtenir des micrographes des structures protéiques puis de les analyser. Par ailleurs, cette équipe diversifie ses activités en faisant de l'imagerie avec des virus fournis par une entreprise pharmaceutique.
+Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture de complexes membranaires sur des structures de type protéine-liposome. C'est dans ce cadre d'étude que les chercheurs travaillent avec un \emph{microscope électronique à transmission} (\me) afin d'obtenir des micrographes des structures protéiques puis de les analyser. Par ailleurs, cette équipe diversifie ses activités en faisant de l'imagerie avec des virus fournis par une entreprise pharmaceutique.
 
 \noindent
-Cependant la nouvelle génération de \cme ~permet une collecte de données à haut débit, avantage non négligeable mais qui pose le problème du temps de traitement des données collectées. %
+Cependant la nouvelle génération de \me ~permet une collecte de données à haut débit, avantage non négligeable mais qui pose le problème du temps de traitement des données collectées. %
 
 \paragraph*{}
-Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images récupérées du \cme\ et plus particulièrement au \emph{picking}, c'est-à-dire au piquage des particules présentes sur les micrographes obtenus. %
-Notre objectif était l'implémentation d'une plateforme contenant plusieurs méthodes de piquage automatisées.
-Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url}: elle propose à l'utilisateur des algorithmes de picking pré-installés ou d'en ajouter de nouveaux.
+Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images récupérées de \cme\ et plus particulièrement le \emph{picking}, c'est-à-dire au piquage des particules présentes sur les micrographes obtenus. %
+Notre objectif était l'implémentation d'une interface contenant plusieurs méthodes de piquage automatisées.
+Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url} proposant à l'utilisateur le choix entre différents algorithmes de picking pré-installés. Il pourra en ajouter de nouveaux s'il le souhaite, mais il devra modifier le code source du plugin. 
 
 \paragraph*{}
 Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord une partie Analyse dans laquelle nous remettrons notre projet dans son contexte et analyserons les besoins liés à celui-ci. Ensuite, une partie Conception dans laquelle nous expliquerons l'organisation de notre code. Enfin, la partie Réalisation contiendra les solutions apportées au sujet.
@@ -69,16 +70,23 @@ Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord 
 \input{./realisation.tex}
 
 \chapter*{Conclusion}
+
 \addcontentsline{toc}{chapter}{Conclusion}
 
-\chapter*{Bibliographie}
 \addcontentsline{toc}{chapter}{Bibliographie}
-
-\chapter*{Annexes}
-\addcontentsline{toc}{chapter}{Annexes}
 \bibliographystyle{plain}
 \bibliography{rapport}
 
+\appendix
+\chapter{Annexes}
+
+\addcontentsline{toc}{chapter}{Annexes}
+
+\newpage
+
+\section{Add a new picking algorithm}
+
+\input{./ModeEmploi.tex}
 
 
 \end{document}

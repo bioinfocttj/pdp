@@ -14,7 +14,7 @@ Le panneau central (\textbf{panel2}) est vide au lancement du plugin et son cont
 \item \textbf{sigmaPanel} et \textbf{widthNoisePanel} qui contiennent des \emph{JLabel} et \emph{JTextField} afin de créer une zone dans laquelle peut entrer les paramètres nécessaires au déroulement du piquage. 
 \item \textbf{debugCropPanel} quand à lui contient deux cases à cocher (\emph{JCheckBox}) pour activer ou non les modes de débogage et de crop. 
 \end{itemize}
-Les classes \emph{panelImCorr} et \emph{panelDilateDiff} servent à la création des sous panneaux des algorithmes Image Correlation et Dilate Difference respectivement. \\
+Les classes \texttt{panelImCorr} et \texttt{panelDilateDiff} servent à la création des sous panneaux des algorithmes Image Correlation et Dilate Difference respectivement. \\
 
 Le dernier panneau (\textbf{panel3}) comporte quatre boutons (\emph{JButton}) devant répondre aux clics de la souris à l'aide d'un \emph{ActionListener}. \\
 
@@ -22,7 +22,7 @@ Enfin, le panneau principal (\textbf{mainPanel}) contient tous les panels cités
 Ces quatre panneaux sont crées dans la classe \texttt{PickFrame}, qui hérite de la classe \texttt{JFrame}. \texttt{PickFrame} peut également accéder à des méthodes de la classe \texttt{ActionListener}. \\
 
 La figure suivante (Figure \ref{panneauxDetail}) donne un aperçu plus visuel de l'organisation de ces différents panneaux.
-\begin{figure}[!h] 
+\begin{figure}[!ht] 
 \begin{center}
 \includegraphics[width=0.8\textwidth]{plugin3-1.png}
 \caption{Organisation des panels pour l'algorithme Difference of Gaussian}
@@ -33,8 +33,24 @@ La figure suivante (Figure \ref{panneauxDetail}) donne un aperçu plus visuel de
 
 \subsection{Affichage des résultats}
 
-Lorsque l'utilisateur a coché la case "crop" avant de lancer la procédure de piquage, la classe \texttt{PickFrame} fait appel à la classe \texttt{Cropper} permettant de créer un stack. Les paramètres d'entrée de \texttt{Cropper} sont une \emph{ImagePlus} (image courante du stack) et un tableau de doubles contenant les coordonnées des particules sélectionnées. \\
-A partir de ce tableau, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au stack sous la forme d'un \emph{ImageProcessor}. \\
+Lorsque l'utilisateur a coché la case "crop" avant de lancer la procédure de piquage, la classe \texttt{PickFrame} fait appel à la classe \texttt{Cropper} permettant de créer un stack. Les paramètres d'entrée de \texttt{Cropper()} sont une \emph{ImagePlus} (image courante du stack) et un tableau de doubles contenant les coordonnées des particules sélectionnées. \\
+Lors de nos phases de tests, nous avons ajouté une autre fonction Cropper(), sans paramètres d'entrée. Nous y avons créé un tableau de coordonnées manuellement pour faciliter les essais. \\
+A partir du tableau de doubles cité, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au stack sous la forme d'un \emph{ImageProcessor}. Ci-dessous un extrait de la méthode \texttt{crop()} :
+
+\begin{small}
+\begin{lstlisting}
+if (z == currentSlice) {
+  imp.setRoi(x, y, widthCrop, widthCrop);  
+  // widthCrop = taille du carre de selection entree par l'utilisateur
+  img2 = new Duplicator().run(imp);
+  ImageProcessor ip2 = img2.getProcessor();
+  ImageProcessor impTemp = ip2.resize(widthCrop,widthCrop);
+  ims.addSlice(impTemp);
+}
+\end{lstlisting}
+\end{small}	
+
+Cette partie du code ne va s'exécuter que si le cadre de sélection de la particule ne dépasse pas le cadre de l'image de base. Les particules dépassant n'apparaitront pas dans le stack d'imagettes, mais on pourra retrouver leurs coordonnées dans le tableau de résultats final. \\
 
 Par ailleurs, les résultats de la sélection peuvent être affichés sous la forme d'une \texttt{ResultsTable} si on clique sur le bouton "Show Results". Elle est construite grâce au tableau de doubles cité précédemment, qui est le paramètre d'entrée de la fonction \texttt{generate-} \texttt{CsvFile()}. 
 
@@ -65,6 +81,8 @@ Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lu
 \item \texttt{getPicker()} permet de lancer le piquage lorsque l'utilisateur appuie sur le bouton Apply.
 \item \texttt{getPickerPreview()} permet de lancer le piquage lorsque l'utilisateur appuie sur le bouton Preview.
 \end{itemize}
+
+La présence d'un constructeur privé dans cette classe supprime le constructeur public par défaut. De plus, seul le singleton peut s'instancier lui même. \\
 
 Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction \texttt{getInstance()} de la classe \texttt{Attributes}, puis récupérés, pour l'algorithme, par la fonction \texttt{setAttributes()} de la classe \texttt{PanelDoG} (pour suivre notre scénario). L'algorithme est ensuite appelé par la méthode \texttt{sliceSelection()} (Apply) ou par \texttt{picking()} (Preview). \\
 
@@ -109,7 +127,7 @@ Le résultat affiché sur l'image correspond aux positions des particules sur l'
 L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
 De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenus est créé (éliminant les particules trop près du bord de l'image) et affiché.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \begin{center}
  \begin{minipage}{.450\linewidth}
   \includegraphics[width=0.75\textwidth]{cropblob.png}  
@@ -119,7 +137,7 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
   \includegraphics[width=0.5\textwidth]{cropprotDog.png}   
   %\caption{Difference de Gaussienne (protéines)}
  \end{minipage} \hfill
-\caption{Exemple d'image formant le stack de particules (blobs et protéines)}
+\caption{Exemple d'images formant le stack de particules (blobs et protéines)}
 \end{center}
 \end{figure}
 
@@ -127,7 +145,7 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
 
 La Différence gaussienne permet d'obtenir les résultats suivants :
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
 \begin{center}
  \begin{minipage}{.450\linewidth}
   \includegraphics[width=0.75\textwidth]{blobsDog.png}  
@@ -142,15 +160,6 @@ La Différence gaussienne permet d'obtenir les résultats suivants :
 \end{figure}
 
 La Différence de dilatation permet d'obtenir les résultats suivants :
-
-
-%algoFactory
-%La présence d'un constructeur privé supprime le constructeur public par défaut.
-%De plus, seul le singleton peut s'instancier lui même.
-
-%attributes et algoFact
-%
-%Il est TRES important.
 
 
 
