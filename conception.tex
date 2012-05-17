@@ -96,9 +96,14 @@ La partie permettant la création du stack d'imagettes à été séparé des mé
 
 Cette séparation GUI/traitement/stack à dû être accompagnée de la création de classes suivant des patrons de conception particulier : la \emph{factory} et le \emph{singleton}.
 \begin{description}
-\item[La classe en \emph{factory}] permet d'effectuer les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récupérer les paramètres utilisateur. \blue Ensuite lorsque l'utilisateur clique sur les boutons d'éxécution ou de prévisualisation, \black
+\item[La classe en \emph{factory}] permet d'effectuer les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récupérer les paramètres utilisateur. \blue Ensuite lorsque l'utilisateur clique sur les boutons d'éxécution ou de prévisualisation, la \emph{factory} lancera les actions correspondantes.\black
 \item [Le singleton] est un patron de conception (design pattern) permettant de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). La classe en \emph{singleton} permet de conserver les paramètres choisis par l'utilisateur. De ce fait, même lorsqu'il exécute plusieurs algorithmes, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
 \end{description}
+\blue
+\subsection*{Modularité - réutilisation du code}
+Cette organisation du code orientée objet à fortement facilité l'écriture du programme, évitant de réécrire les lignes de code qui pouvaient \^etre factorisée. De plus, cela permet une grande modularité au sein de notre programme, facilitant l'ajout ou le retrait d'un algorithme de piquage et de son interface dans notre plugin. Cette modularité est telle qu'elle permet, dans le cas du module de création du stack de particules séléctionnées, de l'utiliser en dehors de notre plugin.\\
+Cela tient un rôle important dans notre projet car, comme pour beaucoup de logiciel libre, \imj ~se développe beaucoup gr\^ace à sa communauté d'utilisateur qui participe au développemment de plugin. Après validation par le personnes du NIH (\footnote{National Institute of Health} responsable de ce projet, les plugins sont mis à disposition des utilisateurs. Ainsi, chacun pourrait ajouter/améliorer des méthodes de piquage de particules développant et augmentant l'efficacité et la séléctivité de notre plugin.
+\black
 %\section{Les classes}
 %
 %Le programme est divisé en seize classes distinctes:
