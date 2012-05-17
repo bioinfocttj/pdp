@@ -83,7 +83,7 @@ public final class Pick_EM extends PlugInFrame {
 		}
 		
 	public Pick_EM() {
-		super("Pick Plug");
+		super("Pick_EM");
 		String args = Macro.getOptions();
 		run(args);
 	}
