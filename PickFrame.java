@@ -147,9 +147,10 @@ public class PickFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		String command = e.getActionCommand();
+		String comboSelection = null;
 		if (command.equals("comboBoxChanged")){
 			JComboBox cb = (JComboBox)e.getSource();
-			String comboSelection = (String) cb.getSelectedItem();
+			comboSelection = (String) cb.getSelectedItem();
 			panel2.removeAll();
 			// Allows the panel2's update
 			mainPanel.remove(panel1);
@@ -164,58 +165,18 @@ public class PickFrame extends JFrame implements ActionListener {
 		}
 		
 		if (command.equals("Apply")){
-			String algo = (String)algoList.getSelectedItem();
-			if (algo.equals("Difference_of_Gaussian")){
-				IJ.showStatus("Start of DoG picking");
+			comboSelection = (String)algoList.getSelectedItem();
 				Attributes.getInstance();
-				PanelDoG.setAttributes();
-				coordXYZ = DoG.sliceSelection();
-				IJ.showStatus("End of DoG picking");
+				coordXYZ = AlgoFactory.algorithm.getPicker(comboSelection);
+				IJ.showStatus("End of picking");
 			}
-
-			else if (algo.equals("Image_Correlation")){
-				IJ.showStatus("Start of Image Correlation picking");
-				Attributes.getInstance();
-				PanelImCorr.setAttributes();
-				coordXYZ = ImCorr.sliceSelection();
-				IJ.showStatus("End of Image Correlation picking");
-			}
-
-			else if (algo.equals("Dilate_Difference")){
-				IJ.showStatus("Start of Dilate Difference picking");
-				Attributes.getInstance();
-				PanelDilateDiff.setAttributes();
-				coordXYZ = DilateDiff.sliceSelection();
-				IJ.showStatus("End of Dilate Difference picking");
-			}
-		}
 		
 		else if (command.equals("Preview")){
-			String algo = (String)algoList.getSelectedItem();
-			if (algo.equals("Difference_of_Gaussian")){
-				IJ.showStatus("Start of Preview");
+			comboSelection = (String)algoList.getSelectedItem();
 				Attributes.getInstance();
-				PanelDoG.setAttributes();
-				DoG.picking();
+				AlgoFactory.algorithm.getPickerPreview(comboSelection);
 				IJ.showStatus("End of Preview");
 			}
-
-			else if (algo.equals("Image_Correlation")){
-				IJ.showStatus("Start of Preview");
-				Attributes.getInstance();
-				PanelImCorr.setAttributes();
-				ImCorr.picking();
-				IJ.showStatus("End of Preview");
-			}
-
-			else if (algo.equals("Dilate_Difference")){
-				IJ.showStatus("Start of Preview");
-				Attributes.getInstance();
-				PanelDilateDiff.setAttributes();
-				DilateDiff.picking();
-				IJ.showStatus("End of Preview");
-			}
-		}
 		else if (command.equals("Show Results")){
 				ToCSV.generateCsvFile(coordXYZ);
 		}

@@ -22,16 +22,15 @@ class About extends PickPanel {
 	
 	private static String description="ABOUT THE AUTORS of \"Pick EM plugin\"\n"+
 		"This plugin was implemented by : \n"+
-		"  Thomas Faux, Charlotte Héricé, Typhaine Paysan-Lafosse \n" +
-		"  and Joris Sansen under Professor Jean-Christophe Taveau's \n" +
-		"  supervision \n" +
+		"  T. Faux, C. Héricé, T. Paysan-Lafosse and J. Sansen \n"+
+		"  with Pr. Jean-Christophe Taveau \n" +
 		"  at CBMN (Chimie & Biologie des Membranes et des Nanoobjets) \n" +
 		"  at University Bordeaux 1 (France).\n"+
-		"CONTACT INFO\n"+
+
 		"  For further information contact us:\n"+
-		"  Master BioInoformatique, Université Bordeaux 1 Talence, \n" +
-		"  mails : thomas.faux@etu.u-bordeaux1.fr, charlotte.herice@etu.u-bordeaux1.fr, \n" + 
-		"          typhaine.paysan-lafosse@etu.u-bordeaux1.fr, joris.sansen@etu.u-bordeaux1.fr";
+		"  Master BioInoformatique, Université Bordeaux 1, \n" +
+		"  mails : thomas.faux@etu.u-bordeaux1.fr, \n" + "             charlotte.herice@etu.u-bordeaux1.fr, \n" + 
+		"             typhaine.paysan-lafosse@etu.u-bordeaux1.fr, \n"+"             joris.sansen@etu.u-bordeaux1.fr";
 
 	static JTextArea info = new JTextArea(description);
 	
