@@ -61,13 +61,15 @@ public class Cropper {
 		ImagePlus blobs = new ImagePlus("/home/tomo/Bureau/M1_bioinfo/sanofi/blobs.gif");
 		imp=blobs;
 		imp.show();
-		int blobsWidth = blobs.getWidth();
-		int blobsHeight = blobs.getHeight();
+		widthCrop=100;
+		impWidth = blobs.getWidth();
+		impHeight = blobs.getHeight();
 		double coord[][] = new double[2][2];
 		coord[0][0] = 136.4;
 		coord[0][1] = 162.4;
 		coord[1][0] = 99.4;
 		coord[1][1] = 73.4;
+		coordinates = coord;
 		crop(1);
 		showCrop();
 	}
