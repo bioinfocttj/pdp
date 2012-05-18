@@ -32,8 +32,6 @@
 % Commenté car provoque une erreur lors de la compilation
 \begin{document}
 %\maketitle
-
-\pagestyle{empty}
 \input{./titleRapport.tex}
 \newcommand{\cme}{cryo-MET}
 \newcommand{\me}{MET}
@@ -46,9 +44,10 @@
 Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images issues de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
 Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées, ainsi que l'organisation générale du programme. 
 \end{abstract}
-\tableofcontents\thispagestyle{empty}
+
+\tableofcontents
 \chapter*{Introduction}
-\setcounter{page}{5}
+
 \addcontentsline{toc}{chapter}{Introduction}
 Notre projet s'est déroulé au sein du laboratoire de Chimie et Biologie des Membranes et Nanoobjets de Bordeaux (CBMN~\cite{cbmn:url}).
 Il s'agit d'un laboratoire de recherche public composé de douze équipes de recherche dont l'équipe \emph{Architecture des Complexes Membranaires et processus cellulaires} (ACMPC). %
