@@ -1,3 +1,8 @@
+\newsavebox{\fmbox}
+\newenvironment{fmpage}[1]
+     {\begin{lrbox}{\fmbox}\begin{minipage}{#1}}
+     {\end{minipage}\end{lrbox}\fbox{\usebox{\fmbox}}}
+
 \chapter{Réalisation}
 
 Sous \imj, il existe deux types de plugins : \emph{PlugInFilter} et \emph{PlugInFrame}. Étant donné que nous avions besoin de différents objets graphiques, nous avons choisi d'utiliser \emph{PlugInFrame}. C'est la classe \texttt{Pick\_EM} qui en hérite et permet de lancer notre plugin à son appel par l'intermédiaire de la barre de menus d'\imj.
@@ -35,8 +40,10 @@ La figure suivante (Figure \ref{panneauxDetail}) donne un aperçu plus visuel de
 
 La classe \texttt{PickFrame} permet donc de générer l'interface graphique du plugin. De plus, elle permet de réagir lors d'un clic sur un bouton. C'est la méthode \texttt{actionPerformed()} qui vérifie le nom de l'algorithme choisi par l'utilisateur parmi ceux proposés dans la JComboBox et permet d'afficher le panel2 qu'il faut. Ci-après un extrait de la méthode \texttt{actionPerformed()} :
 
+\begin{center}
+\begin{fmpage}{15cm}
 \begin{small}
-\begin{lstlisting}
+\begin{lstlisting}[breaklines=true, breakatwhitespace=true]
 public void actionPerformed(ActionEvent e) {
   String command = e.getActionCommand();
   String comboSelection = null;
@@ -56,10 +63,14 @@ public void actionPerformed(ActionEvent e) {
     pack();
   }
 \end{lstlisting}
-\end{small}	
+\end{small}
+\end{fmpage}
+\end{center}
 
 Comme nous avions quelques soucis d'actualisation des panneaux, lors de l'implémentation, nous avons décidé de les supprimer puis de les recréer lors de chaque changement d'algorithme. Le chargement du bon panel2 se fait gr\^ace à \texttt{getPickPanel} de la classe \texttt{AlgoFactory}. \texttt{pack()} permet de recadrer la fenêtre en fonction de son contenu. 
 
+\begin{center}
+\begin{fmpage}{15cm}
 \begin{small}
 \begin{lstlisting}
 if (command.equals("Apply")){
@@ -79,15 +90,20 @@ else if (command.equals("Show Results")){
 }
 \end{lstlisting}
 \end{small}	
+\end{fmpage}
+\end{center}
 
+\paragraph*{}
 Grâce à cette série structures conditionnelles, il est possible d'appliquer les méthodes de piquage appropriées en fonction du choix de l'utilisateur. Le lancement de la procédure ne se fait que si ce dernier clique sur les boutons de prévisualisation ou d'application. La tableau de résultats ne sera généré que s'il appuie sur le bouton d'affichage des résultats. 
 
 \subsection{Affichage des résultats}
 
 Lorsque l'utilisateur a coché la case "crop" avant de lancer la procédure de piquage, la classe \texttt{PickFrame} fait appel à la classe \texttt{Cropper} permettant de créer un stack. Les paramètres d'entrée de \texttt{Cropper()} sont une \emph{ImagePlus} (image courante du stack) et un tableau de doubles contenant les coordonnées des particules sélectionnées. \\
 Lors de nos phases de tests, nous avons ajouté une autre fonction Cropper(), sans paramètres d'entrée. Nous y avons créé un tableau de coordonnées manuellement pour faciliter les essais. \\
-A partir du tableau de doubles cité, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au stack sous la forme d'un \emph{ImageProcessor}. Ci-dessous un extrait de la méthode \texttt{crop()} :
+A partir du tableau de doubles cité, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au stack sous la forme d'un \emph{ImageProcessor}. Ci-dessous un extrait de la méthode \texttt{crop()} : 
 
+\begin{center}
+\begin{fmpage}{16cm}
 \begin{small}
 \begin{lstlisting}
 if (z == currentSlice) {
@@ -100,7 +116,10 @@ if (z == currentSlice) {
 }
 \end{lstlisting}
 \end{small}	
+\end{fmpage}
+\end{center}
 
+\paragraph*{}
 Cette partie du code ne va s'exécuter que si le cadre de sélection de la particule ne dépasse pas le cadre de l'image de base. Les particules dépassant n'apparaitront pas dans le stack d'imagettes, mais on pourra retrouver leurs coordonnées dans le tableau de résultats final. \\
 
 Par ailleurs, les résultats de la sélection peuvent être affichés sous la forme d'une \texttt{ResultsTable} si on clique sur le bouton "Show Results". Elle est construite grâce au tableau de doubles cité précédemment, qui est le paramètre d'entrée de la fonction \texttt{generate-} \texttt{CsvFile()}. 
@@ -109,6 +128,8 @@ Par ailleurs, les résultats de la sélection peuvent être affichés sous la fo
 
 Le singleton de la classe \texttt{Attributes} contient une table de hashage (\emph{HashTable}) dans laquelle sont stockés tous les paramètres entrés par l'utilisateur. Ces derniers sont accessibles grâce à des clés et donc réutilisables dans les algorithmes. La méthode  \texttt{synchronized()} dans la fonction \texttt{getInstance()} (voir ci-dessous) empêche toute instanciation multiple :
 
+\begin{center}
+\begin{fmpage}{11cm}
 \begin{small}
 \begin{lstlisting}
 public final static Attributes getInstance() {
@@ -123,6 +144,8 @@ public final static Attributes getInstance() {
 }
 \end{lstlisting}
 \end{small}	
+\end{fmpage}
+\end{center}
 
 \section{Algorithmes}
 
@@ -141,6 +164,8 @@ La méthode \texttt{picking()} donne l'image courante du stack en paramètre de 
 
 La méthode \texttt{pick()} quand à elle permet de lancer l'algorithme sur la sélection. Elle prend une ImagePlus et le numéro de l'image dans le stack en paramètres. Cette fonction récupère les paramètres entrés par l'utilisateur (grâce à \texttt{hashAttributes.get()}) et renvoie un tableau de résultats (X, Y, Slice). Voici un extrait du code de l'algorithme Difference of Gaussian :
 
+\begin{center}
+\begin{fmpage}{16cm}
 \begin{small}
 \begin{lstlisting}
 Hashtable<String, String> hashAttributes = Attributes.getAttributes();
@@ -155,13 +180,15 @@ imp1.setSlice(currentslice);
 IJ.run(imp1, "Gaussian Blur...", si1);
 \end{lstlisting}
 \end{small}
+\end{fmpage}
+\end{center}
 
 Ici, nous obtenons le paramètre \textbf{sigma1} grâce à la table de hashage et la clé "\texttt{sig1}". Nous avons besoin de ce dernier pour appliquer le filtre gaussien sur l'image courante, c'est pourquoi nous le castons sous la forme d'un \emph{String}. Notons que la fonction \texttt{IJ.run()} permet de lancer une procédure \imj. \\
 
 Nous avons choisi d'utiliser des vecteurs pour stocker les coordonnées ainsi que les numéros de slices car il nous est impossible de connaître à l'avance le nombre de particules qui vont être sélectionnées. \\
 Nous avons fait en sorte de vider les tableaux de résultats entre le mode de prévisualisation et d'application, mais aussi entre deux applications ou deux prévisualisations. Ceci évite que les résultats ne s'ajoutent, ce qui fausserait la résultante du piquage. Il en est de même pour tous les algorithmes. \\
 
-De plus, les classes contenant les algorithmes de piquage héritent de la classe \texttt{Picker}. Celle-ci contient la méthode \texttt{resultConverter()} permettant regrouper les différentes coordonnées ainsi que les numéros des slices dans un seul et même tableau. De plus, tous les attributs communs aux algorithmes sont déclarés dans cette classe. \\
+De plus, les classes contenant les algorithmes de piquage héritent de la classe \texttt{Picker}. Celle-ci contient la méthode \texttt{resultConverter()} permettant regrouper les différentes coordonnées ainsi que les numéros des slices dans un seul et même tableau. De plus, tous les attributs communs aux algorithmes sont déclarés dans cette classe. 
 
 \section{Autres classes}
 
@@ -231,7 +258,6 @@ Nous constatons que ce piquage est efficace sur notre image de protéines membra
 \caption{Différence de dilatation (blobs et protéines)}
 \end{center}
 \end{figure}
-\pagebreak
 
 Nous observons que cet algorithme semble bien fonctionner sur les blobs, alors que sur les protéines il y a beaucoup trop de points de piquage. Même en modifiant le paramètre de la "Noise Tolerance" nous obtenons des résultats de piquage similaires. \\
 
@@ -279,14 +305,29 @@ SE = $\frac{\text{VP}}{\text{VP+FN}}$ et SP = $\frac{\text{VN}}{\text{VN+FP}}$ \
 \end{center}
 
 D'après la Table \ref{tableau}, nous remarquons que c'est l'algorithme de Différence gaussienne qui a la meilleure spécificité et sensibilité pour les blobs. En effet, il y a plus de particules sélectionnées avec ce dernier qu'avec la Différence de dilatation, alors que cet algorithme a été créé pour les blobs au départ. Cependant, nous constatons qu'il y a plus de faux positifs avec la Différence gaussienne. \\
-En ce qui concerne les protéines, la Différence de dilatation est inefficace car elle ne fait pas de distinction entre le bruit et les particules. La Différence gaussienne, quant à elle, est assez efficace en ce qui concerne la sélection de ces dernières. \\
+En ce qui concerne les protéines, la Différence de dilatation est inefficace car elle ne fait pas de distinction entre le bruit et les particules. La Différence gaussienne, quant à elle, est assez efficace en ce qui concerne la sélection de ces dernières. 
+
+\section{Ajout d'un nouvel algorithme au plugin}
+
+Voici la marche à suivre pour ajouter un nouvel algorithme de piquage à notre plugin :
+
+\begin{itemize}
+\item Ajouter le nom de l'algorithme dans la liste des noms proposés par la \emph{JComboBox} dans la classe \texttt{PickFrame}.
+\item Ajouter un nouveau "\textit{case}" dans chaque "\textit{switch}" de la classe \texttt{AlgoFactory}.
+\item Créer une nouvelle classe \texttt{PanelAlgorithme} dans laquelle doivent se trouver :
+	\begin{itemize}
+	\item un \emph{JLabel} pour la phrase d'indication d'utilisation de l'algorithme,
+	\item tous les \emph{JLabel}, \emph{JCheckBox}, \emph{JButton}, \emph{JTextField}, \emph{JPanel} nécessaires pour le fonctionnement de l'algorithme,
+	\item une méthode \texttt{setAttributes()} pour récupérer les paramètres entrés par l'utilisateur,
+	\end{itemize}
+\item Créer une nouvelle classe \texttt{Algorithme} pour la procédure de piquage suivant le modèle de ceux déjà implantés. 
+\end{itemize}
 
 
 
 
 
-
-
+Ajouter plugin config
 
 
 
