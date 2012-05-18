@@ -45,8 +45,8 @@
 \contentsline {section}{\numberline {3.5}Applications}{24}
 \contentsline {section}{\numberline {3.6}Ajout d'un nouvel algorithme au plugin}{27}
 \contentsline {section}{\numberline {3.7}Am\IeC {\'e}liorations possibles}{27}
-\contentsline {chapter}{Conclusion}{28}
-\contentsline {chapter}{Bibliographie}{28}
-\contentsline {chapter}{\numberline {A}Annexes}{30}
-\contentsline {chapter}{Annexes}{30}
-\contentsline {section}{\numberline {A.1}Diagramme des classes du plugin Pick\_EM}{31}
+\contentsline {chapter}{Conclusion}{29}
+\contentsline {chapter}{Bibliographie}{29}
+\contentsline {chapter}{\numberline {A}Annexes}{31}
+\contentsline {chapter}{Annexes}{31}
+\contentsline {section}{\numberline {A.1}Diagramme des classes du plugin Pick\_EM}{32}

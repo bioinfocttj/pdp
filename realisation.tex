@@ -388,6 +388,21 @@ Voici la marche à suivre pour ajouter un nouvel algorithme de piquage à notre 
 
 \section{Améliorations possibles}
 
+Nous avons fait en sorte que notre plugin corresponde le plus possible aux attentes de notre tuteur. Cependant, quelques améliorations restent possibles. \\
+
+Une fonction pour ajouter automatiquement un nouvel algorithme de piquage avec ses paramètres d'entrée via l'interface, sans que l'utilisateur n'ai à toucher au code source, serait pratique. Dans ce cas, il n'y aurait plus qu'à ajouter une classe implémentant cette nouvelle méthode de piquage dans le code. \\
+
+Le mode de création du stack d'imagettes pourrait éviter d'afficher les images dupliquées au cours de la création du stack. Cela permettrait d'alléger la mémoire vive de l'ordinateur, ainsi que de diminuer le temps de traitement. \\
+De plus, il n'est actuellement pas possible de visualiser les sélections sur toutes les images du stack de base en même temps. Il serait donc intéressant de pouvoir le faire. \\
+
+Par ailleurs, le stack d'imagettes peut contenir des éléments qui n'auraient pas dus être sélectionnés ("paquets", bruit de fond). Il serait utile de pouvoir les supprimer du stack ou d'ajouter l'image d'une particule n'ayant pas été sélectionnée automatiquement. \\
+
+La gestion de la mémoire pourrait être améliorée en optimisant nos algorithmes (par exemple, en diminuant le nombre d'objets créés lors de l'exécution). \\
+
+Nous avons créé un mode de débogage dans notre interface afin d'aider l'utilisateur si un processus ne se déroule pas correctement. Cependant, ce mode n'est pas encore optimal et pourrait être complété. De plus, nous n'avons pas eu le temps de l'implémenter dans chacun de nos algorithmes. \\
+
+Enfin, il est possible de lancer notre plugin par l'outil Macro d'\imj. Cependant, il subsiste une erreur : la procédure de création du stack d'imagettes se déroule deux fois (une fois sur le stack de base et une autre sur le stack de particules sélectionnées). Ceci a pour effet d'afficher deux stacks finaux au lieu d'un seul. Résoudre ce problème permettrait d'avoir un déroulement optimal de notre programme depuis l'outil Macro. 
+
 
 
 
