@@ -38,16 +38,20 @@ class InfoHelp implements ActionListener{
 		"   This algorithm needs unprocessed stack/dm3 image to do the particles selection. \n" +
 		"   Equalization or normalisation are not supported by this algorithm. \n"+
 		"   Parameters are sigmas values (for the filters).\n" +
+		"   Sigma1 must be greater than Sigma2 \n" +
 		"\n"+
 		"Dilate Difference Algorithm : \n"+
 		"   This algorithm needs unprocessed stack or image. \n" +
-		"   Parameters are dilate iterations (for dilation cycles).\n" +
+		"   Parameters are dilate iterations (for dilation cycles). \n" +
+		"   Dilate iteration image1 must be less than Dilate iteration image2. \n" +
 		"\n"+
 		"Image Correlation Algorithm : \n"+
 		"   This algorithm needs a processed stack or image (for our trials we used three median filters (radius 2), \n"+
 		//"	 choose radius 2 and apply it twice)) \n" +
 		"   Parameters are the differents radius of circles and the radius incrementation for the correlation. \n " +
 		"\n"+
+		"TO ADD AN NEW ALGORITHM TO THIS PLUGIN : \n"+
+		"   See the file named AddAlgoPickEM.pdf. \n" +
 		"ABOUT THE AUTHORS\n"+
 		"   This plugin was created by Thomas Faux, Charlotte Héricé, Typhaine Paysan-Lafosse and Joris Sansen \n"+ 
 		"   Co-working with Pr. Jean-Christophe Taveau.\n";
