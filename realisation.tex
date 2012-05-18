@@ -175,7 +175,8 @@ La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si 
 
 Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante, ou la dernière image dans le cas d'un stack.
 L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
-De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenus est créé (éliminant les particules trop près du bord de l'image) et affiché.
+
+De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenues est créé (éliminant les particules trop près du bord de l'image) et affiché.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -194,7 +195,7 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
 \subsubsection*{Statistiques}
 
 \begin{itemize}
-\item La Différence gaussienne permet d'obtenir les résultats suivants :
+\item[•] La Différence gaussienne permet d'obtenir les résultats suivants :
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -214,7 +215,7 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
 Nous constatons que ce piquage est efficace sur notre image de protéines membranaires. Nous l'avons également testé sur une image de blobs, qui est une image de référence pour les essais sur \imj. Cette technique semble tout aussi bien marcher sur les blobs. \\
 
 \begin{itemize}
-\item La Différence de dilatation permet d'obtenir les résultats suivants :
+\item[•] La Différence de dilatation permet d'obtenir les résultats suivants :
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -232,34 +233,53 @@ Nous constatons que ce piquage est efficace sur notre image de protéines membra
 \end{figure}
 \pagebreak
 
+Nous observons que cet algorithme semble bien fonctionner sur les blobs, alors que sur les protéines il y a beaucoup trop de points de piquage. Même en modifiant le paramètre de la "Noise Tolerance" nous obtenons des résultats de piquage similaires. \\
+
 \begin{itemize}
-\item Résultats :
+\item[•] La Corrélation d'images ne permet pas d'obtenir de résultats de piquage exploitables avec ces deux types d'images. Nous avons également testé cet algorithme avec des images de particules virales. Nous obtenions de bon résultats, cependant, pour des raisons de confidentialité, nous ne pouvons pas intégrer ces images dans notre rapport. \\
 \end{itemize}
 
+\begin{itemize}
+\item[•] Résultats :
+\end{itemize}
+
+Nous avons réalisé une série de tests statistiques afin de comparer l'efficacité de nos algorithmes sur les différentes images. Les résultats obtenus sont regroupés dans le tableau (Table \ref{tableau}) suivant :
+
+\begin{table}[h]
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\textbf{Images} & \textbf{Variables} & \textbf{DoG} & \textbf{Dilate Diff} & \textbf{Image Corr} \\
+\textbf{Images} & \textbf{Variables} & \textbf{DoG} & \textbf{Dilate Difference} & \textbf{Image Correlation} \\
 \hline
 Blobs & Vrai Positif (VP) & 63 & 61 & null \\
 	& Vrai Négatif (VN) & 3 & 0 & null \\
 	& Faux Positif (FP) & 9 & 2 & null \\
 	& Faux Négatif (FN) & 0 & 1 & null \\
-	& Sensibilité & 1 & 0.98 & null \\
-	& Spécificité & 0.25 & 0 & null \\
+	& Sensibilité (SE) & 1 & 0.98 & null \\
+	& Spécificité (SP) & 0.25 & 0 & null \\
 \hline
 Protéines & Vrai Positif (VP) & 167 & infini & null \\
 	& Vrai Négatif (VN) & 8 & infini & null \\
 	& Faux Positif (FP) & 16 & infini & null \\
 	& Faux Négatif (FN) & 8 & infini & null \\
-	& Sensibilité & 0.95 & null & null \\
-	& Spécificité & 0.5 & null & null \\
+	& Sensibilité (SE) & 0.95 & null & null \\
+	& Spécificité (SP) & 0.5 & null & null \\
 	\hline
 \end{tabular}
 \end{center}
+\caption{Tableau de statistiques d'efficacité des algorithmes de piquage}
+\label{tableau}
+\end{table}
 
+Les \textbf{Vrais Positifs} sont les particules devant être sélectionnées et qui le sont par l'algorithme. Les \textbf{Vrais Négatifs} représentent tout ce qui ne doit pas être sélectionné et qui ne l'est pas. Les \textbf{Faux Positifs} correspondent à tout ce qui ne doit pas être sélectionné mais qui l'est. Enfin, les \textbf{Faux Négatifs} sont les particules devant être sélectionnées mais qui ne le sont pas. \\ 
+Le \textbf{Sensibilité}~\cite{stats:url} est la probabilité qu'une particule devant être piquée le soit. Une mesure de la sensibilité s'accompagne toujours d'une mesure de la spécificité. La \textbf{Spécificité} est la probabilité de ne pas sélectionner ce qui ne doit pas l'être. La sensibilité et la Spécificité sont obtenues par les formules suivantes : \\
 
-%\multicolumn{5}{|c|}{} & lhlk \\
+\begin{center}
+SE = $\frac{\text{VP}}{\text{VP+FN}}$ et SP = $\frac{\text{VN}}{\text{VN+FP}}$ \\
+\end{center}
+
+D'après la Table \ref{tableau}, nous remarquons que c'est l'algorithme de Différence gaussienne qui a la meilleure spécificité et sensibilité pour les blobs. En effet, il y a plus de particules sélectionnées avec ce dernier qu'avec la Différence de dilatation, alors que cet algorithme a été créé pour les blobs au départ. Cependant, nous constatons qu'il y a plus de faux positifs avec la Différence gaussienne. \\
+En ce qui concerne les protéines, la Différence de dilatation est inefficace car elle ne fait pas de distinction entre le bruit et les particules. La Différence gaussienne, quant à elle, est assez efficace en ce qui concerne la sélection de ces dernières. \\
 
 
 
