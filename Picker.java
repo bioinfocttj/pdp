@@ -2,7 +2,7 @@ import ij.ImagePlus;
 
 import java.util.Vector;
 
-abstract public class Picker {
+public abstract class Picker {
 // This class allows to call the picking algorithms
 
 	protected static Vector<Double> xtab=new Vector<Double>();
@@ -14,4 +14,5 @@ abstract public class Picker {
 	protected static String cropMode;
 	protected static String noiseT;
 	protected static boolean cropperMode;
+	
 }

@@ -51,41 +51,34 @@ abstract class ImCorr extends Picker {
 		ytab.removeAllElements();
 		slice.removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
-		im = new Duplicator().run(imgBlocked);
-		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
-		ImageProcessor ip = im.getProcessor();
+		im=new Duplicator().run(imgBlocked);
+		int i = imgBlocked.getCurrentSlice();
+		IJ.showMessage(Integer.toString(i));
+		ImageStack tempstack = im.getStack();
+		ImageProcessor ip = tempstack.getProcessor(i);
+		ImagePlus impDup =new ImagePlus("imgPlus",ip);
+		IJ.run(impDup,"Enhance Contrast", "saturated=0 normalize");
 		ip.findEdges();
-		ip.invert();
+		pick(impDup, i);
 		
-		int current=im.getSlice();
-		pick(im, current);
+		
 	}
 	
 	static double[][] sliceSelection(){
 		xtab.removeAllElements();
 		ytab.removeAllElements();
 		slice.removeAllElements();
-		//resultstable[0].removeAllElements();
-		//resultstable[1].removeAllElements();
-		//resultstable[2].removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
-		//imgBlocked.show();
-		
-		ImagePlus imp = imgBlocked.duplicate();
-		ImagePlus imp2 = imgBlocked.duplicate();
-
+		im=new Duplicator().run(imgBlocked);
 		int nbslice = imgBlocked.getStackSize();
-
 		for (int i=1;i<=nbslice;i++){	
-
-			ImageStack tempstack = imp.getStack();
+			ImageStack tempstack = im.getStack();
 			ImageProcessor ip = tempstack.getProcessor(i);
 			ImagePlus impDup =new ImagePlus("imgPlus",ip);
 			IJ.run(impDup,"Enhance Contrast", "saturated=0 normalize");
 			ip.findEdges();
 			pick(impDup, i);
 		}
-	
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		cropMode = hashAttributes.get("crop");
 		cropperMode = Boolean.parseBoolean(cropMode);
@@ -97,7 +90,6 @@ abstract class ImCorr extends Picker {
 	}
 	
 	public static void pick(ImagePlus image,int currentslice){
-		//image.show();
 		z = (double) currentslice;
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
 		String rMin = hashAttributes.get("rMin");
@@ -114,7 +106,6 @@ abstract class ImCorr extends Picker {
 		int radiusMax = Integer.parseInt(rMax); //radius max of the draw circule
 		int radiusInc = Integer.parseInt(rInc); //radius incrementation
 		// Creation of an image which contains a circle with different diameters
-		//image.setSlice(currentslice);
 		for (int radius=radiusMin; radius<=radiusMax; radius=radius+radiusInc){
 			ImagePlus imp = IJ.createImage("circle", "8-bit White", w, h, 1);
 			imp.setRoi(new OvalRoi((w/2)-radius, (h/2)-radius, radius*2, radius*2));
@@ -122,12 +113,8 @@ abstract class ImCorr extends Picker {
 			ImagePlus result = FFTMath.doMath(image,imp);
 			ImageProcessor ip = result.getProcessor();
 			ip.invert();
-			//ImagePlus impala2 =new ImagePlus("proutresult",ip);
-			//impala2.show();
 			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
-
-			//result.show();
 			Polygon points = mf.getMaxima(ip, tolerance, excludeOnEdges);
 			int[] xArray = points.xpoints;
 			int[] yArray = points.ypoints;
@@ -145,7 +132,6 @@ abstract class ImCorr extends Picker {
 				System.out.println(xArray[i]);
 				
 			}
-			//table.show("results");
 		}
 		sort(table,imgBlocked);
 	}
