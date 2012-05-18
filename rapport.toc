@@ -36,17 +36,17 @@
 \contentsline {chapter}{\numberline {3}R\IeC {\'e}alisation}{17}
 \contentsline {section}{\numberline {3.1}Interface graphique}{17}
 \contentsline {subsection}{\numberline {3.1.1}Panneaux et boutons}{17}
-\contentsline {subsection}{\numberline {3.1.2}Affichage des r\IeC {\'e}sultats}{19}
+\contentsline {subsection}{\numberline {3.1.2}Affichage des r\IeC {\'e}sultats}{20}
 \contentsline {section}{\numberline {3.2}R\IeC {\'e}cup\IeC {\'e}ration des param\IeC {\`e}tres}{20}
-\contentsline {section}{\numberline {3.3}Algorithmes}{21}
-\contentsline {subsection}{\numberline {3.3.1}Comparaison langage Macro ImageJ~et Java~{\relax \fontsize {6}{7}\selectfont \texttrademark }}{21}
-\contentsline {subsection}{\numberline {3.3.2}M\IeC {\'e}thodes de piquage}{21}
-\contentsline {section}{\numberline {3.4}Autres classes}{23}
-\contentsline {section}{\numberline {3.5}Applications}{23}
-\contentsline {section}{\numberline {3.6}Ajout d'un nouvel algorithme au plugin}{25}
-\contentsline {section}{\numberline {3.7}Am\IeC {\'e}liorations}{26}
-\contentsline {chapter}{Conclusion}{27}
-\contentsline {chapter}{Bibliographie}{27}
-\contentsline {chapter}{\numberline {A}Annexes}{29}
-\contentsline {chapter}{Annexes}{29}
-\contentsline {section}{\numberline {A.1}Diagramme des classes du plugin Pick\_EM}{30}
+\contentsline {section}{\numberline {3.3}Algorithmes}{22}
+\contentsline {subsection}{\numberline {3.3.1}Comparaison langage Macro ImageJ~et Java~{\relax \fontsize {6}{7}\selectfont \texttrademark }}{22}
+\contentsline {subsection}{\numberline {3.3.2}M\IeC {\'e}thodes de piquage}{23}
+\contentsline {section}{\numberline {3.4}Autres classes}{24}
+\contentsline {section}{\numberline {3.5}Applications}{24}
+\contentsline {section}{\numberline {3.6}Ajout d'un nouvel algorithme au plugin}{27}
+\contentsline {section}{\numberline {3.7}Am\IeC {\'e}liorations possibles}{27}
+\contentsline {chapter}{Conclusion}{28}
+\contentsline {chapter}{Bibliographie}{28}
+\contentsline {chapter}{\numberline {A}Annexes}{30}
+\contentsline {chapter}{Annexes}{30}
+\contentsline {section}{\numberline {A.1}Diagramme des classes du plugin Pick\_EM}{31}

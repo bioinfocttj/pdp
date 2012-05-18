@@ -16,7 +16,7 @@
 \usepackage{listings}
 \usepackage{url}
 \usepackage{rotating}
-\usepackage[top=2cm,bottom=2cm,left=2.5cm]{geometry}
+\usepackage[top=2cm,bottom=3cm,left=2.5cm]{geometry}
 
 %%%%%%%%%%%%%%%%%encadrementdes chapitres%%%%%%%%%%%%%%%%%%%%%%%
 \titleformat{\chapter} % commande de sectionnement affectée
@@ -41,8 +41,17 @@
 \renewcommand{\thefigure}{\arabic{figure}}
 
 \begin{abstract}
-Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images issues de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
-Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées, ainsi que l'organisation générale du programme. 
+\paragraph*{}
+Dans le cadre des recherches du laboratoire de Chimie et Biologie des Membranes et Nanoobjets, il est fréquent d'avoir à déterminer le nombre et les positions de particules sur des photographies de microscopie électronique. Pour cela, le logiciel \imj ~est courament utilisé mais il ne dispose d'aucun outils automatique adapté pour traiter une grande quantité de données.
+\paragraph*{}
+L'objectif de notre projet a donc été de pallier à ce problème en créant un plugin pour ce logiciel. \imj ~étant implémenté en \java , nous avons créé une interface facile à utiliser en suivant ce langage. A l'heure actuelle trois méthodes de sélection de particules (piquage) ainsi qu'un outil de récupération de ces objets ont été implémenté.
+\paragraph*{}
+Ce plugin, nommé \emph{Pick\_EM} a également été créé dans le but de réunir dans un même outils plusieurs algorithmes, chacun ayant une sensibilité différente en fonction des cibles et de la qualité des images. Le code suit donc les règles de la programmation orientée objet afin de faciliter l'insertion d'une nouvelle méthode de piquage.
+
+%\paragraph*{} Ce rapport traite de l'organisation globale du programme, de sa conception et de sa réalisation, expliquant les choix d'implémentation, 
+
+%Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images issues de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
+%Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées, ainsi que l'organisation générale du programme. 
 \end{abstract}
 
 \thispagestyle{empty}
@@ -112,6 +121,5 @@ Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord 
 \includegraphics[width=1.4\textwidth, angle=90]{diagComplet.png}
 \end{center}
 \end{figure}
-
 
 \end{document}
