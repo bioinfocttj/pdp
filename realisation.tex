@@ -147,7 +147,66 @@ public final static Attributes getInstance() {
 \end{fmpage}
 \end{center}
 
+\pagebreak
+
 \section{Algorithmes}
+
+\subsection{Comparaison langage Macro \imj ~et \java}
+
+Nous avons commencé par implémenter les algorithmes grâce à l'outil Macro d'\imj lors de nos  phases de test. Nous les avons ensuite traduits en \java et liés à la partie interface graphique du code. Vous trouverez ci-après un exemple de cette transformation. \\
+
+Extrait de la Macro de la Différence de dilatation :
+\begin{center}
+\begin{fmpage}{16cm}
+\begin{small}
+\begin{lstlisting}
+run("Blobs (25K)");
+run("Duplicate...", "title=blobs-1.gif");
+run("Duplicate...", "title=blobs-2.gif");
+run("Dilate");
+run("Make Binary");
+selectWindow("blobs-1.gif");
+run("Make Binary");
+run("Dilate");
+run("Options...", "iterations=2 count=1 edm=Overwrite do=Nothing");
+selectWindow("blobs-2.gif");
+run("Dilate");
+imageCalculator("Subtract create", "blobs-2.gif","blobs-1.gif");
+selectWindow("Result of blobs-2.gif");
+run("Find Maxima...", "noise=3 output=[Point Selection]");
+\end{lstlisting}
+\end{small}	
+\end{fmpage}
+\end{center}
+
+\paragraph*{}
+Équivalent en langage \java :
+\begin{center}
+\begin{fmpage}{16cm}
+\begin{small}
+\begin{lstlisting}
+ImagePlus imp = WindowManager.getCurrentImage();
+ImagePlus imp1=new Duplicator().run(imp);
+ImagePlus imp2= new Duplicator().run(imp1);
+imp1.setSlice(currentslice);
+imp2.setSlice(currentslice);
+IJ.run(imp1, "Make Binary", "calculate");
+IJ.run(imp2, "Make Binary", "calculate");
+IJ.run(imp1, "Options...", it1);
+IJ.run(imp1, "Dilate", "slice");
+IJ.run(imp2, "Options...", it2);
+IJ.run(imp2, "Dilate", "slice");
+ic = new ImageCalculator();
+ImagePlus imp3 = ic.run("Subtract create", imp2, imp1);
+ImageProcessor ip3 = imp3.getProcessor();
+ip3.invert();
+Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
+\end{lstlisting}
+\end{small}	
+\end{fmpage}
+\end{center}
+
+\subsection{Méthodes de piquage}
 
 Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lui sont proposés, cela fait appel à la classe \texttt{AlgoFactory} contenant plusieurs méthodes switch :
 \begin{itemize}
@@ -158,7 +217,10 @@ Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lu
 
 La présence d'un constructeur privé dans cette classe supprime le constructeur public par défaut. De plus, seul le singleton peut s'instancier lui même. \\
 
-Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction \texttt{getInstance()} de la classe \texttt{Attributes}, puis récupérés, pour l'algorithme, par la fonction \texttt{setAttributes()} de la classe \texttt{PanelDoG} (pour suivre notre scénario). L'algorithme est ensuite appelé par la méthode \texttt{sliceSelection()} (Apply) ou par \texttt{picking()} (Preview). \\
+Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). \\
+Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction \texttt{getInstance()} de la classe \texttt{Attributes}. Dans le cas où l'utilisateur entrerait des valeurs non numériques, c'est \imj ~qui se chargerait de gérer les erreurs. \\
+Les paramètres sont ensuite récupérés, pour l'algorithme, par la fonction \texttt{setAttributes()} de la classe \texttt{PanelDoG} (pour suivre notre scénario). \\
+ L'algorithme est par la suite appelé par la méthode \texttt{sliceSelection()} (Apply) ou par \texttt{picking()} (Preview). \\
 
 La méthode \texttt{picking()} donne l'image courante du stack en paramètre de la méthode \texttt{pick()} alors que \texttt{sliceSelection()} parcourt le stack et appelle \texttt{pick()} autant de fois qu'il y a d'images dans le stack. \\
 
@@ -196,7 +258,7 @@ La classe \texttt{FFTMath} est issue de la classe \texttt{FFTMath} d'\imj, que n
 
 La classe \texttt{About} permet d'afficher les auteurs du plugin et le moyen de nous contacter si besoin. \\
 
-La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si l'utilisateur  clique sur le bouton "Hepl \& Info". 
+La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si l'utilisateur  clique sur le bouton "Help \& Info". 
 
 \section{Applications}
 
@@ -326,8 +388,6 @@ Voici la marche à suivre pour ajouter un nouvel algorithme de piquage à notre 
 
 
 
-
-Ajouter plugin config
 
 
 
