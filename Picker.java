@@ -15,7 +15,7 @@ abstract public class Picker {
 	protected static String noiseT;
 	protected static boolean cropperMode;
 	
-	static double[][] resultConverter(){
+	/*static double[][] resultConverter() {
 		int arrayLength = xtab.size();
 		Object[] tempX = new String[arrayLength];
 		Object[] tempY = new String[arrayLength];
@@ -39,7 +39,7 @@ abstract public class Picker {
 		coordinates[1]=yArray;
 		coordinates[2]=zArray;
 		return coordinates;
-	}
+	}*/
 		
 
 }

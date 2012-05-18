@@ -43,13 +43,13 @@ abstract class DilateDiff extends Picker{
 	DilateDiff(){}
 	
 	static void picking() {
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
 		im = WindowManager.getCurrentImage();
 		int current=im.getSlice();
 		System.out.println(current);
 		pick(im, current);
-		xtab.removeAllElements();
-		ytab.removeAllElements();
-		slice.removeAllElements();
 	}
 	
 	static double[][] sliceSelection(){
@@ -135,5 +135,31 @@ abstract class DilateDiff extends Picker{
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
+	}
+	
+	static double[][] resultConverter(){
+		int arrayLength = xtab.size();
+		Object[] tempX = new String[arrayLength];
+		Object[] tempY = new String[arrayLength];
+		Object[] tempZ = new String[arrayLength];
+		tempX = xtab.toArray();
+		tempY = ytab.toArray();
+		tempZ = slice.toArray();
+		double[] xArray = new double[arrayLength];
+		double[] yArray = new double[arrayLength];
+		double[] zArray = new double[arrayLength];
+		for (int i=0; i < arrayLength; i++){
+			String temp = String.valueOf(tempX[i]);
+			xArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempY[i]);
+			yArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempZ[i]);
+			zArray[i] = Double.parseDouble(temp);
+		}
+		double[][] coordinates = new double[3][arrayLength];
+		coordinates[0]=xArray;
+		coordinates[1]=yArray;
+		coordinates[2]=zArray;
+		return coordinates;
 	}
 }

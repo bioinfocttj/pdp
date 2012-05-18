@@ -47,6 +47,9 @@ abstract class ImCorr extends Picker {
 	ImCorr(){}
 	
 	static void picking() {
+		xtab.removeAllElements();
+		ytab.removeAllElements();
+		slice.removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
 		im = new Duplicator().run(imgBlocked);
 		IJ.run(im, "Enhance Contrast...", "saturated=0.4 normalize");
@@ -56,9 +59,6 @@ abstract class ImCorr extends Picker {
 		
 		int current=im.getSlice();
 		pick(im, current);
-		xtab.removeAllElements();
-		ytab.removeAllElements();
-		slice.removeAllElements();
 	}
 	
 	static double[][] sliceSelection(){
@@ -76,15 +76,14 @@ abstract class ImCorr extends Picker {
 
 		int nbslice = imgBlocked.getStackSize();
 
-
 		for (int i=1;i<=nbslice;i++){	
 
 			ImageStack tempstack = imp.getStack();
 			ImageProcessor ip = tempstack.getProcessor(i);
-			ImagePlus impala =new ImagePlus("prout",ip);
-			IJ.run(impala,"Enhance Contrast", "saturated=0 normalize");
+			ImagePlus impDup =new ImagePlus("imgPlus",ip);
+			IJ.run(impDup,"Enhance Contrast", "saturated=0 normalize");
 			ip.findEdges();
-			pick(impala, i);
+			pick(impDup, i);
 		}
 	
 		Hashtable<String, String> hashAttributes = Attributes.getAttributes();
@@ -146,7 +145,7 @@ abstract class ImCorr extends Picker {
 				System.out.println(xArray[i]);
 				
 			}
-			table.show("results");
+			//table.show("results");
 		}
 		sort(table,imgBlocked);
 	}
