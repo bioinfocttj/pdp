@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 
 @SuppressWarnings({ "serial"})
 
-class PanelDoG extends PickPanel {
+public class PanelDoG extends PickPanel {
 
 	private static String setpointS1 = "Sigma 1 : ";
 	private static String setpointS2 = "Sigma 2 : ";

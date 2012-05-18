@@ -17,7 +17,7 @@ import ij.text.*;
 
 import java.awt.event.*;
 
-class InfoHelp implements ActionListener{
+public class InfoHelp implements ActionListener{
 	private String description="HELP ABOUT Pick_EM (Electron Microscopy) \n\n"+
 		"This plugin allows to pick particles on cryo-Met images. \n"+
 		"choose a picking alorithm;\n"+

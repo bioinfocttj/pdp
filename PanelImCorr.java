@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 
 @SuppressWarnings({ "serial" })
 
-class PanelImCorr extends PickPanel {
+public class PanelImCorr extends PickPanel {
 
 	private static JCheckBox debugMode;
 	private static JCheckBox cropperMode;

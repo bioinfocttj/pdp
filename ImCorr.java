@@ -29,7 +29,7 @@ import ij.plugin.Duplicator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
-abstract class ImCorr extends Picker {
+public class ImCorr extends Picker {
 // Picking algorithm : image correlation
 	
 	private static ImagePlus imgBlocked;

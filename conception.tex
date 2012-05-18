@@ -7,7 +7,7 @@
 \section{Interface graphique}
 
 Comme précisé précédemment, notre programme se présente sous la forme d'un plugin \imj . L'interface graphique à été réalisée grâce à la bibliothèque  \java ~Swing. %Il a été réalisé grâce à la bibliothèque Swing de \java ~pour l'interface graphique.
-La fenêtre servant d'interface est composée de différentes boîtes (panneaux)\blue contenant (. Ces boîtes contiennent)\black différents outils (boutons, listes, zones de saisie et zones de texte) permettant l'interaction entre l'utilisateur et le programme. \blue Ces (Les) \black boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
+La fenêtre servant d'interface est composée de différentes boîtes (panneaux) contenant différents outils (boutons, listes, zones de saisie et zones de texte) permettant l'interaction entre l'utilisateur et le programme. Ces boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
 %Nous avons donc créé une série d'outils graphiques (boutons, listes, zone de saisie et zone de texte) pour l'interaction avec l'utilisateur. Dans une fenêtre, ces outils sont disposés en lignes ou en colonnes dans des boîtes (panels). Les boîtes peuvent s'imbriquer les unes dans les autres afin d'obtenir des structures plus complexes et un meilleur rendu visuel. \\
 L'interface du plugin est simple, elle prend la forme d'une fenêtre composée d'un menu déroulant, dans lequel se trouvent les différents algorithmes, et de quatre boutons. 
 
@@ -104,8 +104,7 @@ La partie permettant la création du stack d'imagettes à été séparé des mé
 Cette séparation GUI/traitement/stack à dû être accompagnée de la création de classes suivant des patrons de conception particulier : la \emph{factory} et le \emph{singleton}. 
 \begin{description}
 \item [Le \emph{singleton}] est un patron de conception (design pattern) permettant de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). La classe en \emph{singleton} permet de conserver les paramètres choisis par l'utilisateur. De ce fait, même lorsqu'il exécute plusieurs algorithmes, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
-\item[La \emph{factory}]\blue  définit une interface pour la création d'objets (ou groupes d'objets).\black %permet d'instancier des objets dont le type est dérivé d'un type abstrait. La classe exacte de l'objet n'est donc pas connue par l'appelant. 
-La classe en \emph{factory} rend possible les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récupérer les paramètres utilisateur. Ensuite, lorsque l'utilisateur clique sur les boutons d'exécution ou de prévisualisation, la \emph{factory} lancera les actions correspondantes. Afin d'éviter des erreurs d'instanciations, cette classe suit également le patron de conception \emph{singleton}.
+\item[La \emph{factory}] définit une interface pour la création d'objets (ou groupes d'objets). La classe en \emph{factory} rend possible les transitions entre chaque méthode de piquage. Elle amorce le panneau propre à l'algorithme permettant d'actualiser l'interface et ainsi de récupérer les paramètres utilisateur. Ensuite, lorsque l'utilisateur clique sur les boutons d'exécution ou de prévisualisation, la \emph{factory} lancera les actions correspondantes. Afin d'éviter des erreurs d'instanciations, cette classe suit également le patron de conception \emph{singleton}.
 %\item [Le \emph{singleton}] est un patron de conception (design pattern) permettant de restreindre l'instanciation d'une classe à un seul objet (ou bien à quelques objets seulement). La classe en \emph{singleton} permet de conserver les paramètres choisis par l'utilisateur. De ce fait, même lorsqu'il exécute plusieurs algorithmes, une seule instance de cette classe peut exister, actualisant les paramètres choisis par l'utilisateur.
 \end{description}
 
@@ -130,7 +129,9 @@ Ce format est directement pris en compte par \imj ~et, lorsque l'archive est pla
 
 Cette archive contient les fichiers \emph{.java} pour permettre la modification du code et \emph{.class} afin de permettre l'utilisation du plugin sans avoir de problème de compilation (généralement dûe à la version de \java ). \\
 
+Le fait que notre plugin soit open-source et en libre accès, il était important de protéger l'accès à notre travail. Pour cela, nous avons décidé de placer notre programme sous licence.
 
+Il existait plusieurs licence libre envisageable, notamment les licence \emph{GPL}, L-\emph{GPL}, \emph{BSD} pour les licences en anglais, et les licences \emph{CéCill} pour celles propres à la législation française. Sur l'avis de nos tuteurs mais aussi parce que c'est celle la plus courament utilisée pour les plugins \imj , nous avons choisi la licence \emph{GPL} qui est la plus permissive tout en nous garantissant l'accès à notre travail.
 %\section{Les classes}
 %
 %Le programme est divisé en seize classes distinctes:

@@ -29,7 +29,7 @@ import ij.plugin.ImageCalculator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
-abstract class DoG extends Picker {
+public class DoG extends Picker {
 // Picking algorithm : difference of gaussian
 	
 	//static Vector[] resultstable = new Vector[3];

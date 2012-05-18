@@ -29,7 +29,7 @@ import ij.plugin.ImageCalculator;
 import ij.plugin.filter.MaximumFinder;
 import ij.process.ImageProcessor;
 
-abstract class DilateDiff extends Picker{
+public class DilateDiff extends Picker{
 // Picking algorithm : dilate difference
 	/*
 	static Vector<Double> xtab=new Vector<Double>();
