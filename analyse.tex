@@ -4,7 +4,7 @@
 
 \subsection{Présentation du CBMN}
 
-Le laboratoire, créé en janvier 2007, est à l'interface entre le Biologie, la Chimie et la Physique. Il a pour tutelle les départements de Chimie et des Sciences de la Vie du Centre National de la Recherche Scientifique (CNRS) et les Unités de Formation et de Recherche (UFR) de Chimie et de Biologie de l'Université Bordeaux I, II et l'ENITAB. \\
+Le laboratoire, créé en janvier 2007, est à l'interface entre la Biologie, la Chimie et la Physique. Il a pour tutelle les départements de Chimie et des Sciences de la Vie du Centre National de la Recherche Scientifique (CNRS) et les Unités de Formation et de Recherche (UFR) de Chimie et de Biologie de l'Université Bordeaux I, II et l'ENITAB. \\
 La mission du CBMN est d'apporter une connaissance fondamentale de phénomènes biologiques complexes en les analysant à plusieurs échelles, allant de la molécule à la cellule et à l'organisme. \\
 L'équipe ACMPC s'appuie sur deux méthodes d'imagerie : la cryotomographie  électronique et la microscopie à fluorescence. Comme nous l'avons expliqué précédemment, nous allons travailler sur des images issues de cryomicroscopie.  
 
@@ -17,7 +17,7 @@ Notre objectif était de créer et d'implémenter une plateforme mettant à disp
 \item des micrographies de protéines membranaires, de forme pyramidale, qu'il fallait aussi sélectionner.\\
 \end{itemize}
 \noindent
-Il était imposé que cette interface soit implémentée sous la forme d'un plugin ImageJ. Elle propose à l'utilisateur de se servir des algorithmes de picking pré-installés. \\%
+Il était imposé que cette interface soit implémentée sous la forme d'un plugin ImageJ. Elle propose à l'utilisateur de se servir des algorithmes de piquage pré-installés. \\%
 
 \noindent
 Le logiciel ImageJ a été choisi car c'est un logiciel de traitement et d'analyse d'images développé en \java ~par le Nation Institute of Health (NIH).%
@@ -127,7 +127,7 @@ Enfin, il est également possible d'implanter simplement de nouveaux algorithmes
 
 \subsubsection{Les algorithmes}
 
-Les algorithmes implantés doivent réaliser un piquage automatique des particules depuis les micrographies issues de \me. Le format de sortie est un tableau de résultats contenant un jeu de coordonnées \emph{x, y} associé à la position de l'image dans le \textit{stack}, ainsi qu'une pile d'images (\textit{stack} en anglais) contenant les particules sélectionnées par l'algorithme si l'utilisateur le désire.
+Les algorithmes implantés doivent réaliser un piquage automatique des particules depuis les micrographies issues de \me. Le format de sortie est un tableau de résultats contenant un jeu de coordonnées \emph{x, y} associé à la position de l'image dans la pile d'images (\textit{stack} en anglais), ainsi qu'une nouvelle pile contenant les particules sélectionnées par l'algorithme si l'utilisateur le désire.
 
 \subsection{Besoins non fonctionnels}
 
@@ -141,7 +141,7 @@ De plus, nous avons essayé de faire en sorte que le programme soit le plus simp
 \subsubsection{Les algorithmes}
 
 \noindent
-Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java, nous avons fait en sorte que le temps de déroulement de l'algorithme soit assez rapide afin de pouvoir gérer de grands jeux de données et qu'aucune image de traitement intermédiaire n'apparaisse à l'utilisateur (à moins qu'il ne le souhaite).\\
+Les algorithmes ont été testés avec l'outil macro d' \imj ~puis implémentés en \java. Nous avons fait en sorte que le temps de déroulement de l'algorithme soit assez rapide afin de pouvoir gérer de grands jeux de données et qu'aucune image de traitement intermédiaire n'apparaisse à l'utilisateur (à moins qu'il ne le souhaite).\\
 
 Dans l'optique de démocratiser l'utilisation de notre interface et afin de permettre l'extension de ce plugin avec d'autres algorithmes, le projet a été placé sous une licence GPL\footnote{General Public License~\cite{GPL:url}}.
 
@@ -150,7 +150,7 @@ Dans l'optique de démocratiser l'utilisation de notre interface et afin de perm
 
 \section{Scénario d'utilisation du plugin}
 
-Nous prendrons l'exemple d'une image issue de \me ~collectée dans l'équipe ACMPC sur laquelle se trouvent des protéines membranaires que nous voulons sélectionner (Figure \ref{prot}) ainsi que d'une image utilisée comme référence sur \imj ~, les \emph{blobs} (Figure \ref{blobs1}).
+Nous prendrons l'exemple d'une image issue de \cme ~collectée dans l'équipe ACMPC sur laquelle se trouvent des protéines membranaires que nous voulons sélectionner (Figure \ref{prot}) ainsi que d'une image utilisée comme référence sur \imj ~, les \emph{blobs} (Figure \ref{blobs1}).
 
 \begin{figure}[!ht]
 \begin{center}

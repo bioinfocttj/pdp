@@ -25,9 +25,9 @@
 \contentsline {section}{\numberline {2.2}R\IeC {\'e}cup\IeC {\'e}ration des param\IeC {\`e}tres}{13}
 \contentsline {section}{\numberline {2.3}Algorithmes}{13}
 \contentsline {subsection}{\numberline {2.3.1}Corr\IeC {\'e}lation d'image}{13}
-\contentsline {subsection}{\numberline {2.3.2}Diff\IeC {\'e}rence de Gaussiennes (DoG pour \textit {Difference of Gauss})}{13}
-\contentsline {subsection}{\numberline {2.3.3}Extraction de contours}{13}
-\contentsline {section}{\numberline {2.4}\textit {Stack} d'images r\IeC {\'e}sultantes}{14}
+\contentsline {subsection}{\numberline {2.3.2}Diff\IeC {\'e}rence de Gaussiennes (DoG pour \textit {Difference of Gaussian})}{13}
+\contentsline {subsection}{\numberline {2.3.3}Extraction de contours}{14}
+\contentsline {section}{\numberline {2.4}Pile d'images r\IeC {\'e}sultantes}{14}
 \contentsline {section}{\numberline {2.5}Organisation orient\IeC {\'e}e objet du programme}{14}
 \contentsline {subsection}{\numberline {2.5.1}S\IeC {\'e}paration interface graphique et traitement d'images}{14}
 \contentsline {subsection}{\numberline {2.5.2}S\IeC {\'e}paration traitement d'images et cr\IeC {\'e}ation du \textit {stack}}{14}
@@ -50,3 +50,4 @@
 \contentsline {chapter}{\numberline {A}Annexes}{30}
 \contentsline {chapter}{Annexes}{30}
 \contentsline {section}{\numberline {A.1}Diagramme des classes du plugin Pick\_EM}{31}
+\contentsline {section}{\numberline {A.2}Code source du plugin ImageJ Pick\_EM}{32}
