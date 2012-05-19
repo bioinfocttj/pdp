@@ -13,11 +13,14 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+
 import ij.text.*;
 
 import java.awt.event.*;
 
 public class InfoHelp implements ActionListener{
+	// This class displays a help about the utilization of the plugin
+	
 	private String description="HELP ABOUT Pick_EM (Electron Microscopy) \n\n"+
 		"This plugin allows to pick particles on cryo-Met images. \n"+
 		"choose a picking alorithm;\n"+
@@ -25,10 +28,7 @@ public class InfoHelp implements ActionListener{
 		"2) Click on the button \"Apply\" to definitively apply modifications to the image;\n"+
 		"3) Click on the button \"Show Results\" to see the table which contains the coordinates\n"+
 		"    and slices of the selected particles;\n"+
-		"\n"+/*
-		"A part of parameters are common for each algorithm (noise tolerance, crop width) \n"+
-		"the noise tolerance able to increase the selection precision \n"+
-		""+*/
+		"\n"+
 		"All algorithms have common parameters like noise tolerance for the precision of \n" +
 		"the particles selection and the square width if you choose to use the crop option. \n"+
 		"The debug mode allows the user to see some information message if they're implemented. \n" +
@@ -47,7 +47,6 @@ public class InfoHelp implements ActionListener{
 		"\n"+
 		"Image Correlation Algorithm : \n"+
 		"   This algorithm needs a processed stack or image (for our trials we used three median filters (radius 2), \n"+
-		//"	 choose radius 2 and apply it twice)) \n" +
 		"   Parameters are the differents radius of circles and the radius incrementation for the correlation. \n " +
 		"\n"+
 		"TO ADD AN NEW ALGORITHM TO THIS PLUGIN : \n"+

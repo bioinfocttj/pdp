@@ -24,7 +24,5 @@ public class Crop_Test extends PlugInFrame{
 			new Cropper();
 	}
 	
-	public void run(String arg){
-		
-	}
+	public void run(String arg){}
 }

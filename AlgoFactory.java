@@ -20,6 +20,7 @@ import ij.IJ;
 import javax.swing.JPanel;
 
 public final class AlgoFactory {
+	// This class is used to select the good algorithm
 	
 	private static AlgoFactory instance = null;
 	

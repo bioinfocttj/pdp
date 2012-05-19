@@ -14,7 +14,6 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-
 import java.awt.Polygon;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -32,11 +31,6 @@ import ij.process.ImageProcessor;
 public class DoG extends Picker {
 // Picking algorithm : difference of gaussian
 	
-	//static Vector[] resultstable = new Vector[3];
-	static Vector<Double> xtab = new Vector<Double>();
-	static Vector<Double> ytab = new Vector<Double>();
-	static Vector<Double> slice = new Vector<Double>();
-	
 	private static Cropper cropper;
 	
 	DoG() {}
@@ -48,11 +42,6 @@ public class DoG extends Picker {
 		im = WindowManager.getCurrentImage();
 		int current = im.getSlice();
 		pick(im, current);
-		
-	//	resultstable[0].removeAllElements();
-	//	resultstable[1].removeAllElements();
-	//	resultstable[2].removeAllElements();
-		//IJ.run("Clear Results");
 	}
 	
 	static double[][] sliceSelection() {
@@ -74,7 +63,6 @@ public class DoG extends Picker {
 			new Cropper(im,array);
 		}
 		return array;
-	
 	}
 	
 	public static void pick(ImagePlus imp, int currentslice) {
@@ -108,7 +96,6 @@ public class DoG extends Picker {
 		ImagePlus imp3 = ic.run("Subtract create 32-bit", imp2, imp1);
 		WindowManager.setTempCurrentImage(imp3);
 		
-		
 		ImageProcessor ip3 = imp3.getProcessor();
 		Polygon points = mf.getMaxima(ip3, tolerance, excludeOnEdges);
 		int[] xArray = points.xpoints;
@@ -125,24 +112,21 @@ public class DoG extends Picker {
 		xpoints = new int[counter];
 		ypoints = new int[counter];
 		for (int i = 0; i < counter; i++) {
-		double x = table.getValue("X", i);
-		double y = table.getValue("Y", i);
-		int xx = (int) x;
-		int yy = (int) y;
-		xpoints[i] = xx;
-		ypoints[i] = yy;
-		xtab.add(x);
-		ytab.add(y);
-		imp3.close();
-		imp.setRoi(new PointRoi(xpoints, ypoints, counter));
+			double x = table.getValue("X", i);
+			double y = table.getValue("Y", i);
+			int xx = (int) x;
+			int yy = (int) y;
+			xpoints[i] = xx;
+			ypoints[i] = yy;
+			xtab.add(x);
+			ytab.add(y);
+			imp3.close();
+			imp.setRoi(new PointRoi(xpoints, ypoints, counter));
 		}
 		for (int i = 0; i < counter; i++) {
 			double temp = table.getValue("Slice", i);
 			slice.add(temp);
 		}
-//	resultstable[0] = xtab;
-//	resultstable[1] = ytab;
-//	resultstable[2] = slice;
 	}
 	
 	static double[][] resultConverter(){

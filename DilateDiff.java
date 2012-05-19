@@ -14,10 +14,8 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-
 import java.awt.Polygon;
 import java.util.Hashtable;
-import java.util.Vector;
 
 import ij.IJ;
 import ij.ImagePlus;
@@ -31,13 +29,7 @@ import ij.process.ImageProcessor;
 
 public class DilateDiff extends Picker{
 // Picking algorithm : dilate difference
-	/*
-	static Vector<Double> xtab=new Vector<Double>();
-	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();
 	
-	static double[][]array;
-	*/
 	private static Cropper cropper;
 	
 	DilateDiff(){}

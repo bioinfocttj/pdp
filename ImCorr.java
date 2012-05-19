@@ -33,12 +33,6 @@ public class ImCorr extends Picker {
 // Picking algorithm : image correlation
 	
 	private static ImagePlus imgBlocked;
-
-	
-	//static Vector[] resultstable = new Vector[3];
-	static Vector<Double> xtab=new Vector<Double>();
-	static Vector<Double> ytab=new Vector<Double>();
-	static Vector<Double> slice=new Vector<Double>();
 	
 	private static double z;
 	
@@ -51,17 +45,14 @@ public class ImCorr extends Picker {
 		ytab.removeAllElements();
 		slice.removeAllElements();
 		imgBlocked = WindowManager.getCurrentImage();
-		im=new Duplicator().run(imgBlocked);
+		im = new Duplicator().run(imgBlocked);
 		int i = imgBlocked.getCurrentSlice();
-		IJ.showMessage(Integer.toString(i));
 		ImageStack tempstack = im.getStack();
 		ImageProcessor ip = tempstack.getProcessor(i);
-		ImagePlus impDup =new ImagePlus("imgPlus",ip);
+		ImagePlus impDup = new ImagePlus("imgPlus",ip);
 		IJ.run(impDup,"Enhance Contrast", "saturated=0 normalize");
 		ip.findEdges();
 		pick(impDup, i);
-		
-		
 	}
 	
 	static double[][] sliceSelection(){
@@ -130,7 +121,6 @@ public class ImCorr extends Picker {
 			result.close();
 			for(int i=0;i<xArray.length;i++){
 				System.out.println(xArray[i]);
-				
 			}
 		}
 		sort(table,imgBlocked);
@@ -179,17 +169,17 @@ public class ImCorr extends Picker {
 						else{
 							if (j != k){
 								maxval = j;
-								}
 							}
 						}
 					}
-					for (int q = 0; q<lenlist; q++){
-						if (maxval == list[q]){cpt+=1;}
-					}
-					if (cpt == 0){
-						list[lenlist] = maxval;
-						lenlist++;
-					}
+				}
+				for (int q = 0; q<lenlist; q++){
+					if (maxval == list[q]){cpt+=1;}
+				}
+				if (cpt == 0){
+					list[lenlist] = maxval;
+					lenlist++;
+				}
 			}
 			iterator --;
 		}
@@ -217,28 +207,28 @@ public class ImCorr extends Picker {
 	}
 	
 	static double[][] resultConverter(){
-	int arrayLength = xtab.size();
-	Object[] tempX = new String[arrayLength];
-	Object[] tempY = new String[arrayLength];
-	Object[] tempZ = new String[arrayLength];
-	tempX = xtab.toArray();
-	tempY = ytab.toArray();
-	tempZ = slice.toArray();
-	double[] xArray = new double[arrayLength];
-	double[] yArray = new double[arrayLength];
-	double[] zArray = new double[arrayLength];
-	for (int i=0; i < arrayLength; i++){
-	String temp = String.valueOf(tempX[i]);
-	xArray[i] = Double.parseDouble(temp);
-	temp = String.valueOf(tempY[i]);
-	yArray[i] = Double.parseDouble(temp);
-	temp = String.valueOf(tempZ[i]);
-	zArray[i] = Double.parseDouble(temp);
-	}
-	double[][] coordinates = new double[3][arrayLength];
-	coordinates[0] = xArray;
-	coordinates[1] = yArray;
-	coordinates[2] = zArray;
-	return coordinates;
+		int arrayLength = xtab.size();
+		Object[] tempX = new String[arrayLength];
+		Object[] tempY = new String[arrayLength];
+		Object[] tempZ = new String[arrayLength];
+		tempX = xtab.toArray();
+		tempY = ytab.toArray();
+		tempZ = slice.toArray();
+		double[] xArray = new double[arrayLength];
+		double[] yArray = new double[arrayLength];
+		double[] zArray = new double[arrayLength];
+		for (int i=0; i < arrayLength; i++){
+			String temp = String.valueOf(tempX[i]);
+			xArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempY[i]);
+			yArray[i] = Double.parseDouble(temp);
+			temp = String.valueOf(tempZ[i]);
+			zArray[i] = Double.parseDouble(temp);
+		}
+		double[][] coordinates = new double[3][arrayLength];
+		coordinates[0] = xArray;
+		coordinates[1] = yArray;
+		coordinates[2] = zArray;
+		return coordinates;
 	}
 }

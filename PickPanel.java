@@ -13,6 +13,7 @@
 *with this program; if not, write to the Free Software Foundation, Inc.,
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
+
 import java.awt.event.*;
 
 import javax.swing.JFrame;
@@ -21,6 +22,8 @@ import javax.swing.JPanel;
 @SuppressWarnings({ "serial" })
 
 public class PickPanel extends JFrame {
+	// This class is the superclass of the subpanels
+	
 	static JPanel panel2 = new JPanel();
 	
 	public void actionPerformed(ActionEvent e) {}

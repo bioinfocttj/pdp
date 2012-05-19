@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 
 @SuppressWarnings({ "serial" })
 public class About extends PickPanel {
+	// This class displays informations about the authors
 	
 	private static String description="ABOUT THE AUTORS of \"Pick EM plugin\"\n"+
 		"This plugin was implemented by : \n"+
