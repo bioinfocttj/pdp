@@ -42,12 +42,16 @@
 
 \begin{abstract}
 \paragraph*{}
-Dans le cadre des recherches de l'équipe ACMPC (Architecture des Complexes Membranaires et Processus Cellulaires) de l'unité mixte de recherche CNRS CBMN (Chimie et Biologie des Membranes et Nanoobjets), il est fréquent d'avoir à piquer manuellement un grand nombre de particules (complexes protéiques ou chimiques) sur des micrographies de microscopie électronique. Celles-ci sont ensuite traitées avec des outils statistiques en vue de calculer des images moyennes ou des reconstructions 3D (3 Dimensions). Le logiciel \imj ~est couramment utilisé pour cette étape préliminaire, mais il ne dispose d'aucun outil automatique adapté pour traiter une grande quantité de données.
+Dans le cadre des recherches de l'équipe ACMPC (Architecture des Complexes Membranaires et Processus Cellulaires) de l'unité mixte de recherche CNRS CBMN (Chimie et Biologie des Membranes et Nanoobjets), il est fréquent d'avoir à piquer manuellement un grand nombre de particules (complexes protéiques ou chimiques) sur des micrographies de microscopie électronique. Celles-ci sont ensuite traitées avec des outils statistiques en vue de calculer des images moyennes ou des reconstructions 3D (3 Dimensions). Pour cela, le logiciel \imj ~est couramment utilisé pour cette étape préliminaire, mais il ne dispose d'aucun outil automatique adapté pour traiter une grande quantité de données.
 \paragraph*{}
-L'objectif de notre projet a donc été de pallier à ce manque en créant un plugin pour ce logiciel. \imj ~étant implémenté en \java , nous avons créé une interface facile à utiliser en suivant ce langage. A l'heure actuelle, trois méthodes de sélection de particules (piquage) ainsi qu'un outil de découpage (\textit{crop} en anglais) de ces objets ont été implémentées.
+L'objectif de notre projet a donc été de pallier à ce manque en créant un plugin pour ce logiciel. \imj ~étant implémenté en \java , nous avons créé une interface facile à utiliser en suivant ce langage. A l'heure actuelle, trois méthodes de sélection de particules (piquage) ainsi qu'un outil de découpage (\textit{crop} en anglais) de ces objets ont été implémenté.
 \paragraph*{}
-Ce plugin, nommé \emph{Pick\_EM} a également été créé dans le but de réunir dans un même outil plusieurs algorithmes, chacun ayant une sensibilité différente en fonction des cibles et de la qualité des images. Le code suit donc les règles de la programmation orientée objet afin de faciliter l'insertion d'une nouvelle méthode de piquage.
+Ce plugin, nommé \emph{Pick\_EM} a également été créé dans le but de réunir dans un même outils plusieurs algorithmes, chacun ayant une sensibilité différente en fonction des cibles et de la qualité des images. Le code suit donc les règles de la programmation orientée objet afin de faciliter l'insertion d'une nouvelle méthode de piquage.
 
+%\paragraph*{} Ce rapport traite de l'organisation globale du programme, de sa conception et de sa réalisation, expliquant les choix d'implémentation, 
+
+%Le contexte de ce projet est l'étude de morphologies de virus ou de patchs de virus observés au microscope électronique (ME) dans le cadre d'une prestation de services avec une société pharmaceutique. Le projet consiste en le développement d'un utilitaire qui sélectionne automatiquement les particules virales et les protéines membranaires dans les images issues de \cme. Cet utilitaire se présente sous la forme d'un plugin ImageJ, écrit en  langage \java.
+%Il aborde notamment la création de l'interface utilisateur, les méthodes de piquages choisies et implémentées, ainsi que l'organisation générale du programme. 
 \end{abstract}
 
 \thispagestyle{empty}
@@ -81,9 +85,9 @@ Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture d
 Bien que les principaux projets de recherche de cette équipe portent essentiellement sur l'étude des protéines membranaires et des complexes chimiques nanométriques, l'équipe a aussi une activité de services avec par exemple, des projets d'imagerie sur des virus fournis par une entreprise pharmaceutique. Il est donc nécessaire d'automatiser au maximum les différentes étapes de traitement et d'analyse d'images pour avoir un résultat rapide en réduisant les interventions manuelles d'un opérateur (microscopiste, biologiste, etc.). Ceci est d'autant plus vrai que la nouvelle génération de MET permet une collecte de données à haut débit, avantage non négligeable mais qui pose le problème du temps de traitement des données collectées. 
 
 \paragraph*{}
-Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images collectées au \me ~et dont la première étape $-$ nommée \textit{picking}, en anglais ; dans ce texte, nous utiliserons le terme "piquage" $-$ consiste à isoler chacune des particules dans des petites images.  %
+Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images collectées au \me ~et dont la première étape \- nommée \textit{picking}, en anglais ; dans ce texte, nous utiliserons le terme "piquage" \- consiste à isoler chacune des particules dans des petites images.  %
 Notre objectif était l'implémentation d'une interface contenant plusieurs méthodes de piquage automatisées.
-Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url} proposant à l'utilisateur le choix entre différents algorithmes de piquage pré-installés. Il pourra en \^etre ajouté de nouveaux si on le souhaite, tout en minimisant le code source du plugin à modifier.  
+Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url} proposant à l'utilisateur le choix entre différents algorithmes de picking pré-installés. Il pourra en \^etre ajouté de nouveaux si on le souhaite, tout en minimisant le code source du plugin à modifier.  
 
 \paragraph*{}
 Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord une partie Analyse dans laquelle nous remettrons notre projet dans son contexte et ferons un état des lieux des besoins associés. Ensuite, une partie Conception dans laquelle nous expliquerons l'organisation de notre code et enfin, la partie Réalisation contiendra les solutions apportées au sujet.
@@ -100,13 +104,13 @@ Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord 
 
 Le but de notre projet était l'implémentation en \java ~d'un outil pour le logiciel \imj ~permettant un piquage automatique de particules sur des images issues de cryo-microscopie. \\
 Notre plugin se présente sous la forme d'une interface et donne à l'utilisateur le choix entre plusieurs algorithmes de piquage. \\
-Nous avons implémenté trois algorithmes dans notre plugin : Extraction de contours, Différence de Gaussiennes et Corrélation d'images. Leur efficacité varie en fonction du type de particule à sélectionner et de la qualité de l'image à traiter. \\
+Nous avons implémenté trois algorithmes dans notre plugin : Différence de dilatation, Différence gaussienne et Corrélation d'images. Leur efficacité varie en fonction du type de particule à sélectionner et de la qualité de l'image à traiter. \\
 
-Cette expérience nous a permis de mieux ma\^itriser la programmation en langage \java ~ainsi que de mieux connaitre le fonctionnement du logiciel \imj. De plus, ce premier projet en équipe nous a donné un aperçu plus précis de ce que sera notre futur métier. 
+Cette expérience nous a permis de mieux maitriser la programmation en langage \java ~ainsi que de mieux connaitre le fonctionnement du logiciel \imj. De plus, ce premier projet en équipe nous a donné un aperçu plus précis de ce que sera notre futur métier. 
 
 
 \addcontentsline{toc}{chapter}{Bibliographie}
-\bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{rapport}
 
 \appendix
@@ -123,7 +127,5 @@ Cette expérience nous a permis de mieux ma\^itriser la programmation en langage
 \includegraphics[width=1.4\textwidth, angle=90]{diagComplet.png}
 \end{center}
 \end{figure}
-
 \section{Code source du plugin ImageJ Pick\_EM}
-
 \end{document}
