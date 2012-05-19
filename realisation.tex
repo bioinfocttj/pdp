@@ -99,9 +99,9 @@ Grâce à cette série structures conditionnelles, il est possible d'appliquer l
 \pagebreak
 \subsection{Affichage des résultats}
 
-Lorsque l'utilisateur a coché la case "crop" avant de lancer la procédure de piquage, la classe \texttt{PickFrame} fait appel à la classe \texttt{Cropper} permettant de créer un stack. Les paramètres d'entrée de \texttt{Cropper()} sont une \emph{ImagePlus} (image courante du stack) et un tableau de doubles contenant les coordonnées des particules sélectionnées. \\
+Lorsque l'utilisateur a coché la case "crop" avant de lancer la procédure de piquage, la classe \texttt{PickFrame} fait appel à la classe \texttt{Cropper} permettant de créer un \textit{stack}. Les paramètres d'entrée de \texttt{Cropper()} sont une \emph{ImagePlus} (image courante du \textit{stack}) et un tableau de doubles contenant les coordonnées des particules sélectionnées. \\
 Lors de nos phases de tests, nous avons ajouté une autre fonction Cropper(), sans paramètres d'entrée. Nous y avons créé un tableau de coordonnées manuellement pour faciliter les essais. \\
-A partir du tableau de doubles cité, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au stack sous la forme d'un \emph{ImageProcessor}. Ci-dessous un extrait de la méthode \texttt{crop()} : 
+A partir du tableau de doubles cité, la méthode \texttt{crop()} de \texttt{Cropper} fait appel à la méthode \texttt{setRoi()} d'\imj ~afin de retenir une zone carrée autour de la sélection. Cette zone va ensuite être dupliquée et ajoutée au \textit{stack} sous la forme d'un \emph{ImageProcessor}. Ci-dessous un extrait de la méthode \texttt{crop()} : 
 
 \begin{center}
 \begin{fmpage}{16cm}
@@ -121,7 +121,7 @@ if (z == currentSlice) {
 \end{center}
 
 \paragraph*{}
-Cette partie du code ne va s'exécuter que si le cadre de sélection de la particule ne dépasse pas le cadre de l'image de base. Les particules dépassant n'apparaitront pas dans le stack d'imagettes, mais on pourra retrouver leurs coordonnées dans le tableau de résultats final. \\
+Cette partie du code ne va s'exécuter que si le cadre de sélection de la particule ne dépasse pas le cadre de l'image de base. Les particules dépassant n'apparaitront pas dans le \textit{stack} d'images individuelles, mais on pourra retrouver leurs coordonnées dans le tableau de résultats final. \\
 
 Par ailleurs, les résultats de la sélection peuvent être affichés sous la forme d'une \texttt{ResultsTable} si on clique sur le bouton "Show Results". Elle est construite grâce au tableau de doubles cité précédemment, qui est le paramètre d'entrée de la fonction \texttt{generate-} \texttt{CsvFile()}. 
 \pagebreak
@@ -156,7 +156,7 @@ public final static Attributes getInstance() {
 
 Nous avons commencé par implémenter les algorithmes grâce à l'outil Macro d'\imj lors de nos  phases de test. Nous les avons ensuite traduits en \java et liés à la partie interface graphique du code. Vous trouverez ci-après un exemple de cette transformation. \\
 
-Extrait de la Macro de la Différence de dilatation :
+Extrait de la Macro de l'Extraction de contours :
 \begin{center}
 \begin{fmpage}{16cm}
 \begin{small}
@@ -219,14 +219,14 @@ Lorsque l'utilisateur fait le choix d'un algorithme de piquage parmi ceux qui lu
 
 La présence d'un constructeur privé dans cette classe supprime le constructeur public par défaut. De plus, seul le singleton peut s'instancier lui même. \\
 
-Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du stack (Apply). \\
+Une fois le panel2 chargé, l'appel aux procédures de piquage ne peut se faire que si l'on clique sur les boutons de prévisualisation (Preview) ou d'application à l'ensemble du \textit{stack} (Apply). \\
 Les paramètres entrés par l'utilisateur sont sauvegardés dans la table de hashage grâce à la fonction \texttt{getInstance()} de la classe \texttt{Attributes}. Dans le cas où l'utilisateur entrerait des valeurs non numériques, c'est \imj ~qui se chargerait de gérer les erreurs. \\
 Les paramètres sont ensuite récupérés, pour l'algorithme, par la fonction \texttt{setAttributes()} de la classe \texttt{PanelDoG} (pour suivre notre scénario). \\
  L'algorithme est par la suite appelé par la méthode \texttt{sliceSelection()} (Apply) ou par \texttt{picking()} (Preview). \\
 
-La méthode \texttt{picking()} donne l'image courante du stack en paramètre de la méthode \texttt{pick()} alors que \texttt{sliceSelection()} parcourt le stack et appelle \texttt{pick()} autant de fois qu'il y a d'images dans le stack. \\
+La méthode \texttt{picking()} donne l'image courante du \textit{stack} en paramètre de la méthode \texttt{pick()} alors que \texttt{sliceSelection()} parcourt le \textit{stack} et appelle \texttt{pick()} autant de fois qu'il y a d'images dans le \textit{stack}. \\
 
-La méthode \texttt{pick()} quand à elle permet de lancer l'algorithme sur la sélection. Elle prend une ImagePlus et le numéro de l'image dans le stack en paramètres. Cette fonction récupère les paramètres entrés par l'utilisateur (grâce à \texttt{hashAttributes.get()}) et renvoie un tableau de résultats (X, Y, Slice). Voici un extrait du code de l'algorithme Difference of Gaussian :
+La méthode \texttt{pick()} quand à elle permet de lancer l'algorithme sur la sélection. Elle prend une ImagePlus et le numéro de l'image dans le \textit{stack} en paramètres. Cette fonction récupère les paramètres entrés par l'utilisateur (grâce à \texttt{hashAttributes.get()}) et renvoie un tableau de résultats (X, Y, Slice). Voici un extrait du code de l'algorithme Difference of Gaussian :
 
 \begin{center}
 \begin{fmpage}{16cm}
@@ -264,10 +264,10 @@ La classe \texttt{InfoHelp} affiche une aide sur le fonctionnement du plugin si 
 
 \section{Applications}
 
-Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante, ou la dernière image dans le cas d'un stack.
-L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le stack) des particules sélectionnées et pourra le sauvegarder. \\
+Le résultat affiché sur l'image correspond aux positions des particules sur l'image courante, ou la dernière image dans le cas d'un \textit{stack}.
+L'utilisateur peut choisir d'afficher un tableau contenant les coordonnées (abscisses, ordonnées et positions dans le \textit{stack}) des particules sélectionnées et pourra le sauvegarder. \\
 
-De plus, s'il le désire, un stack contenant les particules sélectionnées aux positions obtenues est créé (éliminant les particules trop près du bord de l'image) et affiché.
+De plus, s'il le désire, un \textit{stack} contenant les particules sélectionnées aux positions obtenues est créé (éliminant les particules trop près du bord de l'image) et affiché.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -279,14 +279,14 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
   \includegraphics[width=0.5\textwidth]{cropprotDog.png}   
   %\caption{Difference de Gaussienne (protéines)}
  \end{minipage} \hfill
-\caption{Exemple d'images formant le stack de particules (blobs et protéines)}
+\caption{Exemple d'images formant le \textit{stack} de particules (blobs et protéines)}
 \end{center}
 \end{figure}
 %\pagebreak
 \subsubsection*{Statistiques}
 
 \begin{itemize}
-\item[•] La Différence gaussienne permet d'obtenir les résultats suivants :
+\item[•] La Différence de Gaussiennes permet d'obtenir les résultats suivants :
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -299,14 +299,14 @@ De plus, s'il le désire, un stack contenant les particules sélectionnées aux 
   \includegraphics[width=1\textwidth]{protDog.png}   
   %\caption{Difference de Gaussienne (protéines)}
  \end{minipage} \hfill
-\caption{Différence Gaussienne (blobs et protéines)}
+\caption{Différence de Gaussiennes (blobs et protéines)}
 \end{center}
 \end{figure}
 
 Nous constatons que ce piquage est efficace sur notre image de protéines membranaires. Nous l'avons également testé sur une image de blobs, qui est une image de référence pour les essais sur \imj. Cette technique semble tout aussi bien marcher sur les blobs. \\
 \pagebreak
 \begin{itemize}
-\item[•] La Différence de dilatation permet d'obtenir les résultats suivants :
+\item[•] La l'Extraction de contours permet d'obtenir les résultats suivants :
 \end{itemize}
 
 \begin{figure}[!ht]
@@ -319,7 +319,7 @@ Nous constatons que ce piquage est efficace sur notre image de protéines membra
   \includegraphics[width=1\textwidth]{protDilate.png}   
   %\caption{Difference de Gaussienne (protéines)}
  \end{minipage} \hfill
-\caption{Différence de dilatation (blobs et protéines)}
+\caption{Extraction de contours (blobs et protéines)}
 \end{center}
 \end{figure}
 
@@ -368,8 +368,8 @@ Le \textbf{Sensibilité}~\cite{stats:url} est la probabilité qu'une particule d
 SE = $\frac{\text{VP}}{\text{VP+FN}}$ et SP = $\frac{\text{VN}}{\text{VN+FP}}$ \\
 \end{center}
 
-D'après la Table \ref{tableau}, nous remarquons que c'est l'algorithme de Différence gaussienne qui a la meilleure spécificité et sensibilité pour les blobs. En effet, il y a plus de particules sélectionnées avec ce dernier qu'avec la Différence de dilatation, alors que cet algorithme a été créé pour les blobs au départ. Cependant, nous constatons qu'il y a plus de faux positifs avec la Différence gaussienne. \\
-En ce qui concerne les protéines, la Différence de dilatation est inefficace car elle ne fait pas de distinction entre le bruit et les particules. La Différence gaussienne, quant à elle, est assez efficace en ce qui concerne la sélection de ces dernières. 
+D'après la Table \ref{tableau}, nous remarquons que c'est l'algorithme de Différence de Gaussiennes qui a la meilleure spécificité et sensibilité pour les blobs. En effet, il y a plus de particules sélectionnées avec ce dernier qu'avec l'Extraction de contours, alors que cet algorithme a été créé pour les blobs au départ. Cependant, nous constatons qu'il y a plus de faux positifs avec la Différence de Gaussiennes. \\
+En ce qui concerne les protéines, l'Extraction de contours est inefficace car elle ne fait pas de distinction entre le bruit et les particules. La Différence de Gaussiennes, quant à elle, est assez efficace en ce qui concerne la sélection de ces dernières. 
 
 \section{Ajout d'un nouvel algorithme au plugin}
 
@@ -393,16 +393,16 @@ Nous avons fait en sorte que notre plugin corresponde le plus possible aux atten
 
 Une fonction pour ajouter automatiquement un nouvel algorithme de piquage avec ses paramètres d'entrée via l'interface, sans que l'utilisateur n'ai à toucher au code source, serait pratique. Dans ce cas, il n'y aurait plus qu'à ajouter une classe implémentant cette nouvelle méthode de piquage dans le code. \\
 
-Le mode de création du stack d'imagettes pourrait éviter d'afficher les images dupliquées au cours de la création du stack. Cela permettrait d'alléger la mémoire vive de l'ordinateur, ainsi que de diminuer le temps de traitement. \\
-De plus, il n'est actuellement pas possible de visualiser les sélections sur toutes les images du stack de base en même temps. Il serait donc intéressant de pouvoir le faire. \\
+Le mode de création du \textit{stack} d'imagettes pourrait éviter d'afficher les images dupliquées au cours de la création du \textit{stack}. Cela permettrait d'alléger la mémoire vive de l'ordinateur, ainsi que de diminuer le temps de traitement. \\
+De plus, il n'est actuellement pas possible de visualiser les sélections sur toutes les images du \textit{stack} de base en même temps. Il serait donc intéressant de pouvoir le faire. \\
 
-Par ailleurs, le stack d'imagettes peut contenir des éléments qui n'auraient pas dus être sélectionnés ("paquets", bruit de fond). Il serait utile de pouvoir les supprimer du stack ou d'ajouter l'image d'une particule n'ayant pas été sélectionnée automatiquement. \\
+Par ailleurs, le \textit{stack} d'imagettes peut contenir des éléments qui n'auraient pas dus être sélectionnés ("paquets", bruit de fond). Il serait utile de pouvoir les supprimer du \textit{stack} ou d'ajouter l'image d'une particule n'ayant pas été sélectionnée automatiquement. \\
 
 La gestion de la mémoire pourrait être améliorée en optimisant nos algorithmes (par exemple, en diminuant le nombre d'objets créés lors de l'exécution). \\
 
 Nous avons créé un mode de débogage dans notre interface afin d'aider l'utilisateur si un processus ne se déroule pas correctement. Cependant, ce mode n'est pas encore optimal et pourrait être complété. De plus, nous n'avons pas eu le temps de l'implémenter dans chacun de nos algorithmes. \\
 
-Enfin, il est possible de lancer notre plugin par l'outil Macro d'\imj. Cependant, il subsiste une erreur : la procédure de création du stack d'imagettes se déroule deux fois (une fois sur le stack de base et une autre sur le stack de particules sélectionnées). Ceci a pour effet d'afficher deux stacks finaux au lieu d'un seul. Résoudre ce problème permettrait d'avoir un déroulement optimal de notre programme depuis l'outil Macro. 
+Enfin, il est possible de lancer notre plugin par l'outil Macro d'\imj. Cependant, il subsiste une erreur : la procédure de création du \textit{stack} d'imagettes se déroule deux fois (une fois sur le \textit{stack} de base et une autre sur le \textit{stack} de particules sélectionnées). Ceci a pour effet d'afficher deux \textit{stacks} finaux au lieu d'un seul. Résoudre ce problème permettrait d'avoir un déroulement optimal de notre programme depuis l'outil Macro. 
 
 
 

@@ -38,13 +38,13 @@
 \newcommand{\java}{Java~{\tiny \texttrademark}}
 \newcommand{\js}{JavaScript}
 \newcommand{\imj}{ImageJ}
-\renewcommand{\thefigure}{\arabic{figure}}
+%\renewcommand{\thefigure}{\arabic{figure}}
 
 \begin{abstract}
 \paragraph*{}
-Dans le cadre des recherches du laboratoire de Chimie et Biologie des Membranes et Nanoobjets, il est fréquent d'avoir à déterminer le nombre et les positions de particules sur des photographies de microscopie électronique. Pour cela, le logiciel \imj ~est courament utilisé mais il ne dispose d'aucun outils automatique adapté pour traiter une grande quantité de données.
+Dans le cadre des recherches de l'équipe ACMPC (Architecture des Complexes Membranaires et Processus Cellulaires) de l'unité mixte de recherche CNRS CBMN (Chimie et Biologie des Membranes et Nanoobjets), il est fréquent d'avoir à piquer manuellement un grand nombre de particules (complexes protéiques ou chimiques) sur des micrographies de microscopie électronique. Celles-ci sont ensuite traitées avec des outils statistiques en vue de calculer des images moyennes ou des reconstructions 3D (3 Dimensions). Pour cela, le logiciel \imj ~est couramment utilisé pour cette étape préliminaire, mais il ne dispose d'aucun outil automatique adapté pour traiter une grande quantité de données.
 \paragraph*{}
-L'objectif de notre projet a donc été de pallier à ce problème en créant un plugin pour ce logiciel. \imj ~étant implémenté en \java , nous avons créé une interface facile à utiliser en suivant ce langage. A l'heure actuelle trois méthodes de sélection de particules (piquage) ainsi qu'un outil de récupération de ces objets ont été implémenté.
+L'objectif de notre projet a donc été de pallier à ce manque en créant un plugin pour ce logiciel. \imj ~étant implémenté en \java , nous avons créé une interface facile à utiliser en suivant ce langage. A l'heure actuelle, trois méthodes de sélection de particules (piquage) ainsi qu'un outil de découpage (\textit{crop} en anglais) de ces objets ont été implémenté.
 \paragraph*{}
 Ce plugin, nommé \emph{Pick\_EM} a également été créé dans le but de réunir dans un même outils plusieurs algorithmes, chacun ayant une sensibilité différente en fonction des cibles et de la qualité des images. Le code suit donc les règles de la programmation orientée objet afin de faciliter l'insertion d'une nouvelle méthode de piquage.
 
@@ -80,15 +80,14 @@ Nous tenons aussi à remercier Grégoire \textsc{Naudin} pour ses conseils, son 
 \addcontentsline{toc}{chapter}{Introduction}
 Notre projet s'est déroulé au sein du laboratoire de Chimie et Biologie des Membranes et Nanoobjets de Bordeaux (CBMN~\cite{cbmn:url}).
 Il s'agit d'un laboratoire de recherche public composé de douze équipes de recherche dont l'équipe \emph{Architecture des Complexes Membranaires et processus cellulaires} (ACMPC). %
-Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture de complexes membranaires sur des structures de type protéine-liposome. C'est dans ce cadre d'étude que les chercheurs travaillent avec un \emph{microscope électronique à transmission} (\me) afin d'obtenir des micrographes des structures protéiques puis de les analyser. Par ailleurs, cette équipe diversifie ses activités en faisant de l'imagerie avec des virus fournis par une entreprise pharmaceutique.
+Cette équipe, dirigée par O.\textsc{Lambert}, s'intéresse à l'architecture de complexes membranaires sur des structures de type protéine-liposome. C'est dans ce cadre d'étude que les chercheurs travaillent avec un \emph{microscope électronique à transmission} (\me) afin d'obtenir des micrographies des structures protéiques puis de les analyser. \\
 
-\noindent
-Cependant la nouvelle génération de \me ~permet une collecte de données à haut débit, avantage non négligeable mais qui pose le problème du temps de traitement des données collectées. %
+Bien que les principaux projets de recherche de cette équipe portent essentiellement sur l'étude des protéines membranaires et des complexes chimiques nanométriques, l'équipe a aussi une activité de services avec par exemple, des projets d'imagerie sur des virus fournis par une entreprise pharmaceutique. Il est donc nécessaire d'automatiser au maximum les différentes étapes de traitement et d'analyse d'images pour avoir un résultat rapide en réduisant les interventions manuelles d'un opérateur (microscopiste, biologiste, etc.). Ceci est d'autant plus vrai que la nouvelle génération de MET permet une collecte de données à haut débit, avantage non négligeable mais qui pose le problème du temps de traitement des données collectées. 
 
 \paragraph*{}
-Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images récupérées de \cme\ et plus particulièrement le \emph{picking}, c'est-à-dire au piquage des particules présentes sur les micrographes obtenus. %
+Dans le cadre de leurs recherches et pour la partie qui nous intéresse, l'analyse concerne le traitement des images collectées au \me ~et dont la première étape \- nommée \textit{picking}, en anglais ; dans ce texte, nous utiliserons le terme "piquage" \- consiste à isoler chacune des particules dans des petites images.  %
 Notre objectif était l'implémentation d'une interface contenant plusieurs méthodes de piquage automatisées.
-Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url} proposant à l'utilisateur le choix entre différents algorithmes de picking pré-installés. Il pourra en ajouter de nouveaux s'il le souhaite, mais il devra modifier le code source du plugin. 
+Celle-ci est implémentée en \java ~\footnote{\java\ est un langage orienté-objet développé par Oracle~\cite{java:url}} sous la forme d'un plugin \imj ~\cite{imagej:url} proposant à l'utilisateur le choix entre différents algorithmes de picking pré-installés. Il pourra en \^etre ajouté de nouveaux si on le souhaite, tout en minimisant le code source du plugin à modifier.  
 
 \paragraph*{}
 Dans la suite de ce rapport, nous développerons plusieurs points. Tout d'abord une partie Analyse dans laquelle nous remettrons notre projet dans son contexte et ferons un état des lieux des besoins associés. Ensuite, une partie Conception dans laquelle nous expliquerons l'organisation de notre code et enfin, la partie Réalisation contiendra les solutions apportées au sujet.

@@ -2,11 +2,11 @@
 %%Title: About.java, AlgoFactory.java, Attributes.java, Cropper.java, Crop_Test.java, DilateDiff.java, DoG.java, FFTMath.java, ImCorr.java, InfoHelp.java
 %%For: tomo
 %%Creator: a2ps version 4.14
-%%CreationDate: Fri May 18 18:20:13 2012
+%%CreationDate: Sat May 19 14:22:51 2012
 %%BoundingBox: 24 24 571 818
 %%DocumentData: Clean7Bit
 %%Orientation: Landscape
-%%Pages: 18
+%%Pages: 17
 %%PageOrder: Ascend
 %%DocumentMedia: A4 595 842 0 () ()
 %%DocumentNeededResources: font Courier
@@ -803,75 +803,78 @@ x0 y0 moveto
 ( ) p
 (extends) K
 ( PickPanel {) p n
-(22) # () S 4 T () N
-(23) # () S 4 T () S
+(22) # () S 4 T () S
+(// This class displays informations about the authors) c n
+(23) # () S
+() p 4 T () N
+(24) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String description=") p
 (ABOUT THE AUTORS of \\"Pick EM plugin\\"\\n) str
 ("+) p n
-(24) # () S 4 T () S 8 T (") S
+(25) # () S 4 T () S 8 T (") S
 (This plugin was implemented by : \\n) str
 ("+) p n
-(25) # () S 4 T () S 8 T (") S
+(26) # () S 4 T () S 8 T (") S
 (  T. Faux, C. H\303\251ric\303\251, T. Paysan-Lafosse and J. Sansen \\n) str
 ("+) p n
-(26) # () S 4 T () S 8 T (") S
+(27) # () S 4 T () S 8 T (") S
 (  with Pr. Jean-Christophe Taveau \\n) str
 (" +) p n
-(27) # () S 4 T () S 8 T (") S
+(28) # () S 4 T () S 8 T (") S
 (  at CBMN \(Chimie & Biologie des Membranes et des Nanoobjets\) \\n) str
 (" +) p n
-(28) # () S 4 T () S 8 T (") S
+(29) # () S 4 T () S 8 T (") S
 (  at University Bordeaux 1 \(France\).\\n) str
 ("+) p n
-(29) # () N
-(30) # () S 4 T () S 8 T (") S
+(30) # () N
+(31) # () S 4 T () S 8 T (") S
 (  For further information contact us:\\n) str
 ("+) p n
-(31) # () S 4 T () S 8 T (") S
+(32) # () S 4 T () S 8 T (") S
 (  Master BioInoformatique, Universit\303\251 Bordeaux 1, \\n) str
 (" +) p n
-(32) # () S 4 T () S 8 T (") S
+(33) # () S 4 T () S 8 T (") S
 (  mails : thomas.faux@etu.u-bordeaux1.fr, \\n) str
 (" + ") p
 (             charlotte.herice@etu.u-bordeaux1.fr, \\n) str
 (" +) p n
 0 T ( ) N
-(33) # () S 4 T () S 8 T (") S
+(34) # () S 4 T () S 8 T (") S
 (             typhaine.paysan-lafosse@etu.u-bordeaux1.fr, \\n) str
 ("+") p
 (             joris.sansen@etu.u-bordeaux1.fr) str
 (";) p n
-(34) # () N
-(35) # () S 4 T () S
+(35) # () N
+(36) # () S 4 T () S
 (static) K
 ( JTextArea info = ) p
 (new) K
 ( JTextArea\(description\);) p n
-(36) # () S 4 T () N
-(37) # () S 4 T (About\(\) {) N
-(38) # () S 4 T () S 8 T () S
+(37) # () S 4 T () N
+(38) # () S 4 T (About\(\) {) N
+(39) # () S 4 T () S 8 T () S
 (super) K
 (\(\);) p n
-(39) # () S 4 T (}) N
-(40) # () S 4 T () N
-(41) # () S 4 T () S
+(40) # () S 4 T (}) N
+(41) # () S 4 T () N
+(42) # () S 4 T () S
 (static) K
 ( JPanel create\(\){) p n
-(42) # () S 4 T () S 8 T (JScrollPane scrollPane = ) S
+(43) # () S 4 T () S 8 T (JScrollPane scrollPane = ) S
 (new) K
 ( JScrollPane\(info\);) p n
-(43) # () S 4 T () S 8 T (panel2.add\(scrollPane\);) N
-(44) # () S 4 T () S 8 T () S
+(44) # () S 4 T () S 8 T (panel2.add\(scrollPane\);) N
+(45) # () S 4 T () S 8 T () S
 (return) K
 ( panel2;) p n
-(45) # () S 4 T (}) N
-(46) # () N
-(47) # (}) N
-(48) # () N
-(Pick_EM-graphique) (Page 1/1) (mai 18, 12 15:47) title
+(46) # () S 4 T (}) N
+(47) # () N
+(48) # (}) N
+(49) # () N
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 13:56) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
@@ -912,120 +915,120 @@ x0 y0 moveto
 ( ) p
 (AlgoFactory) L
 ( {) p n
-(23) # () S 4 T () N
-(24) # () S 4 T () S
+(23) # () S 4 T () S
+(// This class is used to select the good algorithm) c n
+(24) # () S
+() p 4 T () N
+(25) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( AlgoFactory instance = ) p
 (null) k
 (;) p n
-(25) # () S 4 T () N
-(26) # () S 4 T () S
+(26) # () S 4 T () N
+(27) # () S 4 T () S
 (private) K
 ( AlgoFactory\(\) {) p n
-(27) # () S 4 T () S 8 T () S
+(28) # () S 4 T () S 8 T () S
 (super) K
 (\(\);) p n
-(28) # () S 4 T (}) N
-(29) # () N
-(30) # () S 4 T () S
+(29) # () S 4 T (}) N
+(30) # () N
+(31) # () S 4 T () S
 (public) K
 ( ) p
 (final) K
 ( ) p
 (static) K
 ( AlgoFactory getInstance\(\) {) p n
-(31) # () S 4 T () S 8 T () S
+(32) # () S 4 T () S 8 T () S
 (if) K
 ( \(AlgoFactory.instance == ) p
 (null) k
 (\) {) p n
-(32) # () S 4 T () S 8 T () S 12 T () S
+(33) # () S 4 T () S 8 T () S 12 T () S
 (synchronized) K
 (\(AlgoFactory.class\) {) p n
-(33) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(34) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(AlgoFactory.instance == ) p
 (null) k
 (\) {) p n
-(34) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (AlgoFactory.instance = ) S
+(35) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (AlgoFactory.instance = ) S
 (new) K
 ( AlgoFactory\(\);) p n
-(35) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
-(36) # () S 4 T () S 8 T () S 12 T (}) N
-(37) # () S 4 T () S 8 T (}) N
-(38) # () S 4 T () S 8 T () S
+(36) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(37) # () S 4 T () S 8 T () S 12 T (}) N
+(38) # () S 4 T () S 8 T (}) N
+(39) # () S 4 T () S 8 T () S
 (return) K
 ( AlgoFactory.instance;) p n
-(39) # () S 4 T (}) N
-(40) # () N
-(41) # () S 4 T () S
+(40) # () S 4 T (}) N
+(41) # () N
+(42) # () S 4 T () S
 (public) K
 ( enum algorithm { ) p n
-(42) # () S 4 T () S 8 T (Difference_of_Gaussian, Dilate_Difference, Image_Correlation, About_Pick) N
+(43) # () S 4 T () S 8 T (Difference_of_Gaussian, Dilate_Difference, Image_Correlation, About_Pick) N
 0 T (_EM ;) N
-(43) # () S 4 T () S 8 T () N
-(44) # () S 4 T () S 8 T () S
+(44) # () S 4 T () S 8 T () N
+(45) # () S 4 T () S 8 T () S
 (static) K
 ( JPanel getPickPanel\(String panel\){) p n
-(45) # () S 4 T () S 8 T () S 12 T (algorithm panelValue = algorithm .valueOf\(panel\);) N
-(46) # () S 4 T () S 8 T () S 12 T () S
+(46) # () S 4 T () S 8 T () S 12 T (algorithm panelValue = algorithm .valueOf\(panel\);) N
+(47) # () S 4 T () S 8 T () S 12 T () S
 (switch) K
 ( \(panelValue\) {) p n
-(47) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(48) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Difference_of_Gaussian : ) p n
-(48) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(49) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( PanelDoG.create\(\); ) p n
-(49) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(50) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Dilate_Difference : ) p n
-(50) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(51) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( PanelDilateDiff.create\(\);) p n
-(51) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(52) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Image_Correlation : ) p n
-(52) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(53) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( PanelImCorr.create\(\);) p n
-(53) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(54) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( About_Pick_EM : ) p n
-(54) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(55) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( About.create\(\);) p n
-(55) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(56) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (default) K
 (: ) p n
-(56) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(57) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( About.create\(\);) p n
-(57) # () S 4 T () S 8 T () S 12 T (}) N
-(58) # () S 4 T () S 8 T (}) N
-(59) # () S 4 T () S 8 T () N
-(60) # () S 4 T () S 8 T () S
+(58) # () S 4 T () S 8 T () S 12 T (}) N
+(59) # () S 4 T () S 8 T (}) N
+(60) # () S 4 T () S 8 T () N
+(61) # () S 4 T () S 8 T () S
 (static) K
 ( ) p
 (double) k
 ([][] getPicker\(String picker\){) p n
-(61) # () S 4 T () S 8 T () S 12 T (algorithm pick = algorithm .valueOf\(picker\);) N
-(62) # () S 4 T () S 8 T () S 12 T () S
+(62) # () S 4 T () S 8 T () S 12 T (algorithm pick = algorithm .valueOf\(picker\);) N
+(63) # () S 4 T () S 8 T () S 12 T () S
 (switch) K
 ( \(pick\) {) p n
-(63) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(64) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Difference_of_Gaussian : ) p n
-(64) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
-(Start of DoG picking) str
-("\);) p n
-(Pick_EM-graphique) (Page 1/2) (mai 17, 12 13:40) title
+(Pick_EM-graphique) (Page 1/2) (mai 19, 12 13:58) title
 border
 grestore
 (Printed by tomo) rhead
-(About.java, AlgoFactory.java) (1/18) (vendredi mai 18, 2012) footer
+(About.java, AlgoFactory.java) (1/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -1041,115 +1044,118 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(65) # () p 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDoG.setAttributes\(\);) N
-(66) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(65) # () p 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(Start of DoG picking) str
+("\);) p n
+(66) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDoG.setAttributes\(\);) N
+(67) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( DoG.sliceSelection\(\);) p n
-(67) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(68) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Dilate_Difference :) p n
-(68) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(69) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
 (Start of Dilate Difference picking) str
 ("\);) p n
-(69) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDilateDiff.setAttributes\(\);) N
-(70) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(70) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDilateDiff.setAttributes\(\);) N
+(71) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( DilateDiff.sliceSelection\(\);) p n
-(71) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(72) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Image_Correlation : ) p n
-(72) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(73) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
 (Start of Image Correlation picking) str
 ("\);) p n
-(73) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelImCorr.setAttributes\(\);) N
-(74) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(74) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelImCorr.setAttributes\(\);) N
+(75) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (return) K
 ( ImCorr.sliceSelection\(\);) p n
-(75) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(76) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( About_Pick_EM : ) p
 (return) K
 ( ) p
 (null) k
 (;) p n
-(76) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(77) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (default) K
 (:IJ.showMessage\(") p
 (unknown picking method, Difference of Gaussian applied i) str n
 0 T (nstead) S
 ("\);) p n
-(77) # () S 4 T () S 8 T () S 12 T () S 16 T (PanelDoG.setAttributes\(\);) N
-(78) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(78) # () S 4 T () S 8 T () S 12 T () S 16 T (PanelDoG.setAttributes\(\);) N
+(79) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (return) K
 ( DoG.sliceSelection\(\);) p n
-(79) # () S 4 T () S 8 T () S 12 T (}) N
-(80) # () S 4 T () S 8 T (}) N
-(81) # () S 4 T () S 8 T () N
-(82) # () S 4 T () S 8 T () S
+(80) # () S 4 T () S 8 T () S 12 T (}) N
+(81) # () S 4 T () S 8 T (}) N
+(82) # () S 4 T () S 8 T () N
+(83) # () S 4 T () S 8 T () S
 (static) K
 ( ) p
 (void) k
 ( getPickerPreview\(String picker\){) p n
-(83) # () S 4 T () S 8 T () S 12 T (algorithm pick = algorithm .valueOf\(picker\);) N
-(84) # () S 4 T () S 8 T () S 12 T (IJ.showStatus\(") S
+(84) # () S 4 T () S 8 T () S 12 T (algorithm pick = algorithm .valueOf\(picker\);) N
+(85) # () S 4 T () S 8 T () S 12 T (IJ.showStatus\(") S
 (Start of Preview) str
 ("\);) p n
-(85) # () S 4 T () S 8 T () S 12 T () S
+(86) # () S 4 T () S 8 T () S 12 T () S
 (switch) K
 ( \(pick\) {) p n
-(86) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(87) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Difference_of_Gaussian : ) p n
-(87) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(88) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
 (Start of DoG picking) str
 ("\);) p n
-(88) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDoG.setAttributes\(\);) N
-(89) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DoG.picking\(\);) N
-(90) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(89) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDoG.setAttributes\(\);) N
+(90) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DoG.picking\(\);) N
+(91) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (break) K
 (;) p n
-(91) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(92) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Dilate_Difference :) p n
-(92) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(93) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
 (Start of Dilate Difference picking) str
 ("\);) p n
-(93) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDilateDiff.setAttributes\(\);) N
-(94) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DilateDiff.picking\(\);) N
-(95) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(94) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelDilateDiff.setAttributes\(\);) N
+(95) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DilateDiff.picking\(\);) N
+(96) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (break) K
 (;) p n
-(96) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(97) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( Image_Correlation : ) p n
-(97) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
+(98) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showStatus\(") S
 (Start of Image Correlation picking) str
 ("\);) p n
-(98) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelImCorr.setAttributes\(\);) N
-(99) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImCorr.picking\(\);) N
-(100) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(99) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (PanelImCorr.setAttributes\(\);) N
+(100) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImCorr.picking\(\);) N
+(101) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (break) K
 (;) p n
-(101) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(102) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (case) K
 ( About_Pick_EM : ) p n
-(102) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(103) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (break) K
 (;) p n
-(103) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(104) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (default) K
 (: ) p n
-(104) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showMessage\(") S
+(105) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (IJ.showMessage\(") S
 (error unknown picking method) str
 ("\);) p n
-(105) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(106) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (break) K
 (;) p n
-(106) # () S 4 T () S 8 T () S 12 T (}) N
-(107) # () S 4 T () S 8 T (}) N
-(108) # () S 4 T (}) N
-(109) # (}) S
-(Pick_EM-graphique) (Page 2/2) (mai 17, 12 13:40) title
+(107) # () S 4 T () S 8 T () S 12 T (}) N
+(108) # () S 4 T () S 8 T (}) N
+(109) # () S 4 T (}) N
+(110) # (}) S
+(Pick_EM-graphique) (Page 2/2) (mai 19, 12 13:58) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
@@ -1272,7 +1278,7 @@ x0 y0 moveto
 border
 grestore
 (Printed by tomo) rhead
-(AlgoFactory.java, Attributes.java) (2/18) (vendredi mai 18, 2012) footer
+(AlgoFactory.java, Attributes.java) (2/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -1304,317 +1310,318 @@ x0 y0 moveto
 (13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
-(16) # () S
+(16) # () N
+(17) # () S
 (import) K
 ( java.util.Hashtable;) p n
-(17) # () N
-(18) # () S
-(import) K
-( ij.IJ;) p n
+(18) # () N
 (19) # () S
 (import) K
-( ij.ImagePlus;) p n
+( ij.IJ;) p n
 (20) # () S
 (import) K
-( ij.ImageStack;) p n
+( ij.ImagePlus;) p n
 (21) # () S
 (import) K
-( ij.WindowManager;) p n
+( ij.ImageStack;) p n
 (22) # () S
 (import) K
-( ij.plugin.Duplicator;) p n
+( ij.WindowManager;) p n
 (23) # () S
 (import) K
+( ij.plugin.Duplicator;) p n
+(24) # () S
+(import) K
 ( ij.process.ImageProcessor;) p n
-(24) # () N
-(25) # () S
+(25) # () N
+(26) # () S
 (public) K
 ( ) p
 (class) K
 ( ) p
 (Cropper) L
 ( {) p n
-(26) # () S 4 T () S
+(27) # () S 4 T () S
 (// This class is used to make a stack with the selected particles ) c n
-(27) # () S
+(28) # () S
 () p 4 T () N
-(28) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( ImagePlus imp;) p n
 (29) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( ImagePlus img2;) p n
+( ImagePlus imp;) p n
 (30) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( ImageStack ims;) p n
+( ImagePlus img2;) p n
 (31) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( ImagePlus imp2;) p n
+( ImageStack ims;) p n
 (32) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( ImagePlus imp2;) p n
+(33) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( ) p
 (double) k
 ([][] coordinates;) p n
-(33) # () S 4 T () N
-(34) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( ) p
-(int) k
-( widthCrop;) p n
+(34) # () S 4 T () N
 (35) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( ) p
 (int) k
-( impWidth;) p n
+( widthCrop;) p n
 (36) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( ) p
 (int) k
+( impWidth;) p n
+(37) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( ) p
+(int) k
 ( impHeight;) p n
-(37) # () S 4 T () N
-(38) # () S 4 T () S
+(38) # () S 4 T () N
+(39) # () S 4 T () S
 (public) K
 ( Cropper\(ImagePlus im, ) p
 (double) k
 ([][] coords\){) p n
-(39) # () S 4 T () S 8 T (coordinates = coords;) N
-(40) # () S 4 T () S 8 T (impWidth = im.getWidth\(\);) N
-(41) # () S 4 T () S 8 T (impHeight = im.getHeight\(\);) N
-(42) # () S 4 T () S 8 T (Hashtable<String, String> hash = Attributes.getAttributes\(\);) N
-(43) # () S 4 T () S 8 T (widthCrop = Integer.parseInt\(hash.get\(") S
+(40) # () S 4 T () S 8 T (coordinates = coords;) N
+(41) # () S 4 T () S 8 T (impWidth = im.getWidth\(\);) N
+(42) # () S 4 T () S 8 T (impHeight = im.getHeight\(\);) N
+(43) # () S 4 T () S 8 T (Hashtable<String, String> hash = Attributes.getAttributes\(\);) N
+(44) # () S 4 T () S 8 T (widthCrop = Integer.parseInt\(hash.get\(") S
 (squareWidth) str
 ("\)\);) p n
-(44) # () S 4 T () S 8 T (ims = ) S
+(45) # () S 4 T () S 8 T (ims = ) S
 (new) K
 ( ImageStack\(widthCrop,widthCrop\);) p n
-(45) # () S 4 T () S 8 T (String stackName = im.getTitle\(\);) N
-(46) # () S 4 T () S 8 T () S
+(46) # () S 4 T () S 8 T (String stackName = im.getTitle\(\);) N
+(47) # () S 4 T () S 8 T () S
 (int) k
 ( nbslice = im.getStackSize\(\);) p n
-(47) # () S 4 T () S 8 T (ImagePlus dupli;) N
-(48) # () S 4 T () S 8 T () S
+(48) # () S 4 T () S 8 T (ImagePlus dupli;) N
+(49) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=1; i<=nbslice; i++\){) p n
-(49) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
-(50) # () S 4 T () S 8 T () S 12 T (IJ.run\(im, ") S
+(50) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
+(51) # () S 4 T () S 8 T () S 12 T (IJ.run\(im, ") S
 (Duplicate...) str
 (", stackName\);) p n
-(51) # () S 4 T () S 8 T () S 12 T (dupli = WindowManager.getCurrentImage\(\);) N
-(52) # () S 4 T () S 8 T () S 12 T (imp = dupli;) N
-(53) # () S 4 T () S 8 T () S 12 T (crop\(i\);) N
-(54) # () S 4 T () S 8 T () S 12 T (imp.close\(\);) N
-(55) # () S 4 T () S 8 T (}) N
-(56) # () S 4 T () S 8 T (showCrop\(\);) N
-(57) # () S 4 T (}) N
-(58) # () N
-(59) # () S 4 T () S
+(52) # () S 4 T () S 8 T () S 12 T (dupli = WindowManager.getCurrentImage\(\);) N
+(53) # () S 4 T () S 8 T () S 12 T (imp = dupli;) N
+(54) # () S 4 T () S 8 T () S 12 T (crop\(i\);) N
+(55) # () S 4 T () S 8 T () S 12 T (imp.close\(\);) N
+(56) # () S 4 T () S 8 T (}) N
+(57) # () S 4 T () S 8 T (showCrop\(\);) N
+(58) # () S 4 T (}) N
+(59) # () N
+(60) # () S 4 T () S
 (public) K
 ( Cropper\(\){) p n
-(60) # () S 4 T () S 8 T () S
+(61) # () S 4 T () S 8 T () S
 (// This is only for tests and debug) c n
-(61) # () S
+(62) # () S
 () p 4 T () S 8 T (ImagePlus blobs = ) S
 (new) K
 ( ImagePlus\(") p
 (/home/tomo/Bureau/M1_bioinfo/sanofi/blobs.gif) str
 ("\);) p n
-(62) # () S 4 T () S 8 T (imp=blobs;) N
-(63) # () S 4 T () S 8 T (imp.show\(\);) N
-(64) # () S 4 T () S 8 T (widthCrop=100;) N
-(65) # () S 4 T () S 8 T (impWidth = blobs.getWidth\(\);) N
-(Pick_EM-graphique) (Page 1/2) (mai 17, 12 9:48) title
+(63) # () S 4 T () S 8 T (imp=blobs;) N
+(64) # () S 4 T () S 8 T (imp.show\(\);) N
+(65) # () S 4 T () S 8 T (widthCrop=100;) N
+(Pick_EM-graphique) (Page 1/2) (mai 19, 12 13:59) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(66) # () p 4 T () S 8 T (impHeight = blobs.getHeight\(\);) N
-(67) # () S 4 T () S 8 T () S
+(66) # () p 4 T () S 8 T (impWidth = blobs.getWidth\(\);) N
+(67) # () S 4 T () S 8 T (impHeight = blobs.getHeight\(\);) N
+(68) # () S 4 T () S 8 T () S
 (double) k
 ( coord[][] = ) p
 (new) K
 ( ) p
 (double) k
 ([2][2];) p n
-(68) # () S 4 T () S 8 T (coord[0][0] = 136.4;) N
-(69) # () S 4 T () S 8 T (coord[0][1] = 162.4;) N
-(70) # () S 4 T () S 8 T (coord[1][0] = 99.4;) N
-(71) # () S 4 T () S 8 T (coord[1][1] = 73.4;) N
-(72) # () S 4 T () S 8 T (coordinates = coord;) N
-(73) # () S 4 T () S 8 T (crop\(1\);) N
-(74) # () S 4 T () S 8 T (showCrop\(\);) N
-(75) # () S 4 T (}) N
-(76) # () N
-(77) # () S 4 T () S
+(69) # () S 4 T () S 8 T (coord[0][0] = 136.4;) N
+(70) # () S 4 T () S 8 T (coord[0][1] = 162.4;) N
+(71) # () S 4 T () S 8 T (coord[1][0] = 99.4;) N
+(72) # () S 4 T () S 8 T (coord[1][1] = 73.4;) N
+(73) # () S 4 T () S 8 T (coordinates = coord;) N
+(74) # () S 4 T () S 8 T (crop\(1\);) N
+(75) # () S 4 T () S 8 T (showCrop\(\);) N
+(76) # () S 4 T (}) N
+(77) # () N
+(78) # () S 4 T () S
 (public) K
 ( ) p
 (void) k
 ( crop\() p
 (int) k
 ( currentSlice\) {) p n
-(78) # () S 4 T () S 8 T () S
+(79) # () S 4 T () S 8 T () S
 (boolean) k
 ( debug = ) p
 (false) k
 (;) p n
-(79) # () S 4 T () S 8 T () S
+(80) # () S 4 T () S 8 T () S
 (int) k
 ( counter = coordinates[0].length;) p n
-(80) # () S 4 T () S 8 T () S
+(81) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i= 0; i<counter ;i++\){) p n
-(81) # () S 4 T () S 8 T () S 12 T () S
+(82) # () S 4 T () S 8 T () S 12 T () S
 (// Getting X values) c n
-(82) # () S
+(83) # () S
 () p 4 T () S 8 T () S 12 T () S
 (double) k
 ( posx = \() p
 (double) k
 (\) coordinates[0][i];) p n
-(83) # () S 4 T () S 8 T () S 12 T () S
+(84) # () S 4 T () S 8 T () S 12 T () S
 (// Getting Y values) c n
-(84) # () S
+(85) # () S
 () p 4 T () S 8 T () S 12 T () S
 (double) k
 ( posy = \() p
 (double) k
 (\) coordinates[1][i];) p n
-(85) # () S 4 T () S 8 T () S 12 T () S
+(86) # () S 4 T () S 8 T () S 12 T () S
 (// Getting Z \(slices\) values) c n
-(86) # () S
+(87) # () S
 () p 4 T () S 8 T () S 12 T () S
 (double) k
 ( posz = \() p
 (double) k
 (\) coordinates[2][i];) p n
-(87) # () N
-(88) # () S 4 T () S 8 T () S 12 T () S
+(88) # () N
+(89) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( x = \() p
 (int) k
 (\) \(posx - \(widthCrop/2\)\);) p n
-(89) # () S 4 T () S 8 T () S 12 T () S
+(90) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( y = \() p
 (int) k
 (\) \(posy - \(widthCrop/2\)\);) p n
-(90) # () S 4 T () S 8 T () S 12 T () S
+(91) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( z = \() p
 (int) k
 (\) posz;) p n
-(91) # () S 4 T () S 8 T () S 12 T () S
+(92) # () S 4 T () S 8 T () S 12 T () S
 (// For not having particles on edges  ) c n
-(92) # () S
+(93) # () S
 () p 4 T () S 8 T () S 12 T () S
 (if) K
 ( \( x < 0 \) {) p n
-(93) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(94) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(debug\){) p n
-(94) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
+(95) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
 (x < 0) str
 ("\);) p n
-(95) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
-(96) # () S 4 T () S 8 T () S 12 T (}) N
-(97) # () S 4 T () S 8 T () S 12 T () S
+(96) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(97) # () S 4 T () S 8 T () S 12 T (}) N
+(98) # () S 4 T () S 8 T () S 12 T () S
 (else) K
 ( ) p
 (if) K
 ( \( \(posx + \(widthCrop/2\)\) > impHeight \) {) p n
-(98) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(99) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(debug\){) p n
-(99) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
+(100) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
 (x > impHeight) str
 ("\);}) p n
-(100) # () S 4 T () S 8 T () S 12 T (}) N
-(101) # () S 4 T () S 8 T () S 12 T () S
+(101) # () S 4 T () S 8 T () S 12 T (}) N
+(102) # () S 4 T () S 8 T () S 12 T () S
 (else) K
 ( ) p
 (if) K
 ( \( \(posy + \(widthCrop/2\)\) > impWidth \) {) p n
-(102) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(103) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(debug\){) p n
-(103) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
+(104) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
 (y > impWidth) str
 ("\);}) p n
-(104) # () S 4 T () S 8 T () S 12 T (}) N
-(105) # () S 4 T () S 8 T () S 12 T () S
+(105) # () S 4 T () S 8 T () S 12 T (}) N
+(106) # () S 4 T () S 8 T () S 12 T () S
 (else) K
 ( ) p
 (if) K
 ( \( y < 0 \) {) p n
-(106) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(107) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(debug\){) p n
-(107) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
+(108) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showMessage\(") S
 (y < 0) str
 ("\);}) p n
-(108) # () S 4 T () S 8 T () S 12 T (}) N
-(109) # () S 4 T () S 8 T () S 12 T () S
+(109) # () S 4 T () S 8 T () S 12 T (}) N
+(110) # () S 4 T () S 8 T () S 12 T () S
 (else) K
 ( {) p n
-(110) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(111) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(z == currentSlice\) {) p n
-(111) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (imp.setRoi\(x, y, widthCrop, widthCrop\); ) S
+(112) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (imp.setRoi\(x, y, widthCrop, widthCrop\); ) S
 (//select a square ar) c n
 0 T (ound the particle ) N
-(112) # () S
+(113) # () S
 () p 4 T () S 8 T () S 12 T () S 16 T () S 20 T (img2 = ) S
 (new) K
 ( Duplicator\(\).run\(imp\);) p n
-(113) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImageProcessor ip2 = img2.getProcessor\(\);) N
-(114) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImageProcessor impTemp = ip2.resize\(widthCrop,widthCrop\);) N
-(115) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ims.addSlice\(impTemp\);) N
-(116) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
-(117) # () S 4 T () S 8 T () S 12 T (}) N
-(118) # () S 4 T () S 8 T () S 12 T () S
+(114) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImageProcessor ip2 = img2.getProcessor\(\);) N
+(115) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImageProcessor impTemp = ip2.resize\(widthCrop,widthCrop\);) N
+(116) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ims.addSlice\(impTemp\);) N
+(117) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(118) # () S 4 T () S 8 T () S 12 T (}) N
+(119) # () S 4 T () S 8 T () S 12 T () S
 (if) K
 ( \(ims.getSize\(\)!=0\){) p n
-(119) # () S 4 T () S 8 T () S 12 T () S 16 T (imp2 = ) S
+(120) # () S 4 T () S 8 T () S 12 T () S 16 T (imp2 = ) S
 (new) K
 ( ImagePlus\(") p
 (Results) str
 (", ims\);) p n
-(120) # () S 4 T () S 8 T () S 12 T (}) N
-(121) # () S 4 T () S 8 T (}) N
-(122) # () S 4 T (}) N
-(123) # () S 4 T () S
+(121) # () S 4 T () S 8 T () S 12 T (}) N
+(122) # () S 4 T () S 8 T (}) N
+(123) # () S 4 T (}) N
+(124) # () S 4 T () S
 (public) K
 ( ) p
 (void) k
 ( showCrop\(\) {) p n
-(124) # () S 4 T () S 8 T (imp2.show\(\);) N
-(125) # () S 4 T (}) N
-(126) # (}) N
-(Pick_EM-graphique) (Page 2/2) (mai 17, 12 9:48) title
+(125) # () S 4 T () S 8 T (imp2.show\(\);) N
+(126) # () S 4 T (}) N
+(127) # (}) S
+(Pick_EM-graphique) (Page 2/2) (mai 19, 12 13:59) title
 border
 grestore
 (Printed by tomo) rhead
-(Cropper.java) (3/18) (vendredi mai 18, 2012) footer
+(Cropper.java) (3/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -1683,11 +1690,9 @@ x0 y0 moveto
 (public) K
 ( ) p
 (void) k
-( run\(String arg\){) p n
-(28) # () S 4 T () S 8 T () N
-(29) # () S 4 T (}) N
-(30) # (}) N
-(Pick_EM-graphique) (Page 1/1) (mai 16, 12 9:46) title
+( run\(String arg\){}) p n
+(28) # (}) S
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 13:58) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
@@ -1710,46 +1715,42 @@ x0 y0 moveto
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
 (16) # () N
-(17) # () N
-(18) # () S
+(17) # () S
 (import) K
 ( java.awt.Polygon;) p n
-(19) # () S
+(18) # () S
 (import) K
 ( java.util.Hashtable;) p n
+(19) # () N
 (20) # () S
 (import) K
-( java.util.Vector;) p n
-(21) # () N
-(22) # () S
-(import) K
 ( ij.IJ;) p n
-(23) # () S
+(21) # () S
 (import) K
 ( ij.ImagePlus;) p n
-(24) # () S
+(22) # () S
 (import) K
 ( ij.WindowManager;) p n
-(25) # () S
+(23) # () S
 (import) K
 ( ij.gui.PointRoi;) p n
-(26) # () S
+(24) # () S
 (import) K
 ( ij.measure.ResultsTable;) p n
-(27) # () S
+(25) # () S
 (import) K
 ( ij.plugin.Duplicator;) p n
-(28) # () S
+(26) # () S
 (import) K
 ( ij.plugin.ImageCalculator;) p n
-(29) # () S
+(27) # () S
 (import) K
 ( ij.plugin.filter.MaximumFinder;) p n
-(30) # () S
+(28) # () S
 (import) K
 ( ij.process.ImageProcessor;) p n
-(31) # () N
-(32) # () S
+(29) # () N
+(30) # () S
 (public) K
 ( ) p
 (class) K
@@ -1758,68 +1759,76 @@ x0 y0 moveto
 ( ) p
 (extends) K
 ( Picker{) p n
-(33) # () S
+(31) # () S
 (// Picking algorithm : dilate difference) c n
-(34) # () S
-() p 4 T () S
-(/*) c n
-(35) # () S 4 T (static Vector<Double> xtab=new Vector<Double>\(\);) N
-(36) # () S 4 T (static Vector<Double> ytab=new Vector<Double>\(\);) N
-(37) # () S 4 T (static Vector<Double> slice=new Vector<Double>\(\);) N
-(38) # () S 4 T () N
-(39) # () S 4 T (static double[][]array;) N
-(40) # () S 4 T (*/) N
-(41) # () S
-() p 4 T () S
+(32) # () S
+() p 4 T () N
+(33) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( Cropper cropper;) p n
-(42) # () S 4 T () N
-(43) # () S 4 T (DilateDiff\(\){}) N
-(44) # () S 4 T () N
-(45) # () S 4 T () S
+(34) # () S 4 T () N
+(35) # () S 4 T (DilateDiff\(\){}) N
+(36) # () S 4 T () N
+(37) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
 ( picking\(\) {) p n
-(46) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(47) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(48) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(49) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
-(50) # () S 4 T () S 8 T () S
+(38) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(39) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(40) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(41) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
+(42) # () S 4 T () S 8 T () S
 (int) k
 ( current=im.getSlice\(\);) p n
-(51) # () S 4 T () S 8 T (System.out.println\(current\);) N
-(52) # () S 4 T () S 8 T (pick\(im, current\);) N
-(53) # () S 4 T (}) N
-(54) # () S 4 T () N
-(55) # () S 4 T () S
+(43) # () S 4 T () S 8 T (System.out.println\(current\);) N
+(44) # () S 4 T () S 8 T (pick\(im, current\);) N
+(45) # () S 4 T (}) N
+(46) # () S 4 T () N
+(47) # () S 4 T () S
 (static) K
 ( ) p
 (double) k
 ([][] sliceSelection\(\){) p n
-(56) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(57) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(58) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(59) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
-(60) # () S 4 T () S 8 T () S
+(48) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(49) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(50) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(51) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
+(52) # () S 4 T () S 8 T () S
 (int) k
 ( nbslice = im.getStackSize\(\);) p n
-(61) # () S 4 T () S 8 T () S
+(53) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=1; i<=nbslice; i++\){) p n
-(62) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
-(63) # () S 4 T () S 8 T () S 12 T (pick\(im, i\);) N
-(64) # () S 4 T () S 8 T (}) N
-(65) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(Pick_EM-graphique) (Page 1/3) (mai 18, 12 15:47) title
+(54) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
+(55) # () S 4 T () S 8 T () S 12 T (pick\(im, i\);) N
+(56) # () S 4 T () S 8 T (}) N
+(57) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(58) # () S 4 T () S 8 T (cropMode = hashAttributes.get\(") S
+(crop) str
+("\);) p n
+(59) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
+(60) # () S 4 T () S 8 T (array = resultConverter\(\);) N
+(61) # () S 4 T () S 8 T () S
+(if) K
+( \(cropperMode\) {) p n
+(62) # () S 4 T () S 8 T () S 12 T (cropper = ) S
+(new) K
+( Cropper\(im, array\);) p n
+(63) # () S 4 T () S 8 T (}) N
+(64) # () S 4 T () S 8 T () S
+(return) K
+( array;) p n
+(65) # () S 4 T (}) N
+(Pick_EM-graphique) (Page 1/3) (mai 19, 12 13:59) title
 border
 grestore
 (Printed by tomo) rhead
-(Crop_Test.java, DilateDiff.java) (4/18) (vendredi mai 18, 2012) footer
+(Crop_Test.java, DilateDiff.java) (4/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -1835,289 +1844,273 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(66) # () p 4 T () S 8 T (cropMode = hashAttributes.get\(") S
-(crop) str
-("\);) p n
-(67) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
-(68) # () S 4 T () S 8 T (array = resultConverter\(\);) N
-(69) # () S 4 T () S 8 T () S
-(if) K
-( \(cropperMode\) {) p n
-(70) # () S 4 T () S 8 T () S 12 T (cropper = ) S
-(new) K
-( Cropper\(im, array\);) p n
-(71) # () S 4 T () S 8 T (}) N
-(72) # () S 4 T () S 8 T () S
-(return) K
-( array;) p n
-(73) # () S 4 T (}) N
-(74) # () S 4 T () N
-(75) # () S 4 T () S
+(66) # () p 4 T () N
+(67) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
 ( pick\(ImagePlus image, ) p
 (int) k
 ( currentslice\){) p n
-(76) # () S 4 T () S 8 T (ImageCalculator ic;) N
-(77) # () S 4 T () S 8 T () S
+(68) # () S 4 T () S 8 T (ImageCalculator ic;) N
+(69) # () S 4 T () S 8 T () S
 (int) k
 ( counter=0;) p n
-(78) # () S 4 T () S 8 T () S
+(70) # () S 4 T () S 8 T () S
 (int) k
 ([] xpoints;) p n
-(79) # () S 4 T () S 8 T () S
+(71) # () S 4 T () S 8 T () S
 (int) k
 ([] ypoints;) p n
-(80) # () S 4 T () S 8 T (ResultsTable table = ) S
+(72) # () S 4 T () S 8 T (ResultsTable table = ) S
 (new) K
 ( ResultsTable\(\);) p n
-(81) # () S 4 T () S 8 T (MaximumFinder mf = ) S
+(73) # () S 4 T () S 8 T (MaximumFinder mf = ) S
 (new) K
 ( MaximumFinder\(\);) p n
-(82) # () S 4 T () S 8 T () S
+(74) # () S 4 T () S 8 T () S
 (boolean) k
 ( excludeOnEdges = ) p
 (false) k
 (;) p n
-(83) # () S 4 T () S 8 T () N
-(84) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(85) # () S 4 T () S 8 T (String iteration1 = hashAttributes.get\(") S
+(75) # () S 4 T () S 8 T () N
+(76) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(77) # () S 4 T () S 8 T (String iteration1 = hashAttributes.get\(") S
 (iter1) str
 ("\);) p n
-(86) # () S 4 T () S 8 T (String iteration2 = hashAttributes.get\(") S
+(78) # () S 4 T () S 8 T (String iteration2 = hashAttributes.get\(") S
 (iter2) str
 ("\);) p n
-(87) # () S 4 T () S 8 T () N
-(88) # () S 4 T () S 8 T (String it1 = ") S
+(79) # () S 4 T () S 8 T () N
+(80) # () S 4 T () S 8 T (String it1 = ") S
 (iterations=) str
 (" + iteration1+") p
 ( count=1 edm=Overwrite do=Nothing) str
 (";) p n
-(89) # () S 4 T () S 8 T (String it2 = ") S
+(81) # () S 4 T () S 8 T (String it2 = ") S
 (iterations=) str
 (" + iteration2+") p
 ( count=1 edm=Overwrite do=Nothing) str
 (";) p n
-(90) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
+(82) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
 (noise) str
 ("\);) p n
-(91) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
-(92) # () S 4 T () S 8 T () N
-(93) # () S 4 T () S 8 T (ImagePlus imp = WindowManager.getCurrentImage\(\);) N
-(94) # () S 4 T () S 8 T (ImagePlus imp1=) S
+(83) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
+(84) # () S 4 T () S 8 T () N
+(85) # () S 4 T () S 8 T (ImagePlus imp = WindowManager.getCurrentImage\(\);) N
+(86) # () S 4 T () S 8 T (ImagePlus imp1=) S
 (new) K
 ( Duplicator\(\).run\(imp\);) p n
-(95) # () S 4 T () S 8 T (ImagePlus imp2= ) S
+(87) # () S 4 T () S 8 T (ImagePlus imp2= ) S
 (new) K
 ( Duplicator\(\).run\(imp1\);) p n
-(96) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
-(97) # () S 4 T () S 8 T (imp2.setSlice\(currentslice\);) N
-(98) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
+(88) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
+(89) # () S 4 T () S 8 T (imp2.setSlice\(currentslice\);) N
+(90) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
 (Make Binary) str
 (", ") p
 (calculate) str
 ("\);) p n
-(99) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
+(91) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
 (Make Binary) str
 (", ") p
 (calculate) str
 ("\);) p n
-(100) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
+(92) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
 (Options...) str
 (", it1\);) p n
-(101) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
+(93) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
 (Dilate) str
 (", ") p
 (slice) str
 ("\);) p n
-(102) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
+(94) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
 (Options...) str
 (", it2\);) p n
-(103) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
+(95) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
 (Dilate) str
 (", ") p
 (slice) str
 ("\);) p n
-(104) # () S 4 T () S 8 T (ic = ) S
+(96) # () S 4 T () S 8 T (ic = ) S
 (new) K
 ( ImageCalculator\(\);) p n
-(105) # () S 4 T () S 8 T (ImagePlus imp3 = ic.run\(") S
+(97) # () S 4 T () S 8 T (ImagePlus imp3 = ic.run\(") S
 (Subtract create) str
 (", imp2, imp1\);) p n
-(106) # () S 4 T () S 8 T (ImageProcessor ip3 = imp3.getProcessor\(\);) N
-(107) # () S 4 T () S 8 T (ip3.invert\(\);) N
-(108) # () S 4 T () S 8 T (Polygon points = mf.getMaxima\(ip3, tolerance, excludeOnEdges\);) N
-(109) # () S 4 T () S 8 T () S
+(98) # () S 4 T () S 8 T (ImageProcessor ip3 = imp3.getProcessor\(\);) N
+(99) # () S 4 T () S 8 T (ip3.invert\(\);) N
+(100) # () S 4 T () S 8 T (Polygon points = mf.getMaxima\(ip3, tolerance, excludeOnEdges\);) N
+(101) # () S 4 T () S 8 T () S
 (int) k
 ([] xArray = points.xpoints;) p n
-(110) # () S 4 T () S 8 T () S
+(102) # () S 4 T () S 8 T () S
 (int) k
 ([] yArray = points.ypoints;) p n
-(111) # () S 4 T () S 8 T () S
+(103) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i<xArray.length; i++\){) p n
-(112) # () S 4 T () S 8 T () S 12 T (table.incrementCounter\(\);) N
-(113) # () S 4 T () S 8 T () S 12 T () S
+(104) # () S 4 T () S 8 T () S 12 T (table.incrementCounter\(\);) N
+(105) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( tempx = \() p
 (double) k
 (\)xArray[i];) p n
-(114) # () S 4 T () S 8 T () S 12 T () S
+(106) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( tempy = \() p
 (double) k
 (\)yArray[i];) p n
-(115) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(107) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (X) str
 (",tempx\);) p n
-(116) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(108) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (Y) str
 (",tempy\);) p n
-(117) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(109) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (Slice) str
 (",currentslice\);) p n
-(118) # () S 4 T () S 8 T (}) N
-(119) # () S 4 T () S 8 T (counter = table.getCounter\(\);) N
-(120) # () S 4 T () S 8 T (xpoints = ) S
+(110) # () S 4 T () S 8 T (}) N
+(111) # () S 4 T () S 8 T (counter = table.getCounter\(\);) N
+(112) # () S 4 T () S 8 T (xpoints = ) S
 (new) K
 ( ) p
 (int) k
 ([counter];) p n
-(121) # () S 4 T () S 8 T (ypoints = ) S
+(113) # () S 4 T () S 8 T (ypoints = ) S
 (new) K
 ( ) p
 (int) k
 ( [counter];) p n
-(122) # () S 4 T () N
-(123) # () S 4 T () S 8 T () S
+(114) # () S 4 T () N
+(115) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0;i<counter;i++\){) p n
-(124) # () S 4 T () S 8 T () S 12 T () S
+(116) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( x = table.getValue\(") p
 (X) str
 (",i\);) p n
-(125) # () S 4 T () S 8 T () S 12 T () S
+(117) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( y = table.getValue\(") p
 (Y) str
 (",i\);) p n
-(126) # () S 4 T () S 8 T () S 12 T () S
+(118) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( xx = \() p
 (int) k
 (\) x;) p n
-(127) # () S 4 T () S 8 T () S 12 T () S
+(119) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( yy = \() p
 (int) k
 (\) y;) p n
-(128) # () S 4 T () S 8 T () S 12 T (xpoints[i] = xx;) N
-(129) # () S 4 T () S 8 T () S 12 T (ypoints[i] = yy;) N
-(130) # () S 4 T () S 8 T () S 12 T (xtab.add\(x\);) N
-(131) # () S 4 T () S 8 T () S 12 T (ytab.add\(y\);) N
-(Pick_EM-graphique) (Page 2/3) (mai 18, 12 15:47) title
+(120) # () S 4 T () S 8 T () S 12 T (xpoints[i] = xx;) N
+(121) # () S 4 T () S 8 T () S 12 T (ypoints[i] = yy;) N
+(122) # () S 4 T () S 8 T () S 12 T (xtab.add\(x\);) N
+(123) # () S 4 T () S 8 T () S 12 T (ytab.add\(y\);) N
+(124) # () S 4 T () S 8 T () S 12 T (imp.setRoi\() S
+(new) K
+( PointRoi\(xpoints,ypoints,counter\)\);) p n
+(125) # () S 4 T () S 8 T (}) N
+(126) # () S 4 T () S 8 T () S
+(for) K
+(\() p
+(int) k
+( i=0;i<counter;i++\){) p n
+(127) # () S 4 T () S 8 T () S 12 T () S
+(double) k
+( temp = table.getValue\(") p
+(Slice) str
+(", i\);) p n
+(128) # () S 4 T () S 8 T () S 12 T (slice.add\(temp\);) N
+(129) # () S 4 T () S 8 T (}) N
+(130) # () S 4 T (}) N
+(131) # () S 4 T () N
+(Pick_EM-graphique) (Page 2/3) (mai 19, 12 13:59) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(132) # () p 4 T () S 8 T () S 12 T (imp.setRoi\() S
-(new) K
-( PointRoi\(xpoints,ypoints,counter\)\);) p n
-(133) # () S 4 T () S 8 T (}) N
-(134) # () S 4 T () S 8 T () S
-(for) K
-(\() p
-(int) k
-( i=0;i<counter;i++\){) p n
-(135) # () S 4 T () S 8 T () S 12 T () S
-(double) k
-( temp = table.getValue\(") p
-(Slice) str
-(", i\);) p n
-(136) # () S 4 T () S 8 T () S 12 T (slice.add\(temp\);) N
-(137) # () S 4 T () S 8 T (}) N
-(138) # () S 4 T (}) N
-(139) # () S 4 T () N
-(140) # () S 4 T () S
+(132) # () p 4 T () S
 (static) K
 ( ) p
 (double) k
 ([][] resultConverter\(\){) p n
-(141) # () S 4 T () S 8 T () S
+(133) # () S 4 T () S 8 T () S
 (int) k
 ( arrayLength = xtab.size\(\);) p n
-(142) # () S 4 T () S 8 T (Object[] tempX = ) S
+(134) # () S 4 T () S 8 T (Object[] tempX = ) S
 (new) K
 ( String[arrayLength];) p n
-(143) # () S 4 T () S 8 T (Object[] tempY = ) S
+(135) # () S 4 T () S 8 T (Object[] tempY = ) S
 (new) K
 ( String[arrayLength];) p n
-(144) # () S 4 T () S 8 T (Object[] tempZ = ) S
+(136) # () S 4 T () S 8 T (Object[] tempZ = ) S
 (new) K
 ( String[arrayLength];) p n
-(145) # () S 4 T () S 8 T (tempX = xtab.toArray\(\);) N
-(146) # () S 4 T () S 8 T (tempY = ytab.toArray\(\);) N
-(147) # () S 4 T () S 8 T (tempZ = slice.toArray\(\);) N
-(148) # () S 4 T () S 8 T () S
+(137) # () S 4 T () S 8 T (tempX = xtab.toArray\(\);) N
+(138) # () S 4 T () S 8 T (tempY = ytab.toArray\(\);) N
+(139) # () S 4 T () S 8 T (tempZ = slice.toArray\(\);) N
+(140) # () S 4 T () S 8 T () S
 (double) k
 ([] xArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(149) # () S 4 T () S 8 T () S
+(141) # () S 4 T () S 8 T () S
 (double) k
 ([] yArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(150) # () S 4 T () S 8 T () S
+(142) # () S 4 T () S 8 T () S
 (double) k
 ([] zArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(151) # () S 4 T () S 8 T () S
+(143) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i < arrayLength; i++\){) p n
-(152) # () S 4 T () S 8 T () S 12 T (String temp = String.valueOf\(tempX[i]\);) N
-(153) # () S 4 T () S 8 T () S 12 T (xArray[i] = Double.parseDouble\(temp\);) N
-(154) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempY[i]\);) N
-(155) # () S 4 T () S 8 T () S 12 T (yArray[i] = Double.parseDouble\(temp\);) N
-(156) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempZ[i]\);) N
-(157) # () S 4 T () S 8 T () S 12 T (zArray[i] = Double.parseDouble\(temp\);) N
-(158) # () S 4 T () S 8 T (}) N
-(159) # () S 4 T () S 8 T () S
+(144) # () S 4 T () S 8 T () S 12 T (String temp = String.valueOf\(tempX[i]\);) N
+(145) # () S 4 T () S 8 T () S 12 T (xArray[i] = Double.parseDouble\(temp\);) N
+(146) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempY[i]\);) N
+(147) # () S 4 T () S 8 T () S 12 T (yArray[i] = Double.parseDouble\(temp\);) N
+(148) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempZ[i]\);) N
+(149) # () S 4 T () S 8 T () S 12 T (zArray[i] = Double.parseDouble\(temp\);) N
+(150) # () S 4 T () S 8 T (}) N
+(151) # () S 4 T () S 8 T () S
 (double) k
 ([][] coordinates = ) p
 (new) K
 ( ) p
 (double) k
 ([3][arrayLength];) p n
-(160) # () S 4 T () S 8 T (coordinates[0]=xArray;) N
-(161) # () S 4 T () S 8 T (coordinates[1]=yArray;) N
-(162) # () S 4 T () S 8 T (coordinates[2]=zArray;) N
-(163) # () S 4 T () S 8 T () S
+(152) # () S 4 T () S 8 T (coordinates[0]=xArray;) N
+(153) # () S 4 T () S 8 T (coordinates[1]=yArray;) N
+(154) # () S 4 T () S 8 T (coordinates[2]=zArray;) N
+(155) # () S 4 T () S 8 T () S
 (return) K
 ( coordinates;) p n
-(164) # () S 4 T (}) N
-(165) # (}) N
-(Pick_EM-graphique) (Page 3/3) (mai 18, 12 15:47) title
+(156) # () S 4 T (}) N
+(157) # (}) S
+(Pick_EM-graphique) (Page 3/3) (mai 19, 12 13:59) title
 border
 grestore
 (Printed by tomo) rhead
-(DilateDiff.java) (5/18) (vendredi mai 18, 2012) footer
+(DilateDiff.java) (5/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -2150,46 +2143,45 @@ x0 y0 moveto
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
 (16) # () N
-(17) # () N
-(18) # () S
+(17) # () S
 (import) K
 ( java.awt.Polygon;) p n
-(19) # () S
+(18) # () S
 (import) K
 ( java.util.Hashtable;) p n
-(20) # () S
+(19) # () S
 (import) K
 ( java.util.Vector;) p n
-(21) # () N
-(22) # () S
+(20) # () N
+(21) # () S
 (import) K
 ( ij.IJ;) p n
-(23) # () S
+(22) # () S
 (import) K
 ( ij.ImagePlus;) p n
-(24) # () S
+(23) # () S
 (import) K
 ( ij.WindowManager;) p n
-(25) # () S
+(24) # () S
 (import) K
 ( ij.gui.PointRoi;) p n
-(26) # () S
+(25) # () S
 (import) K
 ( ij.measure.ResultsTable;) p n
-(27) # () S
+(26) # () S
 (import) K
 ( ij.plugin.Duplicator;) p n
-(28) # () S
+(27) # () S
 (import) K
 ( ij.plugin.ImageCalculator;) p n
-(29) # () S
+(28) # () S
 (import) K
 ( ij.plugin.filter.MaximumFinder;) p n
-(30) # () S
+(29) # () S
 (import) K
 ( ij.process.ImageProcessor;) p n
-(31) # () N
-(32) # () S
+(30) # () N
+(31) # () S
 (public) K
 ( ) p
 (class) K
@@ -2198,116 +2190,83 @@ x0 y0 moveto
 ( ) p
 (extends) K
 ( Picker {) p n
-(33) # () S
+(32) # () S
 (// Picking algorithm : difference of gaussian) c n
-(34) # () S
+(33) # () S
 () p 4 T () N
-(35) # () S 4 T () S
-(//static Vector[] resultstable = new Vector[3];) c n
-(36) # () S
-() p 4 T () S
-(static) K
-( Vector<Double> xtab = ) p
-(new) K
-( Vector<Double>\(\);) p n
-(37) # () S 4 T () S
-(static) K
-( Vector<Double> ytab = ) p
-(new) K
-( Vector<Double>\(\);) p n
-(38) # () S 4 T () S
-(static) K
-( Vector<Double> slice = ) p
-(new) K
-( Vector<Double>\(\);) p n
-(39) # () S 4 T () N
-(40) # () S 4 T () S
+(34) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( Cropper cropper;) p n
-(41) # () S 4 T () N
-(42) # () S 4 T (DoG\(\) {}) N
-(43) # () S 4 T () N
-(44) # () S 4 T () S
+(35) # () S 4 T () N
+(36) # () S 4 T (DoG\(\) {}) N
+(37) # () S 4 T () N
+(38) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
 ( picking\(\) {) p n
-(45) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(46) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(47) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(48) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
-(49) # () S 4 T () S 8 T () S
+(39) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(40) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(41) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(42) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
+(43) # () S 4 T () S 8 T () S
 (int) k
 ( current = im.getSlice\(\);) p n
-(50) # () S 4 T () S 8 T (pick\(im, current\);) N
-(51) # () S 4 T () S 8 T () N
-(52) # () S 4 T () S
-(//) c 8 T (resultstable[0].removeAllElements\(\);) N
-(53) # () S
-() p 4 T () S
-(//) c 8 T (resultstable[1].removeAllElements\(\);) N
-(54) # () S
-() p 4 T () S
-(//) c 8 T (resultstable[2].removeAllElements\(\);) N
-(55) # () S
-() p 4 T () S 8 T () S
-(//IJ.run\("Clear Results"\);) c n
-(56) # () S
-() p 4 T (}) N
-(57) # () S 4 T () N
-(58) # () S 4 T () S
+(44) # () S 4 T () S 8 T (pick\(im, current\);) N
+(45) # () S 4 T (}) N
+(46) # () S 4 T () N
+(47) # () S 4 T () S
 (static) K
 ( ) p
 (double) k
 ([][] sliceSelection\(\) {) p n
-(59) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(60) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(61) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(62) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
-(63) # () S 4 T () S 8 T () S
+(48) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(49) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(50) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(51) # () S 4 T () S 8 T (im = WindowManager.getCurrentImage\(\);) N
+(52) # () S 4 T () S 8 T () S
 (int) k
 ( nbslice = im.getStackSize\(\);) p n
-(64) # () S 4 T () S 8 T () S
+(53) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i = 1; i <= nbslice; i++\) {) p n
-(65) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
-(Pick_EM-graphique) (Page 1/3) (mai 18, 12 15:47) title
+(54) # () S 4 T () S 8 T () S 12 T (im.setSlice\(i\);) N
+(55) # () S 4 T () S 8 T () S 12 T (pick\(im, i\);) N
+(56) # () S 4 T () S 8 T (}) N
+(57) # () S 4 T () S 8 T () S
+(// Cast the vector in an array so as to send it to the cropper) c n
+(58) # () S
+() p 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(59) # () S 4 T () S 8 T (cropMode = hashAttributes.get\(") S
+(crop) str
+("\);) p n
+(60) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
+(61) # () S 4 T () S 8 T () S
+(double) k
+([][] array = resultConverter\(\);) p n
+(62) # () S 4 T () S 8 T () S
+(if) K
+( \(cropperMode\) {) p n
+(63) # () S 4 T () S 8 T () S 12 T () S
+(new) K
+( Cropper\(im,array\);) p n
+(64) # () S 4 T () S 8 T (}) N
+(65) # () S 4 T () S 8 T () S
+(return) K
+( array;) p n
+(Pick_EM-graphique) (Page 1/3) (mai 19, 12 14:03) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(66) # () p 4 T () S 8 T () S 12 T (pick\(im, i\);) N
-(67) # () S 4 T () S 8 T (}) N
-(68) # () S 4 T () S 8 T () S
-(// Cast the vector in an array so as to send it to the cropper) c n
-(69) # () S
-() p 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(70) # () S 4 T () S 8 T (cropMode = hashAttributes.get\(") S
-(crop) str
-("\);) p n
-(71) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
-(72) # () S 4 T () S 8 T () S
-(double) k
-([][] array = resultConverter\(\);) p n
-(73) # () S 4 T () S 8 T () S
-(if) K
-( \(cropperMode\) {) p n
-(74) # () S 4 T () S 8 T () S 12 T () S
-(new) K
-( Cropper\(im,array\);) p n
-(75) # () S 4 T () S 8 T (}) N
-(76) # () S 4 T () S 8 T () S
-(return) K
-( array;) p n
-(77) # () S 4 T () N
-(78) # () S 4 T (}) N
-(79) # () S 4 T () N
-(80) # () S 4 T () S
+(66) # () p 4 T (}) N
+(67) # () S 4 T () N
+(68) # () S 4 T () S
 (public) K
 ( ) p
 (static) K
@@ -2316,148 +2275,170 @@ x0 y0 moveto
 ( pick\(ImagePlus imp, ) p
 (int) k
 ( currentslice\) {) p n
-(81) # () S 4 T () S 8 T (ImageCalculator ic;) N
-(82) # () S 4 T () S 8 T (ResultsTable table = ) S
+(69) # () S 4 T () S 8 T (ImageCalculator ic;) N
+(70) # () S 4 T () S 8 T (ResultsTable table = ) S
 (new) K
 ( ResultsTable\(\);) p n
-(83) # () S 4 T () S 8 T () S
+(71) # () S 4 T () S 8 T () S
 (int) k
 ( counter;) p n
-(84) # () S 4 T () S 8 T () S
+(72) # () S 4 T () S 8 T () S
 (int) k
 ([] xpoints;) p n
-(85) # () S 4 T () S 8 T () S
+(73) # () S 4 T () S 8 T () S
 (int) k
 ([] ypoints;) p n
-(86) # () S 4 T () S 8 T (MaximumFinder mf = ) S
+(74) # () S 4 T () S 8 T (MaximumFinder mf = ) S
 (new) K
 ( MaximumFinder\(\);) p n
-(87) # () S 4 T () S 8 T () S
+(75) # () S 4 T () S 8 T () S
 (boolean) k
 ( excludeOnEdges = ) p
 (false) k
 (;) p n
-(88) # () S 4 T () N
-(89) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(90) # () S 4 T () S 8 T (String sigma1 = hashAttributes.get\(") S
+(76) # () S 4 T () N
+(77) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(78) # () S 4 T () S 8 T (String sigma1 = hashAttributes.get\(") S
 (sig1) str
 ("\);) p n
-(91) # () S 4 T () S 8 T (String sigma2 = hashAttributes.get\(") S
+(79) # () S 4 T () S 8 T (String sigma2 = hashAttributes.get\(") S
 (sig2) str
 ("\);) p n
-(92) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
+(80) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
 (noise) str
 ("\);) p n
-(93) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
-(94) # () S 4 T () N
-(95) # () S 4 T () S 8 T (imp.setSlice\(currentslice\);) N
-(96) # () S 4 T () S 8 T (ImagePlus imp1 = ) S
+(81) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
+(82) # () S 4 T () N
+(83) # () S 4 T () S 8 T (imp.setSlice\(currentslice\);) N
+(84) # () S 4 T () S 8 T (ImagePlus imp1 = ) S
 (new) K
 ( Duplicator\(\).run\(imp\);) p n
-(97) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
-(98) # () S 4 T () S 8 T (ImagePlus imp2 = ) S
+(85) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
+(86) # () S 4 T () S 8 T (ImagePlus imp2 = ) S
 (new) K
 ( Duplicator\(\).run\(imp1\);) p n
-(99) # () S 4 T () S 8 T () N
-(100) # () S 4 T () S 8 T (String si1 = ") S
+(87) # () S 4 T () S 8 T () N
+(88) # () S 4 T () S 8 T (String si1 = ") S
 (sigma=) str
 (" + sigma1;) p n
-(101) # () S 4 T () S 8 T (String si2 = ") S
+(89) # () S 4 T () S 8 T (String si2 = ") S
 (sigma=) str
 (" + sigma2;) p n
-(102) # () S 4 T () S 8 T () N
-(103) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
-(104) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
+(90) # () S 4 T () S 8 T () N
+(91) # () S 4 T () S 8 T (imp1.setSlice\(currentslice\);) N
+(92) # () S 4 T () S 8 T (IJ.run\(imp1, ") S
 (Gaussian Blur...) str
 (", si1\);) p n
-(105) # () S 4 T () S 8 T (imp2.setSlice\(currentslice\);) N
-(106) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
+(93) # () S 4 T () S 8 T (imp2.setSlice\(currentslice\);) N
+(94) # () S 4 T () S 8 T (IJ.run\(imp2, ") S
 (Gaussian Blur...) str
 (", si2\);) p n
-(107) # () S 4 T () S 8 T (ic = ) S
+(95) # () S 4 T () S 8 T (ic = ) S
 (new) K
 ( ImageCalculator\(\);) p n
-(108) # () S 4 T () S 8 T (ImagePlus imp3 = ic.run\(") S
+(96) # () S 4 T () S 8 T (ImagePlus imp3 = ic.run\(") S
 (Subtract create 32-bit) str
 (", imp2, imp1\);) p n
-(109) # () S 4 T () S 8 T (WindowManager.setTempCurrentImage\(imp3\);) N
-(110) # () S 4 T () S 8 T () N
-(111) # () S 4 T () S 8 T () N
-(112) # () S 4 T () S 8 T (ImageProcessor ip3 = imp3.getProcessor\(\);) N
-(113) # () S 4 T () S 8 T (Polygon points = mf.getMaxima\(ip3, tolerance, excludeOnEdges\);) N
-(114) # () S 4 T () S 8 T () S
+(97) # () S 4 T () S 8 T (WindowManager.setTempCurrentImage\(imp3\);) N
+(98) # () S 4 T () S 8 T () N
+(99) # () S 4 T () S 8 T (ImageProcessor ip3 = imp3.getProcessor\(\);) N
+(100) # () S 4 T () S 8 T (Polygon points = mf.getMaxima\(ip3, tolerance, excludeOnEdges\);) N
+(101) # () S 4 T () S 8 T () S
 (int) k
 ([] xArray = points.xpoints;) p n
-(115) # () S 4 T () S 8 T () S
+(102) # () S 4 T () S 8 T () S
 (int) k
 ([] yArray = points.ypoints;) p n
-(116) # () S 4 T () S 8 T () S
+(103) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i = 0; i < xArray.length; i++\) {) p n
-(117) # () S 4 T () S 8 T () S 12 T (table.incrementCounter\(\);) N
-(118) # () S 4 T () S 8 T () S 12 T () S
+(104) # () S 4 T () S 8 T () S 12 T (table.incrementCounter\(\);) N
+(105) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( tempx = \() p
 (double) k
 (\) xArray[i];) p n
-(119) # () S 4 T () S 8 T () S 12 T () S
+(106) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( tempy = \() p
 (double) k
 (\) yArray[i];) p n
-(120) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(107) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (X) str
 (", tempx\);) p n
-(121) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(108) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (Y) str
 (", tempy\);) p n
-(122) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
+(109) # () S 4 T () S 8 T () S 12 T (table.addValue\(") S
 (Slice) str
 (", currentslice\);) p n
-(123) # () S 4 T () S 8 T (}) N
-(124) # () S 4 T () S 8 T (counter = table.getCounter\(\);) N
-(125) # () S 4 T () S 8 T (xpoints = ) S
+(110) # () S 4 T () S 8 T (}) N
+(111) # () S 4 T () S 8 T (counter = table.getCounter\(\);) N
+(112) # () S 4 T () S 8 T (xpoints = ) S
 (new) K
 ( ) p
 (int) k
 ([counter];) p n
-(126) # () S 4 T () S 8 T (ypoints = ) S
+(113) # () S 4 T () S 8 T (ypoints = ) S
 (new) K
 ( ) p
 (int) k
 ([counter];) p n
-(127) # () S 4 T () S 8 T () S
+(114) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i = 0; i < counter; i++\) {) p n
-(128) # () S 4 T () S 8 T () S
+(115) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( x = table.getValue\(") p
 (X) str
 (", i\);) p n
-(129) # () S 4 T () S 8 T () S
+(116) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( y = table.getValue\(") p
 (Y) str
 (", i\);) p n
-(130) # () S 4 T () S 8 T () S
+(117) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( xx = \() p
 (int) k
 (\) x;) p n
-(131) # () S 4 T () S 8 T () S
+(118) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( yy = \() p
 (int) k
 (\) y;) p n
-(Pick_EM-graphique) (Page 2/3) (mai 18, 12 15:47) title
+(119) # () S 4 T () S 8 T () S 12 T (xpoints[i] = xx;) N
+(120) # () S 4 T () S 8 T () S 12 T (ypoints[i] = yy;) N
+(121) # () S 4 T () S 8 T () S 12 T (xtab.add\(x\);) N
+(122) # () S 4 T () S 8 T () S 12 T (ytab.add\(y\);) N
+(123) # () S 4 T () S 8 T () S 12 T (imp3.close\(\);) N
+(124) # () S 4 T () S 8 T () S 12 T (imp.setRoi\() S
+(new) K
+( PointRoi\(xpoints, ypoints, counter\)\);) p n
+(125) # () S 4 T () S 8 T (}) N
+(126) # () S 4 T () S 8 T () S
+(for) K
+( \() p
+(int) k
+( i = 0; i < counter; i++\) {) p n
+(127) # () S 4 T () S 8 T () S 12 T () S
+(double) k
+( temp = table.getValue\(") p
+(Slice) str
+(", i\);) p n
+(128) # () S 4 T () S 8 T () S 12 T (slice.add\(temp\);) N
+(129) # () S 4 T () S 8 T (}) N
+(130) # () S 4 T (}) N
+(131) # () S 4 T () N
+(Pick_EM-graphique) (Page 2/3) (mai 19, 12 14:03) title
 border
 grestore
 (Printed by tomo) rhead
-(DoG.java) (6/18) (vendredi mai 18, 2012) footer
+(DoG.java) (6/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -2473,103 +2454,75 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(132) # () p 4 T () S 8 T (xpoints[i] = xx;) N
-(133) # () S 4 T () S 8 T (ypoints[i] = yy;) N
-(134) # () S 4 T () S 8 T (xtab.add\(x\);) N
-(135) # () S 4 T () S 8 T (ytab.add\(y\);) N
-(136) # () S 4 T () S 8 T (imp3.close\(\);) N
-(137) # () S 4 T () S 8 T (imp.setRoi\() S
-(new) K
-( PointRoi\(xpoints, ypoints, counter\)\);) p n
-(138) # () S 4 T () S 8 T (}) N
-(139) # () S 4 T () S 8 T () S
-(for) K
-( \() p
-(int) k
-( i = 0; i < counter; i++\) {) p n
-(140) # () S 4 T () S 8 T () S 12 T () S
-(double) k
-( temp = table.getValue\(") p
-(Slice) str
-(", i\);) p n
-(141) # () S 4 T () S 8 T () S 12 T (slice.add\(temp\);) N
-(142) # () S 4 T () S 8 T (}) N
-(143) # () S
-(//) c 4 T (resultstable[0] = xtab;) N
-(144) # (//) S 4 T (resultstable[1] = ytab;) N
-(145) # (//) S 4 T (resultstable[2] = slice;) N
-(146) # () S
-() p 4 T (}) N
-(147) # () S 4 T () N
-(148) # () S 4 T () S
+(132) # () p 4 T () S
 (static) K
 ( ) p
 (double) k
 ([][] resultConverter\(\){) p n
-(149) # () S 4 T () S 8 T () S
+(133) # () S 4 T () S 8 T () S
 (int) k
 ( arrayLength = xtab.size\(\);) p n
-(150) # () S 4 T () S 8 T (Object[] tempX = ) S
+(134) # () S 4 T () S 8 T (Object[] tempX = ) S
 (new) K
 ( String[arrayLength];) p n
-(151) # () S 4 T () S 8 T (Object[] tempY = ) S
+(135) # () S 4 T () S 8 T (Object[] tempY = ) S
 (new) K
 ( String[arrayLength];) p n
-(152) # () S 4 T () S 8 T (Object[] tempZ = ) S
+(136) # () S 4 T () S 8 T (Object[] tempZ = ) S
 (new) K
 ( String[arrayLength];) p n
-(153) # () S 4 T () S 8 T (tempX = xtab.toArray\(\);) N
-(154) # () S 4 T () S 8 T (tempY = ytab.toArray\(\);) N
-(155) # () S 4 T () S 8 T (tempZ = slice.toArray\(\);) N
-(156) # () S 4 T () S 8 T () S
+(137) # () S 4 T () S 8 T (tempX = xtab.toArray\(\);) N
+(138) # () S 4 T () S 8 T (tempY = ytab.toArray\(\);) N
+(139) # () S 4 T () S 8 T (tempZ = slice.toArray\(\);) N
+(140) # () S 4 T () S 8 T () S
 (double) k
 ([] xArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(157) # () S 4 T () S 8 T () S
+(141) # () S 4 T () S 8 T () S
 (double) k
 ([] yArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(158) # () S 4 T () S 8 T () S
+(142) # () S 4 T () S 8 T () S
 (double) k
 ([] zArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(159) # () S 4 T () S 8 T () S
+(143) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i < arrayLength; i++\){) p n
-(160) # () S 4 T () S 8 T () S 12 T (String temp = String.valueOf\(tempX[i]\);) N
-(161) # () S 4 T () S 8 T () S 12 T (xArray[i] = Double.parseDouble\(temp\);) N
-(162) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempY[i]\);) N
-(163) # () S 4 T () S 8 T () S 12 T (yArray[i] = Double.parseDouble\(temp\);) N
-(164) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempZ[i]\);) N
-(165) # () S 4 T () S 8 T () S 12 T (zArray[i] = Double.parseDouble\(temp\);) N
-(166) # () S 4 T () S 8 T (}) N
-(167) # () S 4 T () S 8 T () S
+(144) # () S 4 T () S 8 T () S 12 T (String temp = String.valueOf\(tempX[i]\);) N
+(145) # () S 4 T () S 8 T () S 12 T (xArray[i] = Double.parseDouble\(temp\);) N
+(146) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempY[i]\);) N
+(147) # () S 4 T () S 8 T () S 12 T (yArray[i] = Double.parseDouble\(temp\);) N
+(148) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempZ[i]\);) N
+(149) # () S 4 T () S 8 T () S 12 T (zArray[i] = Double.parseDouble\(temp\);) N
+(150) # () S 4 T () S 8 T (}) N
+(151) # () S 4 T () S 8 T () S
 (double) k
 ([][] coordinates = ) p
 (new) K
 ( ) p
 (double) k
 ([3][arrayLength];) p n
-(168) # () S 4 T () S 8 T (coordinates[0]=xArray;) N
-(169) # () S 4 T () S 8 T (coordinates[1]=yArray;) N
-(170) # () S 4 T () S 8 T (coordinates[2]=zArray;) N
-(171) # () S 4 T () S 8 T () S
+(152) # () S 4 T () S 8 T (coordinates[0]=xArray;) N
+(153) # () S 4 T () S 8 T (coordinates[1]=yArray;) N
+(154) # () S 4 T () S 8 T (coordinates[2]=zArray;) N
+(155) # () S 4 T () S 8 T () S
 (return) K
 ( coordinates;) p n
-(172) # () S 4 T (}) N
-(173) # (}) S
-(Pick_EM-graphique) (Page 3/3) (mai 18, 12 15:47) title
+(156) # () S 4 T (}) N
+(157) # (}) S
+(Pick_EM-graphique) (Page 3/3) (mai 19, 12 14:03) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
@@ -2725,7 +2678,7 @@ x0 y0 moveto
 border
 grestore
 (Printed by tomo) rhead
-(DoG.java, FFTMath.java) (7/18) (vendredi mai 18, 2012) footer
+(DoG.java, FFTMath.java) (7/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -2817,139 +2770,116 @@ x0 y0 moveto
 ( ) p
 (static) K
 ( ImagePlus imgBlocked;) p n
-(36) # () N
-(37) # () S 4 T () N
-(38) # () S 4 T () S
-(//static Vector[] resultstable = new Vector[3];) c n
-(39) # () S
-() p 4 T () S
-(static) K
-( Vector<Double> xtab=) p
-(new) K
-( Vector<Double>\(\);) p n
-(40) # () S 4 T () S
-(static) K
-( Vector<Double> ytab=) p
-(new) K
-( Vector<Double>\(\);) p n
-(41) # () S 4 T () S
-(static) K
-( Vector<Double> slice=) p
-(new) K
-( Vector<Double>\(\);) p n
-(42) # () S 4 T () N
-(43) # () S 4 T () S
+(36) # () S 4 T () N
+(37) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( ) p
 (double) k
 ( z;) p n
-(44) # () S 4 T () N
-(45) # () S 4 T () S
+(38) # () S 4 T () N
+(39) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( Cropper cropper;) p n
-(46) # () S 4 T () N
-(47) # () S 4 T (ImCorr\(\){}) N
-(48) # () S 4 T () N
-(49) # () S 4 T () S
+(40) # () S 4 T () N
+(41) # () S 4 T (ImCorr\(\){}) N
+(42) # () S 4 T () N
+(43) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
 ( picking\(\) {) p n
-(50) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(51) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(52) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(53) # () S 4 T () S 8 T (imgBlocked = WindowManager.getCurrentImage\(\);) N
-(54) # () S 4 T () S 8 T (im=) S
+(44) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(45) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(46) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(47) # () S 4 T () S 8 T (imgBlocked = WindowManager.getCurrentImage\(\);) N
+(48) # () S 4 T () S 8 T (im = ) S
 (new) K
 ( Duplicator\(\).run\(imgBlocked\);) p n
-(55) # () S 4 T () S 8 T () S
+(49) # () S 4 T () S 8 T () S
 (int) k
 ( i = imgBlocked.getCurrentSlice\(\);) p n
-(56) # () S 4 T () S 8 T (IJ.showMessage\(Integer.toString\(i\)\);) N
-(57) # () S 4 T () S 8 T (ImageStack tempstack = im.getStack\(\);) N
-(58) # () S 4 T () S 8 T (ImageProcessor ip = tempstack.getProcessor\(i\);) N
-(59) # () S 4 T () S 8 T (ImagePlus impDup =) S
+(50) # () S 4 T () S 8 T (ImageStack tempstack = im.getStack\(\);) N
+(51) # () S 4 T () S 8 T (ImageProcessor ip = tempstack.getProcessor\(i\);) N
+(52) # () S 4 T () S 8 T (ImagePlus impDup = ) S
 (new) K
 ( ImagePlus\(") p
 (imgPlus) str
 (",ip\);) p n
-(60) # () S 4 T () S 8 T (IJ.run\(impDup,") S
+(53) # () S 4 T () S 8 T (IJ.run\(impDup,") S
 (Enhance Contrast) str
 (", ") p
 (saturated=0 normalize) str
 ("\);) p n
-(61) # () S 4 T () S 8 T (ip.findEdges\(\);) N
-(62) # () S 4 T () S 8 T (pick\(impDup, i\);) N
-(63) # () S 4 T () S 8 T () N
-(64) # () S 4 T () S 8 T () N
-(65) # () S 4 T (}) N
-(Pick_EM-graphique) (Page 1/4) (mai 18, 12 15:47) title
+(54) # () S 4 T () S 8 T (ip.findEdges\(\);) N
+(55) # () S 4 T () S 8 T (pick\(impDup, i\);) N
+(56) # () S 4 T (}) N
+(57) # () S 4 T () N
+(58) # () S 4 T () S
+(static) K
+( ) p
+(double) k
+([][] sliceSelection\(\){) p n
+(59) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
+(60) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
+(61) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
+(62) # () S 4 T () S 8 T (imgBlocked = WindowManager.getCurrentImage\(\);) N
+(63) # () S 4 T () S 8 T (im=) S
+(new) K
+( Duplicator\(\).run\(imgBlocked\);) p n
+(64) # () S 4 T () S 8 T () S
+(int) k
+( nbslice = imgBlocked.getStackSize\(\);) p n
+(65) # () S 4 T () S 8 T () S
+(for) K
+( \() p
+(int) k
+( i=1;i<=nbslice;i++\){) p 40 T () N
+(Pick_EM-graphique) (Page 1/4) (mai 19, 12 14:10) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(66) # () p 4 T () N
-(67) # () S 4 T () S
-(static) K
-( ) p
-(double) k
-([][] sliceSelection\(\){) p n
-(68) # () S 4 T () S 8 T (xtab.removeAllElements\(\);) N
-(69) # () S 4 T () S 8 T (ytab.removeAllElements\(\);) N
-(70) # () S 4 T () S 8 T (slice.removeAllElements\(\);) N
-(71) # () S 4 T () S 8 T (imgBlocked = WindowManager.getCurrentImage\(\);) N
-(72) # () S 4 T () S 8 T (im=) S
-(new) K
-( Duplicator\(\).run\(imgBlocked\);) p n
-(73) # () S 4 T () S 8 T () S
-(int) k
-( nbslice = imgBlocked.getStackSize\(\);) p n
-(74) # () S 4 T () S 8 T () S
-(for) K
-( \() p
-(int) k
-( i=1;i<=nbslice;i++\){) p 40 T () N
-(75) # () S 4 T () S 8 T () S 12 T (ImageStack tempstack = im.getStack\(\);) N
-(76) # () S 4 T () S 8 T () S 12 T (ImageProcessor ip = tempstack.getProcessor\(i\);) N
-(77) # () S 4 T () S 8 T () S 12 T (ImagePlus impDup =) S
+(66) # () p 4 T () S 8 T () S 12 T (ImageStack tempstack = im.getStack\(\);) N
+(67) # () S 4 T () S 8 T () S 12 T (ImageProcessor ip = tempstack.getProcessor\(i\);) N
+(68) # () S 4 T () S 8 T () S 12 T (ImagePlus impDup =) S
 (new) K
 ( ImagePlus\(") p
 (imgPlus) str
 (",ip\);) p n
-(78) # () S 4 T () S 8 T () S 12 T (IJ.run\(impDup,") S
+(69) # () S 4 T () S 8 T () S 12 T (IJ.run\(impDup,") S
 (Enhance Contrast) str
 (", ") p
 (saturated=0 normalize) str
 ("\);) p n
-(79) # () S 4 T () S 8 T () S 12 T (ip.findEdges\(\);) N
-(80) # () S 4 T () S 8 T () S 12 T (pick\(impDup, i\);) N
-(81) # () S 4 T () S 8 T (}) N
-(82) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(83) # () S 4 T () S 8 T (cropMode = hashAttributes.get\(") S
+(70) # () S 4 T () S 8 T () S 12 T (ip.findEdges\(\);) N
+(71) # () S 4 T () S 8 T () S 12 T (pick\(impDup, i\);) N
+(72) # () S 4 T () S 8 T (}) N
+(73) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(74) # () S 4 T () S 8 T (cropMode = hashAttributes.get\(") S
 (crop) str
 ("\);) p n
-(84) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
-(85) # () S 4 T () S 8 T () S
+(75) # () S 4 T () S 8 T (cropperMode = Boolean.parseBoolean\(cropMode\);) N
+(76) # () S 4 T () S 8 T () S
 (double) k
 ([][]array = resultConverter\(\);) p n
-(86) # () S 4 T () S 8 T () S
+(77) # () S 4 T () S 8 T () S
 (if) K
 ( \(cropperMode\) {) p n
-(87) # () S 4 T () S 8 T () S 12 T (cropper = ) S
+(78) # () S 4 T () S 8 T () S 12 T (cropper = ) S
 (new) K
 ( Cropper\(imgBlocked, array\);) p n
-(88) # () S 4 T () S 8 T (}) N
-(89) # () S 4 T () S 8 T () S
+(79) # () S 4 T () S 8 T (}) N
+(80) # () S 4 T () S 8 T () S
 (return) K
 ( array;) p n
-(90) # () S 4 T (}) N
-(91) # () S 4 T () N
-(92) # () S 4 T () S
+(81) # () S 4 T (}) N
+(82) # () S 4 T () N
+(83) # () S 4 T () S
 (public) K
 ( ) p
 (static) K
@@ -2958,132 +2888,151 @@ x0 y0 moveto
 ( pick\(ImagePlus image,) p
 (int) k
 ( currentslice\){) p n
-(93) # () S 4 T () S 8 T (z = \() S
+(84) # () S 4 T () S 8 T (z = \() S
 (double) k
 (\) currentslice;) p n
-(94) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
-(95) # () S 4 T () S 8 T (String rMin = hashAttributes.get\(") S
+(85) # () S 4 T () S 8 T (Hashtable<String, String> hashAttributes = Attributes.getAttributes\(\);) N
+(86) # () S 4 T () S 8 T (String rMin = hashAttributes.get\(") S
 (rMin) str
 ("\);) p n
-(96) # () S 4 T () S 8 T (String rMax = hashAttributes.get\(") S
+(87) # () S 4 T () S 8 T (String rMax = hashAttributes.get\(") S
 (rMax) str
 ("\);) p n
-(97) # () S 4 T () S 8 T (String rInc = hashAttributes.get\(") S
+(88) # () S 4 T () S 8 T (String rInc = hashAttributes.get\(") S
 (rInc) str
 ("\);) p n
-(98) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
+(89) # () S 4 T () S 8 T (noiseT = hashAttributes.get\(") S
 (noise) str
 ("\);) p n
-(99) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
-(100) # () S 4 T () S 8 T (ResultsTable table = ) S
+(90) # () S 4 T () S 8 T (tolerance = Double.parseDouble\(noiseT\);) N
+(91) # () S 4 T () S 8 T (ResultsTable table = ) S
 (new) K
 ( ResultsTable\(\);) p n
-(101) # () S 4 T () S 8 T (MaximumFinder mf = ) S
+(92) # () S 4 T () S 8 T (MaximumFinder mf = ) S
 (new) K
 ( MaximumFinder\(\);) p n
-(102) # () S 4 T () S 8 T () S
+(93) # () S 4 T () S 8 T () S
 (boolean) k
 ( excludeOnEdges = ) p
 (false) k
 (;) p n
-(103) # () S 4 T () S 8 T () S
+(94) # () S 4 T () S 8 T () S
 (int) k
 ( w = image.getWidth\(\); ) p
 (//image width) c n
-(104) # () S
+(95) # () S
 () p 4 T () S 8 T () S
 (int) k
 ( h = image.getHeight\(\); ) p
 (//image heigh) c n
-(105) # () S
+(96) # () S
 () p 4 T () S 8 T () S
 (int) k
 ( radiusMin = Integer.parseInt\(rMin\); ) p
 (//radius min of the draw circule) c n
-(106) # () S
+(97) # () S
 () p 4 T () S 8 T () S
 (int) k
 ( radiusMax = Integer.parseInt\(rMax\); ) p
 (//radius max of the draw circule) c n
-(107) # () S
+(98) # () S
 () p 4 T () S 8 T () S
 (int) k
 ( radiusInc = Integer.parseInt\(rInc\); ) p
 (//radius incrementation) c n
-(108) # () S
+(99) # () S
 () p 4 T () S 8 T () S
 (// Creation of an image which contains a circle with different diameters) c n
-(109) # () S
+(100) # () S
 () p 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( radius=radiusMin; radius<=radiusMax; radius=radius+radiusInc\){) p n
-(110) # () S 4 T () S 8 T () S 12 T (ImagePlus imp = IJ.createImage\(") S
+(101) # () S 4 T () S 8 T () S 12 T (ImagePlus imp = IJ.createImage\(") S
 (circle) str
 (", ") p
 (8-bit White) str
 (", w, h, 1\);) p n
-(111) # () S 4 T () S 8 T () S 12 T (imp.setRoi\() S
+(102) # () S 4 T () S 8 T () S 12 T (imp.setRoi\() S
 (new) K
 ( OvalRoi\(\(w/2\)-radius, \(h/2\)-radius, radius*2, radius*) p n
 0 T (2\)\);) N
-(112) # () S 4 T () S 8 T () S 12 T (IJ.run\(imp, ") S
+(103) # () S 4 T () S 8 T () S 12 T (IJ.run\(imp, ") S
 (Draw) str
 (", ""\);) p n
-(113) # () S 4 T () S 8 T () S 12 T (ImagePlus result = FFTMath.doMath\(image,imp\);) N
-(114) # () S 4 T () S 8 T () S 12 T (ImageProcessor ip = result.getProcessor\(\);) N
-(115) # () S 4 T () S 8 T () S 12 T (ip.invert\(\);) N
-(116) # () S 4 T () S 8 T () S 12 T (WindowManager.setTempCurrentImage\(result\);) N
-(117) # () S 4 T () S 8 T () S 12 T (IJ.run\(result,") S
+(104) # () S 4 T () S 8 T () S 12 T (ImagePlus result = FFTMath.doMath\(image,imp\);) N
+(105) # () S 4 T () S 8 T () S 12 T (ImageProcessor ip = result.getProcessor\(\);) N
+(106) # () S 4 T () S 8 T () S 12 T (ip.invert\(\);) N
+(107) # () S 4 T () S 8 T () S 12 T (WindowManager.setTempCurrentImage\(result\);) N
+(108) # () S 4 T () S 8 T () S 12 T (IJ.run\(result,") S
 (Enhance Contrast) str
 (", ") p
 (saturated=0 normalize) str
 ("\);) p n
-(118) # () S 4 T () S 8 T () S 12 T (Polygon points = mf.getMaxima\(ip, tolerance, excludeOnEdges\);) N
-(119) # () S 4 T () S 8 T () S 12 T () S
+(109) # () S 4 T () S 8 T () S 12 T (Polygon points = mf.getMaxima\(ip, tolerance, excludeOnEdges\);) N
+(110) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ([] xArray = points.xpoints;) p n
-(120) # () S 4 T () S 8 T () S 12 T () S
+(111) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ([] yArray = points.ypoints;) p n
-(121) # () S 4 T () S 8 T () S 12 T () S
+(112) # () S 4 T () S 8 T () S 12 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i<xArray.length; i++\){) p n
-(122) # () S 4 T () S 8 T () S 12 T () S 16 T (table.incrementCounter\(\);) N
-(123) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(113) # () S 4 T () S 8 T () S 12 T () S 16 T (table.incrementCounter\(\);) N
+(114) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (double) k
 ( tempx=\() p
 (double) k
 (\)xArray[i];) p n
-(124) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(115) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (double) k
 ( tempy=\() p
 (double) k
 (\)yArray[i];) p n
-(125) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(116) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (int) k
 ( pxValue= \() p
 (int) k
 (\) ip.getPixelValue\(xArray[i],yArray[i]\);) p n
-(126) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
+(117) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
 (X) str
 (",tempx\);) p n
-(127) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
+(118) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
 (Y) str
 (",tempy\);) p n
-(128) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
+(119) # () S 4 T () S 8 T () S 12 T () S 16 T (table.addValue\(") S
 (Max) str
 (",pxValue\);) p n
-(129) # () S 4 T () S 8 T () S 12 T (}) N
-(130) # () S 4 T () S 8 T () S 12 T (result.close\(\);) N
-(Pick_EM-graphique) (Page 2/4) (mai 18, 12 15:47) title
+(120) # () S 4 T () S 8 T () S 12 T (}) N
+(121) # () S 4 T () S 8 T () S 12 T (result.close\(\);) N
+(122) # () S 4 T () S 8 T () S 12 T () S
+(for) K
+(\() p
+(int) k
+( i=0;i<xArray.length;i++\){) p n
+(123) # () S 4 T () S 8 T () S 12 T () S 16 T (System.out.println\(xArray[i]\);) N
+(124) # () S 4 T () S 8 T () S 12 T (}) N
+(125) # () S 4 T () S 8 T (}) N
+(126) # () S 4 T () S 8 T (sort\(table,imgBlocked\);) N
+(127) # () S 4 T (}) N
+(128) # () S 4 T () N
+(129) # () S 4 T () S
+(static) K
+( ) p
+(void) k
+( sort\(ResultsTable table,ImagePlus image\){) p n
+(130) # () S 4 T () S 8 T () S
+(int) k
+( counter = table.getCounter\(\);) p n
+(Pick_EM-graphique) (Page 2/4) (mai 19, 12 14:10) title
 border
 grestore
 (Printed by tomo) rhead
-(ImCorr.java) (8/18) (vendredi mai 18, 2012) footer
+(ImCorr.java) (8/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
@@ -3099,185 +3048,159 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(131) # () p 4 T () S 8 T () S 12 T () S
-(for) K
-(\() p
-(int) k
-( i=0;i<xArray.length;i++\){) p n
-(132) # () S 4 T () S 8 T () S 12 T () S 16 T (System.out.println\(xArray[i]\);) N
-(133) # () S 4 T () S 8 T () S 12 T () S 16 T () N
-(134) # () S 4 T () S 8 T () S 12 T (}) N
-(135) # () S 4 T () S 8 T (}) N
-(136) # () S 4 T () S 8 T (sort\(table,imgBlocked\);) N
-(137) # () S 4 T (}) N
-(138) # () S 4 T () N
-(139) # () S 4 T () S
-(static) K
-( ) p
-(void) k
-( sort\(ResultsTable table,ImagePlus image\){) p n
-(140) # () S 4 T () S 8 T () S
-(int) k
-( counter = table.getCounter\(\);) p n
-(141) # () S 4 T () S 8 T () S
+(131) # () p 4 T () S 8 T () S
 (int) k
 ( []list = ) p
 (new) K
 ( ) p
 (int) k
 ( [counter];) p n
-(142) # () S 4 T () S 8 T () S
+(132) # () S 4 T () S 8 T () S
 (int) k
 ( []check = ) p
 (new) K
 ( ) p
 (int) k
 ([counter];) p n
-(143) # () S 4 T () S 8 T () S
+(133) # () S 4 T () S 8 T () S
 (int) k
 ( lenlist = 0;) p n
-(144) # () S 4 T () S 8 T () S
+(134) # () S 4 T () S 8 T () S
 (int) k
 ( nb = 0;) p n
-(145) # () S 4 T () S 8 T () S
+(135) # () S 4 T () S 8 T () S
 (int) k
 ( iterator = counter-1;) p n
-(146) # () S 4 T () N
-(147) # () S 4 T () S 8 T () S
+(136) # () S 4 T () N
+(137) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( j=iterator;j>=0;j--\){) p n
-(148) # () S 4 T () S 8 T () S 12 T () S
+(138) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( yetcheck = 0;) p n
-(149) # () S 4 T () S 8 T () S 12 T () S
+(139) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( maxval = j;) p n
-(150) # () S 4 T () S 8 T () S 12 T () S
+(140) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( cpt = 0;) p n
-(151) # () S 4 T () S 8 T () S 12 T () S
+(141) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( xj = table.getValue\(") p
 (X) str
 (",j\);) p n
-(152) # () S 4 T () S 8 T () S 12 T () S
+(142) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( yj = table.getValue\(") p
 (Y) str
 (",j\);) p n
-(153) # () S 4 T () S 8 T () S 12 T () S
+(143) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( maxj = table.getValue\(") p
 (Max) str
 (",j\);) p n
-(154) # () S 4 T () N
-(155) # () S 4 T () S 8 T () S 12 T () S
+(144) # () S 4 T () N
+(145) # () S 4 T () S 8 T () S 12 T () S
 (for) K
 ( \() p
 (int) k
 ( iter=0; iter<nb; iter++\){) p n
-(156) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(146) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 (\( j == check[iter]\){) p n
-(157) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (yetcheck = 1;) N
-(158) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
-(159) # () S 4 T () S 8 T () S 12 T (}) S 16 T () N
-(160) # () S 4 T () N
-(161) # () S 4 T () S 8 T () S 12 T () S
+(147) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (yetcheck = 1;) N
+(148) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(149) # () S 4 T () S 8 T () S 12 T (}) S 16 T () N
+(150) # () S 4 T () N
+(151) # () S 4 T () S 8 T () S 12 T () S
 (if) K
 (\(yetcheck == 0\){) p n
-(162) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(152) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (for) K
 ( \() p
 (int) k
 ( k=iterator;k>=0;k--\){) p n
-(163) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(153) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (double) k
 ( xk = table.getValue\(") p
 (X) str
 (",k\);) p n
-(164) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(154) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (double) k
 ( yk = table.getValue\(") p
 (Y) str
 (",k\);) p n
-(165) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(155) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (double) k
 ( maxk = table.getValue\(") p
 (Max) str
 (",k\);) p n
-(166) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(156) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (if) K
 ( \(\(xk<=xj+40 && xk>=xj-40\) && \(yk<=yj+40 && yk>=yj-40\) \){) p n
-(167) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(157) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (int) k
 ( cont = 0;) p n
-(168) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(158) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (for) K
 ( \() p
 (int) k
 ( p=0;p<nb;p++\){) p n
-(169) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
+(159) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
 (if) K
 ( \(check[p] == k\){cont += 1;}) p n
-(170) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
-(171) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(160) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
+(161) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (if) K
 ( \(cont == 0\){) p n
-(172) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (check[nb] = k;) N
-(173) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (nb ++;) N
-(174) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
-(175) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(162) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (check[nb] = k;) N
+(163) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (nb ++;) N
+(164) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
+(165) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (if) K
 ( \(maxj < maxk\){maxval = k;}) p n
-(176) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(166) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (else) K
 ( ) p
 (if) K
 (\(maxj > maxk\){) p n
-(177) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (maxval = j;) N
-(178) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (}) N
-(179) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(167) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (maxval = j;) N
+(168) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (}) N
+(169) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (else) K
 ({) p n
-(180) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
+(170) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
 (if) K
 ( \(j != k\){) p n
-(181) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T (maxval = j;) N
-(182) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T (}) N
-(183) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (}) N
-(184) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
-(185) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(186) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(171) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T (maxval = j;) N
+(172) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (}) N
+(173) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
+(174) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
+(175) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(176) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (for) K
 ( \() p
 (int) k
 ( q = 0; q<lenlist; q++\){) p n
-(187) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(177) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (if) K
 ( \(maxval == list[q]\){cpt+=1;}) p n
-(188) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(189) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(178) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(179) # () S 4 T () S 8 T () S 12 T () S 16 T () S
 (if) K
 ( \(cpt == 0\){) p n
-(190) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (list[lenlist] = maxval;) N
-(191) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (lenlist++;) N
-(192) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(193) # () S 4 T () S 8 T () S 12 T (}) N
-(194) # () S 4 T () S 8 T () S 12 T (iterator --;) N
-(195) # () S 4 T () S 8 T (}) N
-(196) # () S 4 T () S 8 T (results\(list,table,lenlist,image\);) N
-(Pick_EM-graphique) (Page 3/4) (mai 18, 12 15:47) title
-border
-/v 1 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(197) # () p 4 T (}) N
-(198) # () S 4 T () N
-(199) # () S 4 T () S
+(180) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (list[lenlist] = maxval;) N
+(181) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (lenlist++;) N
+(182) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(183) # () S 4 T () S 8 T () S 12 T (}) N
+(184) # () S 4 T () S 8 T () S 12 T (iterator --;) N
+(185) # () S 4 T () S 8 T (}) N
+(186) # () S 4 T () S 8 T (results\(list,table,lenlist,image\);) N
+(187) # () S 4 T (}) N
+(188) # () S 4 T () N
+(189) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
@@ -3287,138 +3210,144 @@ x0 y0 moveto
 (int) k
 ( lenlist,ImagePlus ima) p n
 0 T (ge\){) N
-(200) # () S 4 T () N
-(201) # () S 4 T () S 8 T () S
+(190) # () S 4 T () N
+(191) # () S 4 T () S 8 T () S
 (int) k
 ( []xpoints = ) p
 (new) K
 ( ) p
 (int) k
 ([lenlist];) p n
-(202) # () S 4 T () S 8 T () S
+(192) # () S 4 T () S 8 T () S
 (int) k
 ( []ypoints = ) p
 (new) K
 ( ) p
 (int) k
 ([lenlist];) p n
-(203) # () S 4 T () S 8 T () N
-(204) # () S 4 T () S 8 T () S
+(193) # () S 4 T () S 8 T () N
+(194) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( l=0; l<lenlist; l++\){) p n
-(205) # () S 4 T () S 8 T () S 12 T () S
+(195) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( line2 = list[l];) p n
-(206) # () S 4 T () S 8 T () S 12 T () S
+(Pick_EM-graphique) (Page 3/4) (mai 19, 12 14:10) title
+border
+/v 1 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(196) # () p 4 T () S 8 T () S 12 T () S
 (double) k
 ( x = table.getValue\(") p
 (X) str
 (",line2\);) p n
-(207) # () S 4 T () S 8 T () S 12 T () S
+(197) # () S 4 T () S 8 T () S 12 T () S
 (double) k
 ( y = table.getValue\(") p
 (Y) str
 (",line2\);) p n
-(208) # () S 4 T () S 8 T () S 12 T (xtab.add\(x\);) N
-(209) # () S 4 T () S 8 T () S 12 T (ytab.add\(y\);) N
-(210) # () S 4 T () S 8 T () S 12 T (slice.add\(z\);) N
-(211) # () S 4 T () S 8 T () S 12 T () S
+(198) # () S 4 T () S 8 T () S 12 T (xtab.add\(x\);) N
+(199) # () S 4 T () S 8 T () S 12 T (ytab.add\(y\);) N
+(200) # () S 4 T () S 8 T () S 12 T (slice.add\(z\);) N
+(201) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( xx = \() p
 (int) k
 (\) x;) p n
-(212) # () S 4 T () S 8 T () S 12 T () S
+(202) # () S 4 T () S 8 T () S 12 T () S
 (int) k
 ( yy = \() p
 (int) k
 (\) y;) p n
-(213) # () S 4 T () S 8 T () S 12 T (xpoints[l] = xx;) N
-(214) # () S 4 T () S 8 T () S 12 T (ypoints[l] = yy;) N
-(215) # () S 4 T () S 8 T () S 12 T (image.setRoi\() S
+(203) # () S 4 T () S 8 T () S 12 T (xpoints[l] = xx;) N
+(204) # () S 4 T () S 8 T () S 12 T (ypoints[l] = yy;) N
+(205) # () S 4 T () S 8 T () S 12 T (image.setRoi\() S
 (new) K
 ( PointRoi\(xpoints,ypoints,lenlist\)\);) p n
-(216) # () S 4 T () S 8 T (}) N
-(217) # () S 4 T (}) N
-(218) # () S 4 T () N
-(219) # () S 4 T () S
+(206) # () S 4 T () S 8 T (}) N
+(207) # () S 4 T (}) N
+(208) # () S 4 T () N
+(209) # () S 4 T () S
 (static) K
 ( ) p
 (double) k
 ([][] resultConverter\(\){) p n
-(220) # () S 4 T () S
+(210) # () S 4 T () S 8 T () S
 (int) k
 ( arrayLength = xtab.size\(\);) p n
-(221) # () S 4 T (Object[] tempX = ) S
+(211) # () S 4 T () S 8 T (Object[] tempX = ) S
 (new) K
 ( String[arrayLength];) p n
-(222) # () S 4 T (Object[] tempY = ) S
+(212) # () S 4 T () S 8 T (Object[] tempY = ) S
 (new) K
 ( String[arrayLength];) p n
-(223) # () S 4 T (Object[] tempZ = ) S
+(213) # () S 4 T () S 8 T (Object[] tempZ = ) S
 (new) K
 ( String[arrayLength];) p n
-(224) # () S 4 T (tempX = xtab.toArray\(\);) N
-(225) # () S 4 T (tempY = ytab.toArray\(\);) N
-(226) # () S 4 T (tempZ = slice.toArray\(\);) N
-(227) # () S 4 T () S
+(214) # () S 4 T () S 8 T (tempX = xtab.toArray\(\);) N
+(215) # () S 4 T () S 8 T (tempY = ytab.toArray\(\);) N
+(216) # () S 4 T () S 8 T (tempZ = slice.toArray\(\);) N
+(217) # () S 4 T () S 8 T () S
 (double) k
 ([] xArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(228) # () S 4 T () S
+(218) # () S 4 T () S 8 T () S
 (double) k
 ([] yArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(229) # () S 4 T () S
+(219) # () S 4 T () S 8 T () S
 (double) k
 ([] zArray = ) p
 (new) K
 ( ) p
 (double) k
 ([arrayLength];) p n
-(230) # () S 4 T () S
+(220) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i < arrayLength; i++\){) p n
-(231) # () S 4 T (String temp = String.valueOf\(tempX[i]\);) N
-(232) # () S 4 T (xArray[i] = Double.parseDouble\(temp\);) N
-(233) # () S 4 T (temp = String.valueOf\(tempY[i]\);) N
-(234) # () S 4 T (yArray[i] = Double.parseDouble\(temp\);) N
-(235) # () S 4 T (temp = String.valueOf\(tempZ[i]\);) N
-(236) # () S 4 T (zArray[i] = Double.parseDouble\(temp\);) N
-(237) # () S 4 T (}) N
-(238) # () S 4 T () S
+(221) # () S 4 T () S 8 T () S 12 T (String temp = String.valueOf\(tempX[i]\);) N
+(222) # () S 4 T () S 8 T () S 12 T (xArray[i] = Double.parseDouble\(temp\);) N
+(223) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempY[i]\);) N
+(224) # () S 4 T () S 8 T () S 12 T (yArray[i] = Double.parseDouble\(temp\);) N
+(225) # () S 4 T () S 8 T () S 12 T (temp = String.valueOf\(tempZ[i]\);) N
+(226) # () S 4 T () S 8 T () S 12 T (zArray[i] = Double.parseDouble\(temp\);) N
+(227) # () S 4 T () S 8 T (}) N
+(228) # () S 4 T () S 8 T () S
 (double) k
 ([][] coordinates = ) p
 (new) K
 ( ) p
 (double) k
 ([3][arrayLength];) p n
-(239) # () S 4 T (coordinates[0] = xArray;) N
-(240) # () S 4 T (coordinates[1] = yArray;) N
-(241) # () S 4 T (coordinates[2] = zArray;) N
-(242) # () S 4 T () S
+(229) # () S 4 T () S 8 T (coordinates[0] = xArray;) N
+(230) # () S 4 T () S 8 T (coordinates[1] = yArray;) N
+(231) # () S 4 T () S 8 T (coordinates[2] = zArray;) N
+(232) # () S 4 T () S 8 T () S
 (return) K
 ( coordinates;) p n
-(243) # () S 4 T (}) N
-(244) # (}) S
-(Pick_EM-graphique) (Page 4/4) (mai 18, 12 15:47) title
+(233) # () S 4 T (}) N
+(234) # (}) S
+(Pick_EM-graphique) (Page 4/4) (mai 19, 12 14:10) title
 border
 grestore
 (Printed by tomo) rhead
-(ImCorr.java) (9/18) (vendredi mai 18, 2012) footer
+(ImCorr.java) (9/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
-%%Page: (1-2) 10
+%%Page: (1,1) 10
 %%BeginPageSetup
 /pagesave save def
 sh 0 translate 90 rotate
@@ -3449,12 +3378,11 @@ x0 y0 moveto
 (16) # () S
 (import) K
 ( ij.text.*;) p n
-(17) # () N
-(18) # () S
+(17) # () S
 (import) K
 ( java.awt.event.*;) p n
-(19) # () N
-(20) # () S
+(18) # () N
+(19) # () S
 (public) K
 ( ) p
 (class) K
@@ -3463,162 +3391,137 @@ x0 y0 moveto
 ( ) p
 (implements) K
 ( ActionListener{) p n
-(21) # () S 4 T () S
+(20) # () S 4 T () S
+(// This class displays a help about the utilization of the plugin) c n
+(21) # () S
+() p 4 T () N
+(22) # () S 4 T () S
 (private) K
 ( String description=") p
 (HELP ABOUT Pick_EM \(Electron Microscopy\) \\n\\n) str
 ("+) p n
-(22) # () S 4 T () S 8 T (") S
+(23) # () S 4 T () S 8 T (") S
 (This plugin allows to pick particles on cryo-Met images. \\n) str
 ("+) p n
-(23) # () S 4 T () S 8 T (") S
+(24) # () S 4 T () S 8 T (") S
 (choose a picking alorithm;\\n) str
 ("+) p n
-(24) # () S 4 T () S 8 T (") S
+(25) # () S 4 T () S 8 T (") S
 (1\) Click on the button \\"Preview\\" to have an idea of the picking results;\\n) str
 ("+) p n
-(25) # () S 4 T () S 8 T (") S
+(26) # () S 4 T () S 8 T (") S
 (2\) Click on the button \\"Apply\\" to definitively apply modifications to the image;\\n) str
 ("+) p n
-(26) # () S 4 T () S 8 T (") S
+(27) # () S 4 T () S 8 T (") S
 (3\) Click on the button \\"Show Results\\" to see the table which contains the coordinates\\n) str
 ("+) p n
-(27) # () S 4 T () S 8 T (") S
+(28) # () S 4 T () S 8 T (") S
 (    and slices of the selected particles;\\n) str
 ("+) p n
-(28) # () S 4 T () S 8 T (") S
+(29) # () S 4 T () S 8 T (") S
 (\\n) str
-("+) p
-(/*) c n
-(29) # () S 4 T () S 8 T ("A part of parameters are common for each algorithm \(noise tolerance, cr) N
-0 T (op width\) \\n"+) N
-(30) # () S 4 T () S 8 T ("the noise tolerance able to increase the selection precision \\n"+) N
-(31) # () S 4 T () S 8 T (""+*/) N
-(32) # () S
-() p 4 T () S 8 T (") S
+("+) p n
+(30) # () S 4 T () S 8 T (") S
 (All algorithms have common parameters like noise tolerance for the precision of \\n) str
 (" +) p n
-(33) # () S 4 T () S 8 T (") S
+(31) # () S 4 T () S 8 T (") S
 (the particles selection and the square width if you choose to use the crop option. \\n) str
 ("+) p n
-(34) # () S 4 T () S 8 T (") S
+(32) # () S 4 T () S 8 T (") S
 (The debug mode allows the user to see some information message if they're implemented. \\n) str
 (" +) p n
-(35) # () S 4 T () S 8 T (") S
+(33) # () S 4 T () S 8 T (") S
 (The crop mode returns a stack with the selected particles. \\n) str
 (" +) p n
-(36) # () S 4 T () S 8 T (") S
+(34) # () S 4 T () S 8 T (") S
 (\\n) str
 ("+) p n
-(37) # () S 4 T () S 8 T (") S
+(35) # () S 4 T () S 8 T (") S
 (DoG Algorithm : \\n) str
 ("+) p n
-(38) # () S 4 T () S 8 T (") S
+(36) # () S 4 T () S 8 T (") S
 (   This algorithm needs unprocessed stack/dm3 image to do the particles selection. \\n) str
 (" +) p n
-(39) # () S 4 T () S 8 T (") S
+(37) # () S 4 T () S 8 T (") S
 (   Equalization or normalisation are not supported by this algorithm. \\n) str
 ("+) p n
-(40) # () S 4 T () S 8 T (") S
+(38) # () S 4 T () S 8 T (") S
 (   Parameters are sigmas values \(for the filters\).\\n) str
 (" +) p n
-(41) # () S 4 T () S 8 T (") S
+(39) # () S 4 T () S 8 T (") S
 (   Sigma1 must be greater than Sigma2 \\n) str
 (" +) p n
-(42) # () S 4 T () S 8 T (") S
+(40) # () S 4 T () S 8 T (") S
 (\\n) str
 ("+) p n
-(43) # () S 4 T () S 8 T (") S
+(41) # () S 4 T () S 8 T (") S
 (Dilate Difference Algorithm : \\n) str
 ("+) p n
-(44) # () S 4 T () S 8 T (") S
+(42) # () S 4 T () S 8 T (") S
 (   This algorithm needs unprocessed stack or image. \\n) str
 (" +) p n
-(45) # () S 4 T () S 8 T (") S
+(43) # () S 4 T () S 8 T (") S
 (   Parameters are dilate iterations \(for dilation cycles\). \\n) str
 (" +) p n
-(46) # () S 4 T () S 8 T (") S
+(44) # () S 4 T () S 8 T (") S
 (   Dilate iteration image1 must be less than Dilate iteration image2. \\n) str
 (" +) p n
-(47) # () S 4 T () S 8 T (") S
+(45) # () S 4 T () S 8 T (") S
 (\\n) str
 ("+) p n
-(48) # () S 4 T () S 8 T (") S
+(46) # () S 4 T () S 8 T (") S
 (Image Correlation Algorithm : \\n) str
 ("+) p n
-(49) # () S 4 T () S 8 T (") S
+(47) # () S 4 T () S 8 T (") S
 (   This algorithm needs a processed stack or image \(for our trials we used three median filters \(radius 2\), \\) str n
 0 T (n) S
 ("+) p n
-(50) # () S 4 T () S 8 T () S
-(//") c 12 T ( choose radius 2 and apply it twice\)\) \\n" +) N
-(51) # () S
-() p 4 T () S 8 T (") S
+(48) # () S 4 T () S 8 T (") S
 (   Parameters are the differents radius of circles and the radius incrementation for the correlation. \\n ) str
 (" +) p n
-(52) # () S 4 T () S 8 T (") S
+(49) # () S 4 T () S 8 T (") S
 (\\n) str
 ("+) p n
-(53) # () S 4 T () S 8 T (") S
+(50) # () S 4 T () S 8 T (") S
 (TO ADD AN NEW ALGORITHM TO THIS PLUGIN : \\n) str
 ("+) p n
-(54) # () S 4 T () S 8 T (") S
+(51) # () S 4 T () S 8 T (") S
 (   See the file named AddAlgoPickEM.pdf. \\n) str
 (" +) p n
-(55) # () S 4 T () S 8 T (") S
+(52) # () S 4 T () S 8 T (") S
 (ABOUT THE AUTHORS\\n) str
 ("+) p n
-(56) # () S 4 T () S 8 T (") S
+(53) # () S 4 T () S 8 T (") S
 (   This plugin was created by Thomas Faux, Charlotte H\303\251ric\303\251, Typhaine Paysan-Lafosse and Joris Sa) str n
 0 T (nsen \\n) S
 ("+ ) p n
-(57) # () S 4 T () S 8 T (") S
+(54) # () S 4 T () S 8 T (") S
 (   Co-working with Pr. Jean-Christophe Taveau.\\n) str
 (";) p n
-(58) # () N
-(59) # () S 4 T () S
+(55) # () N
+(56) # () S 4 T () S
 (public) K
 ( ) p
 (void) k
 ( actionPerformed\(ActionEvent e\) {) p n
-(60) # () S 4 T () S 8 T (StringBuffer sb = ) S
+(57) # () S 4 T () S 8 T (StringBuffer sb = ) S
 (new) K
 ( StringBuffer\(\);) p n
-(61) # () S 4 T () S 8 T (sb.append\(description\);) N
-(62) # () S 4 T () S 8 T (TextWindow tw = ) S
+(58) # () S 4 T () S 8 T (sb.append\(description\);) N
+(59) # () S 4 T () S 8 T (TextWindow tw = ) S
 (new) K
 ( TextWindow\(") p
 (About \\"Pick_EM\\") str
 (", sb.toString\(\), 800, 400) p n
-(Pick_EM-graphique) (Page 1/2) (mai 18, 12 15:47) title
-border
-/v 1 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-0 T (\);) p n
-(63) # () S 4 T () S 8 T (tw.setVisible\() S
+0 T (\);) N
+(60) # () S 4 T () S 8 T (tw.setVisible\() S
 (true) k
 (\);) p n
-(64) # () S 4 T (}) N
-(65) # (}) N
-(Pick_EM-graphique) (Page 2/2) (mai 18, 12 15:47) title
+(61) # () S 4 T (}) N
+(62) # (}) S
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 14:22) title
 border
-grestore
-(Printed by tomo) rhead
-(InfoHelp.java) (10/18) (vendredi mai 18, 2012) footer
-end % of iso1dict
-pagesave restore
-showpage
-%%Page: (1-2) 11
-%%BeginPageSetup
-/pagesave save def
-sh 0 translate 90 rotate
-%%EndPageSetup
-iso1dict begin
-gsave
-llx lly 12 add translate
-/v 0 store
+/v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
@@ -3638,27 +3541,28 @@ x0 y0 moveto
 (13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
-(16) # () S
+(16) # () N
+(17) # () S
 (import) K
 ( java.awt.Dimension;) p n
-(17) # () N
-(18) # () S
-(import) K
-( javax.swing.JCheckBox;) p n
+(18) # () N
 (19) # () S
 (import) K
-( javax.swing.JLabel;) p n
+( javax.swing.JCheckBox;) p n
 (20) # () S
 (import) K
-( javax.swing.JPanel;) p n
+( javax.swing.JLabel;) p n
 (21) # () S
 (import) K
+( javax.swing.JPanel;) p n
+(22) # () S
+(import) K
 ( javax.swing.JTextField;) p n
-(22) # () N
-(23) # (@SuppressWarnings\(") S
+(23) # () N
+(24) # (@SuppressWarnings\(") S
 (serial) str
 ("\)) p n
-(24) # () S
+(25) # () S
 (public) K
 ( ) p
 (class) K
@@ -3667,435 +3571,55 @@ x0 y0 moveto
 ( ) p
 (extends) K
 ( PickPanel {) p n
-(25) # () N
-(26) # () S 4 T () S
+(26) # () N
+(27) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String setpointNoise = ") p
 (Noise tolerance : ) str
 (";) p n
-(27) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String toleranceNoise;) p n
 (28) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( String dilateIt1;) p n
+( String toleranceNoise;) p n
 (29) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String dilateIt1;) p n
+(30) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String setpointIteration1 = ") p
 (Dilate iteration image1 : ) str
 (";) p n
-(30) # () S 4 T () S
+(31) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String dilateIt2;) p n
-(31) # () S 4 T () S
+(32) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String setpointIteration2 = ") p
 (Dilate iteration image2 : ) str
 (";) p n
-(32) # () S 4 T () S
+(33) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String widthCrop;) p n
-(33) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointWidth = ") p
-(Square width : ) str
-(";) p n
-(34) # () S 4 T () N
-(35) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JCheckBox debugMode;) p n
-(36) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JCheckBox cropperMode;) p n
-(37) # () N
-(38) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JTextField iteration1JTF;) p n
-(39) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JTextField iteration2JTF;) p n
-(40) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JTextField noiseToleranceJTF;) p n
-(41) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JTextField cropWidthJTF;) p n
-(42) # () N
-(43) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel orderIteration1;) p n
-(44) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel orderIteration2;) p n
-(45) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel orderNoise;) p n
-(46) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel orderWidth;) p n
-(47) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel helpImage;) p n
-(48) # () S 4 T () N
-(49) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel infoPanel;) p n
-(50) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel iterationPanel;) p n
-(51) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel widthNoisePanel;) p n
-(52) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel debugCropPanel;) p n
-(53) # () S 4 T () N
-(54) # () S 4 T (PanelDilateDiff\(\) {) N
-(55) # () S 4 T () S 8 T () S
-(super) K
-(\(\);) p n
-(56) # () S 4 T (}) N
-(57) # () S 4 T () S
-(static) K
-( JPanel create\(\){) p n
-(58) # () S 4 T () S 8 T () S
-(// Creations of subpanels) c n
-(59) # () S
-() p 4 T () S 8 T (infoPanel = ) S
-(new) K
-( JPanel\(\);) p n
-(60) # () S 4 T () S 8 T (infoPanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(61) # () S 4 T () S 8 T (iterationPanel = ) S
-(new) K
-( JPanel\(\);) p n
-(62) # () S 4 T () S 8 T (iterationPanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(63) # () S 4 T () S 8 T (widthNoisePanel = ) S
-(new) K
-( JPanel\(\);) p n
-(64) # () S 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(65) # () S 4 T () S 8 T (debugCropPanel = ) S
-(new) K
-( JPanel\(\);) p n
-(Pick_EM-graphique) (Page 1/2) (mai 16, 12 10:13) title
-border
-/v 1 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(66) # () p 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(67) # () S 4 T () S 8 T () S
-(// Instructions) c n
-(68) # () S
-() p 4 T () S 8 T (helpImage = ) S
-(new) K
-( JLabel\(") p
-( Alorithm optimized for Blobs ) str
-(", JLabel.CENTER\);) p n
-(69) # () S 4 T () S 8 T (orderIteration1 = ) S
-(new) K
-( JLabel\(setpointIteration1\);) p n
-(70) # () S 4 T () S 8 T (orderIteration2 = ) S
-(new) K
-( JLabel\(setpointIteration2\);) p n
-(71) # () S 4 T () S 8 T (orderWidth = ) S
-(new) K
-( JLabel\(setpointWidth\);) p n
-(72) # () S 4 T () S 8 T (orderNoise = ) S
-(new) K
-( JLabel\(setpointNoise\);) p n
-(73) # () S 4 T () S 8 T () S
-(// Values as default) c n
-(74) # () S
-() p 4 T () S 8 T (iteration1JTF = ) S
-(new) K
-( JTextField\(") p
-(1) str
-(",3\);) p n
-(75) # () S 4 T () S 8 T (iteration2JTF = ) S
-(new) K
-( JTextField\(") p
-(2) str
-(",3\);) p n
-(76) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
-(new) K
-( JTextField\(") p
-(3) str
-(",3\);) p n
-(77) # () S 4 T () S 8 T (cropWidthJTF = ) S
-(new) K
-( JTextField\(") p
-(100) str
-(",4\);) p n
-(78) # () S 4 T () S 8 T () S
-(// Chekbox for the debug mode and the cropper) c n
-(79) # () S
-() p 4 T () S 8 T (debugMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Debug) str
-(" \); ) p n
-(80) # () S 4 T () S 8 T (cropperMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Crop) str
-(" \);) p n
-(81) # () S 4 T () S 8 T () S
-(// Adding attributes to the panels) c n
-(82) # () S
-() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
-(83) # () S 4 T () S 8 T (iterationPanel.add\(orderIteration1\);) N
-(84) # () S 4 T () S 8 T (iterationPanel.add\(iteration1JTF\);) N
-(85) # () S 4 T () S 8 T (iterationPanel.add\(orderIteration2\);) N
-(86) # () S 4 T () S 8 T (iterationPanel.add\(iteration2JTF\);) N
-(87) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
-(88) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
-(89) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
-(90) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
-(91) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
-(92) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
-(93) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
-(94) # () S 4 T () S 8 T (panel2.add\(iterationPanel\);) N
-(95) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
-(96) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
-(97) # () S 4 T () S 8 T () S
-(return) K
-( panel2;) p n
-(98) # () S 4 T (}) N
-(99) # () S 4 T () S
-(public) K
-( ) p
-(static) K
-( ) p
-(void) k
-( setAttributes\(\){) p n
-(100) # () S 4 T () S 8 T () S
-(// Getting data entered by user) c n
-(101) # () S
-() p 4 T () S 8 T (dilateIt1 = iteration1JTF.getText\(\);) N
-(102) # () S 4 T () S 8 T (dilateIt2 = iteration2JTF.getText\(\);) N
-(103) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
-(104) # () S 4 T () S 8 T (widthCrop = cropWidthJTF.getText\(\);) N
-(105) # () S 4 T () S 8 T () N
-(106) # () S 4 T () S 8 T () S
-(if) K
-( \(debugMode.isSelected\(\)\) {) p n
-(107) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(true) str
-("\);) p n
-(108) # () S 4 T () S 8 T (}) N
-(109) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(110) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(false) str
-("\);) p n
-(111) # () S 4 T () S 8 T (}) N
-(112) # () S 4 T () S 8 T () N
-(113) # () S 4 T () S 8 T () S
-(if) K
-( \(cropperMode.isSelected\(\)\) {) p n
-(114) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(true) str
-("\);) p n
-(115) # () S 4 T () S 8 T (}) N
-(116) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(117) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(false) str
-("\);) p n
-(118) # () S 4 T () S 8 T (}) N
-(119) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(iter1) str
-(", dilateIt1\);) p n
-(120) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(iter2) str
-(", dilateIt2\);) p n
-(121) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(squareWidth) str
-(", widthCrop\);) p n
-(122) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(noise) str
-(", toleranceNoise\);) p n
-(123) # () S 4 T (}) N
-(124) # (}) N
-(Pick_EM-graphique) (Page 2/2) (mai 16, 12 10:13) title
-border
-grestore
-(Printed by tomo) rhead
-(PanelDilateDiff.java) (11/18) (vendredi mai 18, 2012) footer
-end % of iso1dict
-pagesave restore
-showpage
-%%Page: (1-2) 12
-%%BeginPageSetup
-/pagesave save def
-sh 0 translate 90 rotate
-%%EndPageSetup
-iso1dict begin
-gsave
-llx lly 12 add translate
-/v 0 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(1) # (/*) c n
-(2) # (*Copyright \(C\) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANS) N
-0 T (EN Joris) N
-(3) # (*This file is part of Pick_EM program) N
-(4) # (*Pick_EM is free software; you can redistribute it and/or modify) N
-(5) # (*it under the terms of the GNU General Public License as published by) N
-(6) # (*the Free Software Foundation; either version 2 of the License, or) N
-(7) # (*\(at your option\) any later version.) N
-(8) # (*This program is distributed in the hope that it will be useful,) N
-(9) # (*but WITHOUT ANY WARRANTY; without even the implied warranty of) N
-(10) # (*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the) N
-(11) # (*GNU General Public License for more details.) N
-(12) # (*You should have received a copy of the GNU General Public License along) N
-(13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
-(14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
-(15) # (*/) N
-(16) # () S
-(import) K
-( java.awt.Dimension;) p n
-(17) # () N
-(18) # () S
-(import) K
-( javax.swing.JCheckBox;) p n
-(19) # () S
-(import) K
-( javax.swing.JLabel;) p n
-(20) # () S
-(import) K
-( javax.swing.JPanel;) p n
-(21) # () S
-(import) K
-( javax.swing.JTextField;) p n
-(22) # () N
-(23) # (@SuppressWarnings\({ ") S
-(serial) str
-("}\)) p n
-(24) # () N
-(25) # () S
-(public) K
-( ) p
-(class) K
-( ) p
-(PanelDoG) L
-( ) p
-(extends) K
-( PickPanel {) p n
-(26) # () N
-(27) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointS1 = ") p
-(Sigma 1 : ) str
-(";) p n
-(28) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointS2 = ") p
-(Sigma 2 : ) str
-(";) p n
-(29) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointWidth = ") p
-(Square width : ) str
-(";) p n
-(30) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointNoise = ") p
-(Noise tolerance : ) str
-(";) p n
-(31) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String sig1;) p n
-(32) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String sig2;) p n
-(33) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String widthSquare;) p n
 (34) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( String toleranceNoise;) p n
+( String setpointWidth = ") p
+(Square width : ) str
+(";) p n
 (35) # () S 4 T () N
 (36) # () S 4 T () S
 (private) K
@@ -4107,17 +3631,17 @@ x0 y0 moveto
 ( ) p
 (static) K
 ( JCheckBox cropperMode;) p n
-(38) # () S 4 T () N
+(38) # () N
 (39) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField sigma1JTF;) p n
+( JTextField iteration1JTF;) p n
 (40) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField sigma2JTF;) p n
+( JTextField iteration2JTF;) p n
 (41) # () S 4 T () S
 (private) K
 ( ) p
@@ -4128,27 +3652,27 @@ x0 y0 moveto
 ( ) p
 (static) K
 ( JTextField cropWidthJTF;) p n
-(43) # () S 4 T () N
+(43) # () N
 (44) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderS1;) p n
+( JLabel orderIteration1;) p n
 (45) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderS2;) p n
+( JLabel orderIteration2;) p n
 (46) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderWidth;) p n
+( JLabel orderNoise;) p n
 (47) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderNoise;) p n
+( JLabel orderWidth;) p n
 (48) # () S 4 T () S
 (private) K
 ( ) p
@@ -4164,7 +3688,7 @@ x0 y0 moveto
 (private) K
 ( ) p
 (static) K
-( JPanel sigmaPanel;) p n
+( JPanel iterationPanel;) p n
 (52) # () S 4 T () S
 (private) K
 ( ) p
@@ -4176,204 +3700,44 @@ x0 y0 moveto
 (static) K
 ( JPanel debugCropPanel;) p n
 (54) # () S 4 T () N
-(55) # () S 4 T (PanelDoG\(\) {) N
+(55) # () S 4 T (PanelDilateDiff\(\) {) N
 (56) # () S 4 T () S 8 T () S
 (super) K
 (\(\);) p n
 (57) # () S 4 T (}) N
-(58) # () S 4 T () N
-(59) # () S 4 T () S
+(58) # () S 4 T () S
 (static) K
 ( JPanel create\(\){) p n
-(60) # () S 4 T () S 8 T () S
+(59) # () S 4 T () S 8 T () S
 (// Creations of subpanels) c n
-(61) # () S
+(60) # () S
 () p 4 T () S 8 T (infoPanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(62) # () S 4 T () S 8 T (infoPanel.setPreferredSize\() S
+(61) # () S 4 T () S 8 T (infoPanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 50\)\);) p n
-(63) # () S 4 T () S 8 T (sigmaPanel = ) S
+(62) # () S 4 T () S 8 T (iterationPanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(64) # () S 4 T () S 8 T (sigmaPanel.setPreferredSize\() S
+(63) # () S 4 T () S 8 T (iterationPanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 50\)\);) p n
-(65) # () S 4 T () S 8 T (widthNoisePanel = ) S
+(64) # () S 4 T () S 8 T (widthNoisePanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(Pick_EM-graphique) (Page 1/2) (mai 18, 12 15:47) title
-border
-/v 1 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(66) # () p 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
+(65) # () S 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 50\)\);) p n
-(67) # () S 4 T () S 8 T (debugCropPanel = ) S
-(new) K
-( JPanel\(\);) p n
-(68) # () S 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(69) # () S 4 T () S 8 T () S
-(// Instructions ) c n
-(70) # () S
-() p 4 T () S 8 T (helpImage = ) S
-(new) K
-( JLabel\(") p
-( You need to open a DM3-Image or a stack.) str
-(", JLabel.CENTER\);) p n
-(71) # () S 4 T () S 8 T (orderS1 = ) S
-(new) K
-( JLabel\(setpointS1\);) p n
-(72) # () S 4 T () S 8 T (orderS2 = ) S
-(new) K
-( JLabel\(setpointS2\);) p n
-(73) # () S 4 T () S 8 T (orderWidth = ) S
-(new) K
-( JLabel\(setpointWidth\);) p n
-(74) # () S 4 T () S 8 T (orderNoise = ) S
-(new) K
-( JLabel\(setpointNoise\);) p n
-(75) # () S 4 T () S 8 T () S
-(// Values as default) c n
-(76) # () S
-() p 4 T () S 8 T (sigma1JTF = ) S
-(new) K
-( JTextField\(") p
-(20) str
-(",3\);) p n
-(77) # () S 4 T () S 8 T (sigma2JTF = ) S
-(new) K
-( JTextField\(") p
-(15) str
-(",3\);) p n
-(78) # () S 4 T () S 8 T (cropWidthJTF = ) S
-(new) K
-( JTextField\(") p
-(100) str
-(",4\);) p n
-(79) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
-(new) K
-( JTextField\(") p
-(10) str
-(",3\);) p n
-(80) # () S 4 T () S 8 T () S
-(// Chekbox for the debug mode and cropper) c n
-(81) # () S
-() p 4 T () S 8 T (debugMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Debug) str
-(" \);) p n
-(82) # () S 4 T () S 8 T (cropperMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Crop) str
-(" \);) p n
-(83) # () S 4 T () S 8 T () S
-(// Adding attributes to the panels) c n
-(84) # () S
-() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
-(85) # () S 4 T () S 8 T (sigmaPanel.add\(orderS1\);) N
-(86) # () S 4 T () S 8 T (sigmaPanel.add\(sigma1JTF\);) N
-(87) # () S 4 T () S 8 T (sigmaPanel.add\(orderS2\);) N
-(88) # () S 4 T () S 8 T (sigmaPanel.add\(sigma2JTF\);) N
-(89) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
-(90) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
-(91) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
-(92) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
-(93) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
-(94) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
-(95) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
-(96) # () S 4 T () S 8 T (panel2.add\(sigmaPanel\);) N
-(97) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
-(98) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
-(99) # () S 4 T () S 8 T () S
-(return) K
-( panel2;) p n
-(100) # () S 4 T (}) N
-(101) # () S 4 T () N
-(102) # () S 4 T () S
-(public) K
-( ) p
-(static) K
-( ) p
-(void) k
-( setAttributes\(\){) p n
-(103) # () S 4 T () S 8 T () S
-(// Getting data entered by user) c n
-(104) # () S
-() p 4 T () S 8 T (sig1 = sigma1JTF.getText\(\);) N
-(105) # () S 4 T () S 8 T (sig2 = sigma2JTF.getText\(\);) N
-(106) # () S 4 T () S 8 T (widthSquare = cropWidthJTF.getText\(\);) N
-(107) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
-(108) # () N
-(109) # () S 4 T () S 8 T () S
-(if) K
-( \(debugMode.isSelected\(\)\) {) p n
-(110) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(true) str
-("\);) p n
-(111) # () S 4 T () S 8 T (}) N
-(112) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(113) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(false) str
-("\);) p n
-(114) # () S 4 T () S 8 T (}) N
-(115) # () S 4 T () S 8 T () N
-(116) # () S 4 T () S 8 T () S
-(if) K
-( \(cropperMode.isSelected\(\)\) {) p n
-(117) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(true) str
-("\);) p n
-(118) # () S 4 T () S 8 T (}) N
-(119) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(120) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(false) str
-("\);) p n
-(121) # () S 4 T () S 8 T (}) N
-(122) # () S 4 T () S 8 T () N
-(123) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(sig1) str
-(",sig1\);) p n
-(124) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(sig2) str
-(",sig2\);) p n
-(125) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(squareWidth) str
-(", widthSquare\);) p n
-(126) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(noise) str
-(", toleranceNoise\);) p n
-(127) # () S 4 T (}) N
-(128) # (}) N
-(129) # () N
-(Pick_EM-graphique) (Page 2/2) (mai 18, 12 15:47) title
+(Pick_EM-graphique) (Page 1/2) (mai 19, 12 14:14) title
 border
 grestore
 (Printed by tomo) rhead
-(PanelDoG.java) (12/18) (vendredi mai 18, 2012) footer
+(InfoHelp.java, PanelDilateDiff.java) (10/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
-%%Page: (1-2) 13
+%%Page: (2,1) 11
 %%BeginPageSetup
 /pagesave save def
 sh 0 translate 90 rotate
@@ -4382,6 +3746,162 @@ iso1dict begin
 gsave
 llx lly 12 add translate
 /v 0 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(66) # () p 4 T () S 8 T (debugCropPanel = ) S
+(new) K
+( JPanel\(\);) p n
+(67) # () S 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(68) # () S 4 T () S 8 T () S
+(// Instructions) c n
+(69) # () S
+() p 4 T () S 8 T (helpImage = ) S
+(new) K
+( JLabel\(") p
+( Alorithm optimized for Blobs ) str
+(", JLabel.CENTER\);) p n
+(70) # () S 4 T () S 8 T (orderIteration1 = ) S
+(new) K
+( JLabel\(setpointIteration1\);) p n
+(71) # () S 4 T () S 8 T (orderIteration2 = ) S
+(new) K
+( JLabel\(setpointIteration2\);) p n
+(72) # () S 4 T () S 8 T (orderWidth = ) S
+(new) K
+( JLabel\(setpointWidth\);) p n
+(73) # () S 4 T () S 8 T (orderNoise = ) S
+(new) K
+( JLabel\(setpointNoise\);) p n
+(74) # () S 4 T () S 8 T () S
+(// Values as default) c n
+(75) # () S
+() p 4 T () S 8 T (iteration1JTF = ) S
+(new) K
+( JTextField\(") p
+(1) str
+(",3\);) p n
+(76) # () S 4 T () S 8 T (iteration2JTF = ) S
+(new) K
+( JTextField\(") p
+(2) str
+(",3\);) p n
+(77) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
+(new) K
+( JTextField\(") p
+(3) str
+(",3\);) p n
+(78) # () S 4 T () S 8 T (cropWidthJTF = ) S
+(new) K
+( JTextField\(") p
+(100) str
+(",4\);) p n
+(79) # () S 4 T () S 8 T () S
+(// Chekbox for the debug mode and the cropper) c n
+(80) # () S
+() p 4 T () S 8 T (debugMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Debug) str
+(" \); ) p n
+(81) # () S 4 T () S 8 T (cropperMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Crop) str
+(" \);) p n
+(82) # () S 4 T () S 8 T () S
+(// Adding attributes to the panels) c n
+(83) # () S
+() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
+(84) # () S 4 T () S 8 T (iterationPanel.add\(orderIteration1\);) N
+(85) # () S 4 T () S 8 T (iterationPanel.add\(iteration1JTF\);) N
+(86) # () S 4 T () S 8 T (iterationPanel.add\(orderIteration2\);) N
+(87) # () S 4 T () S 8 T (iterationPanel.add\(iteration2JTF\);) N
+(88) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
+(89) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
+(90) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
+(91) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
+(92) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
+(93) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
+(94) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
+(95) # () S 4 T () S 8 T (panel2.add\(iterationPanel\);) N
+(96) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
+(97) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
+(98) # () S 4 T () S 8 T () S
+(return) K
+( panel2;) p n
+(99) # () S 4 T (}) N
+(100) # () S 4 T () S
+(public) K
+( ) p
+(static) K
+( ) p
+(void) k
+( setAttributes\(\){) p n
+(101) # () S 4 T () S 8 T () S
+(// Getting data entered by user) c n
+(102) # () S
+() p 4 T () S 8 T (dilateIt1 = iteration1JTF.getText\(\);) N
+(103) # () S 4 T () S 8 T (dilateIt2 = iteration2JTF.getText\(\);) N
+(104) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
+(105) # () S 4 T () S 8 T (widthCrop = cropWidthJTF.getText\(\);) N
+(106) # () S 4 T () S 8 T () N
+(107) # () S 4 T () S 8 T () S
+(if) K
+( \(debugMode.isSelected\(\)\) {) p n
+(108) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(true) str
+("\);) p n
+(109) # () S 4 T () S 8 T (}) N
+(110) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(111) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(false) str
+("\);) p n
+(112) # () S 4 T () S 8 T (}) N
+(113) # () S 4 T () S 8 T () N
+(114) # () S 4 T () S 8 T () S
+(if) K
+( \(cropperMode.isSelected\(\)\) {) p n
+(115) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(true) str
+("\);) p n
+(116) # () S 4 T () S 8 T (}) N
+(117) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(118) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(false) str
+("\);) p n
+(119) # () S 4 T () S 8 T (}) N
+(120) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(iter1) str
+(", dilateIt1\);) p n
+(121) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(iter2) str
+(", dilateIt2\);) p n
+(122) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(squareWidth) str
+(", widthCrop\);) p n
+(123) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(noise) str
+(", toleranceNoise\);) p n
+(124) # () S 4 T (}) N
+(125) # (}) S
+(Pick_EM-graphique) (Page 2/2) (mai 19, 12 14:14) title
+border
+/v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
@@ -4401,383 +3921,199 @@ x0 y0 moveto
 (13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
-(16) # () S
+(16) # () N
+(17) # () S
 (import) K
 ( java.awt.Dimension;) p n
-(17) # () N
-(18) # () S
-(import) K
-( javax.swing.JCheckBox;) p n
+(18) # () N
 (19) # () S
 (import) K
-( javax.swing.JLabel;) p n
+( javax.swing.JCheckBox;) p n
 (20) # () S
 (import) K
-( javax.swing.JPanel;) p n
+( javax.swing.JLabel;) p n
 (21) # () S
 (import) K
+( javax.swing.JPanel;) p n
+(22) # () S
+(import) K
 ( javax.swing.JTextField;) p n
-(22) # () N
-(23) # (@SuppressWarnings\({ ") S
+(23) # () N
+(24) # (@SuppressWarnings\({ ") S
 (serial) str
-(" }\)) p n
-(24) # () N
-(25) # () S
+("}\)) p n
+(25) # () N
+(26) # () S
 (public) K
 ( ) p
 (class) K
 ( ) p
-(PanelImCorr) L
+(PanelDoG) L
 ( ) p
 (extends) K
 ( PickPanel {) p n
-(26) # () N
-(27) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JCheckBox debugMode;) p n
+(27) # () N
 (28) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JCheckBox cropperMode;) p n
-(29) # () S 4 T () N
+( String setpointS1 = ") p
+(Sigma 1 : ) str
+(";) p n
+(29) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointS2 = ") p
+(Sigma 2 : ) str
+(";) p n
 (30) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String widthCrop;) p n
-(31) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String toleranceNoise;) p n
-(32) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String minRadius;) p n
-(33) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String maxRadius;) p n
-(34) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String incRadius;) p n
-(35) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointRMin = ") p
-(Minimum Radius : ) str
-(";) p n
-(36) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointRMax = ") p
-(Maximum Radius : ) str
-(";) p n
-(37) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( String setpointRInc = ") p
-(Radius Incrementation : ) str
-(";) p n
-(38) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String setpointWidth = ") p
 (Square width : ) str
 (";) p n
-(39) # () S 4 T () S
+(31) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( String setpointNoise = ") p
 (Noise tolerance : ) str
 (";) p n
-(40) # () N
+(32) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String sig1;) p n
+(33) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String sig2;) p n
+(34) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String widthSquare;) p n
+(35) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String toleranceNoise;) p n
+(36) # () S 4 T () N
+(37) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JCheckBox debugMode;) p n
+(38) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JCheckBox cropperMode;) p n
+(39) # () S 4 T () N
+(40) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField sigma1JTF;) p n
 (41) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField radiusMinJTF;) p n
+( JTextField sigma2JTF;) p n
 (42) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField radiusMaxJTF;) p n
+( JTextField noiseToleranceJTF;) p n
 (43) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField radiusIncJTF;) p n
-(44) # () S 4 T () S
-(private) K
-( ) p
-(static) K
 ( JTextField cropWidthJTF;) p n
+(44) # () S 4 T () N
 (45) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JTextField noiseToleranceJTF;) p n
-(46) # () N
+( JLabel orderS1;) p n
+(46) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderS2;) p n
 (47) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderRadiusMin;) p n
+( JLabel orderWidth;) p n
 (48) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderRadiusMax;) p n
+( JLabel orderNoise;) p n
 (49) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderRadiusInc;) p n
-(50) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JLabel orderWidth;) p n
+( JLabel helpImage;) p n
+(50) # () S 4 T () N
 (51) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel orderNoise;) p n
+( JPanel infoPanel;) p n
 (52) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
-( JLabel helpImage;) p n
-(53) # () S 4 T () N
-(54) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel infoPanel;) p n
-(55) # () S 4 T () S
-(private) K
-( ) p
-(static) K
-( JPanel radiusPanel;) p n
-(56) # () S 4 T () S
+( JPanel sigmaPanel;) p n
+(53) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( JPanel widthNoisePanel;) p n
-(57) # () S 4 T () S
+(54) # () S 4 T () S
 (private) K
 ( ) p
 (static) K
 ( JPanel debugCropPanel;) p n
-(58) # () S 4 T () N
-(59) # () S 4 T (PanelImCorr\(\) {) N
-(60) # () S 4 T () S 8 T () S
+(55) # () S 4 T () N
+(56) # () S 4 T (PanelDoG\(\) {) N
+(57) # () S 4 T () S 8 T () S
 (super) K
 (\(\);) p n
-(61) # () S 4 T (}) N
-(62) # () S 4 T () N
-(63) # () S 4 T () S
+(58) # () S 4 T (}) N
+(59) # () S 4 T () N
+(60) # () S 4 T () S
 (static) K
 ( JPanel create\(\){) p n
-(64) # () S 4 T () S 8 T () S
+(61) # () S 4 T () S 8 T () S
 (// Creations of subpanels) c n
-(65) # () S
+(62) # () S
 () p 4 T () S 8 T (infoPanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(Pick_EM-graphique) (Page 1/3) (mai 18, 12 15:47) title
-border
-/v 1 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(66) # () p 4 T () S 8 T (infoPanel.setPreferredSize\() S
+(63) # () S 4 T () S 8 T (infoPanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 50\)\);) p n
-(67) # () S 4 T () S 8 T (radiusPanel = ) S
+(64) # () S 4 T () S 8 T (sigmaPanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(68) # () S 4 T () S 8 T (radiusPanel.setPreferredSize\() S
+(65) # () S 4 T () S 8 T (sigmaPanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 50\)\);) p n
-(69) # () S 4 T () S 8 T (widthNoisePanel = ) S
-(new) K
-( JPanel\(\);) p n
-(70) # () S 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(71) # () S 4 T () S 8 T (debugCropPanel = ) S
-(new) K
-( JPanel\(\);) p n
-(72) # () S 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
-(new) K
-( Dimension\(450, 50\)\);) p n
-(73) # () S 4 T () S 8 T () S
-(// Instructions) c n
-(74) # () S
-() p 4 T () S 8 T (helpImage = ) S
-(new) K
-( JLabel\(") p
-( Need images to the second power ) str
-(", JLabel.CENTER\);) p n
-(75) # () S 4 T () S 8 T (orderRadiusMin = ) S
-(new) K
-( JLabel\(setpointRMin\);) p n
-(76) # () S 4 T () S 8 T (orderRadiusMax = ) S
-(new) K
-( JLabel\(setpointRMax\);) p n
-(77) # () S 4 T () S 8 T (orderRadiusInc = ) S
-(new) K
-( JLabel\(setpointRInc\);) p n
-(78) # () S 4 T () S 8 T (orderWidth = ) S
-(new) K
-( JLabel\(setpointWidth\);) p n
-(79) # () S 4 T () S 8 T (orderNoise = ) S
-(new) K
-( JLabel\(setpointNoise\);) p n
-(80) # () S 4 T () S 8 T () S
-(// Values as default) c n
-(81) # () S
-() p 4 T () S 8 T (radiusMinJTF = ) S
-(new) K
-( JTextField\(") p
-(20) str
-(",3\);) p n
-(82) # () S 4 T () S 8 T (radiusMaxJTF = ) S
-(new) K
-( JTextField\(") p
-(60) str
-(",3\);) p n
-(83) # () S 4 T () S 8 T (radiusIncJTF = ) S
-(new) K
-( JTextField\(") p
-(5) str
-(",3\);) p n
-(84) # () S 4 T () S 8 T (cropWidthJTF = ) S
-(new) K
-( JTextField\(") p
-(100) str
-(",4\);) p n
-(85) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
-(new) K
-( JTextField\(") p
-(0.5) str
-(",4\);) p n
-(86) # () S 4 T () S 8 T () S
-(// Chekbox for the debug mode and cropper) c n
-(87) # () S
-() p 4 T () S 8 T (debugMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Debug) str
-("\); ) p n
-(88) # () S 4 T () S 8 T (cropperMode = ) S
-(new) K
-( JCheckBox\( ") p
-(Crop) str
-(" \);) p n
-(89) # () S 4 T () S 8 T () S
-(// Adding attributes to the panel) c n
-(90) # () S
-() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
-(91) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusMin\);) N
-(92) # () S 4 T () S 8 T (radiusPanel.add\(radiusMinJTF\);) N
-(93) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusMax\);) N
-(94) # () S 4 T () S 8 T (radiusPanel.add\(radiusMaxJTF\);) N
-(95) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusInc\);) N
-(96) # () S 4 T () S 8 T (radiusPanel.add\(radiusIncJTF\);) N
-(97) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
-(98) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
-(99) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
-(100) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
-(101) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
-(102) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
-(103) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
-(104) # () S 4 T () S 8 T (panel2.add\(radiusPanel\);) N
-(105) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
-(106) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
-(107) # () S 4 T () S 8 T () S
-(return) K
-( panel2;) p n
-(108) # () S 4 T (}) N
-(109) # () S 4 T () N
-(110) # () S 4 T () S
-(public) K
-( ) p
-(static) K
-( ) p
-(void) k
-( setAttributes\(\){) p n
-(111) # () S 4 T () S 8 T () S
-(// Getting data entered by user) c n
-(112) # () S
-() p 4 T () S 8 T (widthCrop = cropWidthJTF.getText\(\);) N
-(113) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
-(114) # () S 4 T () S 8 T (minRadius = radiusMinJTF.getText\(\);) N
-(115) # () S 4 T () S 8 T (maxRadius = radiusMaxJTF.getText\(\);) N
-(116) # () S 4 T () S 8 T (incRadius = radiusIncJTF.getText\(\);) N
-(117) # () S 4 T () S 8 T () N
-(118) # () S 4 T () S 8 T () S
-(if) K
-( \(debugMode.isSelected\(\)\) {) p n
-(119) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(true) str
-("\);) p n
-(120) # () S 4 T () S 8 T (}) N
-(121) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(122) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(debug) str
-(",") p
-(false) str
-("\);) p n
-(123) # () S 4 T () S 8 T (}) N
-(124) # () S 4 T () S 8 T () N
-(125) # () S 4 T () S 8 T () S
-(if) K
-( \(cropperMode.isSelected\(\)\) {) p n
-(126) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(true) str
-("\);) p n
-(127) # () S 4 T () S 8 T (}) N
-(128) # () S 4 T () S 8 T () S
-(else) K
-( {) p n
-(129) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
-(crop) str
-(",") p
-(false) str
-("\);) p n
-(130) # () S 4 T () S 8 T (}) N
-(131) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(rMin) str
-(", minRadius\);) p n
-(Pick_EM-graphique) (Page 2/3) (mai 18, 12 15:47) title
+(Pick_EM-graphique) (Page 1/2) (mai 19, 12 14:14) title
 border
 grestore
 (Printed by tomo) rhead
-(PanelImCorr.java) (13/18) (vendredi mai 18, 2012) footer
+(PanelDilateDiff.java, PanelDoG.java) (11/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
-%%Page: (3,1) 14
+%%Page: (2,1) 12
 %%BeginPageSetup
 /pagesave save def
 sh 0 translate 90 rotate
@@ -4789,24 +4125,605 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(132) # () p 4 T () S 8 T (Attributes.setAttributes\(") S
-(rMax) str
-(", maxRadius\);) p n
-(133) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
-(rInc) str
-(", incRadius\);) p n
-(134) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(66) # () p 4 T () S 8 T (widthNoisePanel = ) S
+(new) K
+( JPanel\(\);) p n
+(67) # () S 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(68) # () S 4 T () S 8 T (debugCropPanel = ) S
+(new) K
+( JPanel\(\);) p n
+(69) # () S 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(70) # () S 4 T () S 8 T () S
+(// Instructions ) c n
+(71) # () S
+() p 4 T () S 8 T (helpImage = ) S
+(new) K
+( JLabel\(") p
+( You need to open a DM3-Image or a stack.) str
+(", JLabel.CENTER\);) p n
+(72) # () S 4 T () S 8 T (orderS1 = ) S
+(new) K
+( JLabel\(setpointS1\);) p n
+(73) # () S 4 T () S 8 T (orderS2 = ) S
+(new) K
+( JLabel\(setpointS2\);) p n
+(74) # () S 4 T () S 8 T (orderWidth = ) S
+(new) K
+( JLabel\(setpointWidth\);) p n
+(75) # () S 4 T () S 8 T (orderNoise = ) S
+(new) K
+( JLabel\(setpointNoise\);) p n
+(76) # () S 4 T () S 8 T () S
+(// Values as default) c n
+(77) # () S
+() p 4 T () S 8 T (sigma1JTF = ) S
+(new) K
+( JTextField\(") p
+(20) str
+(",3\);) p n
+(78) # () S 4 T () S 8 T (sigma2JTF = ) S
+(new) K
+( JTextField\(") p
+(15) str
+(",3\);) p n
+(79) # () S 4 T () S 8 T (cropWidthJTF = ) S
+(new) K
+( JTextField\(") p
+(100) str
+(",4\);) p n
+(80) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
+(new) K
+( JTextField\(") p
+(10) str
+(",3\);) p n
+(81) # () S 4 T () S 8 T () S
+(// Chekbox for the debug mode and cropper) c n
+(82) # () S
+() p 4 T () S 8 T (debugMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Debug) str
+(" \);) p n
+(83) # () S 4 T () S 8 T (cropperMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Crop) str
+(" \);) p n
+(84) # () S 4 T () S 8 T () S
+(// Adding attributes to the panels) c n
+(85) # () S
+() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
+(86) # () S 4 T () S 8 T (sigmaPanel.add\(orderS1\);) N
+(87) # () S 4 T () S 8 T (sigmaPanel.add\(sigma1JTF\);) N
+(88) # () S 4 T () S 8 T (sigmaPanel.add\(orderS2\);) N
+(89) # () S 4 T () S 8 T (sigmaPanel.add\(sigma2JTF\);) N
+(90) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
+(91) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
+(92) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
+(93) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
+(94) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
+(95) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
+(96) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
+(97) # () S 4 T () S 8 T (panel2.add\(sigmaPanel\);) N
+(98) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
+(99) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
+(100) # () S 4 T () S 8 T () S
+(return) K
+( panel2;) p n
+(101) # () S 4 T (}) N
+(102) # () S 4 T () N
+(103) # () S 4 T () S
+(public) K
+( ) p
+(static) K
+( ) p
+(void) k
+( setAttributes\(\){) p n
+(104) # () S 4 T () S 8 T () S
+(// Getting data entered by user) c n
+(105) # () S
+() p 4 T () S 8 T (sig1 = sigma1JTF.getText\(\);) N
+(106) # () S 4 T () S 8 T (sig2 = sigma2JTF.getText\(\);) N
+(107) # () S 4 T () S 8 T (widthSquare = cropWidthJTF.getText\(\);) N
+(108) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
+(109) # () N
+(110) # () S 4 T () S 8 T () S
+(if) K
+( \(debugMode.isSelected\(\)\) {) p n
+(111) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(true) str
+("\);) p n
+(112) # () S 4 T () S 8 T (}) N
+(113) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(114) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(false) str
+("\);) p n
+(115) # () S 4 T () S 8 T (}) N
+(116) # () S 4 T () S 8 T () N
+(117) # () S 4 T () S 8 T () S
+(if) K
+( \(cropperMode.isSelected\(\)\) {) p n
+(118) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(true) str
+("\);) p n
+(119) # () S 4 T () S 8 T (}) N
+(120) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(121) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(false) str
+("\);) p n
+(122) # () S 4 T () S 8 T (}) N
+(123) # () S 4 T () S 8 T () N
+(124) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(sig1) str
+(",sig1\);) p n
+(125) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(sig2) str
+(",sig2\);) p n
+(126) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
 (squareWidth) str
-(", widthCrop\);) p n
-(135) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(", widthSquare\);) p n
+(127) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
 (noise) str
 (", toleranceNoise\);) p n
-(136) # () S 4 T (}) N
-(137) # (}) N
-(138) # () N
-(Pick_EM-graphique) (Page 3/3) (mai 18, 12 15:47) title
+(128) # () S 4 T (}) N
+(129) # (}) S
+(Pick_EM-graphique) (Page 2/2) (mai 19, 12 14:14) title
 border
 /v 1 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(1) # (/*) c n
+(2) # (*Copyright \(C\) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANS) N
+0 T (EN Joris) N
+(3) # (*This file is part of Pick_EM program) N
+(4) # (*Pick_EM is free software; you can redistribute it and/or modify) N
+(5) # (*it under the terms of the GNU General Public License as published by) N
+(6) # (*the Free Software Foundation; either version 2 of the License, or) N
+(7) # (*\(at your option\) any later version.) N
+(8) # (*This program is distributed in the hope that it will be useful,) N
+(9) # (*but WITHOUT ANY WARRANTY; without even the implied warranty of) N
+(10) # (*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the) N
+(11) # (*GNU General Public License for more details.) N
+(12) # (*You should have received a copy of the GNU General Public License along) N
+(13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
+(14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
+(15) # (*/) N
+(16) # () N
+(17) # () S
+(import) K
+( java.awt.Dimension;) p n
+(18) # () N
+(19) # () S
+(import) K
+( javax.swing.JCheckBox;) p n
+(20) # () S
+(import) K
+( javax.swing.JLabel;) p n
+(21) # () S
+(import) K
+( javax.swing.JPanel;) p n
+(22) # () S
+(import) K
+( javax.swing.JTextField;) p n
+(23) # () N
+(24) # (@SuppressWarnings\({ ") S
+(serial) str
+(" }\)) p n
+(25) # () N
+(26) # () S
+(public) K
+( ) p
+(class) K
+( ) p
+(PanelImCorr) L
+( ) p
+(extends) K
+( PickPanel {) p n
+(27) # () N
+(28) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JCheckBox debugMode;) p n
+(29) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JCheckBox cropperMode;) p n
+(30) # () S 4 T () N
+(31) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String widthCrop;) p n
+(32) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String toleranceNoise;) p n
+(33) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String minRadius;) p n
+(34) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String maxRadius;) p n
+(35) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String incRadius;) p n
+(36) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointRMin = ") p
+(Minimum Radius : ) str
+(";) p n
+(37) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointRMax = ") p
+(Maximum Radius : ) str
+(";) p n
+(38) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointRInc = ") p
+(Radius Incrementation : ) str
+(";) p n
+(39) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointWidth = ") p
+(Square width : ) str
+(";) p n
+(40) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( String setpointNoise = ") p
+(Noise tolerance : ) str
+(";) p n
+(41) # () N
+(42) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField radiusMinJTF;) p n
+(43) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField radiusMaxJTF;) p n
+(44) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField radiusIncJTF;) p n
+(45) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField cropWidthJTF;) p n
+(46) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JTextField noiseToleranceJTF;) p n
+(47) # () N
+(48) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderRadiusMin;) p n
+(49) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderRadiusMax;) p n
+(50) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderRadiusInc;) p n
+(51) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderWidth;) p n
+(52) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel orderNoise;) p n
+(53) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JLabel helpImage;) p n
+(54) # () S 4 T () N
+(55) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JPanel infoPanel;) p n
+(56) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JPanel radiusPanel;) p n
+(57) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JPanel widthNoisePanel;) p n
+(58) # () S 4 T () S
+(private) K
+( ) p
+(static) K
+( JPanel debugCropPanel;) p n
+(59) # () S 4 T () N
+(60) # () S 4 T (PanelImCorr\(\) {) N
+(61) # () S 4 T () S 8 T () S
+(super) K
+(\(\);) p n
+(62) # () S 4 T (}) N
+(63) # () S 4 T () N
+(64) # () S 4 T () S
+(static) K
+( JPanel create\(\){) p n
+(65) # () S 4 T () S 8 T () S
+(// Creations of subpanels) c n
+(Pick_EM-graphique) (Page 1/3) (mai 19, 12 14:15) title
+border
+grestore
+(Printed by tomo) rhead
+(PanelDoG.java, PanelImCorr.java) (12/17) (samedi mai 19, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2-3) 13
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(66) # () p 4 T () S 8 T (infoPanel = ) S
+(new) K
+( JPanel\(\);) p n
+(67) # () S 4 T () S 8 T (infoPanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(68) # () S 4 T () S 8 T (radiusPanel = ) S
+(new) K
+( JPanel\(\);) p n
+(69) # () S 4 T () S 8 T (radiusPanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(70) # () S 4 T () S 8 T (widthNoisePanel = ) S
+(new) K
+( JPanel\(\);) p n
+(71) # () S 4 T () S 8 T (widthNoisePanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(72) # () S 4 T () S 8 T (debugCropPanel = ) S
+(new) K
+( JPanel\(\);) p n
+(73) # () S 4 T () S 8 T (debugCropPanel.setPreferredSize\() S
+(new) K
+( Dimension\(450, 50\)\);) p n
+(74) # () S 4 T () S 8 T () S
+(// Instructions) c n
+(75) # () S
+() p 4 T () S 8 T (helpImage = ) S
+(new) K
+( JLabel\(") p
+( Need images to the second power ) str
+(", JLabel.CENTER\);) p n
+(76) # () S 4 T () S 8 T (orderRadiusMin = ) S
+(new) K
+( JLabel\(setpointRMin\);) p n
+(77) # () S 4 T () S 8 T (orderRadiusMax = ) S
+(new) K
+( JLabel\(setpointRMax\);) p n
+(78) # () S 4 T () S 8 T (orderRadiusInc = ) S
+(new) K
+( JLabel\(setpointRInc\);) p n
+(79) # () S 4 T () S 8 T (orderWidth = ) S
+(new) K
+( JLabel\(setpointWidth\);) p n
+(80) # () S 4 T () S 8 T (orderNoise = ) S
+(new) K
+( JLabel\(setpointNoise\);) p n
+(81) # () S 4 T () S 8 T () S
+(// Values as default) c n
+(82) # () S
+() p 4 T () S 8 T (radiusMinJTF = ) S
+(new) K
+( JTextField\(") p
+(20) str
+(",3\);) p n
+(83) # () S 4 T () S 8 T (radiusMaxJTF = ) S
+(new) K
+( JTextField\(") p
+(60) str
+(",3\);) p n
+(84) # () S 4 T () S 8 T (radiusIncJTF = ) S
+(new) K
+( JTextField\(") p
+(5) str
+(",3\);) p n
+(85) # () S 4 T () S 8 T (cropWidthJTF = ) S
+(new) K
+( JTextField\(") p
+(100) str
+(",4\);) p n
+(86) # () S 4 T () S 8 T (noiseToleranceJTF = ) S
+(new) K
+( JTextField\(") p
+(0.5) str
+(",4\);) p n
+(87) # () S 4 T () S 8 T () S
+(// Chekbox for the debug mode and cropper) c n
+(88) # () S
+() p 4 T () S 8 T (debugMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Debug) str
+("\); ) p n
+(89) # () S 4 T () S 8 T (cropperMode = ) S
+(new) K
+( JCheckBox\( ") p
+(Crop) str
+(" \);) p n
+(90) # () S 4 T () S 8 T () S
+(// Adding attributes to the panel) c n
+(91) # () S
+() p 4 T () S 8 T (infoPanel.add\(helpImage\);) N
+(92) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusMin\);) N
+(93) # () S 4 T () S 8 T (radiusPanel.add\(radiusMinJTF\);) N
+(94) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusMax\);) N
+(95) # () S 4 T () S 8 T (radiusPanel.add\(radiusMaxJTF\);) N
+(96) # () S 4 T () S 8 T (radiusPanel.add\(orderRadiusInc\);) N
+(97) # () S 4 T () S 8 T (radiusPanel.add\(radiusIncJTF\);) N
+(98) # () S 4 T () S 8 T (widthNoisePanel.add\(orderNoise\);) N
+(99) # () S 4 T () S 8 T (widthNoisePanel.add\(noiseToleranceJTF\);) N
+(100) # () S 4 T () S 8 T (widthNoisePanel.add\(orderWidth\);) N
+(101) # () S 4 T () S 8 T (widthNoisePanel.add\(cropWidthJTF\);) N
+(102) # () S 4 T () S 8 T (debugCropPanel.add\(debugMode\);) N
+(103) # () S 4 T () S 8 T (debugCropPanel.add\(cropperMode\);) N
+(104) # () S 4 T () S 8 T (panel2.add\(infoPanel\);) N
+(105) # () S 4 T () S 8 T (panel2.add\(radiusPanel\);) N
+(106) # () S 4 T () S 8 T (panel2.add\(widthNoisePanel\);) N
+(107) # () S 4 T () S 8 T (panel2.add\(debugCropPanel\);) N
+(108) # () S 4 T () S 8 T () S
+(return) K
+( panel2;) p n
+(109) # () S 4 T (}) N
+(110) # () S 4 T () N
+(111) # () S 4 T () S
+(public) K
+( ) p
+(static) K
+( ) p
+(void) k
+( setAttributes\(\){) p n
+(112) # () S 4 T () S 8 T () S
+(// Getting data entered by user) c n
+(113) # () S
+() p 4 T () S 8 T (widthCrop = cropWidthJTF.getText\(\);) N
+(114) # () S 4 T () S 8 T (toleranceNoise = noiseToleranceJTF.getText\(\);) N
+(115) # () S 4 T () S 8 T (minRadius = radiusMinJTF.getText\(\);) N
+(116) # () S 4 T () S 8 T (maxRadius = radiusMaxJTF.getText\(\);) N
+(117) # () S 4 T () S 8 T (incRadius = radiusIncJTF.getText\(\);) N
+(118) # () S 4 T () S 8 T () N
+(119) # () S 4 T () S 8 T () S
+(if) K
+( \(debugMode.isSelected\(\)\) {) p n
+(120) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(true) str
+("\);) p n
+(121) # () S 4 T () S 8 T (}) N
+(122) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(123) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(debug) str
+(",") p
+(false) str
+("\);) p n
+(124) # () S 4 T () S 8 T (}) N
+(125) # () S 4 T () S 8 T () N
+(126) # () S 4 T () S 8 T () S
+(if) K
+( \(cropperMode.isSelected\(\)\) {) p n
+(127) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(true) str
+("\);) p n
+(128) # () S 4 T () S 8 T (}) N
+(129) # () S 4 T () S 8 T () S
+(else) K
+( {) p n
+(130) # () S 4 T () S 8 T () S 12 T (Attributes.setAttributes\(") S
+(crop) str
+(",") p
+(false) str
+("\);) p n
+(131) # () S 4 T () S 8 T (}) N
+(Pick_EM-graphique) (Page 2/3) (mai 19, 12 14:15) title
+border
+/v 1 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(132) # () p 4 T () S 8 T (Attributes.setAttributes\(") S
+(rMin) str
+(", minRadius\);) p n
+(133) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(rMax) str
+(", maxRadius\);) p n
+(134) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(rInc) str
+(", incRadius\);) p n
+(135) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(squareWidth) str
+(", widthCrop\);) p n
+(136) # () S 4 T () S 8 T (Attributes.setAttributes\(") S
+(noise) str
+(", toleranceNoise\);) p n
+(137) # () S 4 T (}) N
+(138) # (}) S
+(Pick_EM-graphique) (Page 3/3) (mai 19, 12 14:15) title
+border
+grestore
+(Printed by tomo) rhead
+(PanelImCorr.java) (13/17) (samedi mai 19, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (1-2) 14
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
@@ -4825,32 +4742,33 @@ x0 y0 moveto
 (12) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (13) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (14) # (*/) N
-(15) # () S
-(import) K
-( java.util.Hashtable;) p n
+(15) # () N
 (16) # () S
 (import) K
-( java.util.StringTokenizer;) p n
-(17) # () N
-(18) # () S
+( java.util.Hashtable;) p n
+(17) # () S
 (import) K
-( ij.Macro;) p n
+( java.util.StringTokenizer;) p n
+(18) # () N
 (19) # () S
 (import) K
-( ij.plugin.frame.PlugInFrame;) p n
+( ij.Macro;) p n
 (20) # () S
+(import) K
+( ij.plugin.frame.PlugInFrame;) p n
+(21) # () S
 (/**) C n
-(21) # ( * ) N
-(22) # ( *@author FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris) N
-(23) # ( *@version 1.0) N
-(24) # ( * ) N
-(25) # ( */) N
-(26) # () S
+(22) # ( * ) N
+(23) # ( *@author FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANSEN Joris) N
+(24) # ( *@version 1.7) N
+(25) # ( * ) N
+(26) # ( */) N
+(27) # () S
 (@SuppressWarnings\(") p
 (serial) str
 ("\)) p n
-(27) # () N
-(28) # () S
+(28) # () N
+(29) # () S
 (public) K
 ( ) p
 (final) K
@@ -4861,106 +4779,166 @@ x0 y0 moveto
 ( ) p
 (extends) K
 ( PlugInFrame {) p n
-(29) # () S 4 T () S
+(30) # () S 4 T () S
 (// This class is initiate the plugin) c n
-(30) # () S
+(31) # () S
 () p 4 T () N
-(31) # () S 4 T () S
+(32) # () S 4 T () S
 (private) K
 ( String[] params = {) p n
-(32) # () S 4 T () S 8 T () S 12 T (") S
+(33) # () S 4 T () S 8 T () S 12 T (") S
 (algo) str
 (",) p n
-(33) # () S 4 T () S 8 T () S 12 T (") S
+(34) # () S 4 T () S 8 T () S 12 T (") S
 (sig1) str
 (",) p n
-(34) # () S 4 T () S 8 T () S 12 T (") S
+(35) # () S 4 T () S 8 T () S 12 T (") S
 (sig2) str
 (",) p n
-(35) # () S 4 T () S 8 T () S 12 T (") S
+(36) # () S 4 T () S 8 T () S 12 T (") S
 (iter1) str
 (",) p n
-(36) # () S 4 T () S 8 T () S 12 T (") S
+(37) # () S 4 T () S 8 T () S 12 T (") S
 (iter2) str
 (",) p n
-(37) # () S 4 T () S 8 T () S 12 T (") S
+(38) # () S 4 T () S 8 T () S 12 T (") S
 (rMin) str
 (",) p n
-(38) # () S 4 T () S 8 T () S 12 T (") S
+(39) # () S 4 T () S 8 T () S 12 T (") S
 (rMax) str
 (",) p n
-(39) # () S 4 T () S 8 T () S 12 T (") S
+(40) # () S 4 T () S 8 T () S 12 T (") S
 (rInc) str
 (",) p n
-(40) # () S 4 T () S 8 T () S 12 T (") S
+(41) # () S 4 T () S 8 T () S 12 T (") S
 (noise) str
 (",) p n
-(41) # () S 4 T () S 8 T () S 12 T (") S
+(42) # () S 4 T () S 8 T () S 12 T (") S
 (squareWidth) str
 (",) p n
-(42) # () S 4 T () S 8 T () S 12 T (") S
+(43) # () S 4 T () S 8 T () S 12 T (") S
 (debug) str
 (",) p n
-(43) # () S 4 T () S 8 T () S 12 T (") S
+(44) # () S 4 T () S 8 T () S 12 T (") S
 (crop) str
 (") p n
-(44) # () S 4 T (};) N
-(45) # () S 4 T () S 8 T () N
-(46) # () S 4 T () S 8 T () S
+(45) # () S 4 T (};) N
+(46) # () S 4 T () S 8 T () N
+(47) # () S 4 T () S
 (public) K
 ( ) p
 (void) k
 ( run\(String args\) {) p n
-(47) # () S 4 T () S 8 T () S 12 T () S
+(48) # () S 4 T () S 8 T () S
 (try) K
 ( {) p n
-(48) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(49) # () S 4 T () S 8 T () S 12 T () S
 (if) K
 ( \(args != ) p
 (null) k
 (\) {) p n
-(49) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (StringTokenizer token1; ) S
+(50) # () S 4 T () S 8 T () S 12 T () S 16 T (StringTokenizer token1; ) S
 (// Declare StringTokenizer Objects) c n
-(50) # () S
-() p 4 T () S 8 T () S 12 T () S 16 T () S 20 T (token1 = ) S
+(51) # () S
+() p 4 T () S 8 T () S 12 T () S 16 T (token1 = ) S
 (new) K
 ( StringTokenizer\(args\); ) p
-(//Split on Space \(defaul) c n
-0 T (t\)) N
-(51) # () S
-() p 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
+(//Split on Space \(default\)) c n
+(52) # () S
+() p 4 T () S 8 T () S 12 T () S 16 T () S
 (while) K
 ( \(token1.hasMoreTokens\(\)\) {) p n
-(52) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (String str = token1.nextToken\(\);) N
-(53) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (Attributes.getInstance\(\);) N
-(54) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
+(53) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (String str = token1.nextToken\(\);) N
+(54) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (Attributes.getInstance\(\);) N
+(55) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
 (for) K
 ( \() p
 (int) k
 ( j = 0; j<params.length; j++\) {) p n
-(55) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (String pattern = params[j];) N
-(56) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
+(56) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (String pattern = params[j];) N
+(57) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S
 (if) K
 ( \(str.lastIndexOf\(pattern\) > -1\) { ) p n
-(57) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T () S
+(58) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S
 (int) k
-( pos = str.lastIndexOf\(pattern\) + pattern.len) p n
-0 T (gth\(\)+1;) N
-(58) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T ( String param = str.substring\(pos\);) N
-(59) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T () S 32 T ( Attributes.setAttributes\(params[j],param\);) N
-(60) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T (}) N
+( pos = str.lastIndexOf\(pattern\) + pattern.length\() p n
+0 T (\)+1;) N
+(59) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T ( String param = str.substring\(pos\);) N
+(60) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T () S 28 T ( Attributes.setAttributes\(params[j],param\);) N
 (61) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (}) N
 (62) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(63) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () N
-(Pick_EM-graphique) (Page 1/2) (mai 18, 12 8:53) title
+(63) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(64) # () S 4 T () S 8 T () S 12 T () S 16 T () N
+(Pick_EM-graphique) (Page 1/2) (mai 19, 12 14:16) title
+border
+/v 1 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(65) # () p 4 T () S 8 T () S 12 T () S 16 T (Hashtable<String, String> hash = Attributes.getAttributes\(\);) N
+(66) # () S 4 T () S 8 T () S 12 T () S 16 T (String algo = hash.get\(") S
+(algo) str
+("\);) p n
+(67) # () S 4 T () S 8 T () S 12 T () S 16 T (Attributes.getInstance\(\);) N
+(68) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(if) K
+( \(algo.equals\(") p
+(Difference_of_Gaussian) str
+("\)\){) p n
+(69) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DoG.sliceSelection\(\);) N
+(70) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(71) # () N
+(72) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(else) K
+( ) p
+(if) K
+( \(algo.equals\(") p
+(Image_Correlation) str
+("\)\){) p n
+(73) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (ImCorr.sliceSelection\(\);) N
+(74) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(75) # () N
+(76) # () S 4 T () S 8 T () S 12 T () S 16 T () S
+(else) K
+( ) p
+(if) K
+( \(algo.equals\(") p
+(Dilate_Difference) str
+("\)\){) p n
+(77) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (DilateDiff.sliceSelection\(\);) N
+(78) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
+(79) # () S 4 T () S 8 T () S 12 T (}) N
+(80) # () S 4 T () S 8 T (}) N
+(81) # () S 4 T () S 8 T () S
+(catch) K
+( \(NullPointerException e1\) {) p n
+(82) # () S 4 T () S 8 T () S 12 T () S
+(new) K
+( PickFrame\(\);) p n
+(83) # () S 4 T () S 8 T (}) N
+(84) # () S 4 T (}) N
+(85) # () S 4 T () S 8 T () N
+(86) # () S 4 T () S
+(public) K
+( Pick_EM\(\) {) p n
+(87) # () S 4 T () S 8 T () S
+(super) K
+(\(") p
+(Pick_EM) str
+("\);) p n
+(88) # () S 4 T () S 8 T (String args = Macro.getOptions\(\);) N
+(89) # () S 4 T () S 8 T (run\(args\);) N
+(90) # () S 4 T (}) N
+(91) # (}) S
+(Pick_EM-graphique) (Page 2/2) (mai 19, 12 14:16) title
 border
 grestore
 (Printed by tomo) rhead
-(PanelImCorr.java, Pick_EM.java) (14/18) (vendredi mai 18, 2012) footer
+(Pick_EM.java) (14/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
-%%Page: (2,1) 15
+%%Page: (1,1) 15
 %%BeginPageSetup
 /pagesave save def
 sh 0 translate 90 rotate
@@ -4969,67 +4947,6 @@ iso1dict begin
 gsave
 llx lly 12 add translate
 /v 0 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(64) # () p 4 T () S 8 T () S 12 T () S 16 T () S 20 T (Hashtable<String, String> hash = Attributes.getAttributes\(\);) N
-(65) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (String algo = hash.get\(") S
-(algo) str
-("\);) p n
-(66) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (Attributes.getInstance\(\);) N
-(67) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
-(if) K
-( \(algo.equals\(") p
-(Difference_of_Gaussian) str
-("\)\){) p n
-(68) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (DoG.sliceSelection\(\);) N
-(69) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(70) # () S 4 T () N
-(71) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
-(else) K
-( ) p
-(if) K
-( \(algo.equals\(") p
-(Image_Correlation) str
-("\)\){) p n
-(72) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (ImCorr.sliceSelection\(\);) N
-(73) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(74) # () S 4 T () N
-(75) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S
-(else) K
-( ) p
-(if) K
-( \(algo.equals\(") p
-(Dilate_Difference) str
-("\)\){) p n
-(76) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T () S 24 T (DilateDiff.sliceSelection\(\);) N
-(77) # () S 4 T () S 8 T () S 12 T () S 16 T () S 20 T (}) N
-(78) # () S 4 T () S 8 T () S 12 T () S 16 T (}) N
-(79) # () S 4 T () S 8 T () S 12 T (}) N
-(80) # () S 4 T () S 8 T () S 12 T () S
-(catch) K
-( \(NullPointerException e1\) {) p n
-(81) # () S 4 T () S 8 T () S 12 T () S 16 T () S
-(new) K
-( PickFrame\(\);) p n
-(82) # () S 4 T () S 8 T () S 12 T (}) N
-(83) # () S 4 T () S 8 T (}) N
-(84) # () S 4 T () S 8 T () N
-(85) # () S 4 T () S
-(public) K
-( Pick_EM\(\) {) p n
-(86) # () S 4 T () S 8 T () S
-(super) K
-(\(") p
-(Pick_EM) str
-("\);) p n
-(87) # () S 4 T () S 8 T (String args = Macro.getOptions\(\);) N
-(88) # () S 4 T () S 8 T (run\(args\);) N
-(89) # () S 4 T (}) N
-(90) # (}) S
-(Pick_EM-graphique) (Page 2/2) (mai 18, 12 8:53) title
-border
-/v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
@@ -5057,21 +4974,21 @@ x0 y0 moveto
 (protected) K
 ( ) p
 (static) K
-( Vector<Double> xtab=) p
+( Vector<Double> xtab = ) p
 (new) K
 ( Vector<Double>\(\);) p n
 (9) # () S 4 T () S
 (protected) K
 ( ) p
 (static) K
-( Vector<Double> ytab=) p
+( Vector<Double> ytab = ) p
 (new) K
 ( Vector<Double>\(\);) p n
 (10) # () S 4 T () S
 (protected) K
 ( ) p
 (static) K
-( Vector<Double> slice=) p
+( Vector<Double> slice = ) p
 (new) K
 ( Vector<Double>\(\);) p n
 (11) # () S 4 T () S
@@ -5110,25 +5027,10 @@ x0 y0 moveto
 ( ) p
 (boolean) k
 ( cropperMode;) p n
-(17) # () S 4 T () N
-(18) # (}) S
-(Pick_EM-graphique) (Page 1/1) (mai 18, 12 10:07) title
+(17) # (}) S
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 14:17) title
 border
-grestore
-(Printed by tomo) rhead
-(Pick_EM.java, Picker.java) (15/18) (vendredi mai 18, 2012) footer
-end % of iso1dict
-pagesave restore
-showpage
-%%Page: (1-2) 16
-%%BeginPageSetup
-/pagesave save def
-sh 0 translate 90 rotate
-%%EndPageSetup
-iso1dict begin
-gsave
-llx lly 12 add translate
-/v 0 store
+/v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
@@ -5148,29 +5050,30 @@ x0 y0 moveto
 (13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
-(16) # () S
-(import) K
-( ij.IJ;) p n
+(16) # () N
 (17) # () S
 (import) K
-( ij.process.*;) p n
-(18) # () N
-(19) # () S
+( ij.IJ;) p n
+(18) # () S
 (import) K
-( java.awt.*;) p n
+( ij.process.*;) p n
+(19) # () N
 (20) # () S
 (import) K
+( java.awt.*;) p n
+(21) # () S
+(import) K
 ( java.awt.event.*;) p n
-(21) # () N
-(22) # () S
+(22) # () N
+(23) # () S
 (import) K
 ( javax.swing.*;) p n
-(23) # () N
-(24) # (@SuppressWarnings\({ ") S
+(24) # () N
+(25) # (@SuppressWarnings\({ ") S
 (serial) str
 ("}\)) p n
-(25) # () N
-(26) # () S
+(26) # () N
+(27) # () S
 (public) K
 ( ) p
 (class) K
@@ -5181,70 +5084,70 @@ x0 y0 moveto
 ( JFrame ) p
 (implements) K
 ( ActionListener {) p n
-(27) # () S 4 T () S
+(28) # () S 4 T () S
 (// This class is for the plugin interface ) c n
-(28) # () S
+(29) # () S
 () p 4 T () N
-(29) # () S 4 T (ImageProcessor ip;) N
-(30) # () S 4 T () N
-(31) # () S 4 T () S
+(30) # () S 4 T (ImageProcessor ip;) N
+(31) # () S 4 T () N
+(32) # () S 4 T () S
 (int) k
 ( type;) p n
-(32) # () S 4 T () N
-(33) # () S 4 T () S
-(private) K
-( JPanel mainPanel;) p n
+(33) # () S 4 T () N
 (34) # () S 4 T () S
 (private) K
-( JPanel panel1;) p n
+( JPanel mainPanel;) p n
 (35) # () S 4 T () S
 (private) K
-( JPanel paneltitle;) p n
+( JPanel panel1;) p n
 (36) # () S 4 T () S
 (private) K
-( JPanel panel2;) p n
+( JPanel paneltitle;) p n
 (37) # () S 4 T () S
 (private) K
-( JPanel panel3;) p n
-(38) # () S 4 T () N
-(39) # () S 4 T (PickFrame instance;) N
-(40) # () S 4 T () N
-(41) # () S 4 T () S
+( JPanel panel2;) p n
+(38) # () S 4 T () S
 (private) K
-( JButton helpInfoButton;) p n
+( JPanel panel3;) p n
+(39) # () S 4 T () N
+(40) # () S 4 T (PickFrame instance;) N
+(41) # () S 4 T () N
 (42) # () S 4 T () S
 (private) K
-( JButton previewButton;) p n
+( JButton helpInfoButton;) p n
 (43) # () S 4 T () S
 (private) K
-( JButton applyButton;) p n
+( JButton previewButton;) p n
 (44) # () S 4 T () S
 (private) K
+( JButton applyButton;) p n
+(45) # () S 4 T () S
+(private) K
 ( JButton saveButton;) p n
-(45) # () S 4 T (JComboBox algoList;) N
-(46) # () S 4 T () N
-(47) # () S 4 T () S
+(46) # () S 4 T (JComboBox algoList;) N
+(47) # () S 4 T () N
+(48) # () S 4 T () S
 (double) k
 ([][] coordXYZ;) p n
-(48) # () S 4 T () N
-(49) # () S 4 T () S
+(49) # () S 4 T () N
+(50) # () S 4 T () S
 (public) K
 ( PickFrame\(\){) p n
-(50) # () S 4 T () S 8 T () S
+(51) # () S 4 T () S 8 T () S
 (super) K
 (\(") p
 (Picking Plugin) str
 ("\);) p n
-(51) # () S 4 T () S 8 T (initGUI\(\);) N
-(52) # () S 4 T () S 8 T (instance = ) S
+(52) # () S 4 T () S 8 T (initGUI\(\);) N
+(53) # () S 4 T () S 8 T (instance = ) S
 (this) k
 (;) p n
-(53) # () S 4 T () S 8 T (add\(paneltitle\);) N
-(54) # () S 4 T (}) N
-(55) # () N
-(56) # () S 4 T () S
+(54) # () S 4 T () S 8 T (add\(paneltitle\);) N
+(55) # () S 4 T (}) N
+(56) # () N
+(57) # () S 4 T () S
 (// Show the GUI threadsafe) c n
-(57) # () S
+(58) # () S
 () p 4 T () S
 (private) K
 ( ) p
@@ -5254,93 +5157,107 @@ x0 y0 moveto
 ( ) p
 (implements) K
 ( Runnable {) p n
-(58) # () S 4 T () S 8 T () S
+(59) # () S 4 T () S 8 T () S
 (final) K
 ( JFrame jFrame;) p n
-(59) # () S 4 T () S 8 T () S
+(60) # () S 4 T () S 8 T () S
 (public) K
 ( GUIShower\(JFrame jFrame\) {) p n
-(60) # () S 4 T () S 8 T () S 12 T (this.jFrame = jFrame;) N
-(61) # () S 4 T () S 8 T (}) N
-(62) # () S 4 T () S 8 T () N
-(63) # () S 4 T () S 8 T () S
+(61) # () S 4 T () S 8 T () S 12 T (this.jFrame = jFrame;) N
+(62) # () S 4 T () S 8 T (}) N
+(63) # () S 4 T () S 8 T () N
+(64) # () S 4 T () S 8 T () S
 (public) K
 ( ) p
 (void) k
 ( run\(\) {) p n
-(64) # () S 4 T () S 8 T () S 12 T (jFrame.pack\(\);) N
-(65) # () S 4 T () S 8 T () S 12 T (jFrame.setLocation\(1000, 200\);) N
-(Pick_EM-graphique) (Page 1/3) (mai 17, 12 9:20) title
+(65) # () S 4 T () S 8 T () S 12 T (jFrame.pack\(\);) N
+(Pick_EM-graphique) (Page 1/3) (mai 19, 12 14:18) title
 border
-/v 1 store
+grestore
+(Printed by tomo) rhead
+(Picker.java, PickFrame.java) (15/17) (samedi mai 19, 2012) footer
+end % of iso1dict
+pagesave restore
+showpage
+%%Page: (2-3) 16
+%%BeginPageSetup
+/pagesave save def
+sh 0 translate 90 rotate
+%%EndPageSetup
+iso1dict begin
+gsave
+llx lly 12 add translate
+/v 0 store
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(66) # () p 4 T () S 8 T () S 12 T (jFrame.setVisible\() S
+(66) # () p 4 T () S 8 T () S 12 T (jFrame.setLocation\(1000, 200\);) N
+(67) # () S 4 T () S 8 T () S 12 T (jFrame.setVisible\() S
 (true) k
 (\);) p n
-(67) # () S 4 T () S 8 T () S 12 T (jFrame.setResizable\() S
+(68) # () S 4 T () S 8 T () S 12 T (jFrame.setResizable\() S
 (false) k
 (\);) p n
-(68) # () S 4 T () S 8 T (}) N
-(69) # () S 4 T (}) N
-(70) # () N
-(71) # () S 4 T () S
+(69) # () S 4 T () S 8 T (}) N
+(70) # () S 4 T (}) N
+(71) # () N
+(72) # () S 4 T () S
 (private) K
 ( ) p
 (void) k
 ( initGUI\(\){) p n
-(72) # () S 4 T () S 8 T (setDefaultCloseOperation\(JFrame.DISPOSE_ON_CLOSE\);) N
-(73) # () S 4 T () S 8 T (GridBagLayout gridbag = ) S
+(73) # () S 4 T () S 8 T (setDefaultCloseOperation\(JFrame.DISPOSE_ON_CLOSE\);) N
+(74) # () S 4 T () S 8 T (GridBagLayout gridbag = ) S
 (new) K
 ( GridBagLayout\(\);) p n
-(74) # () S 4 T () S 8 T (getContentPane\(\).setLayout\(gridbag\);) N
-(75) # () S 4 T () S 8 T () N
-(76) # () S 4 T () S 8 T (mainPanel = ) S
+(75) # () S 4 T () S 8 T (getContentPane\(\).setLayout\(gridbag\);) N
+(76) # () S 4 T () S 8 T () N
+(77) # () S 4 T () S 8 T (mainPanel = ) S
 (new) K
 ( JPanel\(\);) p n
-(77) # () S 4 T () S 8 T (mainPanel.setPreferredSize\() S
+(78) # () S 4 T () S 8 T (mainPanel.setPreferredSize\() S
 (new) K
 ( Dimension\(450, 600\)\); ) p
 (// Horizontal, vert) c n
 0 T (ical ) N
-(78) # () S
+(79) # () S
 () p 4 T () S 8 T (paneltitle = ) S
 (new) K
 ( JPanel\(\);) p n
-(79) # () S 4 T () S 8 T (panel1 = ) S
+(80) # () S 4 T () S 8 T (panel1 = ) S
 (new) K
 ( JPanel\(\);) p n
-(80) # () S 4 T () S 8 T (panel1.setLayout\(gridbag\);) N
-(81) # () S 4 T () S 8 T (GridBagConstraints gbc = ) S
+(81) # () S 4 T () S 8 T (panel1.setLayout\(gridbag\);) N
+(82) # () S 4 T () S 8 T (GridBagConstraints gbc = ) S
 (new) K
 ( GridBagConstraints\(\);) p n
-(82) # () S 4 T () S 8 T (gbc.anchor = GridBagConstraints.NORTH;) N
-(83) # () S 4 T () S 8 T (panel2 = ) S
+(83) # () S 4 T () S 8 T (gbc.anchor = GridBagConstraints.NORTH;) N
+(84) # () S 4 T () S 8 T (panel2 = ) S
 (new) K
 ( JPanel\(\);) p n
-(84) # () S 4 T () S 8 T (panel3 = ) S
+(85) # () S 4 T () S 8 T (panel3 = ) S
 (new) K
 ( JPanel\(\);) p n
-(85) # () S 4 T () S 8 T (panel3.setLayout\(gridbag\);) N
-(86) # () S 4 T () S 8 T (gbc = ) S
+(86) # () S 4 T () S 8 T (panel3.setLayout\(gridbag\);) N
+(87) # () S 4 T () S 8 T (gbc = ) S
 (new) K
 ( GridBagConstraints\(\);) p n
-(87) # () S 4 T () S 8 T (gbc.anchor = GridBagConstraints.SOUTH;) N
-(88) # () N
-(89) # () S 4 T () S 8 T () S
+(88) # () S 4 T () S 8 T (gbc.anchor = GridBagConstraints.SOUTH;) N
+(89) # () N
+(90) # () S 4 T () S 8 T () S
 (///////////////////// Panel1 : Choice of algorithm ) c n
-(90) # () N
-(91) # () S
+(91) # () N
+(92) # () S
 () p 4 T () S 8 T (JLabel titlePanel1 = ) S
 (new) K
 ( JLabel\(") p
 ( Choose a picking algorithm ) str
 (", JLabel.CENTER\);) p n
-(92) # () S 4 T () S 8 T (panel1.add\(titlePanel1\);) N
-(93) # () S 4 T () S 8 T () S
+(93) # () S 4 T () S 8 T (panel1.add\(titlePanel1\);) N
+(94) # () S 4 T () S 8 T () S
 (// Create combo box) c n
-(94) # () S
+(95) # () S
 () p 4 T () S 8 T (String[] algos = { ") S
 (Difference_of_Gaussian) str
 (", ") p
@@ -5351,80 +5268,187 @@ x0 y0 moveto
 0 T (") S
 (About_Pick_EM) str
 ("};) p n
-(95) # () N
-(96) # () S 4 T () S 8 T () S
+(96) # () N
+(97) # () S 4 T () S 8 T () S
 (//Create the combo box, default selection is the item at index 4.) c n
-(97) # () S
+(98) # () S
 () p 4 T () S 8 T () S
 (//Indices start at 0, so 4 specifies the About panel.) c n
-(98) # () S
+(99) # () S
 () p 4 T () S 8 T (algoList = ) S
 (new) K
 ( JComboBox\(algos\);) p n
-(99) # () S 4 T () S 8 T (algoList.setSelectedIndex\(3\);) N
-(100) # () S 4 T () S 8 T (algoList.addActionListener\() S
+(100) # () S 4 T () S 8 T (algoList.setSelectedIndex\(3\);) N
+(101) # () S 4 T () S 8 T (algoList.addActionListener\() S
 (this) k
 (\);) p n
-(101) # () N
-(102) # () S 4 T () S 8 T () S
+(102) # () N
+(103) # () S 4 T () S 8 T () S
 (//Set up the contain \(contains all algorithms\).) c n
-(103) # () S
+(104) # () S
 () p 4 T () S 8 T (JLabel choice = ) S
 (new) K
 ( JLabel\(\);) p n
-(104) # () S 4 T () S 8 T (gridbag.setConstraints\(algoList,gbc\);) N
-(105) # () S 4 T () S 8 T (panel1.add\(algoList\);) N
-(106) # () S 4 T () S 8 T (gridbag.setConstraints\(choice,gbc\);) N
-(107) # () S 4 T () S 8 T (panel1.add\(choice\);) N
-(108) # () S 4 T () S 8 T () N
-(109) # () S 4 T () S 8 T () S
+(105) # () S 4 T () S 8 T (gridbag.setConstraints\(algoList,gbc\);) N
+(106) # () S 4 T () S 8 T (panel1.add\(algoList\);) N
+(107) # () S 4 T () S 8 T (gridbag.setConstraints\(choice,gbc\);) N
+(108) # () S 4 T () S 8 T (panel1.add\(choice\);) N
+(109) # () S 4 T () S 8 T () N
+(110) # () S 4 T () S 8 T () S
 (//////////////////////// Panel3 : Preview & Apply & Save & Help) c n
-(110) # () N
-(111) # () S
+(111) # () N
+(112) # () S
 () p 4 T () S 8 T (previewButton = makeButton\(") S
 (Preview) str
 ("\);) p n
-(112) # () S 4 T () S 8 T (applyButton = makeButton\(") S
+(113) # () S 4 T () S 8 T (applyButton = makeButton\(") S
 (Apply) str
 ("\);) p n
-(113) # () S 4 T () S 8 T (saveButton = makeButton\(") S
+(114) # () S 4 T () S 8 T (saveButton = makeButton\(") S
 (Show Results) str
 ("\);) p n
-(114) # () S 4 T () S 8 T (helpInfoButton = makeButton\(") S
+(115) # () S 4 T () S 8 T (helpInfoButton = makeButton\(") S
 (Help & Info) str
 ("\);) p n
-(115) # () S 4 T () S 8 T (helpInfoButton.addActionListener\() S
+(116) # () S 4 T () S 8 T (helpInfoButton.addActionListener\() S
 (new) K
 ( InfoHelp\(\)\);) p n
-(116) # () S 4 T () S 8 T () N
-(117) # () S 4 T () S 8 T () S
+(117) # () S 4 T () S 8 T () N
+(118) # () S 4 T () S 8 T () S
 (//adding to Preview & Reset & Apply & Help box) c n
-(118) # () S
+(119) # () S
 () p 4 T () S 8 T (gridbag.setConstraints\(previewButton,gbc\);) N
-(119) # () S 4 T () S 8 T (panel3.add\(previewButton\);) N
-(120) # () S 4 T () S 8 T (gridbag.setConstraints\(applyButton,gbc\);) N
-(121) # () S 4 T () S 8 T (panel3.add\(applyButton\);) N
-(122) # () S 4 T () S 8 T (gridbag.setConstraints\(saveButton,gbc\);) N
-(123) # () S 4 T () S 8 T (panel3.add\(saveButton\);) N
-(124) # () S 4 T () S 8 T (gridbag.setConstraints\(helpInfoButton,gbc\);) N
-(125) # () S 4 T () S 8 T (panel3.add\(helpInfoButton\);) N
-(126) # () N
-(127) # () S 4 T () S 8 T () S
+(120) # () S 4 T () S 8 T (panel3.add\(previewButton\);) N
+(121) # () S 4 T () S 8 T (gridbag.setConstraints\(applyButton,gbc\);) N
+(122) # () S 4 T () S 8 T (panel3.add\(applyButton\);) N
+(123) # () S 4 T () S 8 T (gridbag.setConstraints\(saveButton,gbc\);) N
+(124) # () S 4 T () S 8 T (panel3.add\(saveButton\);) N
+(125) # () S 4 T () S 8 T (gridbag.setConstraints\(helpInfoButton,gbc\);) N
+(126) # () S 4 T () S 8 T (panel3.add\(helpInfoButton\);) N
+(127) # () N
+(128) # () S 4 T () S 8 T () S
 (///////////////// Main panel) c n
-(128) # () S
+(129) # () S
 () p 4 T () S 8 T () N
-(129) # () S 4 T () S 8 T (mainPanel.setLayout\() S
+(Pick_EM-graphique) (Page 2/3) (mai 19, 12 14:18) title
+border
+/v 1 store
+/x0 x v get 3.167824 add sx cw mul add store
+/y0 y v get bfs th add sub store
+x0 y0 moveto
+(130) # () p 4 T () S 8 T (mainPanel.setLayout\() S
 (new) K
 ( GridLayout\(3,0\)\); ) p n
-(Pick_EM-graphique) (Page 2/3) (mai 17, 12 9:20) title
+(131) # () S 4 T () S 8 T (mainPanel.setVisible\() S
+(true) k
+(\);) p n
+(132) # () S 4 T () S 8 T () N
+(133) # () S 4 T () S 8 T (mainPanel.add\(panel1\);) N
+(134) # () S 4 T () S 8 T (mainPanel.add\(panel2\);) N
+(135) # () S 4 T () S 8 T (mainPanel.add\(panel3\);) N
+(136) # () S 4 T () S 8 T (add\(mainPanel\); ) N
+(137) # () S 4 T () S 8 T (Runnable runner = ) S
+(new) K
+( GUIShower\() p
+(this) k
+(\);) p n
+(138) # () S 4 T () S 8 T (EventQueue.invokeLater\(runner\);) N
+(139) # () S 4 T (}) N
+(140) # () N
+(141) # () S 4 T (JButton makeButton\(String name\){) N
+(142) # () S 4 T () S 8 T (JButton jButton = ) S
+(new) K
+( JButton\(name\);) p n
+(143) # () S 4 T () S 8 T (jButton.addActionListener\() S
+(this) k
+(\);) p n
+(144) # () S 4 T () S 8 T () S
+(return) K
+( jButton;) p n
+(145) # () S 4 T (}) N
+(146) # () S 4 T () S 8 T () N
+(147) # () S 4 T () S
+(// Listens to the combo box) c n
+(148) # () S
+() p 4 T () S
+(public) K
+( ) p
+(void) k
+( actionPerformed\(ActionEvent e\) {) p n
+(149) # () S 4 T () S 8 T () N
+(150) # () S 4 T () S 8 T (String command = e.getActionCommand\(\);) N
+(151) # () S 4 T () S 8 T (String comboSelection = ) S
+(null) k
+(;) p n
+(152) # () S 4 T () S 8 T () S
+(if) K
+( \(command.equals\(") p
+(comboBoxChanged) str
+("\)\){) p n
+(153) # () S 4 T () S 8 T () S 12 T (JComboBox cb = \(JComboBox\)e.getSource\(\);) N
+(154) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\) cb.getSelectedItem\(\);) N
+(155) # () S 4 T () S 8 T () S 12 T (panel2.removeAll\(\);) N
+(156) # () S 4 T () S 8 T () S 12 T () S
+(// Allows the panel2's update) c n
+(157) # () S
+() p 4 T () S 8 T () S 12 T (mainPanel.remove\(panel1\);) N
+(158) # () S 4 T () S 8 T () S 12 T (mainPanel.remove\(panel2\);) N
+(159) # () S 4 T () S 8 T () S 12 T (mainPanel.remove\(panel3\);) N
+(160) # () S 4 T () S 8 T () S 12 T (panel2 = AlgoFactory.algorithm.getPickPanel\(comboSelection\);) N
+(161) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel1\);) N
+(162) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel2\);) N
+(163) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel3\);) N
+(164) # () S 4 T () S 8 T () S 12 T (mainPanel.repaint\(\);) N
+(165) # () S 4 T () S 8 T () S 12 T (pack\(\);) N
+(166) # () S 4 T () S 8 T (}) N
+(167) # () S 4 T () S 8 T () N
+(168) # () S 4 T () S 8 T () S
+(if) K
+( \(command.equals\(") p
+(Apply) str
+("\)\){) p n
+(169) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\)algoList.getSelectedItem\(\);) N
+(170) # () S 4 T () S 8 T () S 12 T () S 16 T (Attributes.getInstance\(\);) N
+(171) # () S 4 T () S 8 T () S 12 T () S 16 T (coordXYZ = AlgoFactory.algorithm.getPicker\(comboSelection\);) N
+(172) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showStatus\(") S
+(End of picking) str
+("\);) p n
+(173) # () S 4 T () S 8 T () S 12 T (}) N
+(174) # () S 4 T () S 8 T () N
+(175) # () S 4 T () S 8 T () S
+(else) K
+( ) p
+(if) K
+( \(command.equals\(") p
+(Preview) str
+("\)\){) p n
+(176) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\)algoList.getSelectedItem\(\);) N
+(177) # () S 4 T () S 8 T () S 12 T () S 16 T (Attributes.getInstance\(\);) N
+(178) # () S 4 T () S 8 T () S 12 T () S 16 T (AlgoFactory.algorithm.getPickerPreview\(comboSelection\);) N
+(179) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showStatus\(") S
+(End of Preview) str
+("\);) p n
+(180) # () S 4 T () S 8 T () S 12 T (}) N
+(181) # () S 4 T () S 8 T () S
+(else) K
+( ) p
+(if) K
+( \(command.equals\(") p
+(Show Results) str
+("\)\){) p n
+(182) # () S 4 T () S 8 T () S 12 T () S 16 T (ToCSV.generateCsvFile\(coordXYZ\);) N
+(183) # () S 4 T () S 8 T (}) N
+(184) # () S 4 T (}) N
+(185) # (}) S
+(Pick_EM-graphique) (Page 3/3) (mai 19, 12 14:18) title
 border
 grestore
 (Printed by tomo) rhead
-(PickFrame.java) (16/18) (vendredi mai 18, 2012) footer
+(PickFrame.java) (16/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
-%%Page: (3,1) 17
+%%Page: (1,1) 17
 %%BeginPageSetup
 /pagesave save def
 sh 0 translate 90 rotate
@@ -5436,108 +5460,64 @@ llx lly 12 add translate
 /x0 x v get 3.167824 add sx cw mul add store
 /y0 y v get bfs th add sub store
 x0 y0 moveto
-(130) # () p 4 T () S 8 T (mainPanel.setVisible\() S
-(true) k
-(\);) p n
-(131) # () S 4 T () S 8 T () N
-(132) # () S 4 T () S 8 T (mainPanel.add\(panel1\);) N
-(133) # () S 4 T () S 8 T (mainPanel.add\(panel2\);) N
-(134) # () S 4 T () S 8 T (mainPanel.add\(panel3\);) N
-(135) # () S 4 T () S 8 T (add\(mainPanel\); ) N
-(136) # () S 4 T () S 8 T (Runnable runner = ) S
+(1) # (/*) c n
+(2) # (*Copyright \(C\) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANS) N
+0 T (EN Joris) N
+(3) # (*This file is part of Pick_EM program) N
+(4) # (*Pick_EM is free software; you can redistribute it and/or modify) N
+(5) # (*it under the terms of the GNU General Public License as published by) N
+(6) # (*the Free Software Foundation; either version 2 of the License, or) N
+(7) # (*\(at your option\) any later version.) N
+(8) # (*This program is distributed in the hope that it will be useful,) N
+(9) # (*but WITHOUT ANY WARRANTY; without even the implied warranty of) N
+(10) # (*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the) N
+(11) # (*GNU General Public License for more details.) N
+(12) # (*You should have received a copy of the GNU General Public License along) N
+(13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
+(14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
+(15) # (*/) N
+(16) # () N
+(17) # () S
+(import) K
+( java.awt.event.*;) p n
+(18) # () N
+(19) # () S
+(import) K
+( javax.swing.JFrame;) p n
+(20) # () S
+(import) K
+( javax.swing.JPanel;) p n
+(21) # () N
+(22) # (@SuppressWarnings\({ ") S
+(serial) str
+(" }\)) p n
+(23) # () N
+(24) # () S
+(public) K
+( ) p
+(class) K
+( ) p
+(PickPanel) L
+( ) p
+(extends) K
+( JFrame {) p n
+(25) # () S 4 T () S
+(// This class is the superclass of the subpanels) c n
+(26) # () S
+() p 4 T () N
+(27) # () S 4 T () S
+(static) K
+( JPanel panel2 = ) p
 (new) K
-( GUIShower\() p
-(this) k
-(\);) p n
-(137) # () S 4 T () S 8 T (EventQueue.invokeLater\(runner\);) N
-(138) # () S 4 T (}) N
-(139) # () N
-(140) # () S 4 T (JButton makeButton\(String name\){) N
-(141) # () S 4 T () S 8 T (JButton jButton = ) S
-(new) K
-( JButton\(name\);) p n
-(142) # () S 4 T () S 8 T (jButton.addActionListener\() S
-(this) k
-(\);) p n
-(143) # () S 4 T () S 8 T () S
-(return) K
-( jButton;) p n
-(144) # () S 4 T (}) N
-(145) # () S 4 T () S 8 T () N
-(146) # () S 4 T () S
-(// Listens to the combo box) c n
-(147) # () S
-() p 4 T () S
+( JPanel\(\);) p n
+(28) # () S 4 T () N
+(29) # () S 4 T () S
 (public) K
 ( ) p
 (void) k
-( actionPerformed\(ActionEvent e\) {) p n
-(148) # () S 4 T () S 8 T () N
-(149) # () S 4 T () S 8 T (String command = e.getActionCommand\(\);) N
-(150) # () S 4 T () S 8 T (String comboSelection = ) S
-(null) k
-(;) p n
-(151) # () S 4 T () S 8 T () S
-(if) K
-( \(command.equals\(") p
-(comboBoxChanged) str
-("\)\){) p n
-(152) # () S 4 T () S 8 T () S 12 T (JComboBox cb = \(JComboBox\)e.getSource\(\);) N
-(153) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\) cb.getSelectedItem\(\);) N
-(154) # () S 4 T () S 8 T () S 12 T (panel2.removeAll\(\);) N
-(155) # () S 4 T () S 8 T () S 12 T () S
-(// Allows the panel2's update) c n
-(156) # () S
-() p 4 T () S 8 T () S 12 T (mainPanel.remove\(panel1\);) N
-(157) # () S 4 T () S 8 T () S 12 T (mainPanel.remove\(panel2\);) N
-(158) # () S 4 T () S 8 T () S 12 T (mainPanel.remove\(panel3\);) N
-(159) # () S 4 T () S 8 T () S 12 T (panel2 = AlgoFactory.algorithm.getPickPanel\(comboSelection\);) N
-(160) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel1\);) N
-(161) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel2\);) N
-(162) # () S 4 T () S 8 T () S 12 T (mainPanel.add\(panel3\);) N
-(163) # () S 4 T () S 8 T () S 12 T (mainPanel.repaint\(\);) N
-(164) # () S 4 T () S 8 T () S 12 T (pack\(\);) N
-(165) # () S 4 T () S 8 T (}) N
-(166) # () S 4 T () S 8 T () N
-(167) # () S 4 T () S 8 T () S
-(if) K
-( \(command.equals\(") p
-(Apply) str
-("\)\){) p n
-(168) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\)algoList.getSelectedItem\(\);) N
-(169) # () S 4 T () S 8 T () S 12 T () S 16 T (Attributes.getInstance\(\);) N
-(170) # () S 4 T () S 8 T () S 12 T () S 16 T (coordXYZ = AlgoFactory.algorithm.getPicker\(comboSelection\);) N
-(171) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showStatus\(") S
-(End of picking) str
-("\);) p n
-(172) # () S 4 T () S 8 T () S 12 T (}) N
-(173) # () S 4 T () S 8 T () N
-(174) # () S 4 T () S 8 T () S
-(else) K
-( ) p
-(if) K
-( \(command.equals\(") p
-(Preview) str
-("\)\){) p n
-(175) # () S 4 T () S 8 T () S 12 T (comboSelection = \(String\)algoList.getSelectedItem\(\);) N
-(176) # () S 4 T () S 8 T () S 12 T () S 16 T (Attributes.getInstance\(\);) N
-(177) # () S 4 T () S 8 T () S 12 T () S 16 T (AlgoFactory.algorithm.getPickerPreview\(comboSelection\);) N
-(178) # () S 4 T () S 8 T () S 12 T () S 16 T (IJ.showStatus\(") S
-(End of Preview) str
-("\);) p n
-(179) # () S 4 T () S 8 T () S 12 T (}) N
-(180) # () S 4 T () S 8 T () S
-(else) K
-( ) p
-(if) K
-( \(command.equals\(") p
-(Show Results) str
-("\)\){) p n
-(181) # () S 4 T () S 8 T () S 12 T () S 16 T (ToCSV.generateCsvFile\(coordXYZ\);) N
-(182) # () S 4 T () S 8 T (}) N
-(183) # () S 4 T (}) N
-(184) # (}) S
-(Pick_EM-graphique) (Page 3/3) (mai 17, 12 9:20) title
+( actionPerformed\(ActionEvent e\) {}) p n
+(30) # (}) S
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 14:19) title
 border
 /v 1 store
 /x0 x v get 3.167824 add sx cw mul add store
@@ -5559,161 +5539,90 @@ x0 y0 moveto
 (13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
 (14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
 (15) # (*/) N
-(16) # () S
-(import) K
-( java.awt.event.*;) p n
-(17) # () N
-(18) # () S
-(import) K
-( javax.swing.JFrame;) p n
-(19) # () S
-(import) K
-( javax.swing.JPanel;) p n
-(20) # () N
-(21) # (@SuppressWarnings\({ ") S
-(serial) str
-(" }\)) p n
-(22) # () N
-(23) # () S
-(public) K
-( ) p
-(class) K
-( ) p
-(PickPanel) L
-( ) p
-(extends) K
-( JFrame {) p n
-(24) # () S 4 T () S
-(static) K
-( JPanel panel2 = ) p
-(new) K
-( JPanel\(\);) p n
-(25) # () S 4 T () N
-(26) # () S 4 T () S
-(public) K
-( ) p
-(void) k
-( actionPerformed\(ActionEvent e\) {}) p n
-(27) # (}) S
-(Pick_EM-graphique) (Page 1/1) (mai 16, 12 10:30) title
-border
-grestore
-(Printed by tomo) rhead
-(PickFrame.java, PickPanel.java) (17/18) (vendredi mai 18, 2012) footer
-end % of iso1dict
-pagesave restore
-showpage
-%%Page: (1) 18
-%%BeginPageSetup
-/pagesave save def
-sh 0 translate 90 rotate
-%%EndPageSetup
-iso1dict begin
-gsave
-llx lly 12 add translate
-/v 0 store
-/x0 x v get 3.167824 add sx cw mul add store
-/y0 y v get bfs th add sub store
-x0 y0 moveto
-(1) # (/*) c n
-(2) # (*Copyright \(C\) 2012 FAUX Thomas, HERICE Charlotte, PAYSAN-LAFOSSE Typhaine, SANS) N
-0 T (EN Joris) N
-(3) # (*This file is part of Pick_EM program) N
-(4) # (*Pick_EM is free software; you can redistribute it and/or modify) N
-(5) # (*it under the terms of the GNU General Public License as published by) N
-(6) # (*the Free Software Foundation; either version 2 of the License, or) N
-(7) # (*\(at your option\) any later version.) N
-(8) # (*This program is distributed in the hope that it will be useful,) N
-(9) # (*but WITHOUT ANY WARRANTY; without even the implied warranty of) N
-(10) # (*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the) N
-(11) # (*GNU General Public License for more details.) N
-(12) # (*You should have received a copy of the GNU General Public License along) N
-(13) # (*with this program; if not, write to the Free Software Foundation, Inc.,) N
-(14) # (*51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.) N
-(15) # (*/) N
-(16) # () S
+(16) # () N
+(17) # () S
 (import) K
 ( ij.measure.ResultsTable;) p n
-(17) # ( ) N
-(18) # () S
+(18) # ( ) N
+(19) # () S
 (public) K
 ( ) p
 (class) K
 ( ) p
 (ToCSV) L
 ( {) p n
-(19) # () S 4 T () S
+(20) # () S 4 T () S
 (// This class allows to generate a resultstable which can be saved to a csv ) c n
 0 T (file using ImageJ) N
-(20) # () S
+(21) # () S
 () p 4 T () N
-(21) # () S 4 T () S
+(22) # () S 4 T () S
 (static) K
 ( ) p
 (void) k
 ( generateCsvFile\() p
 (double) k
 ([][] coords\){) p n
-(22) # () S 4 T () S 8 T () N
-(23) # () S 4 T () S 8 T (ResultsTable result = ) S
+(23) # () S 4 T () S 8 T () N
+(24) # () S 4 T () S 8 T (ResultsTable result = ) S
 (new) K
 ( ResultsTable\(\); ) p n
-(24) # () S 4 T () S 8 T () S
+(25) # () S 4 T () S 8 T () S
 (int) k
 ( counter = coords[0].length;) p n
-(25) # () S 4 T () S 8 T () S
+(26) # () S 4 T () S 8 T () S
 (for) K
 ( \() p
 (int) k
 ( i=0; i<counter; i++\){) p n
-(26) # () S 4 T () S 8 T () S 12 T () S
+(27) # () S 4 T () S 8 T () S 12 T () S
 (// Getting X values) c n
-(27) # () S
+(28) # () S
 () p 4 T () S 8 T () S 12 T () S
 (int) k
 ( posx = \() p
 (int) k
 (\) coords[0][i];) p n
-(28) # () S 4 T () S 8 T () S 12 T () N
-(29) # () S 4 T () S 8 T () S 12 T () S
+(29) # () S 4 T () S 8 T () S 12 T () N
+(30) # () S 4 T () S 8 T () S 12 T () S
 (// Getting Y values) c n
-(30) # () S
+(31) # () S
 () p 4 T () S 8 T () S 12 T () S
 (int) k
 ( posy = \() p
 (int) k
 (\) coords[1][i];) p n
-(31) # () S 4 T () S 8 T () S 12 T () N
-(32) # () S 4 T () S 8 T () S 12 T () S
+(32) # () S 4 T () S 8 T () S 12 T () N
+(33) # () S 4 T () S 8 T () S 12 T () S
 (// Getting Z \(slices\) values) c n
-(33) # () S
+(34) # () S
 () p 4 T () S 8 T () S 12 T () S
 (int) k
 ( posz = \() p
 (int) k
 (\) coords[2][i];) p n
-(34) # () S 4 T () S 8 T () S 12 T () N
-(35) # () S 4 T () S 8 T () S 12 T (result.incrementCounter\(\);) N
-(36) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
+(35) # () S 4 T () S 8 T () S 12 T () N
+(36) # () S 4 T () S 8 T () S 12 T (result.incrementCounter\(\);) N
+(37) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
 (X) str
 (",posx\);) p n
-(37) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
+(38) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
 (Y) str
 (",posy\);) p n
-(38) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
+(39) # () S 4 T () S 8 T () S 12 T (result.addValue\(") S
 (Slice) str
 (",posz\);) p n
-(39) # () S 4 T () S 8 T (}) N
-(40) # () S 4 T () S 8 T (result.show\(") S
+(40) # () S 4 T () S 8 T (}) N
+(41) # () S 4 T () S 8 T (result.show\(") S
 (result) str
 ("\);) p n
-(41) # () S 4 T (}) N
-(42) # (}) S
-(Pick_EM-graphique) (Page 1/1) (mai 16, 12 10:36) title
+(42) # () S 4 T (}) N
+(43) # (}) S
+(Pick_EM-graphique) (Page 1/1) (mai 19, 12 14:19) title
 border
 grestore
 (Printed by tomo) rhead
-(ToCSV.java) (18/18) (vendredi mai 18, 2012) footer
+(PickPanel.java, ToCSV.java) (17/17) (samedi mai 19, 2012) footer
 end % of iso1dict
 pagesave restore
 showpage
