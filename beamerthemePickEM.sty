@@ -46,6 +46,7 @@
 \setbeamercolor*{example text}{fg=exampleTextColor}
 \setbeamercolor*{alerted text}{fg=alertTextColor}
 \useinnertheme{rounded}
+\setbeamercolor{section in toc}{fg=lightgray}
 \setbeamercolor{item projected}{bg=chipColor,fg=chipTextColor}
 \defbeamertemplate*{headline}{infolines theme}{
 \leavevmode%
@@ -70,7 +71,7 @@
 \usebeamerfont{author in head/foot}\insertshortauthor~~
 \end{beamercolorbox}%
 \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
-\usebeamerfont{title in head/foot}\insertshorttitle
+\usebeamerfont{title in head/foot}\insertsubtitle
 \end{beamercolorbox}%
 \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
 \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
