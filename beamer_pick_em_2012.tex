@@ -108,7 +108,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 		\begin{column}{5cm}
 			\begin{block}{Algorithmes}
 				\begin{itemize}
-					\item Piquage automatique
+					\item Sélection automatique
 					\item Résultats : tableau de coordonnées (x, y, z) et images résultantes
 				\end{itemize}
 			\end{block}
@@ -184,35 +184,86 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \frametitle{\subsubsecname}
 \begin{block}{3 algorithmes implémentés:}
 \begin{itemize}
-\item Différence de Gaussiennes 
 \item Extraction de contours (Différence de dilatation)
 \item Corrélation d'images
+\item Différence de Gaussiennes 
 \end{itemize}
 \end{block}
 \end{frame}
-\subsubsection*{Démonstration avec la Différence de Gaussiennes}
 \begin{frame}
-\frametitle{\subsecname ~- \subsubsecname}%(DoG) Wouf!}
-	\begin{columns}
+\frametitle{\subsecname ~- Extraction de contours}
+\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
-				\includegraphics[scale=0.07]{beamer/base.jpg}
-	
-				Micrographie de protéines transmembranaires
+				\includegraphics[scale=0.5]{beamer/blobs-1.png}
+
+				Image pour l'extraction de contours
 			\end{figure}
 		\end{column}
 		\begin{column}{5cm}
-			\begin{itemize}
-				\item Application de filtres gaussiens
-				\item Soustraction des images filtrées
-				\item Récupération des maxima
-				\item Extrapolation des points sélectionnés sur l'image de bases
-			\end{itemize}
+		%\begin{figure}
+	%	\includegraphics[scale=0.02]{beamer/rond.png}
+
+	%		cercle de comparaison
+	%\end{figure}
+			\begin{figure}
+				\includegraphics[scale=0.5]{beamer/blobDilateDiffResult.png}
+
+				Image résultante
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
 \begin{frame}
+\frametitle{\subsecname ~- Corrélation d'images}
+	\begin{columns}
+		\begin{column}{5cm}
+			\begin{figure}
+				\includegraphics[scale=0.07]{beamer/exemple.png}
+
+				Image pour la corrélation
+			\end{figure}
+		\end{column}
+		\begin{column}{5cm}
+		%\begin{figure}
+	%	\includegraphics[scale=0.02]{beamer/rond.png}
+
+	%		cercle de comparaison
+	%\end{figure}
+			\begin{figure}
+				\includegraphics[scale=0.07]{beamer/Result.png}
+
+				Image résultante
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+\subsubsection*{Démonstration avec la Différence de Gaussiennes}
+\begin{frame}
+\frametitle{\subsubsecname}%(DoG) Wouf!}
+%	\begin{columns}
+%		\begin{column}{5cm}
+			\begin{figure}
+				\includegraphics[scale=0.09]{beamer/base.jpg}
+	
+				Micrographie de protéines transmembranaires
+			\end{figure}
+%		\end{column}
+%		\begin{column}{5cm}
+%			\begin{itemize}
+%				\item Application de filtres gaussiens
+%				\item Soustraction des images filtrées
+%				\item Récupération des maxima
+%				\item Extrapolation des points sélectionnés sur l'image de bases
+%			\end{itemize}
+%		\end{column}
+%	\end{columns}
+\end{frame}
+\begin{frame}
 \frametitle{\subsecname ~- Les filtres}
+%\begin{center}
+Application de filtres gaussiens
+%\end{center}
 	\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
@@ -232,6 +283,9 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \end{frame}
 \begin{frame}
 \frametitle{\subsecname ~- Résultats intermédiaires}
+%\begin{center}
+Soustraction des images filtrées et Récupération des maxima
+%\end{center}
 \begin{columns}
 \begin{column}{5cm}
 			\begin{figure}
@@ -251,6 +305,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \end{frame}
 \begin{frame}
 \frametitle{\subsecname ~- Résultats}
+Application des points d'intêret sélectionnés sur l'image de bases
 	\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
@@ -283,20 +338,20 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \frametitle{\subsecname ~- \subsubsecname}
 	\begin{block}{Singleton}
 		\begin{itemize}
-			\item Sert à contrôler le nombre d'instances d'une classe présent à un moment donné,
-			\item Restreindre l'instanciation d'une classe à un seul objet
+			\item Sert à contrôler le nombre d'instances d'une classe présent à un moment donné
+			\item Restreint l'instanciation d'une classe à un seul objet
 		\end{itemize}
 	\end{block}
 	\begin{block}{Factory}
 		\begin{itemize}
-			\item Classe qui n'a pour rôle que de construire des objets,
+			\item Classe qui n'a pour rôle que de construire des objets
+			\item Seule responsable de la création $/$ distribution de l’objet
 		\end{itemize}
-		C elle est seule responsable de la création $/$ distribution de l’objet
 	\end{block}
 \end{frame}
 \begin{frame}
 \frametitle{Difficultées rencontrées}
-	\begin{block}{l'API ImageJ}
+	\begin{block}{API ImageJ}
 	Distinction :
 		\begin{itemize}
 			\item ImagePlus
@@ -306,8 +361,8 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\end{block}
 	\begin{block}{GUI}
 		\begin{itemize}
-			\item Gestion des Panels
-			\item Organisation et tailles de fenêtres
+			\item Gestion des panneaux
+			\item Organisation et tailles des fenêtres
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -316,13 +371,13 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\begin{block}{Améliorer:}
 		\begin{itemize}
 			\item Améliorer le mode debug
-			\item Continuer le travail pour l'utilisation en macro
+			\item Continuer le travail pour l'utilisation en Macro
 		\end{itemize}
 	\end{block}
 	\begin{block}{Ajouter :}
 		\begin{itemize}
 			\item Ajouter automatiquement un algorithme
-			\item Afficher les sélections pour chaque image d'un stack
+			\item Afficher les sélections pour chaque image d'une pile
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -333,7 +388,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\begin{block}{Le projet}
 		\begin{itemize}
 			\item Interface facile d'utilisation
-			\item Piquage efficace
+			\item sélection efficace
 			\item Récupération des images individuelles et des coordonnées fonctionnelle
 		\end{itemize}
 	\end{block}
