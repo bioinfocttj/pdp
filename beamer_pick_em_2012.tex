@@ -10,7 +10,7 @@
 \date{Mai 2012}
 \author{\textsc{Faux} - \textsc{Héricé} - \textsc{Paysan-Lafosse} - \textsc{Sansen}}
 \institute[Universite Bordeaux 1 \& 2] 
- {
+{
  Master 1 Bioinformatique \\ Projet de programmation sous la direction de Jean-Christophe \textsc{Taveau} \\ 
  \begin{figure}[h]
   \begin{center}
@@ -19,7 +19,14 @@
   \includegraphics[width=0.3\columnwidth]{beamer/banniere_cbmn.png}
   \end{center}
  \end{figure}
- }
+}
+
+%\AtBeginSection[]{
+%  \begin{frame}{Plan}
+%  \small \tableofcontents[currentsection, hideothersubsections]
+%  \end{frame} 
+%} 
+ 
 \begin{document}
 
 \frame{\titlepage}
@@ -29,7 +36,7 @@
 \end{frame}
 \section{Introduction}
 \begin{frame}
-\frametitle{Introduction}
+\frametitle{\secname}
 \begin{block}{CBMN}
 Laboratoire de Chimie et Biologie des Membranes et Nanoobjets 
 \end{block}
@@ -40,7 +47,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 
 \subsection{Contexte}
 	\begin{frame}
-	\frametitle{Introduction - Contexte}
+	\frametitle{\subsecname}
 	\begin{itemize}
 		\item Micrographies de structures protéiques issue de MET
 		\item Utilisation du logiciel ImageJ
@@ -58,9 +65,9 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\end{figure}
 \end{frame}
 
-\subsection{Objectif}
+\subsection{Objectifs}
 \begin{frame}
-\frametitle{Introduction - Objectif}
+\frametitle{\subsecname}
 	\begin{columns}[t]
 		
 		\begin{column}{4.5cm}
@@ -75,7 +82,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 		\begin{column}{6.5cm}
 		    \begin{block}{Implémentation d'algorithmes}
 				\begin{itemize}
-					\item Automatisation du traitement
+					\item Automatisation du traitement et de la sélection
 					\item Récupération des coordonnées
 					\item Images résultantes
 				\end{itemize}
@@ -87,7 +94,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \section{Analyse}
 \subsection{Besoins Fonctionnels}
 \begin{frame}
-\frametitle{Analyse - Besoins Fonctionnels}
+\frametitle{\subsecname}
 	\begin{columns}[t]
 		
 		\begin{column}{5cm}
@@ -111,8 +118,16 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 
 \subsection{Besoins non Fonctionnels}
 \begin{frame}
-\frametitle{Analyse - Besoins non Fonctionnels}
+\frametitle{\subsecname}
 	\begin{columns}[t]
+		\begin{column}{5cm}
+			\begin{block}{Interface}
+				\begin{itemize}
+					\item Implémentation en Java (AWT ou \textbf{Swing})
+					\item Modularité
+				\end{itemize}
+			\end{block}
+		\end{column}
 		\begin{column}{5cm}
 			\begin{block}{Algorithmes}
 				\begin{itemize}
@@ -122,20 +137,13 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 				\end{itemize}
 			\end{block}
 		\end{column}
-		\begin{column}{5cm}
-			\begin{block}{Interface}
-				\begin{itemize}
-					\item Implémentation en Java (AWT ou \textbf{Swing})
-					\item Modularité
-				\end{itemize}
-			\end{block}
-		\end{column}
 	\end{columns}
 \end{frame}
 
 \section{Conception - Réalisation}
+\subsection{Interface Graphique (GUI)}
 \begin{frame}
-\frametitle{Interface Graphique}
+\frametitle{\subsecname}
 	\begin{columns}
 		\begin{column}{6cm}
 			\includegraphics[scale=0.12]{beamer/pluginCadres.png}
@@ -145,9 +153,10 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 		\end{column}
 	\end{columns}
 \end{frame}
+\subsubsection*{Récupération des paramètres utilisateurs}
 \begin{frame}
-\frametitle{Récupération des paramètres utilisateurs}
-	Patrons de Conception : \emph{Factory} et \emph{Singleton}
+\frametitle{GUI - \subsubsecname}
+	%Patrons de Conception : \emph{Factory} et \emph{Singleton}
 	\begin{columns}[t]
 		\begin{column}{5cm}
 			\begin{block}{Choix de l'algorithme}
@@ -169,8 +178,21 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 		\end{column}
 	\end{columns}
 \end{frame}
+\subsection{Algorithmes}
+\subsubsection*{Les Algorithmes implémentés}
 \begin{frame}
-\frametitle{Démonstration avec la Différence de Gaussiennes (DoG)$~$ Wouf!}
+\frametitle{\subsubsecname}
+\begin{block}{3 algorithmes implémentés:}
+\begin{itemize}
+\item Différence de Gaussiennes 
+\item Extraction de contours (Différence de dilatation)
+\item Corrélation d'images
+\end{itemize}
+\end{block}
+\end{frame}
+\subsubsection*{Démonstration avec la Différence de Gaussiennes}
+\begin{frame}
+\frametitle{\subsecname ~- \subsubsecname}%(DoG) Wouf!}
 	\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
@@ -190,7 +212,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\end{columns}
 \end{frame}
 \begin{frame}
-\frametitle{Algorithmes}
+\frametitle{\subsecname ~- Les filtres}
 	\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
@@ -209,7 +231,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 	\end{columns}
 \end{frame}
 \begin{frame}
-\frametitle{}
+\frametitle{\subsecname ~- Résultats intermédiaires}
 \begin{columns}
 \begin{column}{5cm}
 			\begin{figure}
@@ -228,7 +250,7 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 \end{columns}
 \end{frame}
 \begin{frame}
-\frametitle{Résultats}
+\frametitle{\subsecname ~- Résultats}
 	\begin{columns}
 		\begin{column}{5cm}
 			\begin{figure}
@@ -241,21 +263,92 @@ Laboratoire de Chimie et Biologie des Membranes et Nanoobjets
 			\begin{figure}
 				\includegraphics[scale=0.12]{beamer/cropall.png}
 				
-				Images individuelles et tableaux de coordonnées
+				Images individuelles et tableau de coordonnées
 			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
+\subsection{Modularité}
+\subsubsection*{Diagramme de classes}
+\begin{frame}
+\frametitle{\subsecname ~- \subsubsecname}
+	\begin{figure}
+		\includegraphics[scale=0.4]{beamer/class_diagram.png}
+				
+		Diagramme des classes
+	\end{figure}
+\end{frame}
+\subsubsection*{Patrons de conception}
+\begin{frame}
+\frametitle{\subsecname ~- \subsubsecname}
+	\begin{block}{Singleton}
+		\begin{itemize}
+			\item Sert à contrôler le nombre d'instances d'une classe présent à un moment donné,
+			\item Restreindre l'instanciation d'une classe à un seul objet
+		\end{itemize}
+	\end{block}
+	\begin{block}{Factory}
+		\begin{itemize}
+			\item Classe qui n'a pour rôle que de construire des objets,
+		\end{itemize}
+		C elle est seule responsable de la création $/$ distribution de l’objet
+	\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Difficultées rencontrées}
+	\begin{block}{l'API ImageJ}
+	Distinction :
+		\begin{itemize}
+			\item ImagePlus
+			\item ImageProcessor
+			\item ImageStack
+		\end{itemize}
+	\end{block}
+	\begin{block}{GUI}
+		\begin{itemize}
+			\item Gestion des Panels
+			\item Organisation et tailles de fenêtres
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+\frametitle{Améliorations}
+	\begin{block}{Améliorer:}
+		\begin{itemize}
+			\item Améliorer le mode debug
+			\item Continuer le travail pour l'utilisation en macro
+		\end{itemize}
+	\end{block}
+	\begin{block}{Ajouter :}
+		\begin{itemize}
+			\item Ajouter automatiquement un algorithme
+			\item Afficher les sélections pour chaque image d'un stack
+		\end{itemize}
+	\end{block}
+\end{frame}
 \section{Conclusion}
 \begin{frame}
-\frametitle{Conclusion}
+\frametitle{\secname}
+%Travail sympa, équipe cool, collègue parfois relou Taveau change tout le temps d'idée
+	\begin{block}{Le projet}
+		\begin{itemize}
+			\item Interface facile d'utilisation
+			\item Piquage efficace
+			\item Récupération des images individuelles et des coordonnées fonctionnelle
+		\end{itemize}
+	\end{block}
+	\begin{block}{L'équipe}
+		\begin{itemize}
+			\item Première expérience de travail en équipe sur un gros projet concluante
+			\item Aperçu de notre futur métier
+		\end{itemize}
+	\end{block}
 \end{frame}
-
 \begin{frame}
-\frametitle{Remerciements}
-\begin{block}{Merci!!! ;-)}
-merci beaucoup pour votre attention!
-\end{block}
+	\frametitle{Remerciements}
+	\begin{block}{Merci!!! ;-)}
+		Merci beaucoup pour votre attention! %votez jean bon!
+	\end{block}
 \end{frame}
 
 \end{document}
