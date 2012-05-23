@@ -104,7 +104,6 @@ public class ImCorr extends Picker {
 			ImagePlus result = FFTMath.doMath(image,imp);
 			ImageProcessor ip = result.getProcessor();
 			ip.invert();
-			//result.show();
 			WindowManager.setTempCurrentImage(result);
 			IJ.run(result,"Enhance Contrast", "saturated=0 normalize");
 			Polygon points = mf.getMaxima(ip, tolerance, excludeOnEdges);
@@ -120,6 +119,9 @@ public class ImCorr extends Picker {
 				table.addValue("Max",pxValue);
 			}
 			result.close();
+			for(int i=0;i<xArray.length;i++){
+				System.out.println(xArray[i]);
+			}
 		}
 		sort(table,imgBlocked);
 	}

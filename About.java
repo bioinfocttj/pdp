@@ -21,7 +21,8 @@ import javax.swing.JTextArea;
 public class About extends PickPanel {
 	// This class displays informations about the authors
 	
-	private static String description="ABOUT THE AUTORS of \"Pick EM plugin\"\n"+
+	private static String description="\n ABOUT THE AUTORS of \"Pick EM plugin\"\n"+
+		"\n"+
 		"This plugin was implemented by : \n"+
 		"  T. Faux, C. Héricé, T. Paysan-Lafosse and J. Sansen \n"+
 		"  with Pr. Jean-Christophe Taveau \n" +

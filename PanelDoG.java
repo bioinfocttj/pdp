@@ -14,8 +14,11 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,9 +28,9 @@ import javax.swing.JTextField;
 
 public class PanelDoG extends PickPanel {
 
-	private static String setpointS1 = "Sigma 1 : ";
-	private static String setpointS2 = "Sigma 2 : ";
-	private static String setpointWidth = "Square width : ";
+	private static String setpointS1 = "Sigma 1                : ";
+	private static String setpointS2 = "Sigma 2                : ";
+	private static String setpointWidth = "Square width    : ";
 	private static String setpointNoise = "Noise tolerance : ";
 	private static String sig1;
 	private static String sig2;
@@ -49,8 +52,10 @@ public class PanelDoG extends PickPanel {
 	private static JLabel helpImage;
 	
 	private static JPanel infoPanel;
-	private static JPanel sigmaPanel;
-	private static JPanel widthNoisePanel;
+	private static JPanel sigma1Panel;
+	private static JPanel sigma2Panel;
+	private static JPanel widthPanel;
+	private static JPanel noisePanel;
 	private static JPanel debugCropPanel;
 	
 	PanelDoG() {
@@ -58,44 +63,58 @@ public class PanelDoG extends PickPanel {
 	}
 	
 	static JPanel create(){
+		panel2.setLayout(new BoxLayout(panel2, BoxLayout.PAGE_AXIS));
+//		panel2.setAlignmentX(LEFT_ALIGNMENT);
+		//panel2.setBorder(BorderFactory.createLineBorder(Color.black));
+
+
 		// Creations of subpanels
 		infoPanel = new JPanel();
-		infoPanel.setPreferredSize(new Dimension(450, 50));
-		sigmaPanel = new JPanel();
-		sigmaPanel.setPreferredSize(new Dimension(450, 50));
-		widthNoisePanel = new JPanel();
-		widthNoisePanel.setPreferredSize(new Dimension(450, 50));
+		sigma1Panel = new JPanel();
+		sigma2Panel = new JPanel();
+		widthPanel = new JPanel();
+		noisePanel = new JPanel();
 		debugCropPanel = new JPanel();
-		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions 
-		helpImage = new JLabel(" You need to open a DM3-Image or a stack.", JLabel.CENTER);
+//		helpImage = new JLabel(" You need to open a DM3-Image or a stack.", JLabel.CENTER);
 		orderS1 = new JLabel(setpointS1);
 		orderS2 = new JLabel(setpointS2);
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
 		// Values as default
-		sigma1JTF = new JTextField("20",3);
-		sigma2JTF = new JTextField("15",3);
+		sigma1JTF = new JTextField("20",4);
+		sigma2JTF = new JTextField("15",4);
 		cropWidthJTF = new JTextField("100",4);
-		noiseToleranceJTF = new JTextField("10",3);
+		noiseToleranceJTF = new JTextField("10",4);
 		// Chekbox for the debug mode and cropper
 		debugMode = new JCheckBox( "Debug" );
 		cropperMode = new JCheckBox( "Crop" );
 		// Adding attributes to the panels
-		infoPanel.add(helpImage);
-		sigmaPanel.add(orderS1);
-		sigmaPanel.add(sigma1JTF);
-		sigmaPanel.add(orderS2);
-		sigmaPanel.add(sigma2JTF);
-		widthNoisePanel.add(orderNoise);
-		widthNoisePanel.add(noiseToleranceJTF);
-		widthNoisePanel.add(orderWidth);
-		widthNoisePanel.add(cropWidthJTF);
+		sigma1Panel.add(orderS1);
+		sigma1Panel.add(sigma1JTF);
+//		sigma1Panel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		sigma2Panel.add(orderS2);
+		sigma2Panel.add(sigma2JTF);
+//		sigma2Panel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		noisePanel.add(orderNoise);
+		noisePanel.add(noiseToleranceJTF);
+//		noisePanel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		widthPanel.add(orderWidth);
+		widthPanel.add(cropWidthJTF);
+//		widthPanel.setAlignmentX(RIGHT_ALIGNMENT);
+
 		debugCropPanel.add(debugMode);
 		debugCropPanel.add(cropperMode);
+//		debugCropPanel.setAlignmentX(RIGHT_ALIGNMENT);
+
 		panel2.add(infoPanel);
-		panel2.add(sigmaPanel);
-		panel2.add(widthNoisePanel);
+		panel2.add(sigma1Panel);
+		panel2.add(sigma2Panel);
+		panel2.add(widthPanel);
+		panel2.add(noisePanel);
 		panel2.add(debugCropPanel);
 		return panel2;
 	}

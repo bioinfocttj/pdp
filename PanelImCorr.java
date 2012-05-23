@@ -14,8 +14,9 @@
 *51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 */
 
-import java.awt.Dimension;
+import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,11 +34,11 @@ public class PanelImCorr extends PickPanel {
 	private static String minRadius;
 	private static String maxRadius;
 	private static String incRadius;
-	private static String setpointRMin = "Minimum Radius : ";
-	private static String setpointRMax = "Maximum Radius : ";
+	private static String setpointRMin = "Minimum Radius          :   ";
+	private static String setpointRMax = "Maximum Radius          :   ";
 	private static String setpointRInc = "Radius Incrementation : ";
-	private static String setpointWidth = "Square width : ";
-	private static String setpointNoise = "Noise tolerance : ";
+	private static String setpointWidth = "Square width           :   ";
+	private static String setpointNoise = "Noise tolerance        :   ";
 
 	private static JTextField radiusMinJTF;
 	private static JTextField radiusMaxJTF;
@@ -53,8 +54,11 @@ public class PanelImCorr extends PickPanel {
 	private static JLabel helpImage;
 	
 	private static JPanel infoPanel;
-	private static JPanel radiusPanel;
-	private static JPanel widthNoisePanel;
+	private static JPanel radiusMinPanel;
+	private static JPanel radiusMaxPanel;
+	private static JPanel radiusIncPanel;
+	private static JPanel NoisePanel;
+	private static JPanel widthPanel;
 	private static JPanel debugCropPanel;
 	
 	PanelImCorr() {
@@ -62,48 +66,73 @@ public class PanelImCorr extends PickPanel {
 	}
 	
 	static JPanel create(){
+		panel2.setLayout(new BoxLayout(panel2, BoxLayout.PAGE_AXIS));
+	//	GridLayout experimentLayout = new GridLayout(0,2);
+	//	panel2.setLayout(experimentLayout);
+
 		// Creations of subpanels
 		infoPanel = new JPanel();
-		infoPanel.setPreferredSize(new Dimension(450, 50));
-		radiusPanel = new JPanel();
-		radiusPanel.setPreferredSize(new Dimension(450, 50));
-		widthNoisePanel = new JPanel();
-		widthNoisePanel.setPreferredSize(new Dimension(450, 50));
+		radiusMinPanel = new JPanel();
+		radiusMaxPanel = new JPanel();
+		radiusIncPanel = new JPanel();
+		widthPanel = new JPanel();
+		NoisePanel = new JPanel();
 		debugCropPanel = new JPanel();
-		debugCropPanel.setPreferredSize(new Dimension(450, 50));
 		// Instructions
-		helpImage = new JLabel(" Need images to the second power ", JLabel.CENTER);
+//		helpImage = new JLabel(" Need images to the second power ", JLabel.CENTER);
 		orderRadiusMin = new JLabel(setpointRMin);
 		orderRadiusMax = new JLabel(setpointRMax);
 		orderRadiusInc = new JLabel(setpointRInc);
 		orderWidth = new JLabel(setpointWidth);
 		orderNoise = new JLabel(setpointNoise);
+		
 		// Values as default
 		radiusMinJTF = new JTextField("20",3);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
 		radiusMaxJTF = new JTextField("60",3);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
 		radiusIncJTF = new JTextField("5",3);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
 		cropWidthJTF = new JTextField("100",4);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
 		noiseToleranceJTF = new JTextField("0.5",4);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
 		// Chekbox for the debug mode and cropper
 		debugMode = new JCheckBox( "Debug"); 
 		cropperMode = new JCheckBox( "Crop" );
 		// Adding attributes to the panel
-		infoPanel.add(helpImage);
-		radiusPanel.add(orderRadiusMin);
-		radiusPanel.add(radiusMinJTF);
-		radiusPanel.add(orderRadiusMax);
-		radiusPanel.add(radiusMaxJTF);
-		radiusPanel.add(orderRadiusInc);
-		radiusPanel.add(radiusIncJTF);
-		widthNoisePanel.add(orderNoise);
-		widthNoisePanel.add(noiseToleranceJTF);
-		widthNoisePanel.add(orderWidth);
-		widthNoisePanel.add(cropWidthJTF);
+//		infoPanel.add(helpImage);
+		
+		radiusMinPanel.add(orderRadiusMin);
+		radiusMinPanel.add(radiusMinJTF);
+//		radiusMinPanel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		
+		radiusMaxPanel.add(orderRadiusMax);
+		radiusMaxPanel.add(radiusMaxJTF);
+//		radiusMaxPanel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		radiusIncPanel.add(orderRadiusInc);
+		radiusIncPanel.add(radiusIncJTF);
+//		radiusIncPanel.setAlignmentX(RIGHT_ALIGNMENT);
+
+		NoisePanel.add(orderNoise);
+		NoisePanel.add(noiseToleranceJTF);
+//		NoisePanel.setAlignmentX(RIGHT_ALIGNMENT);
+		
+		widthPanel.add(orderWidth);
+		widthPanel.add(cropWidthJTF);
+//		widthPanel.setAlignmentX(RIGHT_ALIGNMENT);
+		
 		debugCropPanel.add(debugMode);
 		debugCropPanel.add(cropperMode);
+		
 		panel2.add(infoPanel);
-		panel2.add(radiusPanel);
-		panel2.add(widthNoisePanel);
+		panel2.add(radiusMinPanel);
+		panel2.add(radiusMaxPanel);
+		panel2.add(radiusIncPanel);
+		panel2.add(NoisePanel);
+		panel2.add(widthPanel);
 		panel2.add(debugCropPanel);
 		return panel2;
 	}

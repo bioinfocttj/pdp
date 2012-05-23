@@ -33,7 +33,6 @@ public class PickFrame extends JFrame implements ActionListener {
 	
 	private JPanel mainPanel;
 	private JPanel panel1;
-	private JPanel paneltitle;
 	private JPanel panel2;
 	private JPanel panel3;
 	
@@ -49,9 +48,9 @@ public class PickFrame extends JFrame implements ActionListener {
 	
 	public PickFrame(){
 		super("Picking Plugin");
-		initGUI();
+		JPanel contentPane = initGUI();
 		instance = this;
-		add(paneltitle);
+		this.setContentPane(contentPane);
 	}
 
 	// Show the GUI threadsafe
@@ -69,23 +68,23 @@ public class PickFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	private void initGUI(){
+	private JPanel initGUI(){
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		GridBagLayout gridbag = new GridBagLayout();
-		getContentPane().setLayout(gridbag);
-		
-		mainPanel = new JPanel();
-		mainPanel.setPreferredSize(new Dimension(450, 600)); // Horizontal, vertical 
-		paneltitle = new JPanel();
+	//	GridBagLayout gridbag = new GridBagLayout();
+	//	getContentPane().setLayout(gridbag);
+		mainPanel = new JPanel(new BorderLayout());
+	//	mainPanel = new JPanel();
+	//	mainPanel.setPreferredSize(new Dimension(450, 600)); // Horizontal, vertical 
+	//	paneltitle = new JPanel();
 		panel1 = new JPanel();
-		panel1.setLayout(gridbag);
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.NORTH;
+	//	panel1.setLayout(gridbag);
+	//	GridBagConstraints gbc = new GridBagConstraints();
+	//	gbc.anchor = GridBagConstraints.NORTH;
 		panel2 = new JPanel();
 		panel3 = new JPanel();
-		panel3.setLayout(gridbag);
-		gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.SOUTH;
+	//	panel3.setLayout(gridbag);
+	//	gbc = new GridBagConstraints();
+	//	gbc.anchor = GridBagConstraints.SOUTH;
 
 		///////////////////// Panel1 : Choice of algorithm 
 
@@ -102,9 +101,9 @@ public class PickFrame extends JFrame implements ActionListener {
 
 		//Set up the contain (contains all algorithms).
 		JLabel choice = new JLabel();
-		gridbag.setConstraints(algoList,gbc);
+	//	gridbag.setConstraints(algoList,gbc);
 		panel1.add(algoList);
-		gridbag.setConstraints(choice,gbc);
+	//	gridbag.setConstraints(choice,gbc);
 		panel1.add(choice);
 		
 		//////////////////////// Panel3 : Preview & Apply & Save & Help
@@ -116,26 +115,27 @@ public class PickFrame extends JFrame implements ActionListener {
 		helpInfoButton.addActionListener(new InfoHelp());
 		
 		//adding to Preview & Reset & Apply & Help box
-		gridbag.setConstraints(previewButton,gbc);
+	//	gridbag.setConstraints(previewButton,gbc);
 		panel3.add(previewButton);
-		gridbag.setConstraints(applyButton,gbc);
+	//	gridbag.setConstraints(applyButton,gbc);
 		panel3.add(applyButton);
-		gridbag.setConstraints(saveButton,gbc);
+	//	gridbag.setConstraints(saveButton,gbc);
 		panel3.add(saveButton);
-		gridbag.setConstraints(helpInfoButton,gbc);
+	//	gridbag.setConstraints(helpInfoButton,gbc);
 		panel3.add(helpInfoButton);
 
 		///////////////// Main panel
 		
-		mainPanel.setLayout(new GridLayout(3,0)); 
+	//	mainPanel.setLayout(new GridLayout(3,0)); 
 		mainPanel.setVisible(true);
 		
-		mainPanel.add(panel1);
-		mainPanel.add(panel2);
-		mainPanel.add(panel3);
-		add(mainPanel); 
+		mainPanel.add(panel1,BorderLayout.PAGE_START);
+		mainPanel.add(panel2,BorderLayout.CENTER);
+		mainPanel.add(panel3,BorderLayout.PAGE_END);
+	//	add(mainPanel); 
 		Runnable runner = new GUIShower(this);
 		EventQueue.invokeLater(runner);
+		return mainPanel;
 	}
 
 	JButton makeButton(String name){
@@ -154,13 +154,13 @@ public class PickFrame extends JFrame implements ActionListener {
 			comboSelection = (String) cb.getSelectedItem();
 			panel2.removeAll();
 			// Allows the panel2's update
-			mainPanel.remove(panel1);
-			mainPanel.remove(panel2);
-			mainPanel.remove(panel3);
+	//		mainPanel.remove(panel1);
+	//		mainPanel.remove(panel2);
+	//		mainPanel.remove(panel3);
 			panel2 = AlgoFactory.algorithm.getPickPanel(comboSelection);
-			mainPanel.add(panel1);
+	//		mainPanel.add(panel1);
 			mainPanel.add(panel2);
-			mainPanel.add(panel3);
+	//		mainPanel.add(panel3);
 			mainPanel.repaint();
 			pack();
 		}
